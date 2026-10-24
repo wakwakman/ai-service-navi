@@ -1,0 +1,83 @@
+{
+  "updated": "2026-10-25",
+  "policy": "実際に各サービスで同じプロンプトを実行して得た出力だけを掲載します。1回の出力だけでサービスの優劣を決めることはしません。",
+  "howto": [
+    "同じ日に、同じプロンプトを、各サービスの新しい会話で1回ずつ実行する",
+    "使ったプラン・モデル名・設定（検索のオン／オフなど）を記録する",
+    "出力は手を加えずにそのまま貼り付ける（長い場合は冒頭のみ、省略した旨を書く）",
+    "特徴と注意点は、出力から読み取れる事実だけを書く"
+  ],
+  "themes": [
+    {
+      "id": "mail", "title": "メール文章の作成",
+      "prompt": "取引先に、打ち合わせの日程を来週から再来週に変更したいとお願いするメールを、200字程度で書いてください。",
+      "entries": [
+        {"service": "chatgpt", "status": "pending"},
+        {"service": "gemini", "status": "pending"},
+        {"service": "claude", "status": "pending"},
+        {"service": "copilot", "status": "pending"}
+      ]
+    },
+    {
+      "id": "summary", "title": "文章の要約",
+      "prompt": "次の文章を、要点を落とさずに3行で要約してください。（検証時は同じ文章を全サービスに渡す）",
+      "entries": [
+        {"service": "chatgpt", "status": "pending"},
+        {"service": "claude", "status": "pending"},
+        {"service": "gemini", "status": "pending"},
+        {"service": "mistral", "status": "pending"}
+      ]
+    },
+    {
+      "id": "ideas", "title": "アイデア出し",
+      "prompt": "地域の商店街のにぎわいを取り戻すためのイベント案を、費用が少なくてすむものから順に5つ出してください。",
+      "entries": [
+        {"service": "chatgpt", "status": "pending"},
+        {"service": "claude", "status": "pending"},
+        {"service": "gemini", "status": "pending"},
+        {"service": "grok", "status": "pending"}
+      ]
+    },
+    {
+      "id": "research", "title": "情報収集",
+      "prompt": "日本の2025年の訪日外国人旅行者数と、前年からの変化を、出典つきで教えてください。",
+      "entries": [
+        {"service": "perplexity", "status": "pending"},
+        {"service": "chatgpt", "status": "pending"},
+        {"service": "gemini", "status": "pending"},
+        {"service": "grok", "status": "pending"}
+      ]
+    },
+    {
+      "id": "code", "title": "プログラミング",
+      "prompt": "Python で、CSV ファイルを読み込み、指定した列の平均値を表示する関数を書いてください。ファイルがない場合のエラー処理も入れてください。",
+      "entries": [
+        {"service": "claude", "status": "pending"},
+        {"service": "chatgpt", "status": "pending"},
+        {"service": "deepseek", "status": "pending"},
+        {"service": "mistral", "status": "pending"}
+      ]
+    },
+    {
+      "id": "image", "title": "画像生成",
+      "prompt": "朝の光が差し込むカフェの店内、木のテーブルにコーヒーとクロワッサン、水彩画風、横長。",
+      "entries": [
+        {"service": "midjourney", "status": "pending"},
+        {"service": "chatgpt", "status": "pending"},
+        {"service": "gemini", "status": "pending"},
+        {"service": "grok", "status": "pending"}
+      ]
+    }
+  ],
+  "entryFormat": {
+    "service": "サービスID（services.json と同じ）",
+    "status": "pending（検証準備中）または done（検証済み）",
+    "model": "使用したモデル名（例：GPT-6 Sol）",
+    "date": "実施日（YYYY-MM-DD）",
+    "conditions": "使用条件（プラン、設定、検索のオン／オフなど）",
+    "output": "実際の出力結果（文章）。画像の場合は image に画像ファイルのパスを入れる",
+    "image": "画像生成の場合の画像ファイル（例：compare/image-midjourney.png）",
+    "features": "出力の特徴（出力から読み取れる事実）",
+    "cautions": "利用上の注意点"
+  }
+}

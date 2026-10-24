@@ -1,86 +1,549 @@
 {
   "updated": "2026-10-25",
-  "categories": { "chat": "対話型AI", "search": "検索AI", "work": "業務AI", "creative": "画像・動画AI" },
+  "categories": {
+    "chat": "対話型AI",
+    "search": "検索AI",
+    "work": "業務AI",
+    "creative": "画像・動画AI"
+  },
   "services": [
     {
-      "id": "chatgpt", "name": "ChatGPT", "maker": "OpenAI", "code": "CG", "color": "#10a37f", "category": "chat",
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "maker": "OpenAI",
+      "code": "CG",
+      "color": "#10a37f",
+      "category": "chat",
       "summary": "利用者数が最も多い対話型AI。文章、画像生成、資料作成、ブラウザ操作まで1つのアプリで扱える。無料プランでも使えるが、無料・Goプランには広告が入る。",
-      "good": ["機能の幅が広く、1つで多くの用途をまかなえる", "利用者が多く、使い方の情報や事例が見つけやすい", "画像生成やスライド作成など、文章以外の出力が充実"],
-      "warn": ["無料・Goプランでは広告が表示される", "モデルの入れ替えが早く、旧モデルが終了することがある", "著作権・未成年保護をめぐる訴訟や調査を抱えている"],
-      "use": ["企画書やスライドのたたき台づくり", "画像つきの説明資料の作成", "ブラウザ上の定型作業の代行"],
-      "cmp": { "strength": "幅広い用途を1つでこなす", "free": "あり（広告あり）", "japan": "日本法人あり・日本語対応", "image": "◯", "fit": "はじめての人、何でも1つで済ませたい人" }
+      "good": [
+        "機能の幅が広く、1つで多くの用途をまかなえる",
+        "利用者が多く、使い方の情報や事例が見つけやすい",
+        "画像生成やスライド作成など、文章以外の出力が充実"
+      ],
+      "warn": [
+        "無料・Goプランでは広告が表示される",
+        "モデルの入れ替えが早く、旧モデルが終了することがある",
+        "著作権・未成年保護をめぐる訴訟や調査を抱えている"
+      ],
+      "use": [
+        "企画書やスライドのたたき台づくり",
+        "画像つきの説明資料の作成",
+        "ブラウザ上の定型作業の代行"
+      ],
+      "cmp": {
+        "strength": "幅広い用途を1つでこなす",
+        "free": "あり（広告あり）",
+        "japan": "日本法人あり・日本語対応",
+        "image": "◯",
+        "fit": "はじめての人、何でも1つで済ませたい人"
+      },
+      "url": "https://chatgpt.com/",
+      "diag": {
+        "scores": {
+          "writing": 3,
+          "research": 2,
+          "docs": 3,
+          "image": 3,
+          "video": 0,
+          "code": 2,
+          "study": 3,
+          "efficiency": 2,
+          "other": 3
+        },
+        "free": true,
+        "minPaidJPY": 1200,
+        "work": true,
+        "team": true,
+        "japan": true
+      }
     },
     {
-      "id": "gemini", "name": "Gemini", "maker": "Google", "code": "GM", "color": "#2f6fe4", "category": "chat",
+      "id": "gemini",
+      "name": "Gemini",
+      "maker": "Google",
+      "code": "GM",
+      "color": "#2f6fe4",
+      "category": "chat",
       "summary": "Googleの対話型AI。Gmail、カレンダー、マップ、Chromeなど、普段使うGoogleのサービスとつながっているのが最大の特徴。",
-      "good": ["Googleのアプリと連携し、予定や保存した場所をふまえて提案できる", "Android・Chromeに組み込まれ、別アプリを開かずに使える", "行政・企業向けの提供形態がそろっている"],
-      "warn": ["個人の行動履歴を使うため、連携範囲の設定確認が欠かせない", "無料プランで使えるモデルが絞られたと報じられている", "連携機能は国や言語で提供時期がずれることがある"],
-      "use": ["メールと予定を読み取った1日の段取りづくり", "外出先の候補探しとルート確認", "Chromeでの詐欺サイト警告"],
-      "cmp": { "strength": "Googleのサービスと連携した提案", "free": "あり（軽量モデルのみ）", "japan": "日本法人あり・日本語対応", "image": "◯", "fit": "Android や Google のサービスを毎日使う人" }
+      "good": [
+        "Googleのアプリと連携し、予定や保存した場所をふまえて提案できる",
+        "Android・Chromeに組み込まれ、別アプリを開かずに使える",
+        "行政・企業向けの提供形態がそろっている"
+      ],
+      "warn": [
+        "個人の行動履歴を使うため、連携範囲の設定確認が欠かせない",
+        "無料プランで使えるモデルが絞られたと報じられている",
+        "連携機能は国や言語で提供時期がずれることがある"
+      ],
+      "use": [
+        "メールと予定を読み取った1日の段取りづくり",
+        "外出先の候補探しとルート確認",
+        "Chromeでの詐欺サイト警告"
+      ],
+      "cmp": {
+        "strength": "Googleのサービスと連携した提案",
+        "free": "あり（軽量モデルのみ）",
+        "japan": "日本法人あり・日本語対応",
+        "image": "◯",
+        "fit": "Android や Google のサービスを毎日使う人"
+      },
+      "url": "https://gemini.google.com/",
+      "diag": {
+        "scores": {
+          "writing": 2,
+          "research": 2,
+          "docs": 2,
+          "image": 3,
+          "video": 2,
+          "code": 2,
+          "study": 2,
+          "efficiency": 3,
+          "other": 2
+        },
+        "free": true,
+        "minPaidJPY": 725,
+        "work": true,
+        "team": true,
+        "japan": true
+      }
     },
     {
-      "id": "claude", "name": "Claude", "maker": "Anthropic", "code": "CL", "color": "#d0643a", "category": "chat",
+      "id": "claude",
+      "name": "Claude",
+      "maker": "Anthropic",
+      "code": "CL",
+      "color": "#d0643a",
+      "category": "chat",
       "summary": "長い文書の読解、文章作成、プログラミングに強い対話型AI。企業向けのセキュリティ機能や、作業を自律的に進めるエージェント機能に力を入れている。",
-      "good": ["長い資料や大量のコードを一度に読み込んで扱える", "プログラミングやエージェント作業の性能が高い", "安全性の方針や利用状況の報告を公開している"],
-      "warn": ["10月は接続機能や請求まわりの障害が複数回あった", "カナダの新聞社などから著作権侵害で提訴された", "画像生成など、他社が持つ一部の機能はない"],
-      "use": ["契約書・規程など長文資料の比較とチェック", "ソフトウェア開発とコードレビュー", "社内システムのセキュリティ点検"],
-      "cmp": { "strength": "長い資料の読解とプログラミング", "free": "あり（5時間ごとに上限）", "japan": "日本法人あり・日本語対応", "image": "△ 画像生成は非対応（図やスライドは作れる）", "fit": "長い資料を扱う人、開発者" }
+      "good": [
+        "長い資料や大量のコードを一度に読み込んで扱える",
+        "プログラミングやエージェント作業の性能が高い",
+        "安全性の方針や利用状況の報告を公開している"
+      ],
+      "warn": [
+        "10月は接続機能や請求まわりの障害が複数回あった",
+        "カナダの新聞社などから著作権侵害で提訴された",
+        "画像生成など、他社が持つ一部の機能はない"
+      ],
+      "use": [
+        "契約書・規程など長文資料の比較とチェック",
+        "ソフトウェア開発とコードレビュー",
+        "社内システムのセキュリティ点検"
+      ],
+      "cmp": {
+        "strength": "長い資料の読解とプログラミング",
+        "free": "あり（5時間ごとに上限）",
+        "japan": "日本法人あり・日本語対応",
+        "image": "△ 画像生成は非対応（図やスライドは作れる）",
+        "fit": "長い資料を扱う人、開発者"
+      },
+      "url": "https://claude.ai/",
+      "diag": {
+        "scores": {
+          "writing": 3,
+          "research": 2,
+          "docs": 3,
+          "image": 0,
+          "video": 0,
+          "code": 3,
+          "study": 3,
+          "efficiency": 2,
+          "other": 2
+        },
+        "free": true,
+        "minPaidJPY": 3000,
+        "work": true,
+        "team": true,
+        "japan": true
+      }
     },
     {
-      "id": "copilot", "name": "Microsoft 365 Copilot", "short": "Copilot", "maker": "Microsoft", "code": "CP", "color": "#7b4fd6", "category": "work",
+      "id": "copilot",
+      "name": "Microsoft 365 Copilot",
+      "short": "Copilot",
+      "maker": "Microsoft",
+      "code": "CP",
+      "color": "#7b4fd6",
+      "category": "work",
       "summary": "Word、Excel、Teams、SharePointなど Microsoft 365 に組み込まれた業務向けAI。社内の文書やメール、会議の内容を権限の範囲で参照できる。",
-      "good": ["普段使うOfficeアプリの中でそのまま使える", "社内の権限管理を引き継ぐため、企業で導入しやすい", "Teams会議の要約や、チャンネル全体の文脈をふまえた回答"],
-      "warn": ["料金体系の変更が続き、12月から新規契約は従量課金が標準に", "社内の権限設定が雑だと、見えるべきでない資料まで参照される", "個人向けと法人向けで機能が大きく違う"],
-      "use": ["Teams会議の議事録と宿題の整理", "Excelのデータ分析と関数づくり", "SharePoint上のPDFや資料の編集・要約"],
-      "cmp": { "strength": "Officeアプリの中での業務", "free": "あり（Office内のCopilotは有料）", "japan": "日本法人あり・日本語対応", "image": "◯", "fit": "会社で Microsoft 365 を使っている人" }
+      "good": [
+        "普段使うOfficeアプリの中でそのまま使える",
+        "社内の権限管理を引き継ぐため、企業で導入しやすい",
+        "Teams会議の要約や、チャンネル全体の文脈をふまえた回答"
+      ],
+      "warn": [
+        "料金体系の変更が続き、12月から新規契約は従量課金が標準に",
+        "社内の権限設定が雑だと、見えるべきでない資料まで参照される",
+        "個人向けと法人向けで機能が大きく違う"
+      ],
+      "use": [
+        "Teams会議の議事録と宿題の整理",
+        "Excelのデータ分析と関数づくり",
+        "SharePoint上のPDFや資料の編集・要約"
+      ],
+      "cmp": {
+        "strength": "Officeアプリの中での業務",
+        "free": "あり（Office内のCopilotは有料）",
+        "japan": "日本法人あり・日本語対応",
+        "image": "◯",
+        "fit": "会社で Microsoft 365 を使っている人"
+      },
+      "url": "https://copilot.microsoft.com/",
+      "diag": {
+        "scores": {
+          "writing": 2,
+          "research": 1,
+          "docs": 3,
+          "image": 2,
+          "video": 0,
+          "code": 1,
+          "study": 1,
+          "efficiency": 3,
+          "other": 1
+        },
+        "free": true,
+        "minPaidJPY": 3000,
+        "work": true,
+        "team": true,
+        "japan": true
+      }
     },
     {
-      "id": "perplexity", "name": "Perplexity", "maker": "Perplexity AI", "code": "PX", "color": "#14a3b8", "category": "search",
+      "id": "perplexity",
+      "name": "Perplexity",
+      "maker": "Perplexity AI",
+      "code": "PX",
+      "color": "#14a3b8",
+      "category": "search",
       "summary": "質問するとWebを検索し、出典つきで答えをまとめるAI検索エンジン。調べものに特化し、無料のAIブラウザ「Comet」も提供している。",
-      "good": ["回答ごとに出典リンクが付き、確かめやすい", "最新のWeb情報をもとに答える", "有料版では複数の大手モデルを切り替えて使える"],
-      "warn": ["出典の要約を誤ることがあり、リンク先の確認は欠かせない", "報道機関から著作権侵害で訴えられ、陪審裁判が近づいている", "長い文章の作成や細かな対話はチャット型AIのほうが得意"],
-      "use": ["最新ニュースや製品情報の下調べ", "出典つきのリサーチメモづくり", "Comet ブラウザでのページ要約"],
-      "cmp": { "strength": "出典つきの検索・調べもの", "free": "あり", "japan": "日本語対応（日本法人の情報なし）", "image": "△ 主な用途ではない", "fit": "調べものが多い人、出典を確かめたい人" }
+      "good": [
+        "回答ごとに出典リンクが付き、確かめやすい",
+        "最新のWeb情報をもとに答える",
+        "有料版では複数の大手モデルを切り替えて使える"
+      ],
+      "warn": [
+        "出典の要約を誤ることがあり、リンク先の確認は欠かせない",
+        "報道機関から著作権侵害で訴えられ、陪審裁判が近づいている",
+        "長い文章の作成や細かな対話はチャット型AIのほうが得意"
+      ],
+      "use": [
+        "最新ニュースや製品情報の下調べ",
+        "出典つきのリサーチメモづくり",
+        "Comet ブラウザでのページ要約"
+      ],
+      "cmp": {
+        "strength": "出典つきの検索・調べもの",
+        "free": "あり",
+        "japan": "日本語対応（日本法人の情報なし）",
+        "image": "△ 主な用途ではない",
+        "fit": "調べものが多い人、出典を確かめたい人"
+      },
+      "url": "https://www.perplexity.ai/",
+      "diag": {
+        "scores": {
+          "writing": 1,
+          "research": 3,
+          "docs": 1,
+          "image": 0,
+          "video": 0,
+          "code": 1,
+          "study": 2,
+          "efficiency": 1,
+          "other": 1
+        },
+        "free": true,
+        "minPaidJPY": 3000,
+        "work": true,
+        "team": true,
+        "japan": true
+      }
     },
     {
-      "id": "grok", "name": "Grok", "maker": "xAI（SpaceX）", "code": "GK", "color": "#8e98a6", "category": "chat",
+      "id": "grok",
+      "name": "Grok",
+      "maker": "xAI（SpaceX）",
+      "code": "GK",
+      "color": "#8e98a6",
+      "category": "chat",
       "summary": "イーロン・マスク氏のxAI（2026年2月からSpaceXの子会社）が開発する対話型AI。X（旧Twitter）に組み込まれ、Xの投稿などリアルタイムの話題に強い。",
-      "good": ["Xの最新投稿をふまえて答えられる", "Xアプリからそのまま使える", "画像や動画の生成にも対応"],
-      "warn": ["性的な画像の生成を許したとして批判を受けた", "2026年10月に料金体系が再編され、報道によって内容が食い違う", "Xの投稿は真偽が混ざっており、答えに影響しうる"],
-      "use": ["SNSで話題の出来事の把握", "投稿文のアイデア出し", "画像の生成"],
-      "cmp": { "strength": "Xのリアルタイム情報", "free": "あり", "japan": "日本語対応（Xアプリで利用可）", "image": "◯", "fit": "X をよく使う人" }
+      "good": [
+        "Xの最新投稿をふまえて答えられる",
+        "Xアプリからそのまま使える",
+        "画像や動画の生成にも対応"
+      ],
+      "warn": [
+        "性的な画像の生成を許したとして批判を受けた",
+        "2026年10月に料金体系が再編され、報道によって内容が食い違う",
+        "Xの投稿は真偽が混ざっており、答えに影響しうる"
+      ],
+      "use": [
+        "SNSで話題の出来事の把握",
+        "投稿文のアイデア出し",
+        "画像の生成"
+      ],
+      "cmp": {
+        "strength": "Xのリアルタイム情報",
+        "free": "あり",
+        "japan": "日本語対応（Xアプリで利用可）",
+        "image": "◯",
+        "fit": "X をよく使う人"
+      },
+      "url": "https://grok.com/",
+      "diag": {
+        "scores": {
+          "writing": 2,
+          "research": 2,
+          "docs": 1,
+          "image": 2,
+          "video": 2,
+          "code": 1,
+          "study": 1,
+          "efficiency": 1,
+          "other": 1
+        },
+        "free": true,
+        "minPaidJPY": 1200,
+        "work": true,
+        "team": false,
+        "japan": true,
+        "note": "チーム向けの料金プランが確認できないため、チーム利用では対象外です。"
+      }
     },
     {
-      "id": "deepseek", "name": "DeepSeek", "maker": "DeepSeek（中国）", "code": "DS", "color": "#4458e6", "category": "chat",
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "maker": "DeepSeek（中国）",
+      "code": "DS",
+      "color": "#4458e6",
+      "category": "chat",
       "summary": "中国のDeepSeekが開発する対話型AI。高い性能を低価格で提供し、モデルを公開するオープン路線で知られる。アプリは無料。",
-      "good": ["アプリは無料で、上位モデルに近い性能を使える", "APIが非常に安く、開発者に人気", "モデルが公開され、自社の環境で動かすこともできる"],
-      "warn": ["データは中国のサーバーに保存され、中国の法令が適用される（2025年に個人情報保護委員会が注意喚起）", "政府機関などでは業務での利用を控える動きがある", "政治的な話題では回答が制限されることがある"],
-      "use": ["機密を含まない範囲での学習やアイデア出し", "開発者による低コストのAPI利用", "公開モデルを使った研究・検証"],
-      "cmp": { "strength": "低価格で高い性能", "free": "アプリは無料", "japan": "日本語対応（日本拠点なし）", "image": "× 非対応", "fit": "コストを抑えたい開発者" }
+      "good": [
+        "アプリは無料で、上位モデルに近い性能を使える",
+        "APIが非常に安く、開発者に人気",
+        "モデルが公開され、自社の環境で動かすこともできる"
+      ],
+      "warn": [
+        "データは中国のサーバーに保存され、中国の法令が適用される（2025年に個人情報保護委員会が注意喚起）",
+        "政府機関などでは業務での利用を控える動きがある",
+        "政治的な話題では回答が制限されることがある"
+      ],
+      "use": [
+        "機密を含まない範囲での学習やアイデア出し",
+        "開発者による低コストのAPI利用",
+        "公開モデルを使った研究・検証"
+      ],
+      "cmp": {
+        "strength": "低価格で高い性能",
+        "free": "アプリは無料",
+        "japan": "日本語対応（日本拠点なし）",
+        "image": "× 非対応",
+        "fit": "コストを抑えたい開発者"
+      },
+      "url": "https://chat.deepseek.com/",
+      "diag": {
+        "scores": {
+          "writing": 2,
+          "research": 1,
+          "docs": 1,
+          "image": 0,
+          "video": 0,
+          "code": 3,
+          "study": 2,
+          "efficiency": 1,
+          "other": 1
+        },
+        "free": true,
+        "minPaidJPY": null,
+        "work": false,
+        "team": false,
+        "japan": true,
+        "note": "データは中国のサーバーに保存されるため、仕事やチームでの利用はおすすめしません。"
+      }
     },
     {
-      "id": "muse", "name": "Meta Muse", "short": "Muse", "maker": "Meta", "code": "MU", "color": "#e1306c", "category": "chat",
+      "id": "muse",
+      "name": "Meta Muse",
+      "short": "Muse",
+      "maker": "Meta",
+      "code": "MU",
+      "color": "#e1306c",
+      "category": "chat",
       "summary": "Metaが2026年9月に公開した個人向けAIエージェント。WhatsAppなどMetaのサービスと連携する。2026年10月時点では米国のみで提供している。",
-      "good": ["WhatsApp など Meta のアプリから使える", "予定や手配などの用事をこなすエージェント機能", "無料で使える量が大きいと報じられている"],
-      "warn": ["日本では提供されていない（米国のみ）", "無料プランでもカードの登録が必要", "個人データの扱いや安全性を不安視する声がある"],
-      "use": ["（米国）日々の用事の手配", "メッセージアプリでの相談", "情報の要約や調べもの"],
-      "cmp": { "strength": "Meta のアプリとの連携", "free": "あり（カード登録が必要）", "japan": "未提供（米国のみ）", "image": "— 確認中", "fit": "米国で WhatsApp などを使う人" }
+      "good": [
+        "WhatsApp など Meta のアプリから使える",
+        "予定や手配などの用事をこなすエージェント機能",
+        "無料で使える量が大きいと報じられている"
+      ],
+      "warn": [
+        "日本では提供されていない（米国のみ）",
+        "無料プランでもカードの登録が必要",
+        "個人データの扱いや安全性を不安視する声がある"
+      ],
+      "use": [
+        "（米国）日々の用事の手配",
+        "メッセージアプリでの相談",
+        "情報の要約や調べもの"
+      ],
+      "cmp": {
+        "strength": "Meta のアプリとの連携",
+        "free": "あり（カード登録が必要）",
+        "japan": "未提供（米国のみ）",
+        "image": "— 確認中",
+        "fit": "米国で WhatsApp などを使う人"
+      },
+      "url": "https://muse.ai/",
+      "diag": {
+        "scores": {
+          "writing": 2,
+          "research": 2,
+          "docs": 1,
+          "image": 0,
+          "video": 0,
+          "code": 1,
+          "study": 1,
+          "efficiency": 2,
+          "other": 2
+        },
+        "free": true,
+        "minPaidJPY": 3000,
+        "work": false,
+        "team": false,
+        "japan": false,
+        "note": "2026年10月時点で日本では提供されていないため、診断の対象外です。"
+      }
     },
     {
-      "id": "mistral", "name": "Mistral Vibe", "short": "Mistral", "maker": "Mistral AI（フランス）", "code": "MS", "color": "#ff7a00", "category": "chat",
+      "id": "mistral",
+      "name": "Mistral Vibe",
+      "short": "Mistral",
+      "maker": "Mistral AI（フランス）",
+      "code": "MS",
+      "color": "#ff7a00",
+      "category": "chat",
       "summary": "フランスのMistral AIの対話型AI。2026年5月に「Le Chat」から「Vibe」に名前を変えた。欧州発で、データの扱いと公開モデルを重視している。",
-      "good": ["欧州の企業で、EUのデータ保護を意識した運営", "有料版が月$14.99と比較的安い", "公開モデルが多く、自社で運用することもできる"],
-      "warn": ["日本語の情報やサポートは少なめ", "名前の変更（Le Chat → Vibe）で古い情報が混ざりやすい", "大手と比べて連携できるサービスが少ない"],
-      "use": ["欧州の規制を意識した業務での利用", "コーディング支援（CLI・IDE）", "公開モデルを使った社内AIの構築"],
-      "cmp": { "strength": "欧州発・公開モデル", "free": "あり", "japan": "日本語対応（日本拠点の情報なし）", "image": "◯", "fit": "コストやデータの置き場所を重視する人" }
+      "good": [
+        "欧州の企業で、EUのデータ保護を意識した運営",
+        "有料版が月$14.99と比較的安い",
+        "公開モデルが多く、自社で運用することもできる"
+      ],
+      "warn": [
+        "日本語の情報やサポートは少なめ",
+        "名前の変更（Le Chat → Vibe）で古い情報が混ざりやすい",
+        "大手と比べて連携できるサービスが少ない"
+      ],
+      "use": [
+        "欧州の規制を意識した業務での利用",
+        "コーディング支援（CLI・IDE）",
+        "公開モデルを使った社内AIの構築"
+      ],
+      "cmp": {
+        "strength": "欧州発・公開モデル",
+        "free": "あり",
+        "japan": "日本語対応（日本拠点の情報なし）",
+        "image": "◯",
+        "fit": "コストやデータの置き場所を重視する人"
+      },
+      "url": "https://chat.mistral.ai/",
+      "diag": {
+        "scores": {
+          "writing": 2,
+          "research": 1,
+          "docs": 1,
+          "image": 1,
+          "video": 0,
+          "code": 2,
+          "study": 1,
+          "efficiency": 1,
+          "other": 1
+        },
+        "free": true,
+        "minPaidJPY": 2250,
+        "work": true,
+        "team": true,
+        "japan": true
+      }
     },
     {
-      "id": "midjourney", "name": "Midjourney", "maker": "Midjourney", "code": "MJ", "color": "#a33ea1", "category": "creative",
+      "id": "midjourney",
+      "name": "Midjourney",
+      "maker": "Midjourney",
+      "code": "MJ",
+      "color": "#a33ea1",
+      "category": "creative",
       "summary": "文章から高品質な画像や動画を作る生成AI。絵画のような表現力に定評があり、デザインや広告の現場でも使われている。",
-      "good": ["質感の高い、芸術的な画像が作れる", "画像から動画を作る機能もある", "短い指示でも完成度の高い結果が出やすい"],
-      "warn": ["無料プランがない", "Pro未満のプランでは、作った画像が公開ギャラリーに表示される", "ディズニーなどの映画会社から著作権侵害で訴えられている"],
-      "use": ["広告やSNS用のビジュアル案", "企画書・プレゼンのイメージ画像", "キャラクターや世界観のラフ"],
-      "cmp": { "strength": "高品質な画像・動画の生成", "free": "なし", "japan": "Webで利用可（英語の指示が基本）", "image": "◯ 専門", "fit": "デザイナー、クリエイター" }
+      "good": [
+        "質感の高い、芸術的な画像が作れる",
+        "画像から動画を作る機能もある",
+        "短い指示でも完成度の高い結果が出やすい"
+      ],
+      "warn": [
+        "無料プランがない",
+        "Pro未満のプランでは、作った画像が公開ギャラリーに表示される",
+        "ディズニーなどの映画会社から著作権侵害で訴えられている"
+      ],
+      "use": [
+        "広告やSNS用のビジュアル案",
+        "企画書・プレゼンのイメージ画像",
+        "キャラクターや世界観のラフ"
+      ],
+      "cmp": {
+        "strength": "高品質な画像・動画の生成",
+        "free": "なし",
+        "japan": "Webで利用可（英語の指示が基本）",
+        "image": "◯ 専門",
+        "fit": "デザイナー、クリエイター"
+      },
+      "url": "https://www.midjourney.com/",
+      "diag": {
+        "scores": {
+          "writing": 0,
+          "research": 0,
+          "docs": 0,
+          "image": 3,
+          "video": 2,
+          "code": 0,
+          "study": 0,
+          "efficiency": 0,
+          "other": 0
+        },
+        "free": false,
+        "minPaidJPY": 1500,
+        "work": true,
+        "team": false,
+        "japan": true,
+        "note": "無料プランがないため、無料で使いたい場合は対象外です。"
+      }
     }
-  ]
+  ],
+  "diagMeta": {
+    "fx": 150,
+    "purposes": {
+      "writing": "文章作成",
+      "research": "調べもの・情報収集",
+      "docs": "資料作成",
+      "image": "画像生成",
+      "video": "動画生成",
+      "code": "プログラミング",
+      "study": "学習・勉強",
+      "efficiency": "業務効率化",
+      "other": "その他"
+    },
+    "budgets": {
+      "free": "無料で使いたい",
+      "1000": "月額1,000円程度まで",
+      "3000": "月額3,000円程度まで",
+      "any": "予算は特に決めていない"
+    },
+    "envs": {
+      "personal": "個人利用",
+      "work": "仕事で利用",
+      "team": "チーム・組織で利用"
+    },
+    "genres": {
+      "business": "ビジネス・仕事",
+      "life": "日常生活",
+      "study": "学習・勉強",
+      "creative": "クリエイティブ・制作"
+    }
+  }
 }

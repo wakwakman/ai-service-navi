@@ -204,6 +204,8 @@ table.matrix thead th:first-child, table.matrix tbody th { position: sticky; lef
 table.matrix tbody th { background: var(--panel); min-width: 170px; font: 900 14px var(--f-display); box-shadow: 1px 0 0 var(--rule); }
 table.matrix thead th:first-child { z-index: 2; }
 table.matrix tbody tr:hover td, table.matrix tbody tr:hover th { background: var(--panel-2); }
+table.matrix td:nth-child(2), table.matrix td:nth-child(5) { white-space: nowrap; }
+table.matrix td { min-width: 110px; }
 .svc-line { display: flex; gap: 10px; align-items: center; }
 .svc-line small { display: block; font: 400 11.5px var(--f-body); color: var(--muted); }
 .table-meta { color: var(--muted); font-size: 13px; margin: 10px 0 0; max-width: 62em; }
@@ -337,6 +339,119 @@ footer .mono { color: var(--signal); }
   .route button:nth-child(8)::before { animation-delay: .35s; }
   @keyframes draw { from { transform: scaleX(.2); } to { transform: none; } }
 }
+
+/* ---- v2：診断・活用事例・比較・鮮度表示 ---- */
+.route button { flex-basis: 96px; }
+.stale { display: flex; gap: 12px; align-items: flex-start; background: var(--warn-soft); color: var(--warn); border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; font-size: 14px; }
+.stale b { display: block; }
+.stale::before { content: "!"; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--warn); color: var(--panel); display: grid; place-items: center; font: 900 13px var(--f-display); }
+.age-chip { margin-left: 6px; }
+.err-box { border: 1px dashed var(--warn); color: var(--warn); background: var(--warn-soft); border-radius: 10px; padding: 14px 16px; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; font-size: 14px; }
+.err-box .btn { background: var(--panel); color: var(--ink); border-color: var(--rule); }
+
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; box-shadow: var(--shadow); }
+
+/* 診断 */
+.diag { padding: 22px 24px; display: grid; gap: 20px; }
+.diag fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.diag legend { font: 900 16px var(--f-display); padding: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.step-no { font: 600 11px var(--f-mono); letter-spacing: .12em; color: var(--paper); background: var(--ink); border-radius: 999px; padding: 3px 9px; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opts label { position: relative; font: 700 14px var(--f-body); display: inline-flex; align-items: center; padding: 9px 16px; border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; background: var(--panel); min-height: 42px; }
+.opts label:hover { border-color: var(--rule-strong); }
+.opts input { position: absolute; opacity: 0; pointer-events: none; }
+.opts label:has(input:checked) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.opts label:has(input:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
+.diag-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.diag-hint { color: var(--muted); font-size: 13px; margin: 0; }
+.results { display: grid; gap: 14px; margin-top: 20px; }
+.result { padding: 18px 20px; display: grid; gap: 12px; border-top: 4px solid var(--c); }
+.result-head { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.result-head .rank { font: 600 11px var(--f-mono); letter-spacing: .12em; color: var(--muted); }
+.result-head h3 { font: 900 20px var(--f-display); }
+.result-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.result-cols > div { min-width: 0; }
+.result .lbl { margin-bottom: 4px; display: block; }
+.result-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.result-actions .btn { font-size: 13px; padding: 7px 14px; }
+.none-box { padding: 18px 20px; color: var(--muted); }
+.why { margin-top: 6px; }
+.why summary { cursor: pointer; font: 700 14px var(--f-display); color: var(--link); padding: 6px 0; }
+.why ul { margin: 6px 0 0; padding-left: 1.2em; color: var(--muted); font-size: 14px; display: grid; gap: 4px; }
+
+/* やりたいことから探す */
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.tile { text-align: left; background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; cursor: pointer; color: var(--ink); font: inherit; display: grid; gap: 4px; transition: border-color .15s, transform .15s; }
+.tile:hover { border-color: var(--rule-strong); transform: translateY(-1px); }
+.tile b { font: 900 16px var(--f-display); }
+.tile span { color: var(--muted); font-size: 13px; }
+.tile small { font: 600 11px var(--f-mono); color: var(--link); letter-spacing: .06em; }
+
+/* 活用事例 */
+.ex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.ex { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; scroll-margin-top: 110px; }
+.ex-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12.5px; color: var(--muted); }
+.ex-meta .svc-mini { display: inline-flex; gap: 6px; align-items: center; font-weight: 700; color: var(--ink); margin-right: 4px; }
+.ex h3 { font: 900 16px var(--f-display); }
+.ex .scene { margin: 0; color: var(--muted); font-size: 14px; }
+.prompt-box { background: var(--panel-2); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.pb-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 6px 6px 12px; border-bottom: 1px solid var(--rule); }
+.prompt-box pre { margin: 0; padding: 10px 12px; font: 400 13px/1.7 var(--f-mono); white-space: pre-wrap; overflow-wrap: anywhere; max-height: 220px; overflow-y: auto; color: var(--ink); }
+.copy { font: 700 13px var(--f-body); background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: 8px 16px; cursor: pointer; min-height: 36px; white-space: nowrap; }
+.copy.done { background: var(--good); }
+.ex-more summary { cursor: pointer; font: 700 14px var(--f-display); color: var(--link); padding: 4px 0; list-style: none; display: flex; gap: 6px; align-items: center; }
+.ex-more summary::-webkit-details-marker { display: none; }
+.ex-more summary::before { content: "+"; font-family: var(--f-mono); width: 1em; }
+.ex-more[open] summary::before { content: "−"; }
+.ex-more .inside { display: grid; gap: 10px; padding-top: 6px; font-size: 14px; }
+.ex-more ol, .ex-more ul { margin: 0; padding-left: 1.3em; display: grid; gap: 3px; }
+.ex-more p { margin: 0; }
+.ex-foot { margin-top: auto; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding-top: 4px; }
+.ex-foot .btn { font-size: 13px; padding: 8px 16px; }
+.ex-tools { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin-bottom: 16px; }
+.ex-tools select { font: 700 13px var(--f-body); color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 7px 14px; }
+.ex-count { color: var(--muted); font-size: 13px; margin-left: auto; }
+.filter-tag { display: inline-flex; gap: 6px; align-items: center; font: 700 13px var(--f-body); background: var(--note-soft); color: var(--note); border: 0; border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.more-row { display: flex; justify-content: center; margin-top: 16px; }
+.svc-ex summary { cursor: pointer; font: 700 15px var(--f-display); padding: 4px 0; display: flex; gap: 8px; align-items: center; }
+.svc-ex .ex-grid { margin-top: 12px; }
+.svc-ex .ex { background: var(--panel-2); }
+.svc-ex .ex .prompt-box { background: var(--panel); }
+
+/* 比較のサブタブ・同じお題 */
+.subtabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+.subtabs button { font: 700 14px var(--f-body); color: var(--muted); background: transparent; border: 1px solid var(--rule); border-radius: 999px; padding: 8px 16px; cursor: pointer; }
+.subtabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.trial-head { padding: 16px 18px; display: grid; gap: 10px; margin-bottom: 14px; }
+.trial-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.trial { padding: 14px 16px; display: grid; gap: 8px; align-content: start; border-top: 4px solid var(--c); }
+.trial .svc-line b { font: 900 15px var(--f-display); }
+.trial dl { margin: 0; display: grid; gap: 6px; font-size: 13.5px; }
+.trial dt { font: 600 11px var(--f-mono); letter-spacing: .1em; color: var(--muted); }
+.trial dd { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.pending { color: var(--muted); font-size: 13.5px; margin: 0; }
+
+/* ニュース一覧 */
+.news-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
+.news-tools select { font: 700 13px var(--f-body); color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 7px 14px; }
+.news-all li { grid-template-columns: 104px minmax(0, 1fr); }
+.news-all .tag { display: inline-flex; gap: 6px; align-items: center; font-size: 12px; color: var(--muted); margin-bottom: 2px; }
+
+@media (max-width: 700px) {
+  .result-cols { grid-template-columns: 1fr; }
+  .ex-grid { grid-template-columns: 1fr; }
+  .ex-count { margin-left: 0; width: 100%; }
+  /* 比較表はスマホではカード型に切り替える */
+  table.matrix { min-width: 0; }
+  table.matrix thead { display: none; }
+  table.matrix, table.matrix tbody, table.matrix tr, table.matrix th, table.matrix td { display: block; width: 100%; }
+  table.matrix tr { border-top: 2px solid var(--rule-strong); padding: 6px 0; }
+  table.matrix tbody tr:first-child { border-top: 0; }
+  table.matrix tbody th { position: static; box-shadow: none; border-top: 0; padding-bottom: 4px; }
+  table.matrix td { border-top: 0; padding: 4px 16px; display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 10px; }
+  table.matrix td::before { content: attr(data-label); font: 600 11px var(--f-mono); color: var(--muted); letter-spacing: .04em; padding-top: 2px; }
+  .table-box:has(table.matrix) { overflow-x: visible; }
+}
 </style>
 </head>
 <body>
@@ -345,18 +460,20 @@ footer .mono { color: var(--signal); }
     <div>
       <div class="kicker">Generative AI Service Guide</div>
       <h1>AIサービスナビ<span class="en" id="hero-names">ChatGPT · Gemini · Claude · Copilot · Perplexity · Grok · DeepSeek · Muse · Mistral · Midjourney</span></h1>
-      <p class="lead">主要な生成AIの<b>良い点と注意点</b>、<b>使い道</b>、<b>料金とデータの扱い</b>、<b>運営会社</b>、そして<b>毎週更新のニュース</b>を一枚にまとめた案内板です。どれを使うか迷ったとき、使い始める前の確認にどうぞ。</p>
+      <p class="lead"><b>自分に合うAIを見つけて、今日から使い始める</b>ための案内板です。3つの質問に答える診断、そのまま使えるプロンプト集、料金とデータの扱い、運営会社、毎週更新のニュースをまとめています。</p>
       <div class="hero-actions">
-        <a class="btn btn-signal" href="#intro">はじめての方へ</a>
-        <a class="btn btn-ghost" href="#compare">ひと目で比較する</a>
+        <a class="btn btn-signal" href="#diag">あなたに合うAIを探す</a>
+        <a class="btn btn-ghost" href="#examples">やりたいことから探す</a>
+        <a class="btn btn-ghost" href="#intro">はじめての方へ</a>
       </div>
     </div>
     <div class="dept" aria-label="更新情報">
       <div class="dept-h"><span>INFORMATION</span><span class="live">● 毎週月曜更新</span></div>
       <div class="dept-row"><span>掲載サービス</span><span class="mono" id="svc-count">10件</span></div>
-      <div class="dept-row"><span>掲載ニュース</span><span class="mono" id="news-count">—</span></div>
-      <div class="dept-row"><span>ニュース更新</span><span class="mono" id="updated">2026-10-25</span></div>
-      <div class="dept-row"><span>料金・運営元の確認</span><span class="mono" id="plans-updated-top">2026-10-25</span></div>
+      <div class="dept-row"><span>活用事例</span><span class="mono" id="ex-count-top">—</span></div>
+      <div class="dept-row"><span>ニュースの確認日</span><span class="mono" id="updated">—</span></div>
+      <div class="dept-row"><span>料金・運営元の確認日</span><span class="mono" id="plans-updated-top">—</span></div>
+      <div class="dept-row"><span>自動更新の実行</span><span class="mono" id="last-run">—</span></div>
     </div>
   </div>
 </header>
@@ -366,12 +483,81 @@ footer .mono { color: var(--signal); }
 </nav>
 
 <main class="inner">
+  <div class="stale" id="stale" hidden></div>
   <div class="legend">
     <span class="item"><span class="glyph g-good">◯</span>良い点</span>
     <span class="item"><span class="glyph g-warn">△</span>注意点</span>
     <span class="item"><span class="glyph g-use">→</span>使い道</span>
     <span class="item"><span class="chip note">二次情報</span>公式発表で確認できていない報道</span>
+    <span class="item"><span class="chip warn">要確認</span>出典を確認できていない情報</span>
   </div>
+
+  <section class="block" data-group="diag" id="diag">
+    <div class="sec-h"><span class="badge" style="--c:#0ea5a4">?</span><h2>あなたに合うAIを探す</h2><span class="sub">3つ選ぶだけ・約1分</span></div>
+    <form class="card diag" id="diag-form" novalidate>
+      <fieldset><legend><span class="step-no">STEP 1</span>何に使いたいですか？</legend><div class="opts" id="opt-purpose"></div></fieldset>
+      <fieldset><legend><span class="step-no">STEP 2</span>どこで使いますか？</legend><div class="opts" id="opt-env"></div></fieldset>
+      <fieldset><legend><span class="step-no">STEP 3</span>予算はどのくらいですか？</legend><div class="opts" id="opt-budget"></div></fieldset>
+      <div class="diag-actions">
+        <button type="submit" class="btn btn-ink">診断する</button>
+        <button type="reset" class="btn btn-line">選び直す</button>
+        <p class="diag-hint">選んだ内容はこのページの中だけで使い、どこにも送信しません。</p>
+      </div>
+    </form>
+    <div id="diag-result" aria-live="polite"></div>
+  </section>
+
+  <section class="block" data-group="home" id="purposes">
+    <div class="sec-h"><span class="badge" style="--c:#c2410c">EX</span><h2>やりたいことから探す</h2><span class="sub">目的を選ぶと、使える活用事例とプロンプトが出ます</span></div>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section class="block" data-group="compare" id="compare">
+    <div class="sec-h"><span class="badge" style="--c:#6c7a8f">VS</span><h2>サービスを比べる</h2><span class="sub">一覧と、同じお題での比較</span></div>
+    <div class="subtabs" role="tablist" aria-label="比較の種類">
+      <button type="button" role="tab" id="st-matrix" aria-selected="true" aria-controls="cmp-matrix">一覧で比較</button>
+      <button type="button" role="tab" id="st-trial" aria-selected="false" aria-controls="cmp-trial">同じお題で比較</button>
+    </div>
+    <div id="cmp-matrix" role="tabpanel" aria-labelledby="st-matrix">
+      <div class="table-box">
+        <table class="cmp matrix">
+          <thead><tr><th scope="col">SERVICE</th><th scope="col">種類</th><th scope="col">得意なこと</th><th scope="col">無料プラン</th><th scope="col">個人の料金</th><th scope="col">日本での利用</th><th scope="col">画像の生成</th><th scope="col">個人データの学習</th><th scope="col">向いている人</th></tr></thead>
+          <tbody id="compare-body"><tr><td colspan="9">読み込んでいます…</td></tr></tbody>
+        </table>
+      </div>
+      <p class="table-meta">パソコンでは表を横にスクロールできます。サービス名を押すと詳しい説明に移ります。料金とデータの扱いは毎週の確認結果を反映しています。</p>
+    </div>
+    <div id="cmp-trial" role="tabpanel" aria-labelledby="st-trial" hidden>
+      <div class="subtabs" id="trial-themes" aria-label="お題"></div>
+      <div id="trial-body"><p class="empty">読み込んでいます…</p></div>
+    </div>
+  </section>
+
+  <section class="block" data-group="services" id="services">
+    <div class="sec-h"><span class="badge" style="--c:#2f6fe4">SV</span><h2>サービス別まとめ</h2><span class="sub">特徴・良い点と注意点・活用事例・最新ニュース</span></div>
+    <div class="toolbar">
+      <div class="search"><label class="visually-hidden" for="svc-search">サービスを検索</label><input id="svc-search" type="search" placeholder="サービス名やキーワードで探す" autocomplete="off"></div>
+      <div class="filters" id="svc-filters" role="group" aria-label="種類で絞り込む"></div>
+    </div>
+    <a class="back-link" id="back-all" href="#services" hidden>← すべてのサービスを表示</a>
+    <nav class="svc-index" id="svc-index" aria-label="サービス一覧"></nav>
+    <div id="svc-cards"><p class="empty">サービス情報を読み込んでいます…</p></div>
+    <p class="empty" id="svc-empty" hidden>条件に合うサービスがありません。キーワードや種類を変えてみてください。</p>
+  </section>
+
+  <section class="block" data-group="examples" id="examples">
+    <div class="sec-h"><span class="badge" style="--c:#c2410c">EX</span><h2>活用事例・プロンプト集</h2><span class="sub">そのままコピーして使えます</span></div>
+    <p class="sec-lead" id="ex-note">【　】の部分を自分の内容に書き換えてから送ってください。「期待できるアウトプット」は返ってくる内容の種類の説明で、実際の出力ではありません。</p>
+    <div class="ex-tools">
+      <div class="filters" id="ex-genres" role="group" aria-label="ジャンルで絞り込む"></div>
+      <label class="visually-hidden" for="ex-service">サービスで絞り込む</label>
+      <select id="ex-service"><option value="">すべてのサービス</option></select>
+      <span id="ex-purpose-tag"></span>
+      <span class="ex-count" id="ex-count"></span>
+    </div>
+    <div class="ex-grid" id="ex-grid"><p class="empty">活用事例を読み込んでいます…</p></div>
+    <div class="more-row" id="ex-more" hidden></div>
+  </section>
 
   <section class="block" data-group="intro" id="intro">
     <div class="sec-h"><span class="badge" style="--c:#00a0c6">AI</span><h2>はじめての生成AI</h2><span class="sub">そもそも何？ から使い始めるまで</span></div>
@@ -475,7 +661,7 @@ footer .mono { color: var(--signal); }
       <details><summary>無料でも使えますか？</summary><p>多くは無料プランがあります。ただし使える回数やモデルに制限があり、ChatGPT の無料プランには広告が表示されます。Midjourney には無料プランがありません。詳しくは「料金・データ」をご覧ください。</p></details>
       <details><summary>日本語で使えますか？</summary><p>ほとんどが日本語で使えます。Meta の Muse は2026年10月時点で日本では提供されていません。新しい機能は英語版から先に提供されることがあります。</p></details>
       <details><summary>仕事で使っても大丈夫ですか？</summary><p>会社のルールを先に確認してください。顧客情報や社外秘を扱うなら、入力内容を学習に使わない法人向けプランが向いています。データが海外のどこに保存されるかも確認しましょう。</p></details>
-      <details><summary>どれを選べばいいですか？</summary><p>Googleのサービスをよく使うなら Gemini、Word や Teams を仕事で使うなら Copilot、長い資料やプログラミングなら Claude、調べものなら Perplexity、画像づくりなら Midjourney、まず何でも試したいなら ChatGPT が入りやすいでしょう。「ひと目で比較」も参考にしてください。</p></details>
+      <details><summary>どれを選べばいいですか？</summary><p>Googleのサービスをよく使うなら Gemini、Word や Teams を仕事で使うなら Copilot、長い資料やプログラミングなら Claude、調べものなら Perplexity、画像づくりなら Midjourney、まず何でも試したいなら ChatGPT が入りやすいでしょう。「AI診断」や「比較」も参考にしてください。</p></details>
       <details><summary>AIが作った文章や画像は自由に使えますか？</summary><p>多くのサービスは利用者が使うことを認めていますが、既存の作品に似ていると権利の問題になることがあります。公開や販売の前に確認しましょう。</p></details>
       <details><summary>中国のAIサービスを使っても大丈夫ですか？</summary><p>DeepSeek は入力したデータが中国のサーバーに保存され、中国の法令が適用されます。2025年2月に個人情報保護委員会が注意を呼びかけました。個人情報や仕事の情報は入力しないのが安全です。</p></details>
     </div>
@@ -490,53 +676,32 @@ footer .mono { color: var(--signal); }
     </ul>
   </section>
 
-  <section class="block" data-group="compare" id="compare">
-    <div class="sec-h"><span class="badge" style="--c:#6c7a8f">VS</span><h2>ひと目で比較</h2><span class="sub">すべてのサービスを横断して</span></div>
-    <div class="table-box">
-      <table class="cmp matrix">
-        <thead><tr><th scope="col">SERVICE</th><th scope="col">種類</th><th scope="col">得意なこと</th><th scope="col">無料プラン</th><th scope="col">個人の料金</th><th scope="col">日本での利用</th><th scope="col">画像の生成</th><th scope="col">個人データの学習</th><th scope="col">向いている人</th></tr></thead>
-        <tbody id="compare-body"><tr><td colspan="9">読み込んでいます…</td></tr></tbody>
-      </table>
-    </div>
-    <p class="table-meta">表は横にスクロールできます。サービス名を押すと詳しい説明に移ります。料金とデータの扱いは毎週の確認結果を反映しています。</p>
-  </section>
-
-  <section class="block" data-group="services" id="services">
-    <div class="sec-h"><h2>サービス別まとめ</h2><span class="sub">特徴・良い点と注意点・最新ニュース</span></div>
-    <div class="toolbar">
-      <div class="search"><label class="visually-hidden" for="svc-search">サービスを検索</label><input id="svc-search" type="search" placeholder="サービス名やキーワードで探す" autocomplete="off"></div>
-      <div class="filters" id="svc-filters" role="group" aria-label="種類で絞り込む"></div>
-    </div>
-    <a class="back-link" id="back-all" href="#services" hidden>← すべてのサービスを表示</a>
-    <nav class="svc-index" id="svc-index" aria-label="サービス一覧"></nav>
-    <div id="svc-cards"></div>
-    <p class="empty" id="svc-empty" hidden>条件に合うサービスがありません。キーワードや種類を変えてみてください。</p>
-  </section>
-
   <section class="block" data-group="plans" id="plans">
-    <div class="sec-h"><span class="badge" style="--c:#ffb81c">¥</span><h2>料金とデータの扱い</h2><span class="sub">確認日 <span class="mono" id="plans-updated">2026-10-25</span></span>
+    <div class="sec-h"><span class="badge" style="--c:#ffb81c">¥</span><h2>料金とデータの扱い</h2><span class="sub">最終確認日 <span class="mono" id="plans-updated">—</span><span id="plans-age"></span></span>
       <div class="tools"><button type="button" class="btn btn-line" data-toggle-all="plans-list">すべて開く</button></div></div>
-    <p class="sec-lead">サービスを押すとプランごとの月額と、入力した内容が学習に使われるかが開きます。閉じたままでも最安の料金とデータの扱いを確認できます。</p>
+    <p class="sec-lead">サービスを押すとプランごとの月額と、入力した内容が学習に使われるかが開きます。閉じたままでも最安の料金とデータの扱いを確認できます。各サービスに公式の料金ページへのリンクがあります。</p>
     <div class="acc-list" id="plans-list"><p class="empty">料金を読み込んでいます…</p></div>
     <p class="table-meta">月額は税・地域で変わります。米ドル表記のサービスは、日本での価格や税込額が異なることがあります。学習への利用を止めても、すでに学習に使われたデータは消えません。</p>
   </section>
 
+  <section class="block" data-group="news" id="news">
+    <div class="sec-h"><span class="badge" style="--c:#b91c1c">NW</span><h2>最新ニュース</h2><span class="sub">サイトの確認日 <span class="mono" id="news-updated">—</span><span id="news-age"></span></span></div>
+    <p class="sec-lead">左の日付は各記事の公開日です。サイトの確認日は、自動更新でニュースを確認した日です。</p>
+    <div class="news-tools">
+      <div class="filters" id="news-filters" role="group" aria-label="ニュースの種類"></div>
+      <label class="visually-hidden" for="news-service">サービスで絞り込む</label>
+      <select id="news-service"><option value="">すべてのサービス</option></select>
+    </div>
+    <div class="service" style="--c:#b91c1c"><div class="svc-body news news-all"><ol id="news-list"><li><div class="body"><p>ニュースを読み込んでいます…</p></div></li></ol></div></div>
+    <div class="more-row" id="news-more" hidden></div>
+  </section>
+
   <section class="block" data-group="companies" id="companies">
-    <div class="sec-h"><span class="badge" style="--c:#556b2f">CO</span><h2>運営元の詳細</h2><span class="sub">確認日 <span class="mono" id="companies-updated">2026-10-25</span></span>
+    <div class="sec-h"><span class="badge" style="--c:#556b2f">CO</span><h2>運営元の詳細</h2><span class="sub">最終確認日 <span class="mono" id="companies-updated">—</span><span id="companies-age"></span></span>
       <div class="tools"><button type="button" class="btn btn-line" data-toggle-all="companies-list">すべて開く</button></div></div>
     <p class="sec-lead">どんな会社が作っているかは、データの扱いや今後の方針を考える手がかりになります。会社を押すと、設立・代表者・資本・日本での拠点などが開きます。</p>
     <div class="acc-list" id="companies-list"><p class="empty">運営元の情報を読み込んでいます…</p></div>
     <p class="table-meta">企業価値や利用者数は報道ベースの数字を含み、時期や数え方で変わります。未上場企業の数字は資金調達時の評価額です。</p>
-  </section>
-
-  <section class="block" data-group="society" id="society">
-    <div class="sec-h"><span class="badge" style="--c:#b91c1c">LW</span><h2>規制・社会の動き</h2><span class="sub">日本と海外のルール、訴訟</span></div>
-    <div class="service" style="--c:#b91c1c">
-      <div class="svc-body news">
-        <h4>Latest<span class="news-period"></span></h4>
-        <ol id="society-news"><li><div class="body"><p>ニュースを読み込んでいます…</p></div></li></ol>
-      </div>
-    </div>
   </section>
 
   <section class="block" data-group="request" id="request">
@@ -573,8 +738,8 @@ footer .mono { color: var(--signal); }
 <footer class="board">
   <div class="inner">
     <div class="sig">AIサービスナビ</div>
-    <p>ニュース、料金・データの扱い、運営元の情報は毎週月曜に自動で確認・更新しています（ニュースの最終更新 <span class="mono" id="updated-foot">2026-10-25</span>）。サービスの説明と比較の一部は2026年10月25日時点の情報です。料金や機能は頻繁に変わるため、利用前に各社の公式ページで最新情報を確認してください。</p>
-    <p>「二次情報」と付いた項目は、まとめサイトや業界メディアのみで報じられ、公式発表を確認できていないものです。誤りに気づいたら <a href="#request" style="color:inherit">リクエスト</a> からお知らせください。</p>
+    <p>ニュース、料金・データの扱い、運営元の情報は毎週月曜に自動で確認・更新しています（ニュースの確認日 <span class="mono" id="updated-foot">—</span>）。各記事の日付は記事の公開日です。料金や機能は頻繁に変わるため、利用前に各社の公式ページで最新情報を確認してください。</p>
+    <p>「二次情報」は公式発表で確認できていない報道、「要確認」は出典を確認できていない情報です。活用事例の「期待できるアウトプット」は内容の種類の説明で、実際の出力ではありません。誤りに気づいたら <a href="#request" style="color:inherit">リクエスト</a> からお知らせください。</p>
   </div>
 </footer>
 <button type="button" class="to-top" id="to-top" aria-label="ページの先頭へ戻る"></button>
@@ -583,52 +748,78 @@ footer .mono { color: var(--signal); }
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const $ = id => document.getElementById(id);
 const getJSON = name => fetch(name, { cache: "no-cache" }).then(r => { if (!r.ok) throw new Error(name + " " + r.status); return r.json(); });
-const srcLine = x => `<div class="src">${x.secondary ? '<span class="chip note">二次情報</span>' : ""}出典：${(x.src || []).map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}</div>`;
-const newsItem = n => `<li><time>${esc(n.date)}</time><div class="body"><b>${esc(n.title)}</b><p>${esc(n.text)}</p>${srcLine(n)}</div></li>`;
+// 出典がない情報は断定せず「要確認」と示す
+const srcLine = x => (x.src && x.src.length)
+  ? `<div class="src">${x.secondary ? '<span class="chip note">二次情報</span>' : ""}出典：${x.src.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}</div>`
+  : `<div class="src"><span class="chip warn">要確認</span>出典を確認できていません</div>`;
 const marks = (arr, kind) => `<ul class="marks m-${kind}">${arr.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
 const emptyRow = msg => `<li><div class="body"><p>${msg}</p></div></li>`;
 const LEVEL = { safe: "good", uses: "warn", choice: "note" };
+const yen = n => "約" + Number(n).toLocaleString("ja-JP") + "円";
+const daysSince = ymd => { const t = Date.parse(String(ymd).slice(0, 10)); return isNaN(t) ? null : Math.floor((Date.now() - t) / 86400000); };
+const ageChip = ymd => { const d = daysSince(ymd); return d !== null && d > 14 ? `<span class="chip warn age-chip">確認から${d}日経過・要確認</span>` : ""; };
+// ニュースの日付（"2026-10-07"、"2026-10月"、"2026-08"）を並べ替え用にそろえる
+const dateKey = s => { const m = String(s).match(/^(\d{4})-(\d{2})(?:-(\d{2}))?/); return m ? `${m[1]}-${m[2]}-${m[3] || "00"}` : "0000"; };
 
 const TABS = [
-  { id: "all", label: "すべて", code: "ALL", color: "#8b97a8" },
-  { id: "intro", label: "はじめての方", code: "AI", color: "#00a0c6" },
-  { id: "compare", label: "ひと目で比較", code: "VS", color: "#6c7a8f" },
+  { id: "all", label: "ホーム", code: "ALL", color: "#8b97a8" },
+  { id: "diag", label: "AI診断", code: "?", color: "#0ea5a4" },
+  { id: "examples", label: "活用事例", code: "EX", color: "#c2410c" },
   { id: "services", label: "サービス", code: "SV", color: "#2f6fe4" },
+  { id: "compare", label: "比較", code: "VS", color: "#6c7a8f" },
   { id: "plans", label: "料金・データ", code: "¥", color: "#ffb81c" },
+  { id: "intro", label: "はじめての方", code: "AI", color: "#00a0c6" },
+  { id: "news", label: "ニュース", code: "NW", color: "#b91c1c" },
   { id: "companies", label: "運営元", code: "CO", color: "#556b2f" },
-  { id: "society", label: "規制・社会", code: "LW", color: "#b91c1c" },
   { id: "request", label: "リクエスト", code: "RQ", color: "#2a9d5c" }
 ];
 
-let SERVICES = [], CATS = {}, PLANS = null, view = { tab: "all", one: null, cat: "all", q: "" };
-const svcOf = id => SERVICES.find(s => s.id === id) || { id, name: id, code: "?", color: "#8b97a8" };
+let SERVICES = [], CATS = {}, META = {}, PLANS = null, EXAMPLES = [], NEWS = null, STATUS = null;
+const view = { tab: "all", one: null, cat: "all", q: "" };
+const exFilter = { genre: "all", service: "", purpose: "" };
+const svcOf = id => SERVICES.find(s => s.id === id) || { id, name: id, code: "?", color: "#8b97a8", url: "#" };
 const shortName = s => s.short || s.name;
 const badge = (s, size = "sm") => `<span class="badge ${size}" style="--c:${s.color}" aria-hidden="true">${esc(s.code)}</span>`;
 
+/* ---- 読み込み失敗時の表示と再試行 ---- */
+const RETRY = {};
+const errBox = (key, what) => `<div class="err-box" role="alert"><span>${esc(what)}を読み込めませんでした。通信状態を確認してください。</span><button type="button" class="btn btn-line" data-retry="${key}">もう一度読み込む</button></div>`;
+document.addEventListener("click", e => { const b = e.target.closest("[data-retry]"); if (b && RETRY[b.dataset.retry]) { b.disabled = true; b.textContent = "読み込んでいます…"; RETRY[b.dataset.retry](); } });
+function loadInto(key, file, what, targets, render) {
+  RETRY[key] = () => getJSON(file).then(render).catch(() => { targets.forEach(id => { const el = $(id); if (el) el.innerHTML = el.tagName === "OL" ? `<li>${errBox(key, what)}</li>` : el.tagName === "TBODY" ? `<tr><td colspan="9">${errBox(key, what)}</td></tr>` : errBox(key, what); }); });
+  RETRY[key]();
+}
+
 /* ---- 路線図ナビと表示切り替え ---- */
 const tabsEl = $("tabs");
-tabsEl.innerHTML = TABS.map(t => `<button type="button" data-tab="${t.id}" style="--c:${t.color}"><span class="badge" aria-hidden="true">${t.code}</span><span class="st-name">${esc(t.label)}</span></button>`).join("");
+tabsEl.innerHTML = TABS.map(t => `<button type="button" data-tab="${t.id}" style="--c:${t.color}"><span class="badge" aria-hidden="true">${esc(t.code)}</span><span class="st-name">${esc(t.label)}</span></button>`).join("");
 
 function applyView() {
   const { tab, one } = view;
   tabsEl.querySelectorAll("button").forEach(b => b.setAttribute("aria-current", String(b.dataset.tab === tab)));
-  document.querySelectorAll("main [data-group]").forEach(el => { el.hidden = !(tab === "all" || el.dataset.group === tab); });
+  document.querySelectorAll("main [data-group]").forEach(el => {
+    const g = el.dataset.group;
+    el.hidden = !(tab === "all" ? true : g === tab || (tab === "intro" && g === "intro"));
+  });
+  $("purposes").hidden = tab !== "all";
   filterServices();
   $("back-all").hidden = !one;
   $("svc-index").hidden = !!one;
   document.querySelector("#services .toolbar").hidden = !!one;
+  renderExamples();
+  renderNewsList();
 }
 function route(hash) {
   const id = (hash || "").replace(/^#/, "");
   if (SERVICES.some(s => s.id === id)) { view.tab = "services"; view.one = id; }
   else if (TABS.some(t => t.id === id)) { view.tab = id; view.one = null; }
-  else if (id === "" || id === "top") { view.tab = "all"; view.one = null; }
   else { view.tab = "all"; view.one = null; }
   applyView();
 }
-function go(id) {
+function go(id, keepScroll) {
   try { history.replaceState(null, "", id === "all" ? location.pathname : "#" + id); } catch (_) {}
   route(id === "all" ? "" : id);
+  if (keepScroll) return;
   const top = document.querySelector("main").getBoundingClientRect().top + window.scrollY - document.querySelector("nav.routebar").offsetHeight - 8;
   window.scrollTo({ top: Math.max(0, top) });
 }
@@ -641,6 +832,29 @@ document.addEventListener("click", e => {
   if (SERVICES.some(s => s.id === id) || TABS.some(t => t.id === id)) { e.preventDefault(); go(id); }
 });
 window.addEventListener("hashchange", () => route(location.hash));
+// 「料金とデータ」などのリンクから、該当サービスの項目を開いた状態で移動する
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-open]"); if (!a) return;
+  setTimeout(() => { const d = $(a.dataset.open); if (d) { d.open = true; d.scrollIntoView({ block: "start" }); } }, 0);
+});
+
+/* ---- コピー（失敗したら文字を選択して手動コピーを促す） ---- */
+async function copyText(text, btn, pre) {
+  const done = label => { btn.textContent = label; btn.classList.toggle("done", label === "コピーしました"); setTimeout(() => { btn.textContent = "コピー"; btn.classList.remove("done"); }, 2200); };
+  try { await navigator.clipboard.writeText(text); done("コピーしました"); return; } catch (_) {}
+  try {
+    const ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.append(ta); ta.select(); const ok = document.execCommand("copy"); ta.remove();
+    if (ok) { done("コピーしました"); return; }
+  } catch (_) {}
+  const r = document.createRange(); r.selectNodeContents(pre); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+  done("選択しました。長押しでコピー");
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("button.copy"); if (!b) return;
+  const pre = b.closest(".prompt-box").querySelector("pre");
+  copyText(pre.textContent, b, pre);
+});
 
 /* ---- サービス一覧 ---- */
 function filterServices() {
@@ -675,13 +889,16 @@ function renderServices() {
           <div><h4><span class="glyph g-warn">△</span>注意点</h4>${marks(s.warn, "warn")}</div>
           <div><h4><span class="glyph g-use">→</span>使い道</h4>${marks(s.use, "use")}</div>
         </div>
+        <details class="svc-ex" id="svc-ex-${s.id}"><summary><span class="glyph g-use">→</span>このサービスの活用事例<span class="chip plain" id="svc-ex-count-${s.id}">—</span></summary><div class="ex-grid" id="svc-ex-grid-${s.id}"></div></details>
         <div class="news"><h4>Latest<span class="news-period"></span></h4><ol id="news-${s.id}">${emptyRow("ニュースを読み込んでいます…")}</ol></div>
         <div class="svc-foot"><span>運営元 <b>${esc(s.maker)}</b></span><span id="owner-${s.id}"></span>
-          <span class="links"><a href="#companies" data-open="co-${s.id}">運営元の詳細</a><a href="#plans" data-open="plan-${s.id}">料金とデータ</a></span></div>
+          <span class="links"><a href="${esc(s.url)}" target="_blank" rel="noopener">公式サイト ↗</a><a href="#companies" data-open="co-${s.id}">運営元の詳細</a><a href="#plans" data-open="plan-${s.id}">料金とデータ</a></span></div>
       </div>
     </article>`).join("");
   $("svc-count").textContent = SERVICES.length + "件";
   $("hero-names").textContent = SERVICES.map(shortName).join(" · ");
+  $("ex-service").innerHTML = `<option value="">すべてのサービス</option>` + SERVICES.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join("");
+  $("news-service").innerHTML = `<option value="">すべてのサービス</option>` + SERVICES.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join("");
 }
 $("svc-filters").addEventListener("click", e => {
   const b = e.target.closest("button[data-cat]"); if (!b) return;
@@ -690,13 +907,167 @@ $("svc-filters").addEventListener("click", e => {
   filterServices();
 });
 $("svc-search").addEventListener("input", e => { view.q = e.target.value; filterServices(); });
-// 「料金とデータ」などのリンクから、該当サービスの項目を開いた状態で移動する
+
+/* ---- 活用事例 ---- */
+const exCard = ex => {
+  const s = svcOf(ex.service);
+  const label = ex.promptType === "operation" ? "操作例" : "プロンプト";
+  return `<article class="ex" id="ex-${esc(ex.id)}">
+    <div class="ex-meta"><span class="svc-mini">${badge(s)}${esc(shortName(s))}</span><span class="chip plain">${esc(META.genres[ex.genre] || "")}</span>${META.purposes[ex.purpose] && META.purposes[ex.purpose] !== META.genres[ex.genre] ? `<span class="chip plain">${esc(META.purposes[ex.purpose])}</span>` : ""}</div>
+    <h3>${esc(ex.title)}</h3>
+    <p class="scene">${esc(ex.scene)}</p>
+    <div class="prompt-box"><div class="pb-top"><span class="lbl">${label}</span><button type="button" class="copy" aria-label="${esc(ex.title)}の${label}をコピー">コピー</button></div><pre>${esc(ex.prompt)}</pre></div>
+    <details class="ex-more"><summary>使い方・期待できる結果・注意点</summary><div class="inside">
+      <div><div class="lbl">使い方</div><ol>${ex.steps.map(x => `<li>${esc(x)}</li>`).join("")}</ol></div>
+      <div><div class="lbl">期待できるアウトプット</div><p>${esc(ex.output)}</p></div>
+      <div><div class="lbl">注意点</div>${marks(ex.cautions, "warn")}</div>
+    </div></details>
+    <div class="ex-foot"><a class="btn btn-ink" href="${esc(s.url)}" target="_blank" rel="noopener">このAIを使ってみる ↗</a><a href="#${s.id}">${esc(shortName(s))}の詳細</a></div>
+  </article>`;
+};
+function matchedExamples() {
+  return EXAMPLES.filter(ex => (exFilter.genre === "all" || ex.genre === exFilter.genre) && (!exFilter.service || ex.service === exFilter.service) && (!exFilter.purpose || ex.purpose === exFilter.purpose));
+}
+function renderExamples() {
+  if (!EXAMPLES.length || !META.genres) return;
+  const list = matchedExamples();
+  const preview = view.tab === "all";
+  const shown = preview ? list.slice(0, 6) : list;
+  $("ex-grid").innerHTML = shown.length ? shown.map(exCard).join("") : `<p class="empty">条件に合う活用事例がありません。絞り込みを変えてみてください。</p>`;
+  $("ex-count").textContent = preview && list.length > 6 ? `${list.length}件中 6件を表示` : `${list.length}件`;
+  const more = $("ex-more");
+  more.hidden = !(preview && list.length > 6);
+  more.innerHTML = more.hidden ? "" : `<button type="button" class="btn btn-line" id="ex-show-all">すべての活用事例を見る（${list.length}件）</button>`;
+  $("ex-purpose-tag").innerHTML = exFilter.purpose ? `<button type="button" class="filter-tag" id="ex-clear-purpose">目的：${esc(META.purposes[exFilter.purpose])} ✕</button>` : "";
+  $("ex-genres").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.genre === exFilter.genre)));
+  $("ex-service").value = exFilter.service;
+}
+function setupExamples() {
+  $("ex-genres").innerHTML = [["all", "すべて"], ...Object.entries(META.genres)].map(([k, v]) => {
+    const n = k === "all" ? EXAMPLES.length : EXAMPLES.filter(x => x.genre === k).length;
+    return `<button type="button" data-genre="${k}" aria-pressed="${k === "all"}">${esc(v)}<span class="count">${n}</span></button>`;
+  }).join("");
+  SERVICES.forEach(s => {
+    const mine = EXAMPLES.filter(x => x.service === s.id);
+    const g = $("svc-ex-grid-" + s.id), c = $("svc-ex-count-" + s.id);
+    if (g) g.innerHTML = mine.map(exCard).join("") || `<p class="empty">準備中です。</p>`;
+    if (c) c.textContent = mine.length + "件";
+  });
+  $("tiles").innerHTML = Object.entries(META.purposes).filter(([k]) => k !== "other").map(([k, v]) => {
+    const n = EXAMPLES.filter(x => x.purpose === k).length;
+    return `<button type="button" class="tile" data-purpose="${k}"><b>${esc(v)}</b><span>${n ? `活用事例 ${n}件` : "診断でサービスを探す"}</span><small>${n ? "事例を見る →" : "診断する →"}</small></button>`;
+  }).join("");
+  $("ex-count-top").textContent = EXAMPLES.length + "件";
+  renderExamples();
+}
+$("ex-genres").addEventListener("click", e => { const b = e.target.closest("button[data-genre]"); if (!b) return; exFilter.genre = b.dataset.genre; renderExamples(); });
+$("ex-service").addEventListener("change", e => { exFilter.service = e.target.value; renderExamples(); });
 document.addEventListener("click", e => {
-  const a = e.target.closest("a[data-open]"); if (!a) return;
-  setTimeout(() => { const d = $(a.dataset.open); if (d) { d.open = true; d.scrollIntoView({ block: "start" }); } }, 0);
+  if (e.target.closest("#ex-clear-purpose")) { exFilter.purpose = ""; renderExamples(); }
+  if (e.target.closest("#ex-show-all")) go("examples");
+  const t = e.target.closest(".tile[data-purpose]");
+  if (t) {
+    const p = t.dataset.purpose;
+    if (EXAMPLES.some(x => x.purpose === p)) { exFilter.purpose = p; exFilter.genre = "all"; exFilter.service = ""; go("examples"); }
+    else { const r = document.querySelector(`#opt-purpose input[value="${p}"]`); if (r) r.checked = true; go("diag"); }
+  }
 });
 
-/* ---- ひと目で比較 ---- */
+/* ---- AI診断（外部に送らず、services.json の属性だけで判定） ---- */
+function radios(id, name, entries) {
+  $(id).innerHTML = entries.map(([v, l]) => `<label><input type="radio" name="${name}" value="${v}" required>${esc(l)}</label>`).join("");
+}
+function setupDiag() {
+  radios("opt-purpose", "purpose", Object.entries(META.purposes));
+  radios("opt-env", "env", Object.entries(META.envs));
+  radios("opt-budget", "budget", Object.entries(META.budgets));
+}
+function diagnose(purpose, env, budget) {
+  const P = META.purposes[purpose];
+  const cap = budget === "1000" ? 1000 : budget === "3000" ? 3000 : null;
+  const picked = [], excluded = [];
+  SERVICES.forEach((s, order) => {
+    const d = s.diag; if (!d) return;
+    const score = d.scores[purpose] || 0;
+    const data = PLANS && PLANS.data.find(x => x.service === s.id);
+    let why = null;
+    if (!d.japan) why = "日本では提供されていない";
+    else if (score < 2) why = `「${P}」は得意分野ではない`;
+    else if (env === "work" && !d.work) why = d.note || "仕事での利用には向かない";
+    else if (env === "team" && !d.team) why = d.note || "チーム向けのプランがない";
+    else if (budget === "free" && !d.free) why = "無料プランがない";
+    else if (cap && !d.free && !(d.minPaidJPY !== null && d.minPaidJPY <= cap)) why = `有料プランが予算を超える（${yen(d.minPaidJPY)}〜）`;
+    if (why) { excluded.push({ s, why }); return; }
+    const reasons = [`「${P}」が${score === 3 ? "特に得意" : "得意"}：${s.cmp.strength}`];
+    const cautions = [s.warn[0]];
+    if (budget === "free") reasons.push("無料プランで使える");
+    else if (cap) {
+      if (d.minPaidJPY !== null && d.minPaidJPY <= cap) reasons.push(`有料プランも予算内（月額${yen(d.minPaidJPY)}〜・目安）`);
+      else { reasons.push("無料プランの範囲なら予算内"); cautions.push(`有料プランは月額${d.minPaidJPY !== null ? yen(d.minPaidJPY) + "〜" : "なし"}（目安）のため、予算内では無料プランで使う`); }
+    } else reasons.push(d.free ? "無料プランから試せる" : `月額${yen(d.minPaidJPY)}〜（目安）`);
+    let bonus = 0;
+    if (env === "personal") {
+      if (data && data.personal.level === "uses") cautions.push(`個人向けでは「${data.personal.label}」。設定を確認して使う`);
+    } else {
+      if (data) { reasons.push(`法人向け：${data.business.label}`); if (data.business.level === "safe") bonus = 1; }
+      if (env === "team") reasons.push("チーム向けのプランがある");
+    }
+    if (d.note && env === "personal" && s.id === "deepseek") cautions.push("データは中国のサーバーに保存される。個人情報は入れない");
+    picked.push({ s, score, bonus, order, reasons, cautions, free: d.free });
+  });
+  picked.sort((a, b) => b.score - a.score || b.bonus - a.bonus || a.order - b.order);
+  return { top: picked.slice(0, 3), rest: picked.slice(3), excluded, P };
+}
+function renderDiag(purpose, env, budget) {
+  const { top, rest, excluded, P } = diagnose(purpose, env, budget);
+  const box = $("diag-result");
+  const cond = `${P} ／ ${META.envs[env]} ／ ${META.budgets[budget]}`;
+  if (!top.length) {
+    box.innerHTML = `<div class="results"><div class="card none-box"><b>条件に合うサービスが見つかりませんでした。</b><p>選んだ条件：${esc(cond)}。予算や使う場所の条件を変えると見つかる場合があります。${excluded.length ? "除外した理由は下の「判定の根拠」で確認できます。" : ""}</p>${whyBlock(excluded, rest)}</div></div>`;
+    return;
+  }
+  box.innerHTML = `<div class="results">
+    <p class="diag-hint">選んだ条件：${esc(cond)}（おすすめ順に最大3つ）</p>
+    ${top.map((r, i) => {
+      const s = r.s, rel = EXAMPLES.filter(x => x.service === s.id && x.purpose === purpose);
+      return `<article class="card result" style="--c:${s.color}">
+        <div class="result-head">${badge(s, "lg")}<div><div class="rank">おすすめ ${i + 1}</div><h3>${esc(s.name)}</h3></div><span class="chip ${r.free ? "good" : "plain"}">${r.free ? "無料プランあり" : "無料プランなし"}</span></div>
+        <div class="result-cols">
+          <div><span class="lbl">おすすめする理由</span>${marks(r.reasons, "good")}</div>
+          <div><span class="lbl">注意点・制約</span>${marks(r.cautions, "warn")}</div>
+        </div>
+        <div><span class="lbl">得意な用途</span>${esc(s.use.join("／"))}</div>
+        <div class="result-actions"><a class="btn btn-ink" href="${esc(s.url)}" target="_blank" rel="noopener">このAIを使ってみる ↗</a><a class="btn btn-line" href="#${s.id}">詳細を見る</a>
+          <button type="button" class="btn btn-line" data-diag-ex="${s.id}" data-purpose="${rel.length ? purpose : ""}">関連する活用事例（${rel.length || EXAMPLES.filter(x => x.service === s.id).length}件）</button></div>
+      </article>`;
+    }).join("")}
+    ${whyBlock(excluded, rest)}
+    <p class="diag-hint">料金はドル建てを1ドル=${META.fx}円で換算した目安です。最新の料金は「料金・データ」と各公式ページで確認してください。</p>
+  </div>`;
+}
+function whyBlock(excluded, rest) {
+  return `<details class="why"><summary>判定の根拠を見る</summary><ul>
+    <li>各サービスの用途ごとの得意度（このサイトの評価）、無料プランの有無、個人向け有料プランの最安月額、法人・チーム向けプランの有無、日本での提供状況をもとに、条件に合うものだけを選んでいます。</li>
+    <li>得意度が同じ場合は、仕事・チーム利用では入力内容を学習に使わない法人向けプランがあるものを優先しています。</li>
+    ${rest.map(r => `<li>${esc(r.s.name)}：条件には合っていますが、上位3つに入りませんでした。</li>`).join("")}
+    ${excluded.map(x => `<li>${esc(x.s.name)}：対象外（${esc(x.why)}）</li>`).join("")}
+  </ul></details>`;
+}
+$("diag-form").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target, p = f.purpose.value, en = f.env.value, b = f.budget.value;
+  if (!p || !en || !b) { $("diag-result").innerHTML = `<p class="status err" style="margin-top:14px">3つの質問すべてに答えてください。</p>`; return; }
+  renderDiag(p, en, b);
+  $("diag-result").scrollIntoView({ block: "nearest" });
+});
+$("diag-form").addEventListener("reset", () => { $("diag-result").innerHTML = ""; });
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-diag-ex]"); if (!b) return;
+  exFilter.service = b.dataset.diagEx; exFilter.purpose = b.dataset.purpose || ""; exFilter.genre = "all";
+  go("examples");
+});
+
+/* ---- 比較：一覧 ---- */
 function renderCompare() {
   const dataOf = id => PLANS && PLANS.data.find(d => d.service === id);
   const planOf = id => PLANS && PLANS.plans.find(p => p.service === id);
@@ -704,16 +1075,46 @@ function renderCompare() {
     const d = dataOf(s.id), p = planOf(s.id), c = s.cmp || {};
     const learn = d ? `<span class="chip ${LEVEL[d.personal.level] || "note"}">${esc(d.personal.label)}</span>` : "—";
     return `<tr><th scope="row"><a class="svc-line" href="#${s.id}" style="text-decoration:none;color:inherit">${badge(s)}<span>${esc(s.name)}<small>${esc(s.maker)}</small></span></a></th>
-      <td>${esc(CATS[s.category] || "")}</td><td>${esc(c.strength)}</td><td>${esc(c.free)}</td>
-      <td class="price">${esc(p ? p.summary.replace(/^[^·]*·\s*/, "") : "—")}</td>
-      <td>${esc(c.japan)}</td><td>${esc(c.image)}</td><td>${learn}</td><td>${esc(c.fit)}</td></tr>`;
+      <td data-label="種類">${esc(CATS[s.category] || "")}</td><td data-label="得意なこと">${esc(c.strength)}</td><td data-label="無料プラン">${esc(c.free)}</td>
+      <td data-label="個人の料金" class="price">${esc(p ? p.summary.replace(/^[^·]*·\s*/, "") : "—")}</td>
+      <td data-label="日本での利用">${esc(c.japan)}</td><td data-label="画像の生成">${esc(c.image)}</td><td data-label="個人データの学習">${learn}</td><td data-label="向いている人">${esc(c.fit)}</td></tr>`;
   }).join("");
 }
+document.querySelectorAll("#compare .subtabs[role=tablist] button").forEach(b => b.addEventListener("click", () => {
+  const trial = b.id === "st-trial";
+  $("st-matrix").setAttribute("aria-selected", String(!trial)); $("st-trial").setAttribute("aria-selected", String(trial));
+  $("cmp-matrix").hidden = trial; $("cmp-trial").hidden = !trial;
+}));
+
+/* ---- 比較：同じお題（検証済みの出力だけを表示し、未検証は「検証準備中」） ---- */
+let TRIAL = null, trialTheme = null;
+function renderTrial() {
+  if (!TRIAL || !SERVICES.length) return;
+  const th = TRIAL.themes.find(t => t.id === trialTheme) || TRIAL.themes[0];
+  trialTheme = th.id;
+  $("trial-themes").innerHTML = TRIAL.themes.map(t => `<button type="button" data-theme="${t.id}" aria-selected="${t.id === th.id}">${esc(t.title)}</button>`).join("");
+  const doneN = th.entries.filter(e => e.status === "done").length;
+  $("trial-body").innerHTML = `
+    <div class="card trial-head">
+      <div class="prompt-box"><div class="pb-top"><span class="lbl">使用したプロンプト</span><button type="button" class="copy">コピー</button></div><pre>${esc(th.prompt)}</pre></div>
+      <p class="pending">${esc(TRIAL.policy)} 検証済み：${doneN} / ${th.entries.length}サービス</p>
+      <details class="why"><summary>検証の進め方</summary><ul>${TRIAL.howto.map(x => `<li>${esc(x)}</li>`).join("")}</ul></details>
+    </div>
+    <div class="trial-grid">${th.entries.map(en => {
+      const s = svcOf(en.service);
+      const head = `<div class="svc-line">${badge(s)}<b>${esc(s.name)}</b></div>`;
+      if (en.status !== "done") return `<article class="card trial" style="--c:${s.color}">${head}<span class="chip note">検証準備中</span><p class="pending">このお題での実際の出力は、検証後に掲載します。</p><a href="${esc(s.url)}" target="_blank" rel="noopener">自分で試してみる ↗</a></article>`;
+      const f = (k, label) => en[k] ? `<div><dt>${label}</dt><dd>${esc(en[k])}</dd></div>` : "";
+      return `<article class="card trial" style="--c:${s.color}">${head}<dl>${f("model", "使用モデル")}${f("date", "実施日")}${f("conditions", "使用条件")}${f("output", "実際の出力")}${en.image ? `<div><dt>実際の出力</dt><dd><img src="${esc(en.image)}" alt="${esc(s.name)}の出力画像" loading="lazy"></dd></div>` : ""}${f("features", "出力の特徴")}${f("cautions", "注意点")}</dl></article>`;
+    }).join("")}</div>`;
+}
+$("trial-themes").addEventListener("click", e => { const b = e.target.closest("button[data-theme]"); if (b) { trialTheme = b.dataset.theme; renderTrial(); } });
 
 /* ---- 料金とデータの扱い ---- */
 function renderPlans() {
   $("plans-updated").textContent = PLANS.updated;
   $("plans-updated-top").textContent = PLANS.updated;
+  $("plans-age").innerHTML = ageChip(PLANS.updated);
   $("plans-list").innerHTML = SERVICES.map(s => {
     const p = PLANS.plans.find(x => x.service === s.id), d = PLANS.data.find(x => x.service === s.id);
     if (!p) return "";
@@ -728,7 +1129,7 @@ function renderPlans() {
         ${d ? `<div><div class="lbl" style="margin-bottom:8px">入力した内容は学習に使われる？</div><div class="data-pair">
           ${["personal", "business"].map(k => `<div><div class="lbl">${k === "personal" ? "個人向け" : "法人向け"}</div><span class="chip ${LEVEL[d[k].level] || "note"}">${esc(d[k].label)}</span><p>${esc(d[k].text)}</p></div>`).join("")}
         </div>${srcLine(d)}</div>` : ""}
-        <div class="acc-foot"><a href="${esc(p.official)}" target="_blank" rel="noopener">公式の料金ページ</a>${srcLine(p)}</div>
+        <div class="acc-foot"><a href="${esc(p.official)}" target="_blank" rel="noopener">公式の料金ページ ↗</a><span>最終確認日 ${esc(PLANS.updated)}</span>${srcLine(p)}</div>
       </div></details>`;
   }).join("");
 }
@@ -737,6 +1138,7 @@ function renderPlans() {
 const FACTS = [["legal", "法人の形"], ["founded", "設立"], ["hq", "本社"], ["leader", "代表者"], ["structure", "資本・体制", true], ["scale", "規模", true], ["business", "収益の柱"], ["products", "主な製品"], ["japan", "日本での拠点", true], ["stance", "戦略の特徴", true]];
 function renderCompanies(data) {
   $("companies-updated").textContent = data.updated;
+  $("companies-age").innerHTML = ageChip(data.updated);
   $("companies-list").innerHTML = SERVICES.map(s => {
     const c = data.companies.find(x => x.service === s.id);
     if (!c) return "";
@@ -757,34 +1159,81 @@ document.querySelectorAll("[data-toggle-all]").forEach(btn => btn.addEventListen
 }));
 
 /* ---- ニュース ---- */
+const newsItem = n => `<li><time>${esc(n.date)}</time><div class="body"><b>${esc(n.title)}</b><p>${esc(n.text)}</p>${srcLine(n)}</div></li>`;
+const newsFilter = { kind: "all", service: "", limit: 15 };
+function renderNewsList() {
+  if (!NEWS) return;
+  const all = [
+    ...Object.entries(NEWS.services || {}).flatMap(([id, items]) => items.map(n => ({ ...n, svc: id }))),
+    ...(NEWS.society || []).map(n => ({ ...n, svc: null }))
+  ].sort((a, b) => dateKey(b.date).localeCompare(dateKey(a.date)));
+  const list = all.filter(n => (newsFilter.kind === "all" || (newsFilter.kind === "society" ? !n.svc : !!n.svc)) && (!newsFilter.service || n.svc === newsFilter.service));
+  const shown = view.tab === "all" ? list.slice(0, 8) : list.slice(0, newsFilter.limit);
+  $("news-list").innerHTML = shown.map(n => {
+    const s = n.svc ? svcOf(n.svc) : null;
+    const tag = s ? `<span class="tag">${badge(s)}${esc(shortName(s))}</span>` : `<span class="tag"><span class="chip plain">規制・社会</span></span>`;
+    return `<li><time>${esc(n.date)}</time><div class="body">${tag}<b>${esc(n.title)}</b><p>${esc(n.text)}</p>${srcLine(n)}</div></li>`;
+  }).join("") || emptyRow("条件に合うニュースはありません。");
+  const more = $("news-more"), left = list.length - shown.length;
+  more.hidden = left <= 0;
+  more.innerHTML = left > 0 ? `<button type="button" class="btn btn-line" id="news-show-more">${view.tab === "all" ? `すべてのニュースを見る（${list.length}件）` : `さらに表示（残り${left}件）`}</button>` : "";
+  $("news-filters").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.kind === newsFilter.kind)));
+}
+$("news-filters").innerHTML = [["all", "すべて"], ["service", "サービス"], ["society", "規制・社会"]].map(([k, v]) => `<button type="button" data-kind="${k}" aria-pressed="${k === "all"}">${v}</button>`).join("");
+$("news-filters").addEventListener("click", e => { const b = e.target.closest("button[data-kind]"); if (!b) return; newsFilter.kind = b.dataset.kind; if (b.dataset.kind === "society") { newsFilter.service = ""; $("news-service").value = ""; } renderNewsList(); });
+$("news-service").addEventListener("change", e => { newsFilter.service = e.target.value; if (e.target.value) newsFilter.kind = "all"; renderNewsList(); });
+document.addEventListener("click", e => { if (e.target.closest("#news-show-more")) { if (view.tab === "all") go("news"); else { newsFilter.limit += 15; renderNewsList(); } } });
 function renderNews(data) {
+  NEWS = data;
   $("updated").textContent = data.updated;
   $("updated-foot").textContent = data.updated;
+  $("news-updated").textContent = data.updated;
+  $("news-age").innerHTML = ageChip(data.updated);
   document.querySelectorAll(".news-period").forEach(el => { el.textContent = data.period || ""; });
-  let count = (data.society || []).length;
   SERVICES.forEach(s => {
     const items = (data.services || {})[s.id] || [];
-    count += items.length;
     const ol = $("news-" + s.id);
     if (ol) ol.innerHTML = items.length ? items.map(newsItem).join("") : emptyRow("この期間の主なニュースはありません。");
   });
-  $("society-news").innerHTML = (data.society || []).map(newsItem).join("") || emptyRow("この期間の主なニュースはありません。");
-  $("news-count").textContent = count + "件";
+  renderNewsList();
+  checkStale();
+}
+
+/* ---- 更新状況：自動更新が止まっている・失敗したときは警告を出す ---- */
+function checkStale() {
+  const box = $("stale");
+  const msgs = [];
+  if (STATUS) {
+    const d = daysSince(STATUS.lastRun);
+    $("last-run").textContent = String(STATUS.lastRun).slice(0, 10) + (STATUS.result === "ok" ? "" : "（失敗）");
+    if (STATUS.result !== "ok") msgs.push(`直近の自動更新（${String(STATUS.lastRun).slice(0, 10)}）が失敗しました。`);
+    else if (d !== null && d > 10) msgs.push(`自動更新が${d}日間行われていません。`);
+  }
+  const nd = NEWS && daysSince(NEWS.updated);
+  if (nd !== null && nd > 10) msgs.push(`ニュースの確認から${nd}日経っています。`);
+  box.hidden = !msgs.length;
+  box.innerHTML = msgs.length ? `<div><b>${esc(msgs.join(" "))}</b>料金・ニュースなどが最新でない可能性があります。利用前に各サービスの公式ページで確認してください。</div>` : "";
 }
 
 /* ---- 読み込み ---- */
-getJSON("services.json").then(sv => {
-  SERVICES = sv.services; CATS = sv.categories;
-  renderServices();
-  route(location.hash);
-  renderCompare();
-  getJSON("plans.json").then(p => { PLANS = p; renderPlans(); renderCompare(); }).catch(() => { $("plans-list").innerHTML = '<p class="empty">料金情報を読み込めませんでした。ページを再読み込みしてください。</p>'; });
-  getJSON("companies.json").then(renderCompanies).catch(() => { $("companies-list").innerHTML = '<p class="empty">運営元の情報を読み込めませんでした。ページを再読み込みしてください。</p>'; });
-  getJSON("news.json").then(renderNews).catch(() => { document.querySelectorAll(".news ol").forEach(ol => { ol.innerHTML = emptyRow("ニュースを読み込めませんでした。ページを再読み込みしてください。"); }); });
-}).catch(() => {
-  $("svc-cards").innerHTML = '<p class="empty">サービス情報を読み込めませんでした。ページを再読み込みしてください。</p>';
-  route(location.hash);
-});
+function boot() {
+  getJSON("services.json").then(sv => {
+    SERVICES = sv.services; CATS = sv.categories; META = sv.diagMeta;
+    renderServices(); setupDiag(); route(location.hash); renderCompare();
+    loadInto("plans", "plans.json", "料金情報", ["plans-list"], p => { PLANS = p; renderPlans(); renderCompare(); });
+    loadInto("companies", "companies.json", "運営元の情報", ["companies-list"], renderCompanies);
+    loadInto("news", "news.json", "ニュース", ["news-list"], renderNews);
+    loadInto("examples", "examples.json", "活用事例", ["ex-grid"], d => { EXAMPLES = d.examples; setupExamples(); });
+    loadInto("compare", "compare.json", "比較データ", ["trial-body"], d => { TRIAL = d; renderTrial(); });
+    getJSON("status.json").then(s => { STATUS = s; checkStale(); }).catch(() => { $("last-run").textContent = "不明"; });
+  }).catch(() => {
+    $("svc-cards").innerHTML = errBox("services", "サービス情報");
+    $("compare-body").innerHTML = `<tr><td colspan="9">${errBox("services", "サービス情報")}</td></tr>`;
+    route(location.hash);
+  });
+}
+RETRY.services = boot;
+boot();
 route(location.hash);
 
 /* ---- トップへ戻る ---- */
@@ -792,18 +1241,12 @@ const toTop = $("to-top");
 window.addEventListener("scroll", () => { toTop.classList.toggle("show", window.scrollY > 900); }, { passive: true });
 toTop.addEventListener("click", () => window.scrollTo({ top: 0 }));
 
-/* ---- リクエスト（Google フォームへのリンク。URL が空のあいだは準備中と表示） ---- */
+/* ---- リクエスト（Google フォームへのリンク） ---- */
 const REQUEST_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScBtACZ5eCD0gaaGF1el1o7VWDOD-TH1lkYQSErWZ_8iO3Q_g/viewform";
 (() => {
   const btn = $("req-link");
-  if (/^https:\/\/(docs\.google\.com\/forms\/|forms\.gle\/)/.test(REQUEST_FORM_URL)) {
-    btn.href = REQUEST_FORM_URL;
-  } else {
-    btn.removeAttribute("href");
-    btn.setAttribute("aria-disabled", "true");
-    btn.textContent = "フォームを準備しています";
-    $("req-note").textContent = "リクエストの受付は近日開始します。";
-  }
+  if (/^https:\/\/(docs\.google\.com\/forms\/|forms\.gle\/)/.test(REQUEST_FORM_URL)) btn.href = REQUEST_FORM_URL;
+  else { btn.removeAttribute("href"); btn.setAttribute("aria-disabled", "true"); btn.textContent = "フォームを準備しています"; $("req-note").textContent = "リクエストの受付は近日開始します。"; }
 })();
 </script>
 </body>
