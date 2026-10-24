@@ -432,6 +432,21 @@ footer .mono { color: var(--signal); }
 .trial dd { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 .pending { color: var(--muted); font-size: 13.5px; margin: 0; }
 
+.kit-step { display: flex; gap: 10px; align-items: center; font: 700 15px var(--f-display); }
+.kit-open { display: flex; flex-wrap: wrap; gap: 8px; }
+.kit-open .btn { gap: 8px; padding: 6px 14px 6px 8px; font-size: 13px; }
+.kit-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.kit-text { width: 100%; font: 400 13.5px/1.65 var(--f-body); color: var(--ink); background: var(--panel-2); border: 1px solid var(--rule); border-radius: 8px; padding: 8px 10px; resize: vertical; }
+.kit-text:focus { outline: 2px solid var(--focus); outline-offset: 1px; border-color: transparent; }
+.kit-len { font: 500 11px var(--f-mono); color: var(--muted); text-align: right; }
+.kit-score { margin-left: auto; font-family: var(--f-mono); }
+.kit-checks { border: 0; margin: 0; padding: 0; display: grid; gap: 6px; min-width: 0; }
+.kit-checks legend { padding: 0; margin-bottom: 4px; }
+.kit-checks label { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; cursor: pointer; }
+.kit-checks input { margin-top: 3px; width: 18px; height: 18px; flex: none; accent-color: var(--good); }
+.kit-foot { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; margin-top: 14px; }
+.kit-foot .pending { flex: 1 1 320px; }
+
 /* ニュース一覧 */
 .news-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
 .news-tools select { font: 700 13px var(--f-body); color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 7px 14px; }
@@ -514,10 +529,10 @@ footer .mono { color: var(--signal); }
   </section>
 
   <section class="block" data-group="compare" id="compare">
-    <div class="sec-h"><span class="badge" style="--c:#6c7a8f">VS</span><h2>サービスを比べる</h2><span class="sub" id="cmp-sub">10サービスを横に並べて</span></div>
+    <div class="sec-h"><span class="badge" style="--c:#6c7a8f">VS</span><h2>サービスを比べる</h2><span class="sub" id="cmp-sub">一覧と、同じお題での試し比べ</span></div>
     <div class="subtabs" id="cmp-tabs" aria-label="比較の種類">
       <button type="button" id="st-matrix" aria-pressed="true" aria-controls="cmp-matrix">一覧で比較</button>
-      <button type="button" id="st-trial" aria-pressed="false" aria-controls="cmp-trial">同じお題で比較<span class="chip note" id="trial-state" style="margin-left:6px">準備中</span></button>
+      <button type="button" id="st-trial" aria-pressed="false" aria-controls="cmp-trial">同じお題で試して比べる</button>
     </div>
     <div id="cmp-matrix">
       <div class="table-box">
@@ -1119,41 +1134,86 @@ function showCmp(trial) {
 }
 $("st-matrix").addEventListener("click", () => showCmp(false));
 $("st-trial").addEventListener("click", () => showCmp(true));
-// 検証済みの比較がまだないうちは、ホームでは一覧だけを見せ、「同じお題で比較」は比較タブの中だけに出す
-let trialReady = false;
+// 比較の切り替え。「自分で試して比べる」は検証データがなくても使えるので、ホームでも常に出す
 function applyCmpVisibility() {
-  const home = view.tab === "all";
-  $("cmp-tabs").hidden = home && !trialReady;
-  if (home && !trialReady) showCmp(false);
-  $("trial-state").hidden = trialReady;
-  $("cmp-sub").textContent = trialReady ? "一覧と、同じお題での比較" : "10サービスを横に並べて";
+  $("cmp-tabs").hidden = false;
 }
 
-/* ---- 比較：同じお題（検証済みの出力だけを表示し、未検証は「検証準備中」） ---- */
+/* ---- 比較：同じお題で試して比べる ----
+   お題をコピーして各サービスで実行し、返ってきた答えを貼り付けて並べて比べるキット。
+   貼り付けた内容とチェックはこのブラウザの localStorage にだけ保存し、どこにも送信しない。
+   サイト側で検証した結果（compare.json の status: "done"）があれば、その上に表示する。 */
+const KIT_KEY = "ainavi-trial-kit-v1";
+let KIT = (() => { try { return JSON.parse(localStorage.getItem(KIT_KEY) || "{}"); } catch (_) { return {}; } })();
+let kitCanSave = true;
+function kitSave() {
+  try { localStorage.setItem(KIT_KEY, JSON.stringify(KIT)); }
+  catch (_) {
+    if (kitCanSave) { kitCanSave = false; const n = $("kit-save-note"); if (n) n.hidden = false; }
+  }
+}
+const kitEntry = (t, s) => ((KIT[t] = KIT[t] || {})[s] = KIT[t][s] || {});
+
 let TRIAL = null, trialTheme = null;
+function verifiedCard(en) {
+  const s = svcOf(en.service);
+  const f = (k, label) => en[k] ? `<div><dt>${label}</dt><dd>${esc(en[k])}</dd></div>` : "";
+  return `<article class="card trial" style="--c:${s.color}"><div class="svc-line">${badge(s)}<b>${esc(s.name)}</b></div><dl>${f("model", "使用モデル")}${f("date", "実施日")}${f("conditions", "使用条件")}${f("output", "実際の出力")}${en.image ? `<div><dt>実際の出力</dt><dd><img src="${esc(en.image)}" alt="${esc(s.name)}の出力画像" loading="lazy"></dd></div>` : ""}${f("features", "出力の特徴")}${f("cautions", "注意点")}</dl></article>`;
+}
+function kitCard(th, en, isImg) {
+  const s = svcOf(en.service), v = (KIT[th.id] || {})[s.id] || {}, checks = v.checks || [];
+  const id = `${th.id}-${s.id}`;
+  return `<article class="card trial" style="--c:${s.color}">
+    <div class="svc-line">${badge(s)}<b>${esc(s.name)}</b><span class="chip plain kit-score" id="kit-score-${id}" aria-label="当てはまる観点の数">${checks.filter(Boolean).length} / ${th.criteria.length}</span></div>
+    <label class="lbl" for="kit-${id}">${isImg ? "見比べた感想" : "返ってきた答え"}</label>
+    <textarea id="kit-${id}" class="kit-text" data-kit="${th.id}|${s.id}" rows="${isImg ? 3 : 7}" placeholder="${isImg ? "例：光の表現がきれい。手が少し崩れている" : "ここに答えを貼り付けます"}">${esc(v.text || "")}</textarea>
+    ${isImg ? "" : `<span class="kit-len" id="kit-len-${id}">${(v.text || "").length}文字</span>`}
+    <fieldset class="kit-checks"><legend class="lbl">当てはまる観点にチェック</legend>${th.criteria.map((c, i) => `<label><input type="checkbox" data-kit-check="${th.id}|${s.id}|${i}"${checks[i] ? " checked" : ""}>${esc(c)}</label>`).join("")}</fieldset>
+  </article>`;
+}
 function renderTrial() {
   if (!TRIAL || !SERVICES.length) return;
   const th = TRIAL.themes.find(t => t.id === trialTheme) || TRIAL.themes[0];
   trialTheme = th.id;
-  trialReady = TRIAL.themes.some(t => t.entries.some(e => e.status === "done"));
-  applyCmpVisibility();
-  $("trial-themes").innerHTML = TRIAL.themes.map(t => `<button type="button" data-theme="${t.id}" aria-pressed="${t.id === th.id}">${esc(t.title)}${t.entries.some(e => e.status === "done") ? "" : "（準備中）"}</button>`).join("");
-  const doneN = th.entries.filter(e => e.status === "done").length;
+  $("trial-themes").innerHTML = TRIAL.themes.map(t => `<button type="button" data-theme="${t.id}" aria-pressed="${t.id === th.id}">${esc(t.title)}</button>`).join("");
+  const done = th.entries.filter(e => e.status === "done");
+  const isImg = th.kind === "image";
   $("trial-body").innerHTML = `
+    ${done.length ? `<h3 class="sub-h">サイトでの検証結果</h3><p class="pending">${esc(TRIAL.policy)}</p><div class="trial-grid">${done.map(verifiedCard).join("")}</div><h3 class="sub-h">自分でも試してみる</h3>` : ""}
     <div class="card trial-head">
-      <div class="prompt-box"><div class="pb-top"><span class="lbl">使用したプロンプト</span><button type="button" class="copy">コピー</button></div><pre>${esc(th.prompt)}</pre></div>
-      <p class="pending">${esc(TRIAL.policy)} 検証済み：${doneN} / ${th.entries.length}サービス</p>
-      <details class="why"><summary>検証の進め方</summary><ul>${TRIAL.howto.map(x => `<li>${esc(x)}</li>`).join("")}</ul></details>
+      <div class="kit-step"><span class="step-no">STEP 1</span><b>お題をコピーする</b></div>
+      <div class="prompt-box"><div class="pb-top"><span class="lbl">お題（プロンプト）</span><button type="button" class="copy">コピー</button></div><pre>${esc(th.prompt)}</pre></div>
+      <div class="kit-step"><span class="step-no">STEP 2</span><b>それぞれのAIを開いて、新しい会話に貼り付けて送る</b></div>
+      <div class="kit-open">${th.entries.map(en => { const s = svcOf(en.service); return `<a class="btn btn-line" href="${esc(s.url)}" target="_blank" rel="noopener">${badge(s)}${esc(shortName(s))}で開く ↗</a>`; }).join("")}</div>
+      <div class="kit-step"><span class="step-no">STEP 3</span><b>${isImg ? "できた画像を見比べて、感想と観点をメモする" : "返ってきた答えを下に貼り付けて、観点ごとにチェックする"}</b></div>
     </div>
-    <div class="trial-grid">${th.entries.map(en => {
-      const s = svcOf(en.service);
-      const head = `<div class="svc-line">${badge(s)}<b>${esc(s.name)}</b></div>`;
-      if (en.status !== "done") return `<article class="card trial" style="--c:${s.color}">${head}<span class="chip note">検証準備中</span><p class="pending">このお題での実際の出力は、検証後に掲載します。</p><a href="${esc(s.url)}" target="_blank" rel="noopener">自分で試してみる ↗</a></article>`;
-      const f = (k, label) => en[k] ? `<div><dt>${label}</dt><dd>${esc(en[k])}</dd></div>` : "";
-      return `<article class="card trial" style="--c:${s.color}">${head}<dl>${f("model", "使用モデル")}${f("date", "実施日")}${f("conditions", "使用条件")}${f("output", "実際の出力")}${en.image ? `<div><dt>実際の出力</dt><dd><img src="${esc(en.image)}" alt="${esc(s.name)}の出力画像" loading="lazy"></dd></div>` : ""}${f("features", "出力の特徴")}${f("cautions", "注意点")}</dl></article>`;
-    }).join("")}</div>`;
+    <div class="trial-grid kit-grid">${th.entries.map(en => kitCard(th, en, isImg)).join("")}</div>
+    <div class="kit-foot">
+      <p class="pending">${esc(TRIAL.kitNote)} 1回の答えだけで優劣は決められません。何回か試すと、違いがよく分かります。</p>
+      <p class="status err" id="kit-save-note"${kitCanSave ? " hidden" : ""}>このブラウザでは入力を保存できません。ページを閉じると消えます。</p>
+      <button type="button" class="btn btn-line" data-kit-clear="${th.id}">このお題の入力を消す</button>
+    </div>`;
 }
 $("trial-themes").addEventListener("click", e => { const b = e.target.closest("button[data-theme]"); if (b) { trialTheme = b.dataset.theme; renderTrial(); } });
+$("trial-body").addEventListener("input", e => {
+  const ta = e.target.closest("textarea[data-kit]"); if (!ta) return;
+  const [t, s] = ta.dataset.kit.split("|");
+  kitEntry(t, s).text = ta.value;
+  const len = $(`kit-len-${t}-${s}`); if (len) len.textContent = ta.value.length + "文字";
+  kitSave();
+});
+$("trial-body").addEventListener("change", e => {
+  const cb = e.target.closest("input[data-kit-check]"); if (!cb) return;
+  const [t, s, i] = cb.dataset.kitCheck.split("|");
+  const v = kitEntry(t, s); v.checks = v.checks || []; v.checks[Number(i)] = cb.checked;
+  const th = TRIAL.themes.find(x => x.id === t);
+  $(`kit-score-${t}-${s}`).textContent = `${v.checks.filter(Boolean).length} / ${th.criteria.length}`;
+  kitSave();
+});
+$("trial-body").addEventListener("click", e => {
+  const b = e.target.closest("[data-kit-clear]"); if (!b) return;
+  delete KIT[b.dataset.kitClear]; kitSave(); renderTrial();
+});
 
 /* ---- 料金とデータの扱い ---- */
 function renderPlans() {

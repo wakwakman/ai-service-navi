@@ -9,64 +9,180 @@
   ],
   "themes": [
     {
-      "id": "mail", "title": "メール文章の作成",
+      "id": "mail",
+      "title": "メール文章の作成",
       "prompt": "取引先に、打ち合わせの日程を来週から再来週に変更したいとお願いするメールを、200字程度で書いてください。",
       "entries": [
-        {"service": "chatgpt", "status": "pending"},
-        {"service": "gemini", "status": "pending"},
-        {"service": "claude", "status": "pending"},
-        {"service": "copilot", "status": "pending"}
+        {
+          "service": "chatgpt",
+          "status": "pending"
+        },
+        {
+          "service": "gemini",
+          "status": "pending"
+        },
+        {
+          "service": "claude",
+          "status": "pending"
+        },
+        {
+          "service": "copilot",
+          "status": "pending"
+        }
+      ],
+      "criteria": [
+        "最初の数行で用件（日程変更のお願い）が伝わる",
+        "お詫びと理由が入っている",
+        "代わりの日程の聞き方が相手に負担をかけない",
+        "200字程度に収まっている",
+        "ほぼ直さずに送れる丁寧さ"
       ]
     },
     {
-      "id": "summary", "title": "文章の要約",
-      "prompt": "次の文章を、要点を落とさずに3行で要約してください。（検証時は同じ文章を全サービスに渡す）",
+      "id": "summary",
+      "title": "文章の要約",
+      "prompt": "次の文章を、要点を落とさずに3行で要約してください。\n\n睡眠は、ただ体を休めるだけの時間ではありません。眠っているあいだ、脳は日中に得た情報を整理し、必要な記憶を定着させています。そのため、睡眠が足りないと、集中力や判断力が落ちるだけでなく、新しいことを覚える力も弱くなります。また、睡眠不足が続くと、食欲を調整するしくみが乱れ、体調をくずしやすくなるとも言われています。よい睡眠のためには、毎日なるべく同じ時刻に起きること、寝る前にスマートフォンなどの強い光を浴びすぎないこと、昼間に体を動かすことが役立ちます。忙しいときほど睡眠時間を削りがちですが、睡眠を確保することは、結果的に日中の効率を高めることにつながります。",
       "entries": [
-        {"service": "chatgpt", "status": "pending"},
-        {"service": "claude", "status": "pending"},
-        {"service": "gemini", "status": "pending"},
-        {"service": "mistral", "status": "pending"}
+        {
+          "service": "chatgpt",
+          "status": "pending"
+        },
+        {
+          "service": "claude",
+          "status": "pending"
+        },
+        {
+          "service": "gemini",
+          "status": "pending"
+        },
+        {
+          "service": "mistral",
+          "status": "pending"
+        }
+      ],
+      "criteria": [
+        "要点が抜けていない",
+        "3行に収まっている",
+        "元の文章にない内容が混ざっていない",
+        "読みやすく、意味が変わっていない"
       ]
     },
     {
-      "id": "ideas", "title": "アイデア出し",
+      "id": "ideas",
+      "title": "アイデア出し",
       "prompt": "地域の商店街のにぎわいを取り戻すためのイベント案を、費用が少なくてすむものから順に5つ出してください。",
       "entries": [
-        {"service": "chatgpt", "status": "pending"},
-        {"service": "claude", "status": "pending"},
-        {"service": "gemini", "status": "pending"},
-        {"service": "grok", "status": "pending"}
+        {
+          "service": "chatgpt",
+          "status": "pending"
+        },
+        {
+          "service": "claude",
+          "status": "pending"
+        },
+        {
+          "service": "gemini",
+          "status": "pending"
+        },
+        {
+          "service": "grok",
+          "status": "pending"
+        }
+      ],
+      "criteria": [
+        "費用が少ない順に並んでいる",
+        "5つそろっている",
+        "すぐ実行できる具体性がある",
+        "ありきたりでない案がある"
       ]
     },
     {
-      "id": "research", "title": "情報収集",
+      "id": "research",
+      "title": "情報収集",
       "prompt": "日本の2025年の訪日外国人旅行者数と、前年からの変化を、出典つきで教えてください。",
       "entries": [
-        {"service": "perplexity", "status": "pending"},
-        {"service": "chatgpt", "status": "pending"},
-        {"service": "gemini", "status": "pending"},
-        {"service": "grok", "status": "pending"}
+        {
+          "service": "perplexity",
+          "status": "pending"
+        },
+        {
+          "service": "chatgpt",
+          "status": "pending"
+        },
+        {
+          "service": "gemini",
+          "status": "pending"
+        },
+        {
+          "service": "grok",
+          "status": "pending"
+        }
+      ],
+      "criteria": [
+        "数字に年と出典が付いている",
+        "出典を開くと、書かれた内容と一致する",
+        "前年からの変化が説明されている",
+        "古い情報が混ざっていない"
       ]
     },
     {
-      "id": "code", "title": "プログラミング",
+      "id": "code",
+      "title": "プログラミング",
       "prompt": "Python で、CSV ファイルを読み込み、指定した列の平均値を表示する関数を書いてください。ファイルがない場合のエラー処理も入れてください。",
       "entries": [
-        {"service": "claude", "status": "pending"},
-        {"service": "chatgpt", "status": "pending"},
-        {"service": "deepseek", "status": "pending"},
-        {"service": "mistral", "status": "pending"}
+        {
+          "service": "claude",
+          "status": "pending"
+        },
+        {
+          "service": "chatgpt",
+          "status": "pending"
+        },
+        {
+          "service": "deepseek",
+          "status": "pending"
+        },
+        {
+          "service": "mistral",
+          "status": "pending"
+        }
+      ],
+      "criteria": [
+        "実際に動かすとエラーなく動く",
+        "ファイルがないときのエラー処理がある",
+        "コードの説明がわかりやすい",
+        "読みやすく、むだがない"
       ]
     },
     {
-      "id": "image", "title": "画像生成",
+      "id": "image",
+      "title": "画像生成",
       "prompt": "朝の光が差し込むカフェの店内、木のテーブルにコーヒーとクロワッサン、水彩画風、横長。",
       "entries": [
-        {"service": "midjourney", "status": "pending"},
-        {"service": "chatgpt", "status": "pending"},
-        {"service": "gemini", "status": "pending"},
-        {"service": "grok", "status": "pending"}
-      ]
+        {
+          "service": "midjourney",
+          "status": "pending"
+        },
+        {
+          "service": "chatgpt",
+          "status": "pending"
+        },
+        {
+          "service": "gemini",
+          "status": "pending"
+        },
+        {
+          "service": "grok",
+          "status": "pending"
+        }
+      ],
+      "criteria": [
+        "朝の光・カフェ・水彩画風・横長の指示が反映されている",
+        "手や文字など、不自然に崩れた部分がない",
+        "全体の雰囲気が好み",
+        "商用で使う場合の規約を確認しやすい"
+      ],
+      "kind": "image"
     }
   ],
   "entryFormat": {
@@ -79,5 +195,6 @@
     "image": "画像生成の場合の画像ファイル（例：compare/image-midjourney.png）",
     "features": "出力の特徴（出力から読み取れる事実）",
     "cautions": "利用上の注意点"
-  }
+  },
+  "kitNote": "貼り付けた回答やチェックは、このブラウザの中だけに保存されます。どこにも送信されません。"
 }
