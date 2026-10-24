@@ -399,6 +399,7 @@ footer .mono { color: var(--signal); }
 .prompt-box pre { margin: 0; padding: 10px 12px; font: 400 13px/1.7 var(--f-mono); white-space: pre-wrap; overflow-wrap: anywhere; max-height: 220px; overflow-y: auto; color: var(--ink); }
 .copy { font: 700 13px var(--f-body); background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: 8px 16px; cursor: pointer; min-height: 36px; white-space: nowrap; }
 .copy.done { background: var(--good); }
+.pnote { margin: 0; padding: 8px 12px; border-top: 1px dashed var(--rule); font-size: 13px; color: var(--muted); }
 .ex-more summary { cursor: pointer; font: 700 14px var(--f-display); color: var(--link); padding: 4px 0; list-style: none; display: flex; gap: 6px; align-items: center; }
 .ex-more summary::-webkit-details-marker { display: none; }
 .ex-more summary::before { content: "+"; font-family: var(--f-mono); width: 1em; }
@@ -421,7 +422,7 @@ footer .mono { color: var(--signal); }
 /* 比較のサブタブ・同じお題 */
 .subtabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
 .subtabs button { font: 700 14px var(--f-body); color: var(--muted); background: transparent; border: 1px solid var(--rule); border-radius: 999px; padding: 8px 16px; cursor: pointer; }
-.subtabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.subtabs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .trial-head { padding: 16px 18px; display: grid; gap: 10px; margin-bottom: 14px; }
 .trial-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
 .trial { padding: 14px 16px; display: grid; gap: 8px; align-content: start; border-top: 4px solid var(--c); }
@@ -473,7 +474,7 @@ footer .mono { color: var(--signal); }
       <div class="dept-row"><span>活用事例</span><span class="mono" id="ex-count-top">—</span></div>
       <div class="dept-row"><span>ニュースの確認日</span><span class="mono" id="updated">—</span></div>
       <div class="dept-row"><span>料金・運営元の確認日</span><span class="mono" id="plans-updated-top">—</span></div>
-      <div class="dept-row"><span>自動更新の実行</span><span class="mono" id="last-run">—</span></div>
+      <div class="dept-row"><span>自動更新の最終実行</span><span class="mono" id="last-run">—</span></div>
     </div>
   </div>
 </header>
@@ -513,12 +514,12 @@ footer .mono { color: var(--signal); }
   </section>
 
   <section class="block" data-group="compare" id="compare">
-    <div class="sec-h"><span class="badge" style="--c:#6c7a8f">VS</span><h2>サービスを比べる</h2><span class="sub">一覧と、同じお題での比較</span></div>
-    <div class="subtabs" role="tablist" aria-label="比較の種類">
-      <button type="button" role="tab" id="st-matrix" aria-selected="true" aria-controls="cmp-matrix">一覧で比較</button>
-      <button type="button" role="tab" id="st-trial" aria-selected="false" aria-controls="cmp-trial">同じお題で比較</button>
+    <div class="sec-h"><span class="badge" style="--c:#6c7a8f">VS</span><h2>サービスを比べる</h2><span class="sub" id="cmp-sub">10サービスを横に並べて</span></div>
+    <div class="subtabs" id="cmp-tabs" aria-label="比較の種類">
+      <button type="button" id="st-matrix" aria-pressed="true" aria-controls="cmp-matrix">一覧で比較</button>
+      <button type="button" id="st-trial" aria-pressed="false" aria-controls="cmp-trial">同じお題で比較<span class="chip note" id="trial-state" style="margin-left:6px">準備中</span></button>
     </div>
-    <div id="cmp-matrix" role="tabpanel" aria-labelledby="st-matrix">
+    <div id="cmp-matrix">
       <div class="table-box">
         <table class="cmp matrix">
           <thead><tr><th scope="col">SERVICE</th><th scope="col">種類</th><th scope="col">得意なこと</th><th scope="col">無料プラン</th><th scope="col">個人の料金</th><th scope="col">日本での利用</th><th scope="col">画像の生成</th><th scope="col">個人データの学習</th><th scope="col">向いている人</th></tr></thead>
@@ -527,7 +528,7 @@ footer .mono { color: var(--signal); }
       </div>
       <p class="table-meta">パソコンでは表を横にスクロールできます。サービス名を押すと詳しい説明に移ります。料金とデータの扱いは毎週の確認結果を反映しています。</p>
     </div>
-    <div id="cmp-trial" role="tabpanel" aria-labelledby="st-trial" hidden>
+    <div id="cmp-trial" hidden>
       <div class="subtabs" id="trial-themes" aria-label="お題"></div>
       <div id="trial-body"><p class="empty">読み込んでいます…</p></div>
     </div>
@@ -808,6 +809,7 @@ function applyView() {
   document.querySelector("#services .toolbar").hidden = !!one;
   renderExamples();
   renderNewsList();
+  if (typeof applyCmpVisibility === "function" && $("cmp-tabs")) applyCmpVisibility();
 }
 function route(hash) {
   const id = (hash || "").replace(/^#/, "");
@@ -916,7 +918,7 @@ const exCard = ex => {
     <div class="ex-meta"><span class="svc-mini">${badge(s)}${esc(shortName(s))}</span><span class="chip plain">${esc(META.genres[ex.genre] || "")}</span>${META.purposes[ex.purpose] && META.purposes[ex.purpose] !== META.genres[ex.genre] ? `<span class="chip plain">${esc(META.purposes[ex.purpose])}</span>` : ""}</div>
     <h3>${esc(ex.title)}</h3>
     <p class="scene">${esc(ex.scene)}</p>
-    <div class="prompt-box"><div class="pb-top"><span class="lbl">${label}</span><button type="button" class="copy" aria-label="${esc(ex.title)}の${label}をコピー">コピー</button></div><pre>${esc(ex.prompt)}</pre></div>
+    <div class="prompt-box"><div class="pb-top"><span class="lbl">${label}</span><button type="button" class="copy" aria-label="${esc(ex.title)}の${label}をコピー">コピー</button></div><pre>${esc(ex.prompt)}</pre>${ex.promptNote ? `<p class="pnote">${esc(ex.promptNote)}</p>` : ""}</div>
     <details class="ex-more"><summary>使い方・期待できる結果・注意点</summary><div class="inside">
       <div><div class="lbl">使い方</div><ol>${ex.steps.map(x => `<li>${esc(x)}</li>`).join("")}</ol></div>
       <div><div class="lbl">期待できるアウトプット</div><p>${esc(ex.output)}</p></div>
@@ -990,30 +992,54 @@ function diagnose(purpose, env, budget) {
     const d = s.diag; if (!d) return;
     const score = d.scores[purpose] || 0;
     const data = PLANS && PLANS.data.find(x => x.service === s.id);
+    // 選んだ用途が無料プランで実行できるか（無料プランがあるだけでは足りない）
+    const freeOK = d.free && (d.freePurposes || []).includes(purpose);
+    const paid = d.minPaidJPY;
+    const team = d.teamPlan || null;
     let why = null;
     if (!d.japan) why = "日本では提供されていない";
     else if (score < 2) why = `「${P}」は得意分野ではない`;
     else if (env === "work" && !d.work) why = d.note || "仕事での利用には向かない";
-    else if (env === "team" && !d.team) why = d.note || "チーム向けのプランがない";
-    else if (budget === "free" && !d.free) why = "無料プランがない";
-    else if (cap && !d.free && !(d.minPaidJPY !== null && d.minPaidJPY <= cap)) why = `有料プランが予算を超える（${yen(d.minPaidJPY)}〜）`;
+    else if (env === "team") {
+      if (!team) why = d.note || "チーム向けのプランがない";
+      else if (budget === "free") why = "チーム向けプランは有料";
+      else if (cap && team.priceJPY === null) why = `チーム向けプランの料金を確認できていない（${team.note}）`;
+      else if (cap && team.priceJPY > cap) why = `チーム向けプランが予算を超える（1人あたり${yen(team.priceJPY)}〜・${team.note}）`;
+    } else {
+      if (budget === "free" && !freeOK) why = d.free ? `「${P}」は無料プランでは使えない` : "無料プランがない";
+      else if (cap && !freeOK && (paid === null || paid > cap)) why = paid === null ? `「${P}」に使える個人向けの有料プランがない` : `「${P}」には有料プランが必要で、予算を超える（${yen(paid)}〜）`;
+    }
     if (why) { excluded.push({ s, why }); return; }
+
     const reasons = [`「${P}」が${score === 3 ? "特に得意" : "得意"}：${s.cmp.strength}`];
     const cautions = [s.warn[0]];
-    if (budget === "free") reasons.push("無料プランで使える");
-    else if (cap) {
-      if (d.minPaidJPY !== null && d.minPaidJPY <= cap) reasons.push(`有料プランも予算内（月額${yen(d.minPaidJPY)}〜・目安）`);
-      else { reasons.push("無料プランの範囲なら予算内"); cautions.push(`有料プランは月額${d.minPaidJPY !== null ? yen(d.minPaidJPY) + "〜" : "なし"}（目安）のため、予算内では無料プランで使う`); }
-    } else reasons.push(d.free ? "無料プランから試せる" : `月額${yen(d.minPaidJPY)}〜（目安）`);
-    let bonus = 0;
+    let bonus = 0, planLabel;
+    if (env === "team") {
+      const price = team.priceJPY !== null ? `1人あたり月額${yen(team.priceJPY)}〜（目安）` : "料金は要確認";
+      reasons.push(`チーム向けプラン：${team.name}（${price}）`);
+      cautions.push(`${team.note}${team.seats > 1 ? `。${team.seats}人から契約` : ""}`);
+      planLabel = { cls: "plain", text: "チーム向けは有料" };
+    } else {
+      if (freeOK) {
+        reasons.push(`無料プランで「${P}」に使える（回数などの制限あり）`);
+        if (cap && paid !== null && paid > cap) cautions.push(`有料プランは月額${yen(paid)}〜（目安）で予算外。予算内では無料プランの範囲で使う`);
+        planLabel = { cls: "good", text: `無料で${P}に使える` };
+      } else {
+        reasons.push(`「${P}」には有料プランが必要（月額${yen(paid)}〜・目安）`);
+        planLabel = { cls: "plain", text: "有料プランが必要" };
+      }
+    }
     if (env === "personal") {
       if (data && data.personal.level === "uses") cautions.push(`個人向けでは「${data.personal.label}」。設定を確認して使う`);
+      if (s.id === "deepseek") cautions.push("データは中国のサーバーに保存される。個人情報は入れない");
     } else {
-      if (data) { reasons.push(`法人向け：${data.business.label}`); if (data.business.level === "safe") bonus = 1; }
-      if (env === "team") reasons.push("チーム向けのプランがある");
+      if (data) {
+        reasons.push(`法人向け：${data.business.label}`);
+        if (data.business.level === "safe") bonus = 1;
+        if (env === "work" && data.personal.level !== "safe") cautions.push("個人向けプランを仕事で使うなら、入力内容を学習に使わない設定にし、機密は入れない。会社の規程も確認する");
+      }
     }
-    if (d.note && env === "personal" && s.id === "deepseek") cautions.push("データは中国のサーバーに保存される。個人情報は入れない");
-    picked.push({ s, score, bonus, order, reasons, cautions, free: d.free });
+    picked.push({ s, score, bonus, order, reasons, cautions, planLabel });
   });
   picked.sort((a, b) => b.score - a.score || b.bonus - a.bonus || a.order - b.order);
   return { top: picked.slice(0, 3), rest: picked.slice(3), excluded, P };
@@ -1031,7 +1057,7 @@ function renderDiag(purpose, env, budget) {
     ${top.map((r, i) => {
       const s = r.s, rel = EXAMPLES.filter(x => x.service === s.id && x.purpose === purpose);
       return `<article class="card result" style="--c:${s.color}">
-        <div class="result-head">${badge(s, "lg")}<div><div class="rank">おすすめ ${i + 1}</div><h3>${esc(s.name)}</h3></div><span class="chip ${r.free ? "good" : "plain"}">${r.free ? "無料プランあり" : "無料プランなし"}</span></div>
+        <div class="result-head">${badge(s, "lg")}<div><div class="rank">おすすめ ${i + 1}</div><h3>${esc(s.name)}</h3></div><span class="chip ${r.planLabel.cls}">${esc(r.planLabel.text)}</span></div>
         <div class="result-cols">
           <div><span class="lbl">おすすめする理由</span>${marks(r.reasons, "good")}</div>
           <div><span class="lbl">注意点・制約</span>${marks(r.cautions, "warn")}</div>
@@ -1047,7 +1073,7 @@ function renderDiag(purpose, env, budget) {
 }
 function whyBlock(excluded, rest) {
   return `<details class="why"><summary>判定の根拠を見る</summary><ul>
-    <li>各サービスの用途ごとの得意度（このサイトの評価）、無料プランの有無、個人向け有料プランの最安月額、法人・チーム向けプランの有無、日本での提供状況をもとに、条件に合うものだけを選んでいます。</li>
+    <li>各サービスの用途ごとの得意度（このサイト独自の評価）、選んだ用途が無料プランで使えるか、個人向け有料プランの最安月額、チーム向けプランの有無と1人あたりの料金、日本での提供状況をもとに、条件に合うものだけを選んでいます。</li><li>料金は各社の公表価格をもとにした目安で、ドル建ては1ドル=${META.fx}円で換算しています。税や為替、契約条件で変わります。</li>
     <li>得意度が同じ場合は、仕事・チーム利用では入力内容を学習に使わない法人向けプランがあるものを優先しています。</li>
     ${rest.map(r => `<li>${esc(r.s.name)}：条件には合っていますが、上位3つに入りませんでした。</li>`).join("")}
     ${excluded.map(x => `<li>${esc(x.s.name)}：対象外（${esc(x.why)}）</li>`).join("")}
@@ -1080,11 +1106,21 @@ function renderCompare() {
       <td data-label="日本での利用">${esc(c.japan)}</td><td data-label="画像の生成">${esc(c.image)}</td><td data-label="個人データの学習">${learn}</td><td data-label="向いている人">${esc(c.fit)}</td></tr>`;
   }).join("");
 }
-document.querySelectorAll("#compare .subtabs[role=tablist] button").forEach(b => b.addEventListener("click", () => {
-  const trial = b.id === "st-trial";
-  $("st-matrix").setAttribute("aria-selected", String(!trial)); $("st-trial").setAttribute("aria-selected", String(trial));
+function showCmp(trial) {
+  $("st-matrix").setAttribute("aria-pressed", String(!trial)); $("st-trial").setAttribute("aria-pressed", String(trial));
   $("cmp-matrix").hidden = trial; $("cmp-trial").hidden = !trial;
-}));
+}
+$("st-matrix").addEventListener("click", () => showCmp(false));
+$("st-trial").addEventListener("click", () => showCmp(true));
+// 検証済みの比較がまだないうちは、ホームでは一覧だけを見せ、「同じお題で比較」は比較タブの中だけに出す
+let trialReady = false;
+function applyCmpVisibility() {
+  const home = view.tab === "all";
+  $("cmp-tabs").hidden = home && !trialReady;
+  if (home && !trialReady) showCmp(false);
+  $("trial-state").hidden = trialReady;
+  $("cmp-sub").textContent = trialReady ? "一覧と、同じお題での比較" : "10サービスを横に並べて";
+}
 
 /* ---- 比較：同じお題（検証済みの出力だけを表示し、未検証は「検証準備中」） ---- */
 let TRIAL = null, trialTheme = null;
@@ -1092,7 +1128,9 @@ function renderTrial() {
   if (!TRIAL || !SERVICES.length) return;
   const th = TRIAL.themes.find(t => t.id === trialTheme) || TRIAL.themes[0];
   trialTheme = th.id;
-  $("trial-themes").innerHTML = TRIAL.themes.map(t => `<button type="button" data-theme="${t.id}" aria-selected="${t.id === th.id}">${esc(t.title)}</button>`).join("");
+  trialReady = TRIAL.themes.some(t => t.entries.some(e => e.status === "done"));
+  applyCmpVisibility();
+  $("trial-themes").innerHTML = TRIAL.themes.map(t => `<button type="button" data-theme="${t.id}" aria-pressed="${t.id === th.id}">${esc(t.title)}${t.entries.some(e => e.status === "done") ? "" : "（準備中）"}</button>`).join("");
   const doneN = th.entries.filter(e => e.status === "done").length;
   $("trial-body").innerHTML = `
     <div class="card trial-head">
@@ -1204,10 +1242,11 @@ function checkStale() {
   const box = $("stale");
   const msgs = [];
   if (STATUS) {
-    const d = daysSince(STATUS.lastRun);
-    $("last-run").textContent = String(STATUS.lastRun).slice(0, 10) + (STATUS.result === "ok" ? "" : "（失敗）");
-    if (STATUS.result !== "ok") msgs.push(`直近の自動更新（${String(STATUS.lastRun).slice(0, 10)}）が失敗しました。`);
-    else if (d !== null && d > 10) msgs.push(`自動更新が${d}日間行われていません。`);
+    const ok = STATUS.lastSuccess ? String(STATUS.lastSuccess).slice(0, 10) : null;
+    const d = daysSince(STATUS.lastSuccess);
+    $("last-run").textContent = STATUS.result === "ok" ? String(STATUS.lastRun).slice(0, 10) : `${String(STATUS.lastRun).slice(0, 10)}（失敗）`;
+    if (STATUS.result !== "ok") msgs.push(`直近の自動更新（${String(STATUS.lastRun).slice(0, 10)}）が失敗しました。最後に成功したのは${ok || "不明"}です。`);
+    else if (d !== null && d > 10) msgs.push(`自動更新が${d}日間成功していません（最終成功：${ok}）。`);
   }
   const nd = NEWS && daysSince(NEWS.updated);
   if (nd !== null && nd > 10) msgs.push(`ニュースの確認から${nd}日経っています。`);

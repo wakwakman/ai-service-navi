@@ -54,7 +54,23 @@
         "minPaidJPY": 1200,
         "work": true,
         "team": true,
-        "japan": true
+        "japan": true,
+        "freePurposes": [
+          "writing",
+          "research",
+          "docs",
+          "image",
+          "code",
+          "study",
+          "efficiency",
+          "other"
+        ],
+        "teamPlan": {
+          "name": "ChatGPT Business",
+          "priceJPY": 3000,
+          "seats": 2,
+          "note": "年払い$20/人（月払い$25/人）"
+        }
       }
     },
     {
@@ -104,7 +120,22 @@
         "minPaidJPY": 725,
         "work": true,
         "team": true,
-        "japan": true
+        "japan": true,
+        "freePurposes": [
+          "writing",
+          "research",
+          "docs",
+          "image",
+          "code",
+          "study",
+          "other"
+        ],
+        "teamPlan": {
+          "name": "Google Workspace（Gemini 付き）",
+          "priceJPY": null,
+          "seats": 1,
+          "note": "料金はプランにより異なるため要確認"
+        }
       }
     },
     {
@@ -154,7 +185,22 @@
         "minPaidJPY": 3000,
         "work": true,
         "team": true,
-        "japan": true
+        "japan": true,
+        "freePurposes": [
+          "writing",
+          "research",
+          "docs",
+          "code",
+          "study",
+          "efficiency",
+          "other"
+        ],
+        "teamPlan": {
+          "name": "Claude Team",
+          "priceJPY": 3000,
+          "seats": 2,
+          "note": "年払い$20/人（月払い$25/人）"
+        }
       }
     },
     {
@@ -205,7 +251,20 @@
         "minPaidJPY": 3000,
         "work": true,
         "team": true,
-        "japan": true
+        "japan": true,
+        "freePurposes": [
+          "writing",
+          "research",
+          "image",
+          "study",
+          "other"
+        ],
+        "teamPlan": {
+          "name": "Microsoft 365 Copilot Business",
+          "priceJPY": null,
+          "seats": 1,
+          "note": "Copilot $21/人に加え、Microsoft 365 の契約が別途必要"
+        }
       }
     },
     {
@@ -255,7 +314,19 @@
         "minPaidJPY": 3000,
         "work": true,
         "team": true,
-        "japan": true
+        "japan": true,
+        "freePurposes": [
+          "writing",
+          "research",
+          "study",
+          "other"
+        ],
+        "teamPlan": {
+          "name": "Perplexity Enterprise Pro",
+          "priceJPY": 5100,
+          "seats": 1,
+          "note": "年払い$34/人"
+        }
       }
     },
     {
@@ -306,7 +377,15 @@
         "work": true,
         "team": false,
         "japan": true,
-        "note": "チーム向けの料金プランが確認できないため、チーム利用では対象外です。"
+        "note": "チーム向けの料金プランが確認できないため、チーム利用では対象外です。",
+        "freePurposes": [
+          "writing",
+          "research",
+          "image",
+          "code",
+          "study",
+          "other"
+        ]
       }
     },
     {
@@ -357,7 +436,16 @@
         "work": false,
         "team": false,
         "japan": true,
-        "note": "データは中国のサーバーに保存されるため、仕事やチームでの利用はおすすめしません。"
+        "note": "データは中国のサーバーに保存されるため、仕事やチームでの利用はおすすめしません。",
+        "freePurposes": [
+          "writing",
+          "research",
+          "docs",
+          "code",
+          "study",
+          "efficiency",
+          "other"
+        ]
       }
     },
     {
@@ -409,7 +497,13 @@
         "work": false,
         "team": false,
         "japan": false,
-        "note": "2026年10月時点で日本では提供されていないため、診断の対象外です。"
+        "note": "2026年10月時点で日本では提供されていないため、診断の対象外です。",
+        "freePurposes": [
+          "writing",
+          "research",
+          "efficiency",
+          "other"
+        ]
       }
     },
     {
@@ -460,7 +554,21 @@
         "minPaidJPY": 2250,
         "work": true,
         "team": true,
-        "japan": true
+        "japan": true,
+        "freePurposes": [
+          "writing",
+          "research",
+          "image",
+          "code",
+          "study",
+          "other"
+        ],
+        "teamPlan": {
+          "name": "Mistral Team",
+          "priceJPY": 3750,
+          "seats": 1,
+          "note": "$24.99/人（税抜）"
+        }
       }
     },
     {
@@ -511,7 +619,8 @@
         "work": true,
         "team": false,
         "japan": true,
-        "note": "無料プランがないため、無料で使いたい場合は対象外です。"
+        "note": "無料プランがないため、無料で使いたい場合は対象外です。",
+        "freePurposes": []
       }
     }
   ],
