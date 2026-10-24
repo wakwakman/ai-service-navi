@@ -935,13 +935,19 @@ function renderExamples() {
   const list = matchedExamples();
   const preview = view.tab === "all";
   const shown = preview ? list.slice(0, 6) : list;
-  $("ex-grid").innerHTML = shown.length ? shown.map(exCard).join("") : `<p class="empty">条件に合う活用事例がありません。絞り込みを変えてみてください。</p>`;
+  $("ex-grid").innerHTML = shown.length ? shown.map(exCard).join("") : `<div class="empty">条件に合う活用事例がありません。<div class="more-row"><button type="button" class="btn btn-line" id="ex-clear-all">絞り込みをすべて解除する</button></div></div>`;
   $("ex-count").textContent = preview && list.length > 6 ? `${list.length}件中 6件を表示` : `${list.length}件`;
   const more = $("ex-more");
   more.hidden = !(preview && list.length > 6);
   more.innerHTML = more.hidden ? "" : `<button type="button" class="btn btn-line" id="ex-show-all">すべての活用事例を見る（${list.length}件）</button>`;
   $("ex-purpose-tag").innerHTML = exFilter.purpose ? `<button type="button" class="filter-tag" id="ex-clear-purpose">目的：${esc(META.purposes[exFilter.purpose])} ✕</button>` : "";
-  $("ex-genres").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.genre === exFilter.genre)));
+  // ジャンルの件数は、いま効いているサービス・目的の絞り込みをふまえて数える
+  const base = EXAMPLES.filter(ex => (!exFilter.service || ex.service === exFilter.service) && (!exFilter.purpose || ex.purpose === exFilter.purpose));
+  $("ex-genres").querySelectorAll("button").forEach(b => {
+    b.setAttribute("aria-pressed", String(b.dataset.genre === exFilter.genre));
+    const c = b.querySelector(".count");
+    if (c) c.textContent = b.dataset.genre === "all" ? base.length : base.filter(x => x.genre === b.dataset.genre).length;
+  });
   $("ex-service").value = exFilter.service;
 }
 function setupExamples() {
@@ -966,6 +972,7 @@ $("ex-genres").addEventListener("click", e => { const b = e.target.closest("butt
 $("ex-service").addEventListener("change", e => { exFilter.service = e.target.value; renderExamples(); });
 document.addEventListener("click", e => {
   if (e.target.closest("#ex-clear-purpose")) { exFilter.purpose = ""; renderExamples(); }
+  if (e.target.closest("#ex-clear-all")) { exFilter.purpose = ""; exFilter.service = ""; exFilter.genre = "all"; renderExamples(); }
   if (e.target.closest("#ex-show-all")) go("examples");
   const t = e.target.closest(".tile[data-purpose]");
   if (t) {
