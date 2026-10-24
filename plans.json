@@ -1,0 +1,665 @@
+{
+  "updated": "2026-10-25",
+  "plans": [
+    {
+      "service": "chatgpt",
+      "currency": "米ドル",
+      "official": "https://chatgpt.com/pricing",
+      "tiers": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "who": "個人",
+          "note": "広告あり。使えるモデルと回数に制限"
+        },
+        {
+          "name": "Go",
+          "price": "$8",
+          "who": "個人",
+          "note": "広告あり。国ごとに現地価格"
+        },
+        {
+          "name": "Plus",
+          "price": "$20",
+          "who": "個人",
+          "note": "広告なし。上位モデルと機能が使える"
+        },
+        {
+          "name": "Pro",
+          "price": "$100 / $200 / $500",
+          "who": "個人",
+          "note": "使用量の違う3段階。$500は高速応答つき"
+        },
+        {
+          "name": "Business",
+          "price": "$25/人（年払い $20）",
+          "who": "法人",
+          "note": "2人から。管理機能つき"
+        },
+        {
+          "name": "Enterprise",
+          "price": "要問い合わせ",
+          "who": "法人",
+          "note": "大企業向け"
+        }
+      ],
+      "src": [
+        [
+          "Costbench",
+          "https://costbench.com/software/ai-chatbots/chatgpt/"
+        ],
+        [
+          "IntuitionLabs",
+          "https://intuitionlabs.ai/articles/chatgpt-plans-comparison"
+        ]
+      ],
+      "secondary": true,
+      "summary": "無料あり · 個人 $8〜"
+    },
+    {
+      "service": "gemini",
+      "currency": "円",
+      "official": "https://gemini.google/jp/subscriptions/?hl=ja",
+      "tiers": [
+        {
+          "name": "無料",
+          "price": "¥0",
+          "who": "個人",
+          "note": "Flash-Lite モデル。ストレージ15GB"
+        },
+        {
+          "name": "Google AI Plus",
+          "price": "¥725",
+          "who": "個人",
+          "note": "無料版の2倍の上限。ストレージ400GB"
+        },
+        {
+          "name": "Google AI Pro",
+          "price": "¥2,900",
+          "who": "個人",
+          "note": "無料版の4倍の上限。Gemini 4 Argon。ストレージ5TB"
+        },
+        {
+          "name": "Google AI Ultra",
+          "price": "¥14,500 / ¥32,000",
+          "who": "個人",
+          "note": "Proの5倍 / 20倍の上限。ストレージ20TB〜"
+        }
+      ],
+      "src": [
+        [
+          "Google 公式",
+          "https://gemini.google/jp/subscriptions/?hl=ja"
+        ]
+      ],
+      "summary": "無料あり · 個人 ¥725〜"
+    },
+    {
+      "service": "claude",
+      "currency": "米ドル",
+      "official": "https://claude.com/pricing",
+      "tiers": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "who": "個人",
+          "note": "5時間ごとに上限がリセット"
+        },
+        {
+          "name": "Pro",
+          "price": "$20（年払い $17）",
+          "who": "個人",
+          "note": "Freeの5倍以上。Claude Code つき"
+        },
+        {
+          "name": "Max",
+          "price": "$100 / $200",
+          "who": "個人",
+          "note": "Proの5倍 / 20倍の使用量"
+        },
+        {
+          "name": "Team",
+          "price": "$25/人（年払い $20）",
+          "who": "法人",
+          "note": "2〜150人。使用量5倍の Premium 席は $125（年払い $100）"
+        },
+        {
+          "name": "Enterprise",
+          "price": "$20/人（年払い）＋利用量",
+          "who": "法人",
+          "note": "20人から。利用量はAPI料金で加算"
+        }
+      ],
+      "src": [
+        [
+          "Anthropic 公式",
+          "https://claude.com/pricing"
+        ]
+      ],
+      "summary": "無料あり · 個人 $20〜"
+    },
+    {
+      "service": "copilot",
+      "currency": "米ドル",
+      "official": "https://www.microsoft.com/microsoft-365/copilot",
+      "tiers": [
+        {
+          "name": "Copilot（無料）",
+          "price": "$0",
+          "who": "個人",
+          "note": "Webとアプリで使える基本版"
+        },
+        {
+          "name": "Microsoft 365 Premium",
+          "price": "$19.99",
+          "who": "個人",
+          "note": "最大6人。Officeアプリ内のCopilotと大容量ストレージ。Copilot Pro の後継"
+        },
+        {
+          "name": "Microsoft 365 Copilot Business",
+          "price": "$21/人",
+          "who": "法人",
+          "note": "中小企業向け。別途 Microsoft 365 の契約が必要。12月から新規は従量課金が標準"
+        },
+        {
+          "name": "Microsoft 365 Copilot",
+          "price": "$30/人（年契約）",
+          "who": "法人",
+          "note": "大企業向け。別途 Microsoft 365 の契約が必要"
+        }
+      ],
+      "src": [
+        [
+          "Justin McKelvey",
+          "https://justinmckelvey.com/blog/microsoft-365-copilot-pricing"
+        ],
+        [
+          "HowToAI",
+          "https://howtoai.com/copilot-pricing/"
+        ],
+        [
+          "Microsoft Learn",
+          "https://learn.microsoft.com/en-us/partner-center/announcements/2026-october"
+        ]
+      ],
+      "secondary": true,
+      "summary": "無料あり · 個人 $19.99〜"
+    },
+    {
+      "service": "perplexity",
+      "currency": "米ドル",
+      "official": "https://www.perplexity.ai/pro",
+      "summary": "無料あり · 個人 $20〜",
+      "tiers": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "who": "個人",
+          "note": "基本の検索と回答。Comet ブラウザも無料"
+        },
+        {
+          "name": "Pro",
+          "price": "$20（年払い 約$17）",
+          "who": "個人",
+          "note": "高度な検索と複数モデルの切り替え。Comet Plus つき"
+        },
+        {
+          "name": "Max",
+          "price": "$200",
+          "who": "個人",
+          "note": "最上位モデルと新機能を優先して使える"
+        },
+        {
+          "name": "Enterprise Pro",
+          "price": "$34/人（年払い）",
+          "who": "法人",
+          "note": "管理機能と Comet Enterprise つき"
+        },
+        {
+          "name": "Enterprise Max",
+          "price": "$271/人（年払い）",
+          "who": "法人",
+          "note": "Enterprise Pro の上位版"
+        }
+      ],
+      "src": [
+        [
+          "Finout",
+          "https://www.finout.io/blog/perplexity-pricing-in-2026"
+        ],
+        [
+          "eesel AI",
+          "https://www.eesel.ai/blog/perplexity-comet-pricing"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "grok",
+      "currency": "米ドル",
+      "official": "https://x.ai/grok",
+      "summary": "無料あり · 個人 $8〜",
+      "tiers": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "who": "個人",
+          "note": "回数制限つきで利用可"
+        },
+        {
+          "name": "The X Subscription",
+          "price": "$8〜$200（段階制）",
+          "who": "個人",
+          "note": "2026年10月12日にXと一体の料金へ再編。段階の内容は報道で差がある"
+        },
+        {
+          "name": "SuperGrok（既存契約）",
+          "price": "$30（年 $300）",
+          "who": "個人",
+          "note": "再編前からの契約者はそのまま継続"
+        },
+        {
+          "name": "API",
+          "price": "従量課金",
+          "who": "法人",
+          "note": "Grok 4.7 は入力100万トークン $2、出力 $6"
+        }
+      ],
+      "src": [
+        [
+          "Krater",
+          "https://krater.ai/blog/grok-pricing"
+        ],
+        [
+          "Mem0",
+          "https://mem0.ai/blog/xai-grok-api-pricing"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "deepseek",
+      "currency": "米ドル",
+      "official": "https://api-docs.deepseek.com/quick_start/pricing",
+      "summary": "アプリ無料 · API 従量",
+      "tiers": [
+        {
+          "name": "アプリ・Web",
+          "price": "$0",
+          "who": "個人",
+          "note": "無料で利用できる"
+        },
+        {
+          "name": "API（deepseek-flash）",
+          "price": "入力 $0.15 / 出力 $0.60",
+          "who": "法人",
+          "note": "100万トークンあたり。混雑時間帯は約2倍"
+        },
+        {
+          "name": "API（deepseek-v4-pro）",
+          "price": "入力 $0.66 / 出力 $1.98",
+          "who": "法人",
+          "note": "100万トークンあたり（空いている時間帯）"
+        }
+      ],
+      "src": [
+        [
+          "Morph",
+          "https://www.morphllm.com/deepseek-api"
+        ],
+        [
+          "BenchLM",
+          "https://benchlm.ai/deepseek/api-pricing"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "muse",
+      "currency": "米ドル",
+      "official": "https://muse.ai",
+      "summary": "無料あり · 個人 $20〜（米国のみ）",
+      "tiers": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "who": "個人",
+          "note": "カード登録が必要。米国のみ"
+        },
+        {
+          "name": "Power",
+          "price": "$20",
+          "who": "個人",
+          "note": "Muse Wonder を利用可能"
+        },
+        {
+          "name": "Maximum",
+          "price": "$100",
+          "who": "個人",
+          "note": "最上位プラン"
+        }
+      ],
+      "src": [
+        [
+          "TechCrunch",
+          "https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/"
+        ],
+        [
+          "Tech Insider",
+          "https://tech-insider.org/meta-muse-personal-ai-agent-launch-2026/"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "mistral",
+      "currency": "米ドル（税抜）",
+      "official": "https://mistral.ai/pricing",
+      "summary": "無料あり · 個人 $14.99〜",
+      "tiers": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "who": "個人",
+          "note": "メッセージ数や検索に上限"
+        },
+        {
+          "name": "Pro",
+          "price": "$14.99",
+          "who": "個人",
+          "note": "上限の引き上げ、コーディング支援、画像生成の追加。学生は $5.99"
+        },
+        {
+          "name": "Team",
+          "price": "$24.99/人",
+          "who": "法人",
+          "note": "チームでの共有と管理"
+        },
+        {
+          "name": "Enterprise",
+          "price": "要問い合わせ",
+          "who": "法人",
+          "note": "自社環境での運用にも対応"
+        }
+      ],
+      "src": [
+        [
+          "Polarison",
+          "https://polarison.com/tools/mistral"
+        ],
+        [
+          "Automate All",
+          "https://automateall.co/en/blog/mistral-le-chat-vibe/"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "midjourney",
+      "currency": "米ドル",
+      "official": "https://www.midjourney.com/account",
+      "summary": "無料なし · $10〜",
+      "tiers": [
+        {
+          "name": "Basic",
+          "price": "$10（年払い $8相当）",
+          "who": "個人",
+          "note": "高速生成 月3.3時間。低速モードなし"
+        },
+        {
+          "name": "Standard",
+          "price": "$30（年払い $24相当）",
+          "who": "個人",
+          "note": "高速生成 月15時間＋低速モード"
+        },
+        {
+          "name": "Pro",
+          "price": "$60（年払い $48相当）",
+          "who": "個人",
+          "note": "月30時間。作品を非公開にできる"
+        },
+        {
+          "name": "Mega",
+          "price": "$120（年払い $96相当）",
+          "who": "個人",
+          "note": "月60時間。非公開生成つき"
+        }
+      ],
+      "src": [
+        [
+          "eesel AI",
+          "https://eesel.ai/blog/midjourney-pricing"
+        ]
+      ],
+      "secondary": true
+    }
+  ],
+  "data": [
+    {
+      "service": "chatgpt",
+      "personal": {
+        "level": "uses",
+        "label": "既定で学習に使う",
+        "text": "設定の「すべての人のためにモデルを改善する」をオフにすると止められる。一時チャットは学習に使われないが、安全確認のため最大30日保存される。"
+      },
+      "business": {
+        "level": "safe",
+        "label": "既定で学習に使わない",
+        "text": "Business・Enterprise・APIは、入力内容を学習に使わないのが標準。"
+      },
+      "src": [
+        [
+          "WitnessAI",
+          "https://witness.ai/blog/ai-data-retention/"
+        ],
+        [
+          "AI Career Lab",
+          "https://theaicareerlab.com/blog/does-ai-train-on-your-data"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "gemini",
+      "personal": {
+        "level": "uses",
+        "label": "既定で学習に使う",
+        "text": "「Gemini アプリ アクティビティ」がオンだと、学習や人によるレビューに使われる。オフにすると以後は使われないが、約72時間は保存。レビュー済みの会話は最大3年残る。"
+      },
+      "business": {
+        "level": "safe",
+        "label": "既定で学習に使わない",
+        "text": "Google Workspace 経由で使う場合、組織のデータは学習に使わないのが標準。"
+      },
+      "src": [
+        [
+          "Strac",
+          "https://www.strac.io/blog/gemini-data-privacy"
+        ],
+        [
+          "WitnessAI",
+          "https://witness.ai/blog/ai-data-retention/"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "claude",
+      "personal": {
+        "level": "choice",
+        "label": "利用者が選ぶ",
+        "text": "Free・Pro・Maxは、学習への利用を許可するか利用者が選ぶ（公式表記はオプトアウト方式）。許可すると最大5年、許可しないと30日の保存。"
+      },
+      "business": {
+        "level": "safe",
+        "label": "既定で学習に使わない",
+        "text": "Team・Enterpriseは公式に「既定で学習なし」。Enterpriseは保存期間も組織で設定できる。"
+      },
+      "src": [
+        [
+          "Anthropic 公式",
+          "https://claude.com/pricing"
+        ],
+        [
+          "AI Career Lab",
+          "https://theaicareerlab.com/blog/does-ai-train-on-your-data"
+        ]
+      ]
+    },
+    {
+      "service": "copilot",
+      "personal": {
+        "level": "choice",
+        "label": "設定で止められる",
+        "text": "個人向けCopilotは、設定の「モデルのトレーニング」で学習への利用を止められる。人による確認の扱いは情報が食い違っているため、公式のプライバシー説明を確認したい。"
+      },
+      "business": {
+        "level": "safe",
+        "label": "既定で学習に使わない",
+        "text": "Microsoft 365 Copilot は組織のデータを基盤モデルの学習に使わず、社内の権限設定をそのまま引き継ぐ。"
+      },
+      "src": [
+        [
+          "Digital Applied",
+          "https://www.digitalapplied.com/blog/who-can-read-your-ai-chats-human-review-census"
+        ],
+        [
+          "WitnessAI",
+          "https://witness.ai/blog/ai-data-retention/"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "perplexity",
+      "personal": {
+        "level": "choice",
+        "label": "設定で止められる",
+        "text": "設定で、検索や質問の内容をAIの改善に使わせないよう選べる。"
+      },
+      "business": {
+        "level": "safe",
+        "label": "既定で学習に使わない",
+        "text": "Enterprise は組織のデータを学習に使わないのが標準。"
+      },
+      "src": [
+        [
+          "How to Opt Out",
+          "https://trustscan.dev/blog/opt-out-llm-training-data-2026"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "grok",
+      "personal": {
+        "level": "uses",
+        "label": "既定で学習に使う",
+        "text": "Grok との会話や X の投稿が学習に使われる。X の設定から止められる。"
+      },
+      "business": {
+        "level": "choice",
+        "label": "契約で確認",
+        "text": "API・法人向けの扱いは契約条件で確認したい。"
+      },
+      "src": [
+        [
+          "How to Opt Out",
+          "https://trustscan.dev/blog/opt-out-llm-training-data-2026"
+        ],
+        [
+          "Lumichats",
+          "https://lumichats.com/blog/chatgpt-claude-gemini-training-your-data-2026-privacy-guide"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "deepseek",
+      "personal": {
+        "level": "uses",
+        "label": "既定で学習に使う",
+        "text": "入力内容は学習に使われ、データは中国のサーバーに保存される。中国の法令が適用される。"
+      },
+      "business": {
+        "level": "uses",
+        "label": "法人向けプランなし",
+        "text": "API も同じく中国のサーバーで処理される。機密情報は入れないこと。"
+      },
+      "src": [
+        [
+          "INTERNET Watch",
+          "https://internet.watch.impress.co.jp/docs/news/1660903.html"
+        ],
+        [
+          "Justin McKelvey",
+          "https://justinmckelvey.com/blog/deepseek-vs-chatgpt"
+        ]
+      ]
+    },
+    {
+      "service": "muse",
+      "personal": {
+        "level": "uses",
+        "label": "既定で学習に使う",
+        "text": "会話は AI の改善に使われるとされる。個人データの扱いを懸念する報道がある。"
+      },
+      "business": {
+        "level": "choice",
+        "label": "法人向けプランなし",
+        "text": "法人向けの提供は確認できない。"
+      },
+      "src": [
+        [
+          "CNBC",
+          "https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "mistral",
+      "personal": {
+        "level": "choice",
+        "label": "設定で止められる",
+        "text": "Free・Pro では会話が学習に使われることがあり、設定で止められる。"
+      },
+      "business": {
+        "level": "safe",
+        "label": "既定で学習に使わない",
+        "text": "Team・Enterprise は学習に使わないのが標準。自社環境で動かすこともできる。"
+      },
+      "src": [
+        [
+          "Syntax Dispatch",
+          "https://www.syntaxdispatch.com/blog/mistral-vibe-review"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "midjourney",
+      "personal": {
+        "level": "uses",
+        "label": "作品は既定で公開",
+        "text": "Basic・Standard で作った画像は公開ギャラリーに表示される。非公開にするには Pro 以上が必要。"
+      },
+      "business": {
+        "level": "choice",
+        "label": "法人向けプランなし",
+        "text": "年間売上100万ドルを超える企業は Pro か Mega の契約が必要とされる。"
+      },
+      "src": [
+        [
+          "eesel AI",
+          "https://eesel.ai/blog/midjourney-pricing"
+        ],
+        [
+          "Javi's Review",
+          "https://javisreview.com/review/midjourney-review-2026/"
+        ]
+      ],
+      "secondary": true
+    }
+  ]
+}

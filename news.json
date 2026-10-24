@@ -1,0 +1,518 @@
+{
+  "updated": "2026-10-25",
+  "period": "2026年10月",
+  "services": {
+    "chatgpt": [
+      {
+        "date": "2026-10-07",
+        "title": "GPT-6 と「Intelligent UI」を公開",
+        "text": "回答の中に操作できる図や表を表示する新しい画面。有料プランにGPT-6 Sol、無料・GoプランにGPT-6 Lunaを提供。",
+        "src": [
+          [
+            "TechCrunch",
+            "https://techcrunch.com/2026/10/07/chatgpt-is-getting-a-lot-more-visual-with-the-launch-of-a-new-interface/"
+          ],
+          [
+            "OpenAI",
+            "https://openai.com/index/gpt-6-for-everyone/"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10-08",
+        "title": "USA Today Co. が著作権侵害で提訴",
+        "text": "19媒体の記事数十万本が無断で学習に使われたとして、2億5,000万ドルの損害賠償を求めた。",
+        "src": [
+          [
+            "Press Gazette",
+            "https://pressgazette.co.uk/platforms/news-publisher-ai-deals-lawsuits-openai-google/"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10月",
+        "title": "広告表示を新たに26か国へ拡大、計80か国に",
+        "text": "対象は無料・Goプランのみ。Plus、Pro、Enterpriseは広告なし。",
+        "src": [
+          [
+            "PYMNTS",
+            "https://pymnts.com/news/artificial-intelligence/2026/openai-expands-chatgpt-ads-to-26-new-countries"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10月",
+        "title": "API の GPT-4o などを1月14日に終了予定",
+        "text": "開発者には gpt-6-luna への移行を案内。",
+        "src": [
+          [
+            "AI Weekly",
+            "https://aiweekly.co/ai-news-today/openai-news"
+          ]
+        ],
+        "secondary": true
+      }
+    ],
+    "gemini": [
+      {
+        "date": "2026-10-08",
+        "title": "業務向けの「単一のGeminiエージェント」を発表",
+        "text": "質問対応、資料作成、画像・動画生成、コーディングを1つのエージェントにまとめた。",
+        "src": [
+          [
+            "Futurum",
+            "https://futurumgroup.com/insights/google-collapses-enterprise-ai-into-a-single-gemini-agent-at-gemini-at-work-2026/"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10-09",
+        "title": "無料プランのモデルを1種類に縮小",
+        "text": "無料で使えるのは Gemini 3.5 Flash-Lite のみとなり、上位モデルは有料プランへ。",
+        "src": [
+          [
+            "Tech Insider",
+            "https://tech-insider.org/google-cuts-free-gemini-1-model-oct-9-2026/"
+          ]
+        ],
+        "secondary": true
+      },
+      {
+        "date": "2026-10-20",
+        "title": "行政機関向け「Gemini for Government Services」",
+        "text": "米国の連邦・州・自治体向けに、業務効率化と住民サービス向けのエージェントを提供。",
+        "src": [
+          [
+            "Google Cloud",
+            "https://www.googlecloudpresscorner.com/2026-10-20-Google-Public-Sector-Launches-Gemini-for-Government-Services"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10-22",
+        "title": "マップの検索履歴・保存場所を使った提案に対応",
+        "text": "カレンダーとあわせて日々のおすすめを出す「Personal Intelligence」を拡大。Android Autoにも展開。",
+        "src": [
+          [
+            "9to5Google",
+            "https://9to5google.com/2026/10/22/gemini-personal-intelligence-maps"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10月",
+        "title": "Chrome にGeminiによる詐欺サイト検知",
+        "text": "偽サイトや ClickFix 型の攻撃を警告する保護機能を追加。",
+        "src": [
+          [
+            "BleepingComputer",
+            "https://bleepingcomputer.com/news/google/google-chrome-adds-gemini-powered-scam-detection-warns-users-of-clickfix-attacks"
+          ]
+        ]
+      }
+    ],
+    "claude": [
+      {
+        "date": "2026-10月",
+        "title": "Claude Opus 5.5 と Haiku 5.5 を公開",
+        "text": "Opus 5.5 はコーディングと知的作業が得意で、Opus 5より運用コストを約4割削減。Haiku 5.5 は大量処理向けの高速モデル。",
+        "src": [
+          [
+            "Anthropic",
+            "https://www.anthropic.com/news"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10月",
+        "title": "先回りして動くエージェント「Claude Duet」を試験公開",
+        "text": "Pro・Max プラン向けのリサーチプレビュー。",
+        "src": [
+          [
+            "Anthropic",
+            "https://www.anthropic.com/news"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10-21",
+        "title": "カナダの報道機関4社が著作権侵害で提訴",
+        "text": "Postmedia、Torstar、The Globe and Mail、The Canadian Press が原告。",
+        "src": [
+          [
+            "Press Gazette",
+            "https://pressgazette.co.uk/platforms/news-publisher-ai-deals-lawsuits-openai-google/"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10-22",
+        "title": "Google Cloud 経由のClaude API提供を開始",
+        "text": "Anthropicが管理するAPIを Google Cloud から利用できるようになった。",
+        "src": [
+          [
+            "Releasebot",
+            "https://releasebot.io/updates/anthropic/claude-developer-platform"
+          ]
+        ],
+        "secondary": true
+      },
+      {
+        "date": "2026-10月",
+        "title": "2026年版「Public Benefit Report」を公表",
+        "text": "教育・医療・科学研究での活用と、安全性の課題をまとめた。",
+        "src": [
+          [
+            "EdTech Innovation Hub",
+            "https://www.edtechinnovationhub.com/news/anthropic-publishes-public-benefit-report-detailing-ai-progress-and-gaps-in-measuring-impact"
+          ]
+        ]
+      }
+    ],
+    "copilot": [
+      {
+        "date": "2026-10-06",
+        "title": "検索とチャットを統合",
+        "text": "Microsoft 365 Copilot Search に対話型チャットを組み込み、回答の再生成も簡単に。",
+        "src": [
+          [
+            "Releasebot",
+            "https://releasebot.io/updates/microsoft/microsoft-copilot"
+          ]
+        ],
+        "secondary": true
+      },
+      {
+        "date": "2026-10-16",
+        "title": "ライセンス表記を「アドオン」に変更、12月から従量課金が標準",
+        "text": "新規の Microsoft 365 Copilot Business は2026年12月1日から従量課金がデフォルトに。",
+        "src": [
+          [
+            "Microsoft Learn",
+            "https://learn.microsoft.com/en-us/partner-center/announcements/2026-october"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10-21",
+        "title": "フォルクスワーゲン・グループの33万人超にCopilotを展開",
+        "text": "Copilot Chat から段階的に導入し、Work IQ 付きの Copilot に拡大。",
+        "src": [
+          [
+            "Microsoft",
+            "https://news.microsoft.com/source/2026/10/21/microsoft-empowers-more-than-330000-volkswagen-group-employees-with-copilot/"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10月",
+        "title": "SharePoint の Copilot にPDF部分編集と自動入力",
+        "text": "9月30日に一般提供を開始し、10月にPDFのセクション単位編集と Advanced Autofill を追加。",
+        "src": [
+          [
+            "Microsoft Tech Community",
+            "https://techcommunity.microsoft.com/blog/spblog/what%E2%80%99s-new-in-copilot-in-sharepoint-october-2026/4535423"
+          ]
+        ]
+      }
+    ],
+    "perplexity": [
+      {
+        "date": "2026-08",
+        "title": "年換算の売上が7.5億ドルを突破",
+        "text": "年初の2.5億ドル未満から急伸したとThe Informationが報じた。直近で確認できる企業価値は2025年9月の200億ドル。",
+        "src": [
+          [
+            "Value Add VC",
+            "https://valueaddvc.com/blog/perplexity-ai-valuation-revenue-2026-23b-450m-arr"
+          ]
+        ],
+        "secondary": true
+      },
+      {
+        "date": "2026-03-17",
+        "title": "法人向け「Comet Enterprise」を提供開始",
+        "text": "AIブラウザ Comet の法人版。Enterprise Pro・Max の契約に含まれる。",
+        "src": [
+          [
+            "eesel AI",
+            "https://www.eesel.ai/blog/perplexity-comet-pricing"
+          ]
+        ],
+        "secondary": true
+      },
+      {
+        "date": "2026-10月",
+        "title": "Dow Jones・New York Post との著作権訴訟が陪審裁判へ",
+        "text": "記事の無断利用をめぐる訴訟で、10〜14日間の陪審裁判に向けて準備が進む。",
+        "src": [
+          [
+            "Startup Fortune",
+            "https://startupfortune.com/dow-jones-and-new-york-post-press-copyright-case-as-perplexity-nears-trial/"
+          ]
+        ],
+        "secondary": true
+      }
+    ],
+    "grok": [
+      {
+        "date": "2026-10-12",
+        "title": "料金を「The X Subscription」に再編",
+        "text": "単体の SuperGrok の新規受付をやめ、Xのサブスクリプションと一体化した。段階や価格は報道によって食い違いがある。",
+        "src": [
+          [
+            "Krater",
+            "https://krater.ai/blog/grok-pricing"
+          ],
+          [
+            "Costbench",
+            "https://costbench.com/software/ai-chatbots/grok/"
+          ]
+        ],
+        "secondary": true
+      },
+      {
+        "date": "2026-10月",
+        "title": "API の主力モデルが Grok 4.7 に",
+        "text": "入力100万トークンあたり2ドル、出力6ドルと報じられている。",
+        "src": [
+          [
+            "Mem0",
+            "https://mem0.ai/blog/xai-grok-api-pricing"
+          ]
+        ],
+        "secondary": true
+      },
+      {
+        "date": "2026-02-03",
+        "title": "SpaceX が xAI を買収",
+        "text": "株式交換による買収で、合算の企業価値は1.25兆ドル。xAI は SpaceX の完全子会社になった。",
+        "src": [
+          [
+            "CNBC",
+            "https://www.cnbc.com/2026/02/03/musk-xai-spacex-biggest-merger-ever.html"
+          ]
+        ]
+      }
+    ],
+    "deepseek": [
+      {
+        "date": "2026-10-17",
+        "title": "軽量モデル V4.1-Flash を公開",
+        "text": "API の最安モデル deepseek-flash がこの版に切り替わった。",
+        "src": [
+          [
+            "Morph",
+            "https://www.morphllm.com/deepseek-api"
+          ]
+        ],
+        "secondary": true
+      },
+      {
+        "date": "2026-10月",
+        "title": "検索・ページ取得の API を開始",
+        "text": "1,000回あたり0.75ドル。他社の検索APIより安い価格で参入した。",
+        "src": [
+          [
+            "The New Stack",
+            "https://thenewstack.io/deepseek-web-search-api/"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10月",
+        "title": "推論用のオープンソースツールを公開",
+        "text": "自社モデルを効率よく動かすツールを公開し、OpenAI や Anthropic への価格面の圧力を強めた。",
+        "src": [
+          [
+            "Gizmodo",
+            "https://gizmodo.com/deepseek-dials-up-the-pressure-on-openai-and-anthropic-with-open-source-inference-tool-2000828261"
+          ]
+        ]
+      }
+    ],
+    "muse": [
+      {
+        "date": "2026-10-12",
+        "title": "初の最先端モデル「Muse Wonder」を発表",
+        "text": "Meta Superintelligence Labs の初の成果。上位版の Muse Wonder Full は有料プランと Muse Code 向け。",
+        "src": [
+          [
+            "Axios",
+            "https://www.axios.com/2026/10/12/meta-new-ai-models-anthropic-openai"
+          ],
+          [
+            "CNBC",
+            "https://www.cnbc.com/2026/10/12/meta-muse-wonder-ai-model-agent.html"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10-07",
+        "title": "Muse アプリがランキング上位に",
+        "text": "公開後すぐにアプリストアの上位に入った一方、日常的に使われるかが課題とされる。",
+        "src": [
+          [
+            "CNBC",
+            "https://www.cnbc.com/2026/10/07/meta-muse-personal-ai-agents-dazzle.html"
+          ]
+        ]
+      },
+      {
+        "date": "2026-09-08",
+        "title": "個人向けAIエージェント「Muse」を米国で公開",
+        "text": "iOS、Android、WhatsApp、Macで利用可能。無料版に加え、月20ドルと100ドルの有料版がある。",
+        "src": [
+          [
+            "TechCrunch",
+            "https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/"
+          ]
+        ]
+      }
+    ],
+    "mistral": [
+      {
+        "date": "2026-10-06",
+        "title": "Mistral Large 4 をプレビュー公開",
+        "text": "中国以外で最も高性能な公開モデルとCNBCが報じた。",
+        "src": [
+          [
+            "Mistral AI",
+            "https://mistral.ai/news/mistral-large-4/"
+          ],
+          [
+            "TechCrunch",
+            "https://techcrunch.com/2026/10/06/mistrals-new-1t-model-aims-to-leapfrog-closed-and-open-rivals/"
+          ]
+        ]
+      },
+      {
+        "date": "2026-09",
+        "title": "サムスン電子が出資",
+        "text": "30億ユーロ規模の取引で株式を取得したと報じられている。",
+        "src": [
+          [
+            "Wikipedia",
+            "https://en.wikipedia.org/wiki/Mistral_AI"
+          ]
+        ],
+        "secondary": true
+      },
+      {
+        "date": "2026-05-28",
+        "title": "「Le Chat」を「Vibe」に改名",
+        "text": "会話履歴や設定、契約はそのまま引き継がれた。",
+        "src": [
+          [
+            "Automate All",
+            "https://automateall.co/en/blog/mistral-le-chat-vibe/"
+          ]
+        ],
+        "secondary": true
+      }
+    ],
+    "midjourney": [
+      {
+        "date": "2026-10-14",
+        "title": "著作権キャラクターの再現率が最も高いとの報告",
+        "text": "調査会社の報告で、V8.1 は約37%の指示で著作権のあるキャラクターを再現したとされた。単一の調査結果。",
+        "src": [
+          [
+            "Deadline",
+            "https://deadline.com/2026/10/midjourney-worst-offender-flouting-hollywood-copyright-1237154802/"
+          ]
+        ]
+      },
+      {
+        "date": "2026-10-06",
+        "title": "ディズニー訴訟で動画の学習データを提出することに合意",
+        "text": "原告側との合意により、動画モデルの学習に使ったデータセットを引き渡す。",
+        "src": [
+          [
+            "ChatGPT Is Eating the World",
+            "https://chatgptiseatingtheworld.com/2026/10/06/by-stipulation-midjourney-will-share-video-training-data-with-disney-plaintiffs/"
+          ]
+        ]
+      },
+      {
+        "date": "2026-07-24",
+        "title": "V8.2 を標準モデルに",
+        "text": "6月の V8.1 に続く改良版。",
+        "src": [
+          [
+            "Javi's Review",
+            "https://javisreview.com/review/midjourney-review-2026/"
+          ]
+        ],
+        "secondary": true
+      }
+    ]
+  },
+  "society": [
+    {
+      "date": "2026-10-19",
+      "title": "日本：AI法の改正論議が本格化",
+      "text": "現行のAI法（2025年成立）は罰則のない推進法。AI担当閣僚が古川俊治デジタル相に集約され、規制と利活用の両立に向けて省庁間の調整が進む。",
+      "src": [
+        [
+          "日本経済新聞",
+          "https://www.nikkei.com/article/DGXZQOUA13A680T11C26A0000000/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07",
+      "title": "日本：個人情報保護法の改正法が成立",
+      "text": "生成AIの開発に関わる統計作成等の特例などを含む。施行までの動きを確認しておきたい。",
+      "src": [
+        [
+          "三宅法律事務所",
+          "https://www.miyake.gr.jp/notice/%E5%80%8B%E4%BA%BA%E6%83%85%E5%A0%B1%E4%BF%9D%E8%AD%B7%E6%B3%95%E7%AD%89%E6%94%B9%E6%AD%A3%E6%B3%95%E6%A1%88%E3%81%A8%E7%94%9F%E6%88%90ai%E2%80%95-2026%E5%B9%B44%E6%9C%887%E6%97%A5%E9%96%A3%E8%AD%B0/"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "date": "2026-08",
+      "title": "EU：AI Act が全面適用の段階へ",
+      "text": "リスクに応じて義務を課す規制型の法律。日本の「推進法＋ガイドライン」型とは性格が異なる。",
+      "src": [
+        [
+          "AIteller",
+          "https://aiteller.jp/blog/ai-regulation-hub"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "date": "2026-10-19",
+      "title": "米国：作家約300人がMetaを著作権侵害で提訴",
+      "text": "AI企業を相手取った著作権訴訟は、ある集計で144件（うち113件が係属中）に達している。",
+      "src": [
+        [
+          "Press Gazette",
+          "https://pressgazette.co.uk/platforms/news-publisher-ai-deals-lawsuits-openai-google/"
+        ],
+        [
+          "AI Lawsuit Tracker",
+          "https://ailawsuittracker.com/ai-copyright-lawsuits/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10月",
+      "title": "米国：裁判書類のAIによる架空引用が相次ぐ",
+      "text": "コロラド州の連邦裁判所が、生成AIで作られたとみられる架空の判例引用について説明を求めた。AI由来の誤りを含む判決を出した裁判官が担当を外れた例も。",
+      "src": [
+        [
+          "National Law Review",
+          "https://natlawreview.com/article/when-robot-lies-colorado-courts-warning-ai-hallucinations-court-filings"
+        ],
+        [
+          "Bloomberg Law",
+          "https://news.bloomberglaw.com/us-law-week/judge-whose-ruling-had-ai-generated-errors-sees-case-reassigned"
+        ]
+      ]
+    }
+  ]
+}

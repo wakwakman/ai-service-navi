@@ -1,0 +1,316 @@
+{
+  "updated": "2026-10-25",
+  "companies": [
+    {
+      "service": "chatgpt",
+      "company": "OpenAI",
+      "legal": "OpenAI Group PBC（公益法人）",
+      "founded": "2015年（非営利の研究組織として発足）",
+      "hq": "米国 サンフランシスコ",
+      "leader": "サム・アルトマン（CEO）",
+      "structure": "非営利の OpenAI Foundation が約26%を持ち、経営を監督する。Microsoft が約27%を保有。",
+      "scale": "企業価値 8,520億ドル（2026年3月の資金調達時）。ChatGPT の週間利用者は約12億人と報じられている。",
+      "business": "個人・法人向けの月額課金、開発者向けAPI、無料・Goプランの広告。",
+      "products": [
+        "ChatGPT",
+        "GPT-6",
+        "ChatGPT Atlas（ブラウザ）",
+        "Codex（開発支援）"
+      ],
+      "japan": "OpenAI Japan合同会社。2024年4月に東京オフィスを開設（アジア初の拠点）。",
+      "stance": "製品の幅と利用者数で先行。新しい機能を早く出す。",
+      "src": [
+        [
+          "Wikipedia",
+          "https://en.wikipedia.org/wiki/OpenAI"
+        ],
+        [
+          "Tech Insider",
+          "https://tech-insider.org/openai-122-billion-funding-round-852-billion-valuation-2026/"
+        ],
+        [
+          "TechnologyChecker",
+          "https://technologychecker.io/blog/chatgpt-statistics"
+        ],
+        [
+          "AI総研",
+          "https://www.ai-souken.com/article/openai-other"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "gemini",
+      "company": "Google（Google DeepMind）",
+      "legal": "Alphabet Inc. の子会社 Google LLC",
+      "founded": "Google 1998年／Google DeepMind 2023年（Google Brain と DeepMind が統合）",
+      "hq": "米国 マウンテンビュー（DeepMind は英国 ロンドン）",
+      "leader": "スンダー・ピチャイ（Alphabet CEO）、デミス・ハサビス（Google DeepMind CEO）",
+      "structure": "上場企業 Alphabet の一部門。研究開発は Google DeepMind が担う。",
+      "scale": "Gemini アプリの月間利用者は10億人超（2026年8月）。2026年の設備投資見通しは1,750億〜1,850億ドル。",
+      "business": "検索広告、Google AI Pro などの月額課金、Google Cloud と Workspace の法人契約。",
+      "products": [
+        "Gemini アプリ",
+        "Gemini API・AI Studio",
+        "NotebookLM",
+        "Chrome・Android への組み込み"
+      ],
+      "japan": "グーグル合同会社（東京・渋谷）。日本語対応と国内向け提供は早い。",
+      "stance": "検索・Gmail・Android など既存サービスにAIを広く組み込む。",
+      "src": [
+        [
+          "Google 公式ブログ",
+          "https://blog.google/innovation-and-ai/products/gemini-app/one-billion-monthly-users/"
+        ],
+        [
+          "CNBC",
+          "https://www.cnbc.com/2026/02/04/alphabet-resets-the-bar-for-ai-infrastructure-spending.html"
+        ],
+        [
+          "Wikipedia",
+          "https://en.wikipedia.org/wiki/Google_Gemini"
+        ]
+      ]
+    },
+    {
+      "service": "claude",
+      "company": "Anthropic",
+      "legal": "Anthropic PBC（公益法人）",
+      "founded": "2021年（OpenAI 出身の研究者らが設立）",
+      "hq": "米国 サンフランシスコ",
+      "leader": "ダリオ・アモデイ（CEO）",
+      "structure": "未上場。2026年6月に新規株式公開（IPO）の書類を非公開で提出したと報じられている。",
+      "scale": "企業価値 9,650億ドル（2026年5月の資金調達時）。",
+      "business": "法人・開発者向けAPIが中心。個人・チーム向けの月額課金も。",
+      "products": [
+        "Claude",
+        "Claude Code（開発支援）",
+        "Claude Security",
+        "Claude in Chrome"
+      ],
+      "japan": "Anthropic Japan合同会社。2025年10月に東京オフィスを開設（アジア太平洋初）。日本のAIセーフティ・インスティテュートと協力覚書を締結。",
+      "stance": "安全性の研究と法人向けの信頼性を重視。",
+      "src": [
+        [
+          "Sacra",
+          "https://sacra.com/c/anthropic/"
+        ],
+        [
+          "Revenue Memo",
+          "https://www.revenuememo.com/p/anthropic-funding"
+        ],
+        [
+          "ITmedia NEWS",
+          "https://www.itmedia.co.jp/news/articles/2510/30/news084.html"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "copilot",
+      "company": "Microsoft",
+      "legal": "Microsoft Corporation",
+      "founded": "1975年",
+      "hq": "米国 ワシントン州レドモンド",
+      "leader": "サティア・ナデラ（CEO）、ムスタファ・スレイマン（Microsoft AI CEO）",
+      "structure": "上場企業。OpenAI の株式約27%を持つが独占契約は解消し、Anthropic など他社のモデルも採用。自社モデル（MAI）の開発も進める。",
+      "scale": "有料の Microsoft 365 Copilot 利用者は約2,000万人と報じられている（2026年5月）。",
+      "business": "Microsoft 365 の法人契約への追加料金、個人向け Microsoft 365 Premium、Azure のクラウド利用料。",
+      "products": [
+        "Microsoft 365 Copilot",
+        "Copilot アプリ",
+        "GitHub Copilot",
+        "Azure AI Foundry"
+      ],
+      "japan": "日本マイクロソフト株式会社（東京・港区）。国内の大企業・官公庁との取引が多い。",
+      "stance": "Office と社内システムの中で使う業務用AIに集中。",
+      "src": [
+        [
+          "Fortune",
+          "https://fortune.com/2026/05/21/microsoft-copilot-ai-openai-satya-nadella-gemini-claude/"
+        ],
+        [
+          "CNBC",
+          "https://www.cnbc.com/2026/03/17/microsoft-copilot-ai-suleyman.html"
+        ],
+        [
+          "The AI Rankings",
+          "https://theairankings.com/microsoft/"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "perplexity",
+      "company": "Perplexity AI",
+      "legal": "Perplexity AI, Inc.",
+      "founded": "2022年",
+      "hq": "米国 サンフランシスコ",
+      "leader": "アラビンド・スリニバス（CEO）",
+      "structure": "未上場。ソフトバンク・ビジョン・ファンド2などが出資。CEOは2028年の上場を目指すと発言したと報じられている。",
+      "scale": "直近で確認できる企業価値は200億ドル（2025年9月）。年換算売上は7.5億ドル超（2026年8月）。",
+      "business": "個人向けの月額課金、法人向け Enterprise、検索API（Sonar）。",
+      "products": [
+        "Perplexity",
+        "Comet（AIブラウザ）",
+        "Sonar API"
+      ],
+      "japan": "日本法人の情報は確認できない。ソフトバンクが出資している。",
+      "stance": "検索と出典の明示に特化し、Googleの検索に挑む。",
+      "src": [
+        [
+          "Value Add VC",
+          "https://valueaddvc.com/blog/perplexity-ai-valuation-revenue-2026-23b-450m-arr"
+        ],
+        [
+          "Tracxn",
+          "https://tracxn.com/d/companies/perplexity/__V2BE-5ihMWJ1hNb2_u1W7Gry25JzPFCBg-iNWi94XI8/funding-and-investors"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "grok",
+      "company": "xAI（SpaceX）",
+      "legal": "SpaceX の完全子会社",
+      "founded": "2023年（xAI として設立）",
+      "hq": "米国",
+      "leader": "イーロン・マスク",
+      "structure": "2026年2月に SpaceX が株式交換で買収。マスク氏は SpaceX の約43%を保有。上場の準備が報じられている。",
+      "scale": "買収時の xAI の評価額は2,500億ドル、SpaceX との合算で1.25兆ドル。",
+      "business": "X のサブスクリプション、開発者向けAPI。",
+      "products": [
+        "Grok",
+        "Grok API",
+        "X に組み込まれた Grok"
+      ],
+      "japan": "日本法人の情報は確認できない。X アプリを通じて日本でも使える。",
+      "stance": "X のリアルタイムな情報と、規制の少ない回答方針。",
+      "src": [
+        [
+          "CNBC",
+          "https://www.cnbc.com/2026/02/03/musk-xai-spacex-biggest-merger-ever.html"
+        ],
+        [
+          "Wikipedia",
+          "https://en.wikipedia.org/wiki/SpaceXAI"
+        ]
+      ]
+    },
+    {
+      "service": "deepseek",
+      "company": "DeepSeek",
+      "legal": "杭州深度求索人工智能基礎技術研究有限公司",
+      "founded": "2023年",
+      "hq": "中国 杭州",
+      "leader": "梁文鋒（創業者）",
+      "structure": "未上場。中国のヘッジファンド「幻方（High-Flyer）」が母体。",
+      "scale": "大手と比べてはるかに低い価格でAPIを提供し、世界の価格競争を引き起こした。",
+      "business": "開発者向けAPIの従量課金（アプリは無料）。",
+      "products": [
+        "DeepSeek アプリ",
+        "DeepSeek V4 系モデル",
+        "公開モデル（オープンウェイト）"
+      ],
+      "japan": "日本拠点なし。2025年2月に個人情報保護委員会が利用上の注意を呼びかけた。",
+      "stance": "低コストと公開モデルで普及を狙う。",
+      "src": [
+        [
+          "Wikipedia",
+          "https://en.wikipedia.org/wiki/DeepSeek_(chatbot)"
+        ],
+        [
+          "INTERNET Watch",
+          "https://internet.watch.impress.co.jp/docs/news/1660903.html"
+        ]
+      ]
+    },
+    {
+      "service": "muse",
+      "company": "Meta",
+      "legal": "Meta Platforms, Inc.",
+      "founded": "2004年（Facebook として）",
+      "hq": "米国 メンロパーク",
+      "leader": "マーク・ザッカーバーグ（CEO）、アレクサンドル・ワン（Meta Superintelligence Labs）",
+      "structure": "上場企業。AI開発は Meta Superintelligence Labs が担う。",
+      "scale": "Facebook・Instagram・WhatsApp の利用者基盤を持つ。Muse は公開22日で米国で500万ダウンロードを超えたとされる。",
+      "business": "広告が中心。Muse の有料プランとモデルAPIを開始。",
+      "products": [
+        "Muse",
+        "Muse Wonder",
+        "Instagram・WhatsApp の AI 機能",
+        "Llama（公開モデル）"
+      ],
+      "japan": "Facebook Japan（東京）。Muse は日本では未提供。",
+      "stance": "SNS とメッセージアプリに個人向けAIエージェントを広げる。",
+      "src": [
+        [
+          "CNBC",
+          "https://www.cnbc.com/2026/10/12/meta-muse-wonder-ai-model-agent.html"
+        ],
+        [
+          "Wikipedia",
+          "https://en.wikipedia.org/wiki/Meta_Superintelligence_Labs"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "mistral",
+      "company": "Mistral AI",
+      "legal": "Mistral AI SAS",
+      "founded": "2023年",
+      "hq": "フランス パリ",
+      "leader": "アルチュール・メンシュ（CEO）",
+      "structure": "未上場。2026年9月にサムスン電子が出資したと報じられている。",
+      "scale": "企業価値は247億ドル（2026年9月）。欧州最大級のAI企業。",
+      "business": "法人・政府向けの契約、API、Vibe の月額課金。",
+      "products": [
+        "Vibe（旧 Le Chat）",
+        "Mistral Large 4",
+        "公開モデル"
+      ],
+      "japan": "日本法人の情報は確認できない。",
+      "stance": "欧州発のAIとして、データの主権と公開モデルを重視。",
+      "src": [
+        [
+          "Wikipedia",
+          "https://en.wikipedia.org/wiki/Mistral_AI"
+        ],
+        [
+          "CNBC",
+          "https://www.cnbc.com/2026/10/06/mistral-ai-model-le-chonk.html"
+        ]
+      ],
+      "secondary": true
+    },
+    {
+      "service": "midjourney",
+      "company": "Midjourney",
+      "legal": "Midjourney, Inc.",
+      "founded": "2021年",
+      "hq": "米国 サンフランシスコ",
+      "leader": "デビッド・ホルツ（創業者・CEO）",
+      "structure": "未上場。外部の投資を受けない独立系として知られる。",
+      "scale": "少人数の組織で、画像生成の代表的なサービスに成長。",
+      "business": "月額課金のみ（公式APIなし）。",
+      "products": [
+        "Midjourney（画像・動画生成）",
+        "V8.2 モデル"
+      ],
+      "japan": "日本拠点なし。Web版で日本からも使える。",
+      "stance": "画質と芸術的な表現を追求する。",
+      "src": [
+        [
+          "AI Business Weekly",
+          "https://aibusinessweekly.net/p/midjourney-statistics"
+        ],
+        [
+          "Rinzara",
+          "https://rinzara.com/articles/disney-midjourney-lawsuit-2026"
+        ]
+      ],
+      "secondary": true
+    }
+  ]
+}

@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="ChatGPT・Gemini・Claude・Copilot など主要な生成AIサービスの良い点と注意点、料金、データの扱い、運営会社、毎週更新のニュースをまとめた案内サイト。">
+<meta name="theme-color" content="#0f1f3a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AIサービスナビ">
+<meta property="og:description" content="ChatGPT・Gemini・Claude・Copilot など主要な生成AIサービスの良い点と注意点、料金、データの扱い、運営会社、毎週更新のニュースをまとめた案内サイト。">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%23fff' stroke='%23ffb81c' stroke-width='8'/%3E%3Ctext x='32' y='42' font-family='sans-serif' font-size='26' font-weight='900' text-anchor='middle' fill='%230f1f3a'%3EAI%3C/text%3E%3C/svg%3E">
+<style>:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>AIサービスナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Murecho:wght@500;700;900&family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: 駅の案内サイン。濃紺の案内板ヘッダーに路線図型のナビ、各サービスを「駅ナンバリング」のバッジで示し、本文は白い掲示面に整然と並べる */
+:root {
+  --paper: #eef1f5;
+  --panel: #ffffff;
+  --panel-2: #f6f8fb;
+  --ink: #0e1726;
+  --muted: #566274;
+  --rule: #d3d9e2;
+  --rule-strong: #0e1726;
+  --board: #0f1f3a;
+  --board-2: #16294a;
+  --board-ink: #f4f7fb;
+  --board-muted: #a3b2c8;
+  --board-rule: rgba(163, 178, 200, .22);
+  --signal: #ffb81c;
+  --badge-bg: #ffffff;
+  --badge-ink: #0e1726;
+  --link: #1f5fd1;
+  --good: #16794c;
+  --good-soft: #e0f2e8;
+  --warn: #b8432a;
+  --warn-soft: #f9e4dd;
+  --note: #8a6100;
+  --note-soft: #fbefd0;
+  --focus: #ffb81c;
+  --shadow: 0 1px 2px rgba(14, 23, 38, .05), 0 8px 24px -16px rgba(14, 23, 38, .25);
+  --f-display: "Murecho", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --f-body: "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "Consolas", monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0b1119; --panel: #131b27; --panel-2: #18212f; --ink: #e8edf4; --muted: #9aa6b8; --rule: #253041; --rule-strong: #c9d3e1;
+  --board: #0a1628; --board-2: #12233f; --link: #82abf6;
+  --good: #6fd09f; --good-soft: #13302a; --warn: #f29a82; --warn-soft: #3b211b; --note: #e8c26a; --note-soft: #33290f;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px -18px rgba(0, 0, 0, .8);
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #0b1119; --panel: #131b27; --panel-2: #18212f; --ink: #e8edf4; --muted: #9aa6b8; --rule: #253041; --rule-strong: #c9d3e1;
+  --board: #0a1628; --board-2: #12233f; --link: #82abf6;
+  --good: #6fd09f; --good-soft: #13302a; --warn: #f29a82; --warn-soft: #3b211b; --note: #e8c26a; --note-soft: #33290f;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px -18px rgba(0, 0, 0, .8);
+  color-scheme: dark }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--board); }
+.inner { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3, h4 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.3; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* 案内板ヘッダー */
+.board { background: var(--board); color: var(--board-ink); }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 36px; align-items: end; padding-block: 48px 30px; }
+.kicker { font: 600 12px var(--f-mono); letter-spacing: .18em; color: var(--board-muted); text-transform: uppercase; margin-bottom: 14px; display: flex; gap: 10px; align-items: center; }
+.kicker::before { content: ""; width: 22px; height: 4px; background: var(--signal); border-radius: 2px; }
+h1 { font-weight: 900; font-size: clamp(40px, 8vw, 74px); letter-spacing: -.02em; line-height: 1.04; }
+h1 .en { display: block; font: 500 clamp(12px, 1.5vw, 14px) var(--f-mono); letter-spacing: .12em; color: var(--board-muted); margin-top: 14px; line-height: 1.6; }
+.hero .lead { margin: 18px 0 0; max-width: 36em; color: var(--board-muted); }
+.hero .lead b { color: var(--board-ink); font-weight: 700; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 700 14px var(--f-body); padding: 9px 18px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background .15s, border-color .15s, color .15s; }
+.btn-signal { background: var(--signal); color: #1a1405; }
+.btn-signal:hover { background: #ffc94d; }
+.btn-ghost { background: transparent; color: var(--board-ink); border-color: var(--board-rule); }
+.btn-ghost:hover { border-color: var(--board-muted); }
+
+.dept { background: var(--board-2); border-radius: 12px; padding: 14px 16px; display: grid; gap: 2px; font-size: 13px; }
+.dept-h { font: 600 11px var(--f-mono); letter-spacing: .16em; color: var(--board-muted); padding-bottom: 6px; border-bottom: 1px solid var(--board-rule); margin-bottom: 4px; display: flex; justify-content: space-between; }
+.dept-h .live { color: var(--signal); }
+.dept-row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding-block: 5px; border-bottom: 1px dashed var(--board-rule); }
+.dept-row:last-child { border-bottom: 0; }
+.dept-row span:first-child { color: var(--board-muted); }
+.dept-row .mono { color: var(--signal); font-size: 15px; font-weight: 600; }
+
+/* 路線図ナビ */
+nav.routebar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: var(--board); border-bottom: 1px solid var(--board-rule); box-shadow: 0 10px 24px -18px rgba(5, 12, 25, .6); }
+.route { display: flex; overflow-x: auto; scrollbar-width: none; padding-block: 12px 10px; }
+.route::-webkit-scrollbar { display: none; }
+.route button { flex: 1 0 104px; position: relative; display: grid; justify-items: center; gap: 6px; padding: 0 4px; background: none; border: 0; cursor: pointer; color: var(--board-muted); font: 700 12.5px var(--f-body); white-space: nowrap; }
+.route button::before { content: ""; position: absolute; top: 17px; left: 0; right: 0; height: 6px; background: var(--c); opacity: .9; }
+.route button:first-child::before { left: 50%; }
+.route button:last-child::before { right: 50%; }
+.route button:hover { color: var(--board-ink); }
+.route .st-name { padding-bottom: 2px; border-bottom: 2px solid transparent; }
+.route button[aria-current="true"] { color: var(--board-ink); }
+.route button[aria-current="true"] .st-name { border-color: var(--signal); }
+.route button[aria-current="true"] .badge { box-shadow: 0 0 0 3px var(--board), 0 0 0 6px var(--signal); }
+
+.badge { position: relative; z-index: 1; width: 40px; height: 40px; border-radius: 10px; background: var(--badge-bg); color: var(--badge-ink); border: 4px solid var(--c); display: grid; place-items: center; font: 900 13px var(--f-display); letter-spacing: .02em; flex: none; transition: box-shadow .15s ease; }
+.badge.lg { width: 58px; height: 58px; border-radius: 13px; border-width: 6px; font-size: 18px; }
+.badge.sm { width: 28px; height: 28px; border-radius: 7px; border-width: 3px; font-size: 10px; }
+
+/* 本文 */
+main { padding-block: 36px 64px; }
+section.block { margin-bottom: 64px; scroll-margin-top: 110px; }
+.sec-h { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding-bottom: 12px; margin-bottom: 22px; border-bottom: 2px solid var(--rule-strong); }
+.sec-h h2 { font-size: clamp(21px, 3vw, 27px); font-weight: 900; letter-spacing: -.01em; }
+.sec-h .sub { color: var(--muted); font-size: 13px; }
+.sec-h .sub .mono { color: var(--ink); }
+.sec-h .tools { margin-left: auto; display: flex; gap: 8px; }
+.sec-lead { margin: -8px 0 22px; color: var(--muted); max-width: 46em; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); margin-bottom: 36px; align-items: center; }
+.legend .item { display: inline-flex; gap: 6px; align-items: center; }
+.glyph { font: 900 16px var(--f-display); width: 1.2em; text-align: center; line-height: 1; }
+.g-good { color: var(--good); } .g-warn { color: var(--warn); } .g-use { color: var(--link); }
+.chip { display: inline-flex; align-items: center; font-size: 11.5px; font-weight: 700; padding: 1px 9px; border-radius: 999px; white-space: nowrap; letter-spacing: .02em; }
+.chip.good { background: var(--good-soft); color: var(--good); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.note { background: var(--note-soft); color: var(--note); }
+.chip.plain { background: var(--panel-2); color: var(--muted); border: 1px solid var(--rule); }
+
+.btn-line { background: var(--panel); color: var(--ink); border: 1px solid var(--rule); font-size: 13px; padding: 6px 14px; }
+.btn-line:hover { border-color: var(--rule-strong); }
+
+/* ◯ △ → の三列 */
+.three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.three > div { min-width: 0; }
+.three h3, .three h4 { display: flex; align-items: center; gap: 8px; font: 700 15px var(--f-display); padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px solid var(--rule); }
+ul.marks { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+ul.marks li { position: relative; padding-left: 1.5em; }
+ul.marks li::before { position: absolute; left: 0; top: .05em; font: 900 14px var(--f-display); }
+.m-good li::before { content: "◯"; color: var(--good); }
+.m-warn li::before { content: "△"; color: var(--warn); }
+.m-use li::before { content: "→"; color: var(--link); }
+
+/* 入門 */
+.intro-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.intro-def { font-size: 17px; line-height: 1.9; margin: 0; max-width: 34em; }
+.intro-def b { background: linear-gradient(transparent 62%, var(--note-soft) 62%); }
+.vs { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; background: var(--panel); }
+.vs > div { padding: 14px 16px; min-width: 0; }
+.vs > div + div { border-left: 1px solid var(--rule); }
+.lbl { font: 600 11px var(--f-mono); letter-spacing: .14em; color: var(--muted); }
+.vs b, .flow .node b { display: block; font: 900 16px var(--f-display); margin: 2px 0 4px; }
+.vs p, .flow .node p { margin: 0; color: var(--muted); font-size: 13.5px; }
+.flow { display: grid; grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1.4fr) 36px minmax(0, 1fr); align-items: stretch; margin-top: 28px; }
+.flow .node { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.flow .node.core { background: var(--board); color: var(--board-ink); border-color: var(--board); }
+.flow .node.core .lbl { color: var(--signal); }
+.flow .node.core p { color: var(--board-muted); }
+.flow .arrow { display: grid; place-items: center; color: var(--muted); font: 900 20px var(--f-display); }
+.flow-note { color: var(--muted); font-size: 13px; margin: 10px 0 0; }
+.can { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 30px; }
+.can > div { min-width: 0; }
+.sub-h { font: 700 17px var(--f-display); margin: 34px 0 12px; display: flex; gap: 10px; align-items: center; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; counter-reset: st; }
+.steps li { counter-increment: st; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 16px 18px; min-width: 0; }
+.steps li::before { content: "STEP " counter(st); display: block; font: 600 11px var(--f-mono); letter-spacing: .14em; color: var(--link); margin-bottom: 4px; }
+.steps b { display: block; font: 900 15px var(--f-display); margin-bottom: 2px; }
+.steps span { color: var(--muted); font-size: 14px; }
+.glossary { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0 28px; margin: 0; }
+.glossary div { padding: 12px 0; border-top: 1px solid var(--rule); min-width: 0; }
+.glossary dt { font: 900 15px var(--f-display); }
+.glossary dt small { font: 500 11.5px var(--f-mono); color: var(--muted); margin-left: 8px; letter-spacing: .04em; }
+.glossary dd { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+.faq { display: grid; gap: 8px; }
+.faq details { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; }
+.faq summary { cursor: pointer; padding: 13px 18px; font: 700 15px var(--f-display); list-style: none; display: flex; gap: 12px; align-items: baseline; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::before { content: "Q"; font: 600 13px var(--f-mono); color: var(--link); }
+.faq summary::after { content: "+"; margin-left: auto; color: var(--muted); font-family: var(--f-mono); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin: 0; padding: 0 18px 15px 43px; color: var(--muted); font-size: 14px; }
+.checklist { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.checklist li { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 16px 18px 16px 50px; position: relative; min-width: 0; }
+.checklist li::before { content: ""; position: absolute; left: 18px; top: 19px; width: 18px; height: 18px; border: 2px solid var(--rule-strong); border-radius: 4px; }
+.checklist b { display: block; font-family: var(--f-display); font-size: 15px; margin-bottom: 2px; }
+.checklist span { color: var(--muted); font-size: 14px; }
+
+/* 表 */
+.table-box { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; overflow-x: auto; }
+table.cmp { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 14px; }
+table.cmp th, table.cmp td { text-align: left; vertical-align: top; padding: 11px 16px; border-top: 1px solid var(--rule); }
+table.cmp thead th { border-top: 0; background: var(--board); color: var(--board-muted); font: 600 11.5px var(--f-mono); letter-spacing: .12em; white-space: nowrap; padding-block: 11px; }
+table.cmp .price { font: 600 14px var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.who-tag { font-size: 11.5px; font-weight: 700; padding: 1px 8px; border-radius: 4px; border: 1px solid var(--rule); color: var(--muted); white-space: nowrap; }
+table.matrix { min-width: 1080px; }
+table.matrix thead th:first-child, table.matrix tbody th { position: sticky; left: 0; z-index: 1; }
+table.matrix tbody th { background: var(--panel); min-width: 170px; font: 900 14px var(--f-display); box-shadow: 1px 0 0 var(--rule); }
+table.matrix thead th:first-child { z-index: 2; }
+table.matrix tbody tr:hover td, table.matrix tbody tr:hover th { background: var(--panel-2); }
+.svc-line { display: flex; gap: 10px; align-items: center; }
+.svc-line small { display: block; font: 400 11.5px var(--f-body); color: var(--muted); }
+.table-meta { color: var(--muted); font-size: 13px; margin: 10px 0 0; max-width: 62em; }
+.src { font-size: 12.5px; display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 5px; align-items: center; color: var(--muted); }
+
+/* サービス一覧 */
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin-bottom: 18px; }
+.search { position: relative; flex: 1 1 260px; max-width: 360px; }
+.search input { width: 100%; font: 400 15px var(--f-body); color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 9px 16px 9px 38px; }
+.search input:focus { outline: 2px solid var(--focus); outline-offset: 1px; border-color: transparent; }
+.search::before { content: ""; position: absolute; left: 15px; top: 50%; width: 11px; height: 11px; border: 2px solid var(--muted); border-radius: 50%; transform: translateY(-62%); }
+.search::after { content: ""; position: absolute; left: 26px; top: 58%; width: 6px; height: 2px; background: var(--muted); transform: rotate(45deg); }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.filters button { font: 700 13px var(--f-body); color: var(--muted); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+.filters button:hover { color: var(--ink); border-color: var(--rule-strong); }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.filters .count { font-family: var(--f-mono); font-size: 11.5px; margin-left: 4px; opacity: .7; }
+.svc-index { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-bottom: 26px; }
+.svc-index a { display: flex; gap: 10px; align-items: center; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 8px 12px; text-decoration: none; color: var(--ink); min-width: 0; transition: border-color .15s, transform .15s; }
+.svc-index a:hover { border-color: var(--c); transform: translateY(-1px); }
+.svc-index b { display: block; font: 700 14px var(--f-display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.svc-index small { display: block; font-size: 11.5px; color: var(--muted); }
+.svc-index .meta { min-width: 0; }
+.empty { color: var(--muted); padding: 24px; text-align: center; border: 1px dashed var(--rule); border-radius: 10px; }
+.back-link { display: inline-flex; gap: 6px; font-size: 14px; margin-bottom: 16px; }
+
+.service { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; margin-bottom: 24px; overflow: hidden; box-shadow: var(--shadow); scroll-margin-top: 110px; }
+.svc-head { display: flex; gap: 18px; align-items: center; padding: 22px 26px 18px; border-bottom: 1px solid var(--rule); position: relative; flex-wrap: wrap; }
+.svc-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--c); }
+.svc-head .names { min-width: 0; flex: 1 1 200px; }
+.svc-head h3 { font-size: clamp(22px, 3.2vw, 28px); font-weight: 900; letter-spacing: -.01em; }
+.svc-head .maker { font: 500 12px var(--f-mono); letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
+.svc-head .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.svc-body { padding: 22px 26px 24px; display: grid; gap: 26px; }
+.svc-summary { margin: 0; max-width: 48em; font-size: 15.5px; }
+.news h4 { font: 600 11.5px var(--f-mono); letter-spacing: .16em; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.news h4 .news-period { font: 700 12.5px var(--f-body); letter-spacing: 0; text-transform: none; color: var(--ink); }
+.news ol { list-style: none; margin: 0; padding: 0; }
+.news li { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 4px 18px; padding: 12px 0; border-top: 1px solid var(--rule); }
+.news li:first-child { border-top: 0; }
+.news time { font: 600 13px var(--f-mono); color: var(--ink); padding-top: 1px; font-variant-numeric: tabular-nums; }
+.news .body { min-width: 0; }
+.news .body b { display: block; font-weight: 700; }
+.news .body p { margin: 3px 0 0; color: var(--muted); font-size: 14px; }
+.svc-foot { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; font-size: 13px; color: var(--muted); padding-top: 14px; border-top: 1px dashed var(--rule); }
+.svc-foot b { color: var(--ink); font-weight: 700; }
+.svc-foot .links { margin-left: auto; display: flex; gap: 14px; }
+
+/* アコーディオン（料金・運営元） */
+.acc-list { display: grid; gap: 10px; }
+.acc { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; transition: box-shadow .2s, border-color .2s; }
+.acc[open] { box-shadow: var(--shadow); border-color: var(--c); }
+.acc summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 14px; align-items: center; padding: 12px 18px; }
+.acc summary::-webkit-details-marker { display: none; }
+.acc summary:hover { background: var(--panel-2); }
+.acc .s-name b { display: block; font: 900 16px var(--f-display); }
+.acc .s-name small { display: block; font-size: 12.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.acc .s-side { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.acc .s-side .price-from { font: 600 13px var(--f-mono); white-space: nowrap; }
+.acc .chev { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; color: var(--muted); transition: transform .2s; }
+.acc .chev::before { content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+.acc[open] .chev { transform: rotate(180deg); }
+.acc-body { padding: 4px 18px 20px; border-top: 1px solid var(--rule); display: grid; gap: 18px; }
+.acc-body table.cmp { min-width: 560px; }
+.acc-body table.cmp thead th { background: var(--panel-2); color: var(--muted); }
+.acc-body .table-box { border-radius: 8px; margin-top: 14px; }
+.data-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.data-pair > div { background: var(--panel-2); border-radius: 8px; padding: 12px 14px; min-width: 0; }
+.data-pair p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; margin: 14px 0 0; }
+.facts div { padding: 10px 0; border-top: 1px solid var(--rule); min-width: 0; }
+.facts dt { font: 600 11px var(--f-mono); letter-spacing: .12em; color: var(--muted); }
+.facts dd { margin: 2px 0 0; }
+.facts dd ul { margin: 0; padding-left: 1.1em; }
+.facts .wide { grid-column: 1 / -1; }
+.acc-foot { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: 13px; }
+
+/* リクエスト */
+.req { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.form-card { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 24px 26px; box-shadow: var(--shadow); }
+.cta h3 { font: 900 22px var(--f-display); margin: 4px 0 8px; }
+.cta p { margin: 0 0 14px; color: var(--muted); }
+.kinds-list { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.kinds-list li { font: 700 13px var(--f-body); padding: 5px 12px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel-2); }
+.btn-ink { background: var(--ink); color: var(--paper); }
+.btn-ink:hover { opacity: .9; }
+.btn-lg { font-size: 15px; padding: 12px 24px; }
+.btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+.cta .cta-note { font-size: 13px; margin: 12px 0 0; }
+.req-side h3 { font: 700 16px var(--f-display); margin-bottom: 10px; }
+.req-side ul { margin: 0 0 18px; padding-left: 1.2em; color: var(--muted); font-size: 14px; display: grid; gap: 4px; }
+
+/* フッター・トップへ */
+footer.board { padding-block: 32px 40px; font-size: 13px; }
+footer .inner { display: grid; gap: 8px; color: var(--board-muted); }
+footer p { margin: 0; max-width: 64em; }
+footer .sig { font: 900 18px var(--f-display); color: var(--board-ink); margin-bottom: 6px; display: flex; gap: 10px; align-items: center; }
+footer .sig::before { content: ""; width: 22px; height: 4px; background: var(--signal); border-radius: 2px; }
+footer .mono { color: var(--signal); }
+.to-top { position: fixed; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 7; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--board); color: var(--board-ink); box-shadow: var(--shadow); cursor: pointer; display: grid; place-items: center; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.to-top.show { opacity: 1; pointer-events: auto; }
+.to-top::before { content: ""; width: 9px; height: 9px; border-left: 2px solid currentColor; border-top: 2px solid currentColor; transform: translateY(2px) rotate(45deg); }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: 22px; padding-block: 32px 22px; }
+  .intro-top, .can, .req { grid-template-columns: 1fr; gap: 22px; }
+  .flow { grid-template-columns: 1fr; }
+  .flow .arrow { height: 30px; transform: rotate(90deg); }
+  .steps, .three { grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 620px) {
+  .svc-head, .svc-body { padding-left: 18px; padding-right: 18px; }
+  .badge.lg { width: 48px; height: 48px; border-width: 5px; font-size: 15px; }
+  .news li { grid-template-columns: 1fr; gap: 2px; }
+  .acc summary { grid-template-columns: auto minmax(0, 1fr) auto; padding: 12px 14px; }
+  .acc .s-side { grid-column: 2 / 3; grid-row: 2; justify-content: flex-start; }
+  .acc .chev { grid-column: 3; grid-row: 1; }
+  .data-pair, .facts { grid-template-columns: 1fr; }
+  .svc-foot .links { margin-left: 0; }
+  .sec-h .tools { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .route button::before { transform-origin: left; animation: draw .6s cubic-bezier(.2, .7, .2, 1) both; }
+  .route button:nth-child(2)::before { animation-delay: .05s; } .route button:nth-child(3)::before { animation-delay: .1s; }
+  .route button:nth-child(4)::before { animation-delay: .15s; } .route button:nth-child(5)::before { animation-delay: .2s; }
+  .route button:nth-child(6)::before { animation-delay: .25s; } .route button:nth-child(7)::before { animation-delay: .3s; }
+  .route button:nth-child(8)::before { animation-delay: .35s; }
+  @keyframes draw { from { transform: scaleX(.2); } to { transform: none; } }
+}
+</style>
+</head>
+<body>
+<header class="board" id="top">
+  <div class="inner hero">
+    <div>
+      <div class="kicker">Generative AI Service Guide</div>
+      <h1>AIサービスナビ<span class="en" id="hero-names">ChatGPT · Gemini · Claude · Copilot · Perplexity · Grok · DeepSeek · Muse · Mistral · Midjourney</span></h1>
+      <p class="lead">主要な生成AIの<b>良い点と注意点</b>、<b>使い道</b>、<b>料金とデータの扱い</b>、<b>運営会社</b>、そして<b>毎週更新のニュース</b>を一枚にまとめた案内板です。どれを使うか迷ったとき、使い始める前の確認にどうぞ。</p>
+      <div class="hero-actions">
+        <a class="btn btn-signal" href="#intro">はじめての方へ</a>
+        <a class="btn btn-ghost" href="#compare">ひと目で比較する</a>
+      </div>
+    </div>
+    <div class="dept" aria-label="更新情報">
+      <div class="dept-h"><span>INFORMATION</span><span class="live">● 毎週月曜更新</span></div>
+      <div class="dept-row"><span>掲載サービス</span><span class="mono" id="svc-count">10件</span></div>
+      <div class="dept-row"><span>掲載ニュース</span><span class="mono" id="news-count">—</span></div>
+      <div class="dept-row"><span>ニュース更新</span><span class="mono" id="updated">2026-10-25</span></div>
+      <div class="dept-row"><span>料金・運営元の確認</span><span class="mono" id="plans-updated-top">2026-10-25</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="routebar" aria-label="表示する内容の切り替え">
+  <div class="inner"><div class="route" id="tabs"></div></div>
+</nav>
+
+<main class="inner">
+  <div class="legend">
+    <span class="item"><span class="glyph g-good">◯</span>良い点</span>
+    <span class="item"><span class="glyph g-warn">△</span>注意点</span>
+    <span class="item"><span class="glyph g-use">→</span>使い道</span>
+    <span class="item"><span class="chip note">二次情報</span>公式発表で確認できていない報道</span>
+  </div>
+
+  <section class="block" data-group="intro" id="intro">
+    <div class="sec-h"><span class="badge" style="--c:#00a0c6">AI</span><h2>はじめての生成AI</h2><span class="sub">そもそも何？ から使い始めるまで</span></div>
+    <div class="intro-top">
+      <p class="intro-def">生成AIは、インターネット上の大量の文章や画像からことばや形のパターンを学び、<b>質問や指示に合わせて新しい文章・画像・音声・プログラムを作り出すAI</b>です。チャットで話しかけるように使えるので、専門知識がなくても今日から試せます。</p>
+      <div class="vs">
+        <div><div class="lbl">これまでのAI</div><b>見分ける・予測する</b><p>迷惑メールの判定、商品のおすすめ、売上の予測など。決まった答えを選ぶのが得意。</p></div>
+        <div><div class="lbl">生成AI</div><b>新しく作る</b><p>文章の下書き、要約、翻訳、画像づくり、プログラムなど。答えそのものを組み立てる。</p></div>
+      </div>
+    </div>
+
+    <div class="flow" role="img" aria-label="生成AIのしくみ：あなたの指示をAIモデルが受け取り、学んだパターンから結果を組み立てて返す">
+      <div class="node"><div class="lbl">INPUT</div><b>あなたの指示</b><p>「この文章を3行で要約して」などの質問や指示。プロンプトと呼ぶ。</p></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node core"><div class="lbl">MODEL</div><b>AIモデル（LLM）</b><p>学んだパターンをもとに「次に来そうなことば」を一つずつ予測して、答えを組み立てる。</p></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node"><div class="lbl">OUTPUT</div><b>結果</b><p>文章、要約、画像、表、プログラムなど。何度でも直しを頼める。</p></div>
+    </div>
+    <p class="flow-note">「予測して組み立てる」しくみのため、事実と違う内容をもっともらしく書くことがあります（ハルシネーション）。大事な情報は必ず確かめましょう。</p>
+
+    <div class="can">
+      <div>
+        <h3 class="sub-h"><span class="glyph g-good">◯</span>得意なこと</h3>
+        <ul class="marks m-good">
+          <li>文章を書く・直す・短くまとめる・言い換える</li>
+          <li>外国語との翻訳、やさしい言葉での説明</li>
+          <li>アイデア出し、企画や文章の構成づくり</li>
+          <li>表やプログラムの作成、写真や資料の読み取り</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="sub-h"><span class="glyph g-warn">△</span>苦手なこと</h3>
+        <ul class="marks m-warn">
+          <li>最新の出来事や細かい数字を正確に答えること（検索機能で補える場合もある）</li>
+          <li>出典をつけずに書いた内容の正しさを保証すること</li>
+          <li>法律・医療・お金など、責任をともなう最終判断</li>
+          <li>あなたの会社や家庭だけの事情を、言われずに知ること</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-h">使い始める3ステップ</h3>
+    <ol class="steps">
+      <li><b>無料プランで試す</b><span>多くのサービスは無料で始められます。メールアドレスなどでアカウントを作るだけです。</span></li>
+      <li><b>個人情報は入れない</b><span>名前や住所、会社の秘密は入力しないのが基本。学習に使わせない設定も確認しましょう。</span></li>
+      <li><b>答えを確かめて使う</b><span>出てきた答えは下書きとして扱い、事実や数字は公式の情報で確かめてから使います。</span></li>
+    </ol>
+
+    <h3 class="sub-h">生成AI全般の良い点と注意点</h3>
+    <div class="three">
+      <div>
+        <h4><span class="glyph g-good">◯</span>良い点</h4>
+        <ul class="marks m-good">
+          <li>文章の下書き、要約、翻訳、言い換えを数秒で出せる</li>
+          <li>プログラミングや表計算の式づくりを対話しながら進められる</li>
+          <li>調べものの入口として、論点や用語を整理してくれる</li>
+          <li>画像・音声・資料の読み取りなど、文字以外も扱える</li>
+          <li>24時間いつでも、何度でも質問し直せる</li>
+        </ul>
+      </div>
+      <div>
+        <h4><span class="glyph g-warn">△</span>注意点</h4>
+        <ul class="marks m-warn">
+          <li>もっともらしい誤り（ハルシネーション）を出すことがある</li>
+          <li>入力した内容の扱いは契約プランで異なり、機密や個人情報には注意が要る</li>
+          <li>著作権や商標をめぐる訴訟が各国で続いており、生成物の使い方に配慮が必要</li>
+          <li>障害や仕様変更、無料枠の縮小が予告なく起こる</li>
+          <li>任せきりにすると、判断の根拠を説明できなくなる</li>
+        </ul>
+      </div>
+      <div>
+        <h4><span class="glyph g-use">→</span>使い道</h4>
+        <ul class="marks m-use">
+          <li>会議メモから議事録と次のタスクを作る</li>
+          <li>メールや案内文の下書き、敬語の調整</li>
+          <li>長い規約・論文・報告書の要点抽出</li>
+          <li>アンケート自由記述の分類と傾向の整理</li>
+          <li>学習の相棒（解説、練習問題、添削）</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-h">よく出てくる用語</h3>
+    <dl class="glossary">
+      <div><dt>プロンプト<small>prompt</small></dt><dd>AIへの指示や質問の文。具体的に書くほど、ほしい答えに近づく。</dd></div>
+      <div><dt>LLM<small>大規模言語モデル</small></dt><dd>大量の文章から学んだ、文章を扱うAIの本体。GPT、Gemini、Claude などがこれにあたる。</dd></div>
+      <div><dt>モデル<small>model</small></dt><dd>AIの「頭脳」にあたる部分。同じサービスでも、速いモデル・賢いモデルなど種類がある。</dd></div>
+      <div><dt>ハルシネーション<small>hallucination</small></dt><dd>AIが事実と違う内容を、もっともらしく答えてしまうこと。</dd></div>
+      <div><dt>マルチモーダル<small>multimodal</small></dt><dd>文章だけでなく、画像・音声・動画なども読み取ったり作ったりできること。</dd></div>
+      <div><dt>エージェント<small>agent</small></dt><dd>指示を受けて、調べもの・操作・作業を自分で順に進めるAI。</dd></div>
+      <div><dt>トークン<small>token</small></dt><dd>AIが文章を数える単位。料金や一度に読める量はトークン数で決まることが多い。</dd></div>
+      <div><dt>学習（トレーニング）<small>training</small></dt><dd>データからパターンを覚えさせること。入力した内容が学習に使われるかはサービスと設定で違う。</dd></div>
+      <div><dt>オプトアウト<small>opt-out</small></dt><dd>データを学習に使うことを、利用者が断ること。設定画面で選べる場合が多い。</dd></div>
+      <div><dt>API<small>application programming interface</small></dt><dd>自社のアプリやシステムからAIを呼び出すための窓口。使った量に応じて課金される。</dd></div>
+      <div><dt>公開モデル<small>open weights</small></dt><dd>中身（重み）が公開され、誰でも自分の環境で動かせるAIモデル。DeepSeek や Mistral が代表例。</dd></div>
+      <div><dt>AI検索<small>answer engine</small></dt><dd>Webを検索し、結果をまとめて出典つきで答える仕組み。Perplexity が代表例。</dd></div>
+    </dl>
+
+    <h3 class="sub-h">よくある質問</h3>
+    <div class="faq">
+      <details><summary>無料でも使えますか？</summary><p>多くは無料プランがあります。ただし使える回数やモデルに制限があり、ChatGPT の無料プランには広告が表示されます。Midjourney には無料プランがありません。詳しくは「料金・データ」をご覧ください。</p></details>
+      <details><summary>日本語で使えますか？</summary><p>ほとんどが日本語で使えます。Meta の Muse は2026年10月時点で日本では提供されていません。新しい機能は英語版から先に提供されることがあります。</p></details>
+      <details><summary>仕事で使っても大丈夫ですか？</summary><p>会社のルールを先に確認してください。顧客情報や社外秘を扱うなら、入力内容を学習に使わない法人向けプランが向いています。データが海外のどこに保存されるかも確認しましょう。</p></details>
+      <details><summary>どれを選べばいいですか？</summary><p>Googleのサービスをよく使うなら Gemini、Word や Teams を仕事で使うなら Copilot、長い資料やプログラミングなら Claude、調べものなら Perplexity、画像づくりなら Midjourney、まず何でも試したいなら ChatGPT が入りやすいでしょう。「ひと目で比較」も参考にしてください。</p></details>
+      <details><summary>AIが作った文章や画像は自由に使えますか？</summary><p>多くのサービスは利用者が使うことを認めていますが、既存の作品に似ていると権利の問題になることがあります。公開や販売の前に確認しましょう。</p></details>
+      <details><summary>中国のAIサービスを使っても大丈夫ですか？</summary><p>DeepSeek は入力したデータが中国のサーバーに保存され、中国の法令が適用されます。2025年2月に個人情報保護委員会が注意を呼びかけました。個人情報や仕事の情報は入力しないのが安全です。</p></details>
+    </div>
+
+    <h3 class="sub-h">使う前のチェックリスト</h3>
+    <ul class="checklist">
+      <li><b>入力してよい情報か</b><span>顧客名、社外秘、個人情報は、会社の規程と契約プランのデータの扱いを確認してから入力する。</span></li>
+      <li><b>事実の裏取り</b><span>数字・日付・法律・引用文献は、必ず一次資料で確かめる。米国では裁判所への提出書類に架空の判例が含まれた事例が続いている。</span></li>
+      <li><b>権利の確認</b><span>生成した文章や画像を公開・販売する前に、既存の作品や商標に似ていないか見る。</span></li>
+      <li><b>学習設定</b><span>入力内容をモデルの改善に使わせない設定があるか確認する。</span></li>
+      <li><b>代わりの手段</b><span>障害で止まっても困らないよう、重要な業務は別のサービスか手作業の手順も用意しておく。</span></li>
+    </ul>
+  </section>
+
+  <section class="block" data-group="compare" id="compare">
+    <div class="sec-h"><span class="badge" style="--c:#6c7a8f">VS</span><h2>ひと目で比較</h2><span class="sub">すべてのサービスを横断して</span></div>
+    <div class="table-box">
+      <table class="cmp matrix">
+        <thead><tr><th scope="col">SERVICE</th><th scope="col">種類</th><th scope="col">得意なこと</th><th scope="col">無料プラン</th><th scope="col">個人の料金</th><th scope="col">日本での利用</th><th scope="col">画像の生成</th><th scope="col">個人データの学習</th><th scope="col">向いている人</th></tr></thead>
+        <tbody id="compare-body"><tr><td colspan="9">読み込んでいます…</td></tr></tbody>
+      </table>
+    </div>
+    <p class="table-meta">表は横にスクロールできます。サービス名を押すと詳しい説明に移ります。料金とデータの扱いは毎週の確認結果を反映しています。</p>
+  </section>
+
+  <section class="block" data-group="services" id="services">
+    <div class="sec-h"><h2>サービス別まとめ</h2><span class="sub">特徴・良い点と注意点・最新ニュース</span></div>
+    <div class="toolbar">
+      <div class="search"><label class="visually-hidden" for="svc-search">サービスを検索</label><input id="svc-search" type="search" placeholder="サービス名やキーワードで探す" autocomplete="off"></div>
+      <div class="filters" id="svc-filters" role="group" aria-label="種類で絞り込む"></div>
+    </div>
+    <a class="back-link" id="back-all" href="#services" hidden>← すべてのサービスを表示</a>
+    <nav class="svc-index" id="svc-index" aria-label="サービス一覧"></nav>
+    <div id="svc-cards"></div>
+    <p class="empty" id="svc-empty" hidden>条件に合うサービスがありません。キーワードや種類を変えてみてください。</p>
+  </section>
+
+  <section class="block" data-group="plans" id="plans">
+    <div class="sec-h"><span class="badge" style="--c:#ffb81c">¥</span><h2>料金とデータの扱い</h2><span class="sub">確認日 <span class="mono" id="plans-updated">2026-10-25</span></span>
+      <div class="tools"><button type="button" class="btn btn-line" data-toggle-all="plans-list">すべて開く</button></div></div>
+    <p class="sec-lead">サービスを押すとプランごとの月額と、入力した内容が学習に使われるかが開きます。閉じたままでも最安の料金とデータの扱いを確認できます。</p>
+    <div class="acc-list" id="plans-list"><p class="empty">料金を読み込んでいます…</p></div>
+    <p class="table-meta">月額は税・地域で変わります。米ドル表記のサービスは、日本での価格や税込額が異なることがあります。学習への利用を止めても、すでに学習に使われたデータは消えません。</p>
+  </section>
+
+  <section class="block" data-group="companies" id="companies">
+    <div class="sec-h"><span class="badge" style="--c:#556b2f">CO</span><h2>運営元の詳細</h2><span class="sub">確認日 <span class="mono" id="companies-updated">2026-10-25</span></span>
+      <div class="tools"><button type="button" class="btn btn-line" data-toggle-all="companies-list">すべて開く</button></div></div>
+    <p class="sec-lead">どんな会社が作っているかは、データの扱いや今後の方針を考える手がかりになります。会社を押すと、設立・代表者・資本・日本での拠点などが開きます。</p>
+    <div class="acc-list" id="companies-list"><p class="empty">運営元の情報を読み込んでいます…</p></div>
+    <p class="table-meta">企業価値や利用者数は報道ベースの数字を含み、時期や数え方で変わります。未上場企業の数字は資金調達時の評価額です。</p>
+  </section>
+
+  <section class="block" data-group="society" id="society">
+    <div class="sec-h"><span class="badge" style="--c:#b91c1c">LW</span><h2>規制・社会の動き</h2><span class="sub">日本と海外のルール、訴訟</span></div>
+    <div class="service" style="--c:#b91c1c">
+      <div class="svc-body news">
+        <h4>Latest<span class="news-period"></span></h4>
+        <ol id="society-news"><li><div class="body"><p>ニュースを読み込んでいます…</p></div></li></ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" data-group="request" id="request">
+    <div class="sec-h"><span class="badge" style="--c:#2a9d5c">RQ</span><h2>リクエスト・お問い合わせ</h2><span class="sub">載せてほしいサービスや情報を教えてください</span></div>
+    <div class="req">
+      <div class="form-card cta">
+        <div class="lbl">REQUEST FORM</div>
+        <h3>リクエストはこちらから</h3>
+        <p>Google フォームが新しいタブで開きます。サインインは不要で、匿名でも送れます。所要時間は1〜2分です。</p>
+        <ul class="kinds-list">
+          <li>掲載してほしいAIサービス</li><li>載せてほしい情報</li><li>情報の誤り</li><li>サイトへの要望</li>
+        </ul>
+        <a class="btn btn-ink btn-lg" id="req-link" href="#" target="_blank" rel="noopener">リクエストフォームを開く</a>
+        <p class="cta-note" id="req-note">個人情報や社外秘は書かないでください。</p>
+      </div>
+      <div class="req-side">
+        <h3>こんな声をお待ちしています</h3>
+        <ul>
+          <li>まだ載っていないAIサービス（画像・動画・音声・国産AIなど）</li>
+          <li>比べてみたい項目（商用利用、対応言語、APIの料金など）</li>
+          <li>古くなった情報や誤りの指摘</li>
+          <li>使いにくいところ、見づらいところ</li>
+        </ul>
+        <h3>届いたリクエストの扱い</h3>
+        <ul>
+          <li>内容を確認し、載せられるものから順に反映します。</li>
+          <li>個別のお返事はしていません。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="board">
+  <div class="inner">
+    <div class="sig">AIサービスナビ</div>
+    <p>ニュース、料金・データの扱い、運営元の情報は毎週月曜に自動で確認・更新しています（ニュースの最終更新 <span class="mono" id="updated-foot">2026-10-25</span>）。サービスの説明と比較の一部は2026年10月25日時点の情報です。料金や機能は頻繁に変わるため、利用前に各社の公式ページで最新情報を確認してください。</p>
+    <p>「二次情報」と付いた項目は、まとめサイトや業界メディアのみで報じられ、公式発表を確認できていないものです。誤りに気づいたら <a href="#request" style="color:inherit">リクエスト</a> からお知らせください。</p>
+  </div>
+</footer>
+<button type="button" class="to-top" id="to-top" aria-label="ページの先頭へ戻る"></button>
+
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const $ = id => document.getElementById(id);
+const getJSON = name => fetch(name, { cache: "no-cache" }).then(r => { if (!r.ok) throw new Error(name + " " + r.status); return r.json(); });
+const srcLine = x => `<div class="src">${x.secondary ? '<span class="chip note">二次情報</span>' : ""}出典：${(x.src || []).map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}</div>`;
+const newsItem = n => `<li><time>${esc(n.date)}</time><div class="body"><b>${esc(n.title)}</b><p>${esc(n.text)}</p>${srcLine(n)}</div></li>`;
+const marks = (arr, kind) => `<ul class="marks m-${kind}">${arr.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
+const emptyRow = msg => `<li><div class="body"><p>${msg}</p></div></li>`;
+const LEVEL = { safe: "good", uses: "warn", choice: "note" };
+
+const TABS = [
+  { id: "all", label: "すべて", code: "ALL", color: "#8b97a8" },
+  { id: "intro", label: "はじめての方", code: "AI", color: "#00a0c6" },
+  { id: "compare", label: "ひと目で比較", code: "VS", color: "#6c7a8f" },
+  { id: "services", label: "サービス", code: "SV", color: "#2f6fe4" },
+  { id: "plans", label: "料金・データ", code: "¥", color: "#ffb81c" },
+  { id: "companies", label: "運営元", code: "CO", color: "#556b2f" },
+  { id: "society", label: "規制・社会", code: "LW", color: "#b91c1c" },
+  { id: "request", label: "リクエスト", code: "RQ", color: "#2a9d5c" }
+];
+
+let SERVICES = [], CATS = {}, PLANS = null, view = { tab: "all", one: null, cat: "all", q: "" };
+const svcOf = id => SERVICES.find(s => s.id === id) || { id, name: id, code: "?", color: "#8b97a8" };
+const shortName = s => s.short || s.name;
+const badge = (s, size = "sm") => `<span class="badge ${size}" style="--c:${s.color}" aria-hidden="true">${esc(s.code)}</span>`;
+
+/* ---- 路線図ナビと表示切り替え ---- */
+const tabsEl = $("tabs");
+tabsEl.innerHTML = TABS.map(t => `<button type="button" data-tab="${t.id}" style="--c:${t.color}"><span class="badge" aria-hidden="true">${t.code}</span><span class="st-name">${esc(t.label)}</span></button>`).join("");
+
+function applyView() {
+  const { tab, one } = view;
+  tabsEl.querySelectorAll("button").forEach(b => b.setAttribute("aria-current", String(b.dataset.tab === tab)));
+  document.querySelectorAll("main [data-group]").forEach(el => { el.hidden = !(tab === "all" || el.dataset.group === tab); });
+  filterServices();
+  $("back-all").hidden = !one;
+  $("svc-index").hidden = !!one;
+  document.querySelector("#services .toolbar").hidden = !!one;
+}
+function route(hash) {
+  const id = (hash || "").replace(/^#/, "");
+  if (SERVICES.some(s => s.id === id)) { view.tab = "services"; view.one = id; }
+  else if (TABS.some(t => t.id === id)) { view.tab = id; view.one = null; }
+  else if (id === "" || id === "top") { view.tab = "all"; view.one = null; }
+  else { view.tab = "all"; view.one = null; }
+  applyView();
+}
+function go(id) {
+  try { history.replaceState(null, "", id === "all" ? location.pathname : "#" + id); } catch (_) {}
+  route(id === "all" ? "" : id);
+  const top = document.querySelector("main").getBoundingClientRect().top + window.scrollY - document.querySelector("nav.routebar").offsetHeight - 8;
+  window.scrollTo({ top: Math.max(0, top) });
+}
+tabsEl.addEventListener("click", e => { const b = e.target.closest("button[data-tab]"); if (b) go(b.dataset.tab); });
+document.addEventListener("click", e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const id = a.getAttribute("href").slice(1);
+  if (id === "top") return;
+  if (SERVICES.some(s => s.id === id) || TABS.some(t => t.id === id)) { e.preventDefault(); go(id); }
+});
+window.addEventListener("hashchange", () => route(location.hash));
+
+/* ---- サービス一覧 ---- */
+function filterServices() {
+  const q = view.q.trim().toLowerCase();
+  let shown = 0;
+  SERVICES.forEach(s => {
+    const card = $("card-" + s.id), link = $("idx-" + s.id);
+    if (!card) return;
+    const hay = [s.name, s.maker, s.summary, CATS[s.category], ...s.good, ...s.warn, ...s.use].join(" ").toLowerCase();
+    const ok = view.one ? s.id === view.one : (view.cat === "all" || s.category === view.cat) && (!q || hay.includes(q));
+    card.hidden = !ok; if (link) link.hidden = !ok;
+    if (ok) shown++;
+  });
+  $("svc-empty").hidden = shown > 0 || !SERVICES.length;
+}
+function renderServices() {
+  const counts = SERVICES.reduce((m, s) => (m[s.category] = (m[s.category] || 0) + 1, m), {});
+  $("svc-filters").innerHTML = [["all", "すべて", SERVICES.length], ...Object.entries(CATS).filter(([k]) => counts[k]).map(([k, v]) => [k, v, counts[k]])]
+    .map(([k, v, n]) => `<button type="button" data-cat="${k}" aria-pressed="${k === view.cat}">${esc(v)}<span class="count">${n}</span></button>`).join("");
+  $("svc-index").innerHTML = SERVICES.map(s => `<a href="#${s.id}" id="idx-${s.id}" style="--c:${s.color}">${badge(s)}<span class="meta"><b>${esc(s.name)}</b><small>${esc(CATS[s.category] || "")} · ${esc(s.maker)}</small></span></a>`).join("");
+  $("svc-cards").innerHTML = SERVICES.map(s => `
+    <article class="service" id="card-${s.id}" style="--c:${s.color}">
+      <div class="svc-head">
+        ${badge(s, "lg")}
+        <div class="names"><div class="maker">${esc(s.maker)}</div><h3>${esc(s.name)}</h3></div>
+        <div class="chips"><span class="chip plain">${esc(CATS[s.category] || "")}</span><span class="chip plain" id="price-chip-${s.id}"></span></div>
+      </div>
+      <div class="svc-body">
+        <p class="svc-summary">${esc(s.summary)}</p>
+        <div class="three">
+          <div><h4><span class="glyph g-good">◯</span>良い点</h4>${marks(s.good, "good")}</div>
+          <div><h4><span class="glyph g-warn">△</span>注意点</h4>${marks(s.warn, "warn")}</div>
+          <div><h4><span class="glyph g-use">→</span>使い道</h4>${marks(s.use, "use")}</div>
+        </div>
+        <div class="news"><h4>Latest<span class="news-period"></span></h4><ol id="news-${s.id}">${emptyRow("ニュースを読み込んでいます…")}</ol></div>
+        <div class="svc-foot"><span>運営元 <b>${esc(s.maker)}</b></span><span id="owner-${s.id}"></span>
+          <span class="links"><a href="#companies" data-open="co-${s.id}">運営元の詳細</a><a href="#plans" data-open="plan-${s.id}">料金とデータ</a></span></div>
+      </div>
+    </article>`).join("");
+  $("svc-count").textContent = SERVICES.length + "件";
+  $("hero-names").textContent = SERVICES.map(shortName).join(" · ");
+}
+$("svc-filters").addEventListener("click", e => {
+  const b = e.target.closest("button[data-cat]"); if (!b) return;
+  view.cat = b.dataset.cat;
+  $("svc-filters").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  filterServices();
+});
+$("svc-search").addEventListener("input", e => { view.q = e.target.value; filterServices(); });
+// 「料金とデータ」などのリンクから、該当サービスの項目を開いた状態で移動する
+document.addEventListener("click", e => {
+  const a = e.target.closest("a[data-open]"); if (!a) return;
+  setTimeout(() => { const d = $(a.dataset.open); if (d) { d.open = true; d.scrollIntoView({ block: "start" }); } }, 0);
+});
+
+/* ---- ひと目で比較 ---- */
+function renderCompare() {
+  const dataOf = id => PLANS && PLANS.data.find(d => d.service === id);
+  const planOf = id => PLANS && PLANS.plans.find(p => p.service === id);
+  $("compare-body").innerHTML = SERVICES.map(s => {
+    const d = dataOf(s.id), p = planOf(s.id), c = s.cmp || {};
+    const learn = d ? `<span class="chip ${LEVEL[d.personal.level] || "note"}">${esc(d.personal.label)}</span>` : "—";
+    return `<tr><th scope="row"><a class="svc-line" href="#${s.id}" style="text-decoration:none;color:inherit">${badge(s)}<span>${esc(s.name)}<small>${esc(s.maker)}</small></span></a></th>
+      <td>${esc(CATS[s.category] || "")}</td><td>${esc(c.strength)}</td><td>${esc(c.free)}</td>
+      <td class="price">${esc(p ? p.summary.replace(/^[^·]*·\s*/, "") : "—")}</td>
+      <td>${esc(c.japan)}</td><td>${esc(c.image)}</td><td>${learn}</td><td>${esc(c.fit)}</td></tr>`;
+  }).join("");
+}
+
+/* ---- 料金とデータの扱い ---- */
+function renderPlans() {
+  $("plans-updated").textContent = PLANS.updated;
+  $("plans-updated-top").textContent = PLANS.updated;
+  $("plans-list").innerHTML = SERVICES.map(s => {
+    const p = PLANS.plans.find(x => x.service === s.id), d = PLANS.data.find(x => x.service === s.id);
+    if (!p) return "";
+    const chip = d ? `<span class="chip ${LEVEL[d.personal.level] || "note"}">個人：${esc(d.personal.label)}</span>` : "";
+    const pc = $("price-chip-" + s.id); if (pc) pc.textContent = p.summary;
+    return `<details class="acc" id="plan-${s.id}" style="--c:${s.color}">
+      <summary>${badge(s)}<span class="s-name"><b>${esc(s.name)}</b><small>${esc(p.currency)}表記 · ${p.tiers.length}プラン</small></span>
+        <span class="s-side"><span class="price-from">${esc(p.summary)}</span>${chip}</span><span class="chev" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <div class="table-box"><table class="cmp"><thead><tr><th scope="col">プラン</th><th scope="col">月額</th><th scope="col">対象</th><th scope="col">主な内容</th></tr></thead>
+          <tbody>${p.tiers.map(t => `<tr><td><b>${esc(t.name)}</b></td><td class="price">${esc(t.price)}</td><td><span class="who-tag">${esc(t.who)}</span></td><td>${esc(t.note)}</td></tr>`).join("")}</tbody></table></div>
+        ${d ? `<div><div class="lbl" style="margin-bottom:8px">入力した内容は学習に使われる？</div><div class="data-pair">
+          ${["personal", "business"].map(k => `<div><div class="lbl">${k === "personal" ? "個人向け" : "法人向け"}</div><span class="chip ${LEVEL[d[k].level] || "note"}">${esc(d[k].label)}</span><p>${esc(d[k].text)}</p></div>`).join("")}
+        </div>${srcLine(d)}</div>` : ""}
+        <div class="acc-foot"><a href="${esc(p.official)}" target="_blank" rel="noopener">公式の料金ページ</a>${srcLine(p)}</div>
+      </div></details>`;
+  }).join("");
+}
+
+/* ---- 運営元 ---- */
+const FACTS = [["legal", "法人の形"], ["founded", "設立"], ["hq", "本社"], ["leader", "代表者"], ["structure", "資本・体制", true], ["scale", "規模", true], ["business", "収益の柱"], ["products", "主な製品"], ["japan", "日本での拠点", true], ["stance", "戦略の特徴", true]];
+function renderCompanies(data) {
+  $("companies-updated").textContent = data.updated;
+  $("companies-list").innerHTML = SERVICES.map(s => {
+    const c = data.companies.find(x => x.service === s.id);
+    if (!c) return "";
+    const own = $("owner-" + s.id); if (own) own.textContent = `${c.hq} · ${c.leader}`;
+    const val = v => Array.isArray(v) ? `<ul>${v.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : esc(v || "—");
+    return `<details class="acc" id="co-${s.id}" style="--c:${s.color}">
+      <summary>${badge(s)}<span class="s-name"><b>${esc(c.company)}</b><small>${esc(c.hq)} · ${esc(c.leader)}</small></span>
+        <span class="s-side"><span class="chip plain">${esc(shortName(s))}</span><span class="chip plain">設立 ${esc(String(c.founded).slice(0, 5))}</span></span><span class="chev" aria-hidden="true"></span></summary>
+      <div class="acc-body"><dl class="facts">${FACTS.map(([k, label, wide]) => `<div${wide ? ' class="wide"' : ""}><dt>${label}</dt><dd>${val(c[k])}</dd></div>`).join("")}</dl>${srcLine(c)}</div>
+    </details>`;
+  }).join("");
+}
+document.querySelectorAll("[data-toggle-all]").forEach(btn => btn.addEventListener("click", () => {
+  const list = $(btn.dataset.toggleAll), items = [...list.querySelectorAll("details")];
+  const open = !items.every(d => d.open);
+  items.forEach(d => { d.open = open; });
+  btn.textContent = open ? "すべて閉じる" : "すべて開く";
+}));
+
+/* ---- ニュース ---- */
+function renderNews(data) {
+  $("updated").textContent = data.updated;
+  $("updated-foot").textContent = data.updated;
+  document.querySelectorAll(".news-period").forEach(el => { el.textContent = data.period || ""; });
+  let count = (data.society || []).length;
+  SERVICES.forEach(s => {
+    const items = (data.services || {})[s.id] || [];
+    count += items.length;
+    const ol = $("news-" + s.id);
+    if (ol) ol.innerHTML = items.length ? items.map(newsItem).join("") : emptyRow("この期間の主なニュースはありません。");
+  });
+  $("society-news").innerHTML = (data.society || []).map(newsItem).join("") || emptyRow("この期間の主なニュースはありません。");
+  $("news-count").textContent = count + "件";
+}
+
+/* ---- 読み込み ---- */
+getJSON("services.json").then(sv => {
+  SERVICES = sv.services; CATS = sv.categories;
+  renderServices();
+  route(location.hash);
+  renderCompare();
+  getJSON("plans.json").then(p => { PLANS = p; renderPlans(); renderCompare(); }).catch(() => { $("plans-list").innerHTML = '<p class="empty">料金情報を読み込めませんでした。ページを再読み込みしてください。</p>'; });
+  getJSON("companies.json").then(renderCompanies).catch(() => { $("companies-list").innerHTML = '<p class="empty">運営元の情報を読み込めませんでした。ページを再読み込みしてください。</p>'; });
+  getJSON("news.json").then(renderNews).catch(() => { document.querySelectorAll(".news ol").forEach(ol => { ol.innerHTML = emptyRow("ニュースを読み込めませんでした。ページを再読み込みしてください。"); }); });
+}).catch(() => {
+  $("svc-cards").innerHTML = '<p class="empty">サービス情報を読み込めませんでした。ページを再読み込みしてください。</p>';
+  route(location.hash);
+});
+route(location.hash);
+
+/* ---- トップへ戻る ---- */
+const toTop = $("to-top");
+window.addEventListener("scroll", () => { toTop.classList.toggle("show", window.scrollY > 900); }, { passive: true });
+toTop.addEventListener("click", () => window.scrollTo({ top: 0 }));
+
+/* ---- リクエスト（Google フォームへのリンク。URL が空のあいだは準備中と表示） ---- */
+const REQUEST_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScBtACZ5eCD0gaaGF1el1o7VWDOD-TH1lkYQSErWZ_8iO3Q_g/viewform";
+(() => {
+  const btn = $("req-link");
+  if (/^https:\/\/(docs\.google\.com\/forms\/|forms\.gle\/)/.test(REQUEST_FORM_URL)) {
+    btn.href = REQUEST_FORM_URL;
+  } else {
+    btn.removeAttribute("href");
+    btn.setAttribute("aria-disabled", "true");
+    btn.textContent = "フォームを準備しています";
+    $("req-note").textContent = "リクエストの受付は近日開始します。";
+  }
+})();
+</script>
+</body>
+</html>
