@@ -9,6 +9,8 @@ import os
 import sys
 from datetime import datetime, timedelta, timezone
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PATH = os.path.join(ROOT, "status.json")
 

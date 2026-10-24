@@ -12,6 +12,8 @@ import os
 import subprocess
 import sys
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PURPOSES = {"writing", "research", "docs", "image", "video", "code", "study", "efficiency", "other"}
 GENRES = {"business", "life", "study", "creative"}
