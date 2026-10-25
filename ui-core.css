@@ -636,3 +636,5 @@ dialog::backdrop { background: rgba(8, 14, 13, .45); backdrop-filter: blur(3px);
 /* 横に長い表は、その枠の中でスクロールさせる */
 .sub-sec, .sub-sec > *, .tbl, .dt { min-width: 0; max-width: 100%; }
 .kv2 dd, .kv dd { overflow-wrap: anywhere; }
+/* スマホ・タブレットでは、ホームの「最近の変化」は1件だけ見せ、主要な入口を早く見せる */
+@media (max-width: 959px) { .ch-list > li:nth-child(n+2) { display: none; } }
