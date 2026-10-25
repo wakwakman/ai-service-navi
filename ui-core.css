@@ -638,3 +638,11 @@ dialog::backdrop { background: rgba(8, 14, 13, .45); backdrop-filter: blur(3px);
 .kv2 dd, .kv dd { overflow-wrap: anywhere; }
 /* スマホ・タブレットでは、ホームの「最近の変化」は1件だけ見せ、主要な入口を早く見せる */
 @media (max-width: 959px) { .ch-list > li:nth-child(n+2) { display: none; } }
+
+/* 姉妹サイトへのリンク（左ナビ下のカード・スマホのメニュー） */
+.sister { display: flex; align-items: center; gap: 8px; margin-top: 6px; padding: 8px 10px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); text-decoration: none; font-size: 12.5px; font-weight: 600; line-height: 1.45; }
+.sister:hover { border-color: var(--border-strong); background: var(--surface-3); }
+.sister .ic { color: var(--brand); flex: none; }
+.sister .ic:last-child { color: var(--text-3); margin-left: auto; }
+.sister small { display: block; font-weight: 400; font-size: 11.5px; color: var(--text-3); }
+.ms-ft .sister { margin-top: 10px; }

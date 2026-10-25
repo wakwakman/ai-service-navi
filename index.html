@@ -557,13 +557,15 @@ const PAGE = Object.fromEntries(PAGES.map(p => [p.id, p]));
 // 旧サイトのURL（#services など）からの移動先
 const ALIAS = {all: "home", services: "catalog", society: "news", top: "home"};
 let view = "home";
+// 姉妹サイトへのリンク（左ナビ下のカードとスマホのメニューに出す）
+const SISTER = `<a class="sister" href="https://wakwakman.github.io/job-site-navi/" target="_blank" rel="noopener">${ic("briefcase", 14)}<span>姉妹サイト：求人サイトナビ<small>求人媒体の業界構造辞書</small></span>${ic("ext", 13)}</a>`;
 function renderNav(){
   const counts = {catalog: SERVICES.length || "", examples: EXAMPLES.length || "", news: NEWS ? Object.values(NEWS.services).flat().length + NEWS.society.length : ""};
   const upd = NEWS ? NEWS.updated : "—";
-  const card = `<div class="side-card"><b>${ic("check", 15)}毎週月曜に更新</b><span>ニュース・料金・運営元を公開情報で確認しています。最終確認 <span class="mono">${esc(upd)}</span></span></div>`;
+  const card = `<div class="side-card"><b>${ic("check", 15)}毎週月曜に更新</b><span>ニュース・料金・運営元を公開情報で確認しています。最終確認 <span class="mono">${esc(upd)}</span></span>${SISTER}</div>`;
   $("side").innerHTML = navHTML(NAV, PAGE, counts) + card;
   $("ms-body").innerHTML = navHTML(NAV, PAGE, counts);
-  $("ms-ft").innerHTML = `毎週月曜に更新 · 最終確認 <span class="mono">${esc(upd)}</span>`;
+  $("ms-ft").innerHTML = `毎週月曜に更新 · 最終確認 <span class="mono">${esc(upd)}</span>${SISTER}`;
   markHere(NAV, PAGE, view);
 }
 function applyView(){
