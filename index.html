@@ -3,1021 +3,880 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="ChatGPT・Gemini・Claude・Copilot など主要な生成AIサービスの良い点と注意点、料金、データの扱い、運営会社、毎週更新のニュースをまとめた案内サイト。">
-<meta name="theme-color" content="#0f1f3a">
+<title>AIサービスナビ</title>
+<meta name="description" content="ChatGPT・Gemini・Claude・Copilot など主要な生成AIサービスを、目的からの診断、そのまま使えるプロンプト集、仕様の比較、同じお題での試し比べ、料金・データの扱い・運営企業・毎週更新のニュースで調べられるAI辞書。">
+<meta name="theme-color" content="#1e3a8a">
 <meta property="og:type" content="website">
 <meta property="og:title" content="AIサービスナビ">
-<meta property="og:description" content="ChatGPT・Gemini・Claude・Copilot など主要な生成AIサービスの良い点と注意点、料金、データの扱い、運営会社、毎週更新のニュースをまとめた案内サイト。">
+<meta property="og:description" content="自分に合うAIを探し、使い方を理解し、比較・検証できる実用的なAI辞書。">
+<meta property="og:url" content="https://wakwakman.github.io/ai-service-navi/">
+<meta property="og:site_name" content="AIサービスナビ">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%23fff' stroke='%23ffb81c' stroke-width='8'/%3E%3Ctext x='32' y='42' font-family='sans-serif' font-size='26' font-weight='900' text-anchor='middle' fill='%230f1f3a'%3EAI%3C/text%3E%3C/svg%3E">
-<style>:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>AIサービスナビ</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232556d0'/%3E%3Cpath d='M32 14l4.5 12.5L49 31l-12.5 4.5L32 48l-4.5-12.5L15 31l12.5-4.5L32 14Z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Murecho:wght@500;700;900&family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="ui-core.css">
 <style>
-/* Layout: 駅の案内サイン。濃紺の案内板ヘッダーに路線図型のナビ、各サービスを「駅ナンバリング」のバッジで示し、本文は白い掲示面に整然と並べる */
+/* Layout: 求人サイトナビと共通のアプリシェル（ui-core.css）。固定トップバー＋左サイドナビ＋本文、詳細は右ドロワー、比較はフローティングバー。
+   AIサービスナビは濃紺・青をアクセントに、各サービスの色をアイコンで見せる */
 :root {
-  --paper: #eef1f5;
-  --panel: #ffffff;
-  --panel-2: #f6f8fb;
-  --ink: #0e1726;
-  --muted: #566274;
-  --rule: #d3d9e2;
-  --rule-strong: #0e1726;
-  --board: #0f1f3a;
-  --board-2: #16294a;
-  --board-ink: #f4f7fb;
-  --board-muted: #a3b2c8;
-  --board-rule: rgba(163, 178, 200, .22);
-  --signal: #ffb81c;
-  --badge-bg: #ffffff;
-  --badge-ink: #0e1726;
-  --link: #1f5fd1;
-  --good: #16794c;
-  --good-soft: #e0f2e8;
-  --warn: #b8432a;
-  --warn-soft: #f9e4dd;
-  --note: #8a6100;
-  --note-soft: #fbefd0;
-  --focus: #ffb81c;
-  --shadow: 0 1px 2px rgba(14, 23, 38, .05), 0 8px 24px -16px rgba(14, 23, 38, .25);
-  --f-display: "Murecho", "Hiragino Sans", "Yu Gothic", sans-serif;
-  --f-body: "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, "Consolas", monospace;
+  --bg: #f5f6fa;
+  --surface: #ffffff;
+  --surface-2: #f1f3f9;
+  --surface-3: #e4e8f2;
+  --border: #e0e4ee;
+  --border-strong: #c7cfde;
+  --text: #0e1424;
+  --text-2: #444f68;
+  --text-3: #5f6a82;
+  --brand: #2556d0;
+  --brand-hover: #1d45ab;
+  --brand-soft: #e7eefc;
+  --on-brand: #ffffff;
+  --ring: color-mix(in srgb, var(--brand) 35%, transparent);
+  --grid: color-mix(in srgb, var(--text) 6%, transparent);
+  --navy: #1e3a8a;
+  --s-new: #1d7a52; --s-mid: #4152c4; --s-both: #93560c;
+  --m-post: #7c4ddb;
+  --av1: #2556d0; --av2: #1d7a52; --av3: #c2561f; --av4: #8a4fb0; --av5: #1f7aa8; --av6: #8f700c; --av7: #b03a5b; --av8: #4a7a1f;
+  --sh-sm: 0 1px 2px rgba(14,20,36,.05);
+  --sh-md: 0 1px 2px rgba(14,20,36,.04), 0 8px 20px -6px rgba(14,20,36,.12);
+  --sh-lg: 0 2px 6px rgba(14,20,36,.06), 0 32px 64px -16px rgba(14,20,36,.30);
+  --topH: calc(56px + env(safe-area-inset-top, 0px));
+  --f-sans: "IBM Plex Sans JP", "Hiragino Sans", "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
 }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --paper: #0b1119; --panel: #131b27; --panel-2: #18212f; --ink: #e8edf4; --muted: #9aa6b8; --rule: #253041; --rule-strong: #c9d3e1;
-  --board: #0a1628; --board-2: #12233f; --link: #82abf6;
-  --good: #6fd09f; --good-soft: #13302a; --warn: #f29a82; --warn-soft: #3b211b; --note: #e8c26a; --note-soft: #33290f;
-  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px -18px rgba(0, 0, 0, .8);
-  color-scheme: dark } }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a0d14; --surface: #10141d; --surface-2: #151a25; --surface-3: #1d2433;
+    --border: #222a3a; --border-strong: #36405a;
+    --text: #e8ecf5; --text-2: #a9b3c7; --text-3: #8892a8;
+    --brand: #8fb0ff; --brand-hover: #b0c8ff; --brand-soft: #16223e; --on-brand: #06122e;
+    --navy: #8fb0ff;
+    --s-new: #5fd19b; --s-mid: #97a5f7; --s-both: #e5a75a;
+    --m-post: #b79bff;
+    --av1: #8fb0ff; --av2: #5fd19b; --av3: #f1915f; --av4: #c99be6; --av5: #6cc0e8; --av6: #dcc25a; --av7: #ef8aa6; --av8: #9fd37a;
+    --sh-sm: 0 1px 2px rgba(0,0,0,.4);
+    --sh-md: 0 1px 2px rgba(0,0,0,.4), 0 10px 24px -6px rgba(0,0,0,.5);
+    --sh-lg: 0 2px 6px rgba(0,0,0,.4), 0 32px 64px -16px rgba(0,0,0,.7);
+    color-scheme: dark;
+  }
+}
 :root[data-theme="dark"] {
-  --paper: #0b1119; --panel: #131b27; --panel-2: #18212f; --ink: #e8edf4; --muted: #9aa6b8; --rule: #253041; --rule-strong: #c9d3e1;
-  --board: #0a1628; --board-2: #12233f; --link: #82abf6;
-  --good: #6fd09f; --good-soft: #13302a; --warn: #f29a82; --warn-soft: #3b211b; --note: #e8c26a; --note-soft: #33290f;
-  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px -18px rgba(0, 0, 0, .8);
-  color-scheme: dark }
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--board); }
-.inner { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 1px; }
-a:hover { text-decoration-thickness: 2px; }
-:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
-h1, h2, h3, h4 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.3; }
-.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
-.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-
-/* 案内板ヘッダー */
-.board { background: var(--board); color: var(--board-ink); }
-.hero { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 36px; align-items: end; padding-block: 48px 30px; }
-.kicker { font: 600 12px var(--f-mono); letter-spacing: .18em; color: var(--board-muted); text-transform: uppercase; margin-bottom: 14px; display: flex; gap: 10px; align-items: center; }
-.kicker::before { content: ""; width: 22px; height: 4px; background: var(--signal); border-radius: 2px; }
-h1 { font-weight: 900; font-size: clamp(40px, 8vw, 74px); letter-spacing: -.02em; line-height: 1.04; }
-h1 .en { display: block; font: 500 clamp(12px, 1.5vw, 14px) var(--f-mono); letter-spacing: .12em; color: var(--board-muted); margin-top: 14px; line-height: 1.6; }
-.hero .lead { margin: 18px 0 0; max-width: 36em; color: var(--board-muted); }
-.hero .lead b { color: var(--board-ink); font-weight: 700; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; font: 700 14px var(--f-body); padding: 9px 18px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background .15s, border-color .15s, color .15s; }
-.btn-signal { background: var(--signal); color: #1a1405; }
-.btn-signal:hover { background: #ffc94d; }
-.btn-ghost { background: transparent; color: var(--board-ink); border-color: var(--board-rule); }
-.btn-ghost:hover { border-color: var(--board-muted); }
-
-.dept { background: var(--board-2); border-radius: 12px; padding: 14px 16px; display: grid; gap: 2px; font-size: 13px; }
-.dept-h { font: 600 11px var(--f-mono); letter-spacing: .16em; color: var(--board-muted); padding-bottom: 6px; border-bottom: 1px solid var(--board-rule); margin-bottom: 4px; display: flex; justify-content: space-between; }
-.dept-h .live { color: var(--signal); }
-.dept-row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding-block: 5px; border-bottom: 1px dashed var(--board-rule); }
-.dept-row:last-child { border-bottom: 0; }
-.dept-row span:first-child { color: var(--board-muted); }
-.dept-row .mono { color: var(--signal); font-size: 15px; font-weight: 600; }
-
-/* 路線図ナビ */
-nav.routebar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: var(--board); border-bottom: 1px solid var(--board-rule); box-shadow: 0 10px 24px -18px rgba(5, 12, 25, .6); }
-.route { display: flex; overflow-x: auto; scrollbar-width: none; padding-block: 12px 10px; }
-.route::-webkit-scrollbar { display: none; }
-.route button { flex: 1 0 104px; position: relative; display: grid; justify-items: center; gap: 6px; padding: 0 4px; background: none; border: 0; cursor: pointer; color: var(--board-muted); font: 700 12.5px var(--f-body); white-space: nowrap; }
-.route button::before { content: ""; position: absolute; top: 17px; left: 0; right: 0; height: 6px; background: var(--c); opacity: .9; }
-.route button:first-child::before { left: 50%; }
-.route button:last-child::before { right: 50%; }
-.route button:hover { color: var(--board-ink); }
-.route .st-name { padding-bottom: 2px; border-bottom: 2px solid transparent; }
-.route button[aria-current="true"] { color: var(--board-ink); }
-.route button[aria-current="true"] .st-name { border-color: var(--signal); }
-.route button[aria-current="true"] .badge { box-shadow: 0 0 0 3px var(--board), 0 0 0 6px var(--signal); }
-
-.badge { position: relative; z-index: 1; width: 40px; height: 40px; border-radius: 10px; background: var(--badge-bg); color: var(--badge-ink); border: 4px solid var(--c); display: grid; place-items: center; font: 900 13px var(--f-display); letter-spacing: .02em; flex: none; transition: box-shadow .15s ease; }
-.badge.lg { width: 58px; height: 58px; border-radius: 13px; border-width: 6px; font-size: 18px; }
-.badge.sm { width: 28px; height: 28px; border-radius: 7px; border-width: 3px; font-size: 10px; }
-
-/* 本文 */
-main { padding-block: 36px 64px; }
-section.block { margin-bottom: 64px; scroll-margin-top: 110px; }
-.sec-h { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding-bottom: 12px; margin-bottom: 22px; border-bottom: 2px solid var(--rule-strong); }
-.sec-h h2 { font-size: clamp(21px, 3vw, 27px); font-weight: 900; letter-spacing: -.01em; }
-.sec-h .sub { color: var(--muted); font-size: 13px; }
-.sec-h .sub .mono { color: var(--ink); }
-.sec-h .tools { margin-left: auto; display: flex; gap: 8px; }
-.sec-lead { margin: -8px 0 22px; color: var(--muted); max-width: 46em; }
-
-.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); margin-bottom: 36px; align-items: center; }
-.legend .item { display: inline-flex; gap: 6px; align-items: center; }
-.glyph { font: 900 16px var(--f-display); width: 1.2em; text-align: center; line-height: 1; }
-.g-good { color: var(--good); } .g-warn { color: var(--warn); } .g-use { color: var(--link); }
-.chip { display: inline-flex; align-items: center; font-size: 11.5px; font-weight: 700; padding: 1px 9px; border-radius: 999px; white-space: nowrap; letter-spacing: .02em; }
-.chip.good { background: var(--good-soft); color: var(--good); }
-.chip.warn { background: var(--warn-soft); color: var(--warn); }
-.chip.note { background: var(--note-soft); color: var(--note); }
-.chip.plain { background: var(--panel-2); color: var(--muted); border: 1px solid var(--rule); }
-
-.btn-line { background: var(--panel); color: var(--ink); border: 1px solid var(--rule); font-size: 13px; padding: 6px 14px; }
-.btn-line:hover { border-color: var(--rule-strong); }
-
-/* ◯ △ → の三列 */
-.three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
-.three > div { min-width: 0; }
-.three h3, .three h4 { display: flex; align-items: center; gap: 8px; font: 700 15px var(--f-display); padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px solid var(--rule); }
-ul.marks { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
-ul.marks li { position: relative; padding-left: 1.5em; }
-ul.marks li::before { position: absolute; left: 0; top: .05em; font: 900 14px var(--f-display); }
-.m-good li::before { content: "◯"; color: var(--good); }
-.m-warn li::before { content: "△"; color: var(--warn); }
-.m-use li::before { content: "→"; color: var(--link); }
-
-/* 入門 */
-.intro-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
-.intro-def { font-size: 17px; line-height: 1.9; margin: 0; max-width: 34em; }
-.intro-def b { background: linear-gradient(transparent 62%, var(--note-soft) 62%); }
-.vs { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; background: var(--panel); }
-.vs > div { padding: 14px 16px; min-width: 0; }
-.vs > div + div { border-left: 1px solid var(--rule); }
-.lbl { font: 600 11px var(--f-mono); letter-spacing: .14em; color: var(--muted); }
-.vs b, .flow .node b { display: block; font: 900 16px var(--f-display); margin: 2px 0 4px; }
-.vs p, .flow .node p { margin: 0; color: var(--muted); font-size: 13.5px; }
-.flow { display: grid; grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1.4fr) 36px minmax(0, 1fr); align-items: stretch; margin-top: 28px; }
-.flow .node { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; min-width: 0; }
-.flow .node.core { background: var(--board); color: var(--board-ink); border-color: var(--board); }
-.flow .node.core .lbl { color: var(--signal); }
-.flow .node.core p { color: var(--board-muted); }
-.flow .arrow { display: grid; place-items: center; color: var(--muted); font: 900 20px var(--f-display); }
-.flow-note { color: var(--muted); font-size: 13px; margin: 10px 0 0; }
-.can { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 30px; }
-.can > div { min-width: 0; }
-.sub-h { font: 700 17px var(--f-display); margin: 34px 0 12px; display: flex; gap: 10px; align-items: center; }
-.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; counter-reset: st; }
-.steps li { counter-increment: st; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 16px 18px; min-width: 0; }
-.steps li::before { content: "STEP " counter(st); display: block; font: 600 11px var(--f-mono); letter-spacing: .14em; color: var(--link); margin-bottom: 4px; }
-.steps b { display: block; font: 900 15px var(--f-display); margin-bottom: 2px; }
-.steps span { color: var(--muted); font-size: 14px; }
-.glossary { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0 28px; margin: 0; }
-.glossary div { padding: 12px 0; border-top: 1px solid var(--rule); min-width: 0; }
-.glossary dt { font: 900 15px var(--f-display); }
-.glossary dt small { font: 500 11.5px var(--f-mono); color: var(--muted); margin-left: 8px; letter-spacing: .04em; }
-.glossary dd { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
-.faq { display: grid; gap: 8px; }
-.faq details { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; }
-.faq summary { cursor: pointer; padding: 13px 18px; font: 700 15px var(--f-display); list-style: none; display: flex; gap: 12px; align-items: baseline; }
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary::before { content: "Q"; font: 600 13px var(--f-mono); color: var(--link); }
-.faq summary::after { content: "+"; margin-left: auto; color: var(--muted); font-family: var(--f-mono); }
-.faq details[open] summary::after { content: "−"; }
-.faq details p { margin: 0; padding: 0 18px 15px 43px; color: var(--muted); font-size: 14px; }
-.checklist { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-.checklist li { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 16px 18px 16px 50px; position: relative; min-width: 0; }
-.checklist li::before { content: ""; position: absolute; left: 18px; top: 19px; width: 18px; height: 18px; border: 2px solid var(--rule-strong); border-radius: 4px; }
-.checklist b { display: block; font-family: var(--f-display); font-size: 15px; margin-bottom: 2px; }
-.checklist span { color: var(--muted); font-size: 14px; }
-
-/* 表 */
-.table-box { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; overflow-x: auto; }
-table.cmp { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 14px; }
-table.cmp th, table.cmp td { text-align: left; vertical-align: top; padding: 11px 16px; border-top: 1px solid var(--rule); }
-table.cmp thead th { border-top: 0; background: var(--board); color: var(--board-muted); font: 600 11.5px var(--f-mono); letter-spacing: .12em; white-space: nowrap; padding-block: 11px; }
-table.cmp .price { font: 600 14px var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.who-tag { font-size: 11.5px; font-weight: 700; padding: 1px 8px; border-radius: 4px; border: 1px solid var(--rule); color: var(--muted); white-space: nowrap; }
-table.matrix { min-width: 1080px; }
-table.matrix thead th:first-child, table.matrix tbody th { position: sticky; left: 0; z-index: 1; }
-table.matrix tbody th { background: var(--panel); min-width: 170px; font: 900 14px var(--f-display); box-shadow: 1px 0 0 var(--rule); }
-table.matrix thead th:first-child { z-index: 2; }
-table.matrix tbody tr:hover td, table.matrix tbody tr:hover th { background: var(--panel-2); }
-table.matrix td:nth-child(2), table.matrix td:nth-child(5) { white-space: nowrap; }
-table.matrix td { min-width: 110px; }
-.svc-line { display: flex; gap: 10px; align-items: center; }
-.svc-line small { display: block; font: 400 11.5px var(--f-body); color: var(--muted); }
-.table-meta { color: var(--muted); font-size: 13px; margin: 10px 0 0; max-width: 62em; }
-.src { font-size: 12.5px; display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 5px; align-items: center; color: var(--muted); }
-
-/* サービス一覧 */
-.toolbar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin-bottom: 18px; }
-.search { position: relative; flex: 1 1 260px; max-width: 360px; }
-.search input { width: 100%; font: 400 15px var(--f-body); color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 9px 16px 9px 38px; }
-.search input:focus { outline: 2px solid var(--focus); outline-offset: 1px; border-color: transparent; }
-.search::before { content: ""; position: absolute; left: 15px; top: 50%; width: 11px; height: 11px; border: 2px solid var(--muted); border-radius: 50%; transform: translateY(-62%); }
-.search::after { content: ""; position: absolute; left: 26px; top: 58%; width: 6px; height: 2px; background: var(--muted); transform: rotate(45deg); }
-.filters { display: flex; flex-wrap: wrap; gap: 6px; }
-.filters button { font: 700 13px var(--f-body); color: var(--muted); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
-.filters button:hover { color: var(--ink); border-color: var(--rule-strong); }
-.filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.filters .count { font-family: var(--f-mono); font-size: 11.5px; margin-left: 4px; opacity: .7; }
-.svc-index { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-bottom: 26px; }
-.svc-index a { display: flex; gap: 10px; align-items: center; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 8px 12px; text-decoration: none; color: var(--ink); min-width: 0; transition: border-color .15s, transform .15s; }
-.svc-index a:hover { border-color: var(--c); transform: translateY(-1px); }
-.svc-index b { display: block; font: 700 14px var(--f-display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.svc-index small { display: block; font-size: 11.5px; color: var(--muted); }
-.svc-index .meta { min-width: 0; }
-.empty { color: var(--muted); padding: 24px; text-align: center; border: 1px dashed var(--rule); border-radius: 10px; }
-.back-link { display: inline-flex; gap: 6px; font-size: 14px; margin-bottom: 16px; }
-
-.service { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; margin-bottom: 24px; overflow: hidden; box-shadow: var(--shadow); scroll-margin-top: 110px; }
-.svc-head { display: flex; gap: 18px; align-items: center; padding: 22px 26px 18px; border-bottom: 1px solid var(--rule); position: relative; flex-wrap: wrap; }
-.svc-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--c); }
-.svc-head .names { min-width: 0; flex: 1 1 200px; }
-.svc-head h3 { font-size: clamp(22px, 3.2vw, 28px); font-weight: 900; letter-spacing: -.01em; }
-.svc-head .maker { font: 500 12px var(--f-mono); letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
-.svc-head .chips { display: flex; gap: 6px; flex-wrap: wrap; }
-.svc-body { padding: 22px 26px 24px; display: grid; gap: 26px; }
-.svc-summary { margin: 0; max-width: 48em; font-size: 15.5px; }
-.news h4 { font: 600 11.5px var(--f-mono); letter-spacing: .16em; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
-.news h4 .news-period { font: 700 12.5px var(--f-body); letter-spacing: 0; text-transform: none; color: var(--ink); }
-.news ol { list-style: none; margin: 0; padding: 0; }
-.news li { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 4px 18px; padding: 12px 0; border-top: 1px solid var(--rule); }
-.news li:first-child { border-top: 0; }
-.news time { font: 600 13px var(--f-mono); color: var(--ink); padding-top: 1px; font-variant-numeric: tabular-nums; }
-.news .body { min-width: 0; }
-.news .body b { display: block; font-weight: 700; }
-.news .body p { margin: 3px 0 0; color: var(--muted); font-size: 14px; }
-.svc-foot { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; font-size: 13px; color: var(--muted); padding-top: 14px; border-top: 1px dashed var(--rule); }
-.svc-foot b { color: var(--ink); font-weight: 700; }
-.svc-foot .links { margin-left: auto; display: flex; gap: 14px; }
-
-/* アコーディオン（料金・運営元） */
-.acc-list { display: grid; gap: 10px; }
-.acc { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; transition: box-shadow .2s, border-color .2s; }
-.acc[open] { box-shadow: var(--shadow); border-color: var(--c); }
-.acc summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 14px; align-items: center; padding: 12px 18px; }
-.acc summary::-webkit-details-marker { display: none; }
-.acc summary:hover { background: var(--panel-2); }
-.acc .s-name b { display: block; font: 900 16px var(--f-display); }
-.acc .s-name small { display: block; font-size: 12.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.acc .s-side { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-.acc .s-side .price-from { font: 600 13px var(--f-mono); white-space: nowrap; }
-.acc .chev { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; color: var(--muted); transition: transform .2s; }
-.acc .chev::before { content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg); }
-.acc[open] .chev { transform: rotate(180deg); }
-.acc-body { padding: 4px 18px 20px; border-top: 1px solid var(--rule); display: grid; gap: 18px; }
-.acc-body table.cmp { min-width: 560px; }
-.acc-body table.cmp thead th { background: var(--panel-2); color: var(--muted); }
-.acc-body .table-box { border-radius: 8px; margin-top: 14px; }
-.data-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.data-pair > div { background: var(--panel-2); border-radius: 8px; padding: 12px 14px; min-width: 0; }
-.data-pair p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
-.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; margin: 14px 0 0; }
-.facts div { padding: 10px 0; border-top: 1px solid var(--rule); min-width: 0; }
-.facts dt { font: 600 11px var(--f-mono); letter-spacing: .12em; color: var(--muted); }
-.facts dd { margin: 2px 0 0; }
-.facts dd ul { margin: 0; padding-left: 1.1em; }
-.facts .wide { grid-column: 1 / -1; }
-.acc-foot { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: 13px; }
-
-/* リクエスト */
-.req { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; align-items: start; }
-.form-card { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 24px 26px; box-shadow: var(--shadow); }
-.cta h3 { font: 900 22px var(--f-display); margin: 4px 0 8px; }
-.cta p { margin: 0 0 14px; color: var(--muted); }
-.kinds-list { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.kinds-list li { font: 700 13px var(--f-body); padding: 5px 12px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel-2); }
-.btn-ink { background: var(--ink); color: var(--paper); }
-.btn-ink:hover { opacity: .9; }
-.btn-lg { font-size: 15px; padding: 12px 24px; }
-.btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
-.cta .cta-note { font-size: 13px; margin: 12px 0 0; }
-.req-side h3 { font: 700 16px var(--f-display); margin-bottom: 10px; }
-.req-side ul { margin: 0 0 18px; padding-left: 1.2em; color: var(--muted); font-size: 14px; display: grid; gap: 4px; }
-
-/* フッター・トップへ */
-footer.board { padding-block: 32px 40px; font-size: 13px; }
-footer .inner { display: grid; gap: 8px; color: var(--board-muted); }
-footer p { margin: 0; max-width: 64em; }
-footer .sig { font: 900 18px var(--f-display); color: var(--board-ink); margin-bottom: 6px; display: flex; gap: 10px; align-items: center; }
-footer .sig::before { content: ""; width: 22px; height: 4px; background: var(--signal); border-radius: 2px; }
-footer .mono { color: var(--signal); }
-.to-top { position: fixed; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 7; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--board); color: var(--board-ink); box-shadow: var(--shadow); cursor: pointer; display: grid; place-items: center; opacity: 0; pointer-events: none; transition: opacity .2s; }
-.to-top.show { opacity: 1; pointer-events: auto; }
-.to-top::before { content: ""; width: 9px; height: 9px; border-left: 2px solid currentColor; border-top: 2px solid currentColor; transform: translateY(2px) rotate(45deg); }
-
-@media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; gap: 22px; padding-block: 32px 22px; }
-  .intro-top, .can, .req { grid-template-columns: 1fr; gap: 22px; }
-  .flow { grid-template-columns: 1fr; }
-  .flow .arrow { height: 30px; transform: rotate(90deg); }
-  .steps, .three { grid-template-columns: 1fr; gap: 20px; }
-}
-@media (max-width: 620px) {
-  .svc-head, .svc-body { padding-left: 18px; padding-right: 18px; }
-  .badge.lg { width: 48px; height: 48px; border-width: 5px; font-size: 15px; }
-  .news li { grid-template-columns: 1fr; gap: 2px; }
-  .acc summary { grid-template-columns: auto minmax(0, 1fr) auto; padding: 12px 14px; }
-  .acc .s-side { grid-column: 2 / 3; grid-row: 2; justify-content: flex-start; }
-  .acc .chev { grid-column: 3; grid-row: 1; }
-  .data-pair, .facts { grid-template-columns: 1fr; }
-  .svc-foot .links { margin-left: 0; }
-  .sec-h .tools { margin-left: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  * { transition: none !important; }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .route button::before { transform-origin: left; animation: draw .6s cubic-bezier(.2, .7, .2, 1) both; }
-  .route button:nth-child(2)::before { animation-delay: .05s; } .route button:nth-child(3)::before { animation-delay: .1s; }
-  .route button:nth-child(4)::before { animation-delay: .15s; } .route button:nth-child(5)::before { animation-delay: .2s; }
-  .route button:nth-child(6)::before { animation-delay: .25s; } .route button:nth-child(7)::before { animation-delay: .3s; }
-  .route button:nth-child(8)::before { animation-delay: .35s; }
-  @keyframes draw { from { transform: scaleX(.2); } to { transform: none; } }
+  --bg: #0a0d14; --surface: #10141d; --surface-2: #151a25; --surface-3: #1d2433;
+  --border: #222a3a; --border-strong: #36405a;
+  --text: #e8ecf5; --text-2: #a9b3c7; --text-3: #8892a8;
+  --brand: #8fb0ff; --brand-hover: #b0c8ff; --brand-soft: #16223e; --on-brand: #06122e;
+  --navy: #8fb0ff;
+  --s-new: #5fd19b; --s-mid: #97a5f7; --s-both: #e5a75a;
+  --m-post: #b79bff;
+  --av1: #8fb0ff; --av2: #5fd19b; --av3: #f1915f; --av4: #c99be6; --av5: #6cc0e8; --av6: #dcc25a; --av7: #ef8aa6; --av8: #9fd37a;
+  --sh-sm: 0 1px 2px rgba(0,0,0,.4);
+  --sh-md: 0 1px 2px rgba(0,0,0,.4), 0 10px 24px -6px rgba(0,0,0,.5);
+  --sh-lg: 0 2px 6px rgba(0,0,0,.4), 0 32px 64px -16px rgba(0,0,0,.7);
+  color-scheme: dark;
 }
 
-/* ---- v2：診断・活用事例・比較・鮮度表示 ---- */
-.route button { flex-basis: 96px; }
-.stale { display: flex; gap: 12px; align-items: flex-start; background: var(--warn-soft); color: var(--warn); border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; font-size: 14px; }
-.stale b { display: block; }
-.stale::before { content: "!"; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--warn); color: var(--panel); display: grid; place-items: center; font: 900 13px var(--f-display); }
-.age-chip { margin-left: 6px; }
-.err-box { border: 1px dashed var(--warn); color: var(--warn); background: var(--warn-soft); border-radius: 10px; padding: 14px 16px; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; font-size: 14px; }
-.err-box .btn { background: var(--panel); color: var(--ink); border-color: var(--rule); }
+/* ---------- AIサービスナビ固有の部品 ---------- */
+/* サービスのアイコン：サービスごとの色＋略号 */
+.av.code { font-size: calc(var(--s) * .34); letter-spacing: .02em; font-family: var(--f-mono); font-weight: 600; }
+.lvl { display: inline-flex; align-items: center; gap: 6px; height: 22px; padding: 0 8px; border-radius: 6px; font-size: 12px; font-weight: 600; white-space: nowrap; color: var(--sc); background: color-mix(in srgb, var(--sc) 11%, transparent); }
+.lvl i { width: 6px; height: 6px; border-radius: 50%; background: var(--sc); }
+.lvl.safe { --sc: var(--s-new); } .lvl.choice { --sc: var(--s-both); } .lvl.uses { --sc: #c2410c; }
+:root[data-theme="dark"] .lvl.uses { --sc: #f2946b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .lvl.uses { --sc: #f2946b; } }
+.tagc { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 6px; font-size: 12px; font-weight: 500; color: var(--text-2); background: var(--surface-2); border: 1px solid var(--border); white-space: nowrap; }
+.free-y { color: var(--s-new); font-weight: 600; }
+.hero h1 .g { background: linear-gradient(100deg, var(--brand) 10%, var(--m-post) 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-.card { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; box-shadow: var(--shadow); }
+.purpose-row { display: grid; gap: 10px; }
+.purpose-row h3 { font-size: 14px; font-weight: 600; }
 
 /* 診断 */
-.diag { padding: 22px 24px; display: grid; gap: 20px; }
-.diag fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
-.diag legend { font: 900 16px var(--f-display); padding: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-.step-no { font: 600 11px var(--f-mono); letter-spacing: .12em; color: var(--paper); background: var(--ink); border-radius: 999px; padding: 3px 9px; }
-.opts { display: flex; flex-wrap: wrap; gap: 8px; }
-.opts label { position: relative; font: 700 14px var(--f-body); display: inline-flex; align-items: center; padding: 9px 16px; border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; background: var(--panel); min-height: 42px; }
-.opts label:hover { border-color: var(--rule-strong); }
-.opts input { position: absolute; opacity: 0; pointer-events: none; }
-.opts label:has(input:checked) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.opts label:has(input:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
-.diag-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-.diag-hint { color: var(--muted); font-size: 13px; margin: 0; }
-.results { display: grid; gap: 14px; margin-top: 20px; }
-.result { padding: 18px 20px; display: grid; gap: 12px; border-top: 4px solid var(--c); }
-.result-head { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
-.result-head .rank { font: 600 11px var(--f-mono); letter-spacing: .12em; color: var(--muted); }
-.result-head h3 { font: 900 20px var(--f-display); }
-.result-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.result-cols > div { min-width: 0; }
-.result .lbl { margin-bottom: 4px; display: block; }
-.result-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-.result-actions .btn { font-size: 13px; padding: 7px 14px; }
-.none-box { padding: 18px 20px; color: var(--muted); }
-.why { margin-top: 6px; }
-.why summary { cursor: pointer; font: 700 14px var(--f-display); color: var(--link); padding: 6px 0; }
-.why ul { margin: 6px 0 0; padding-left: 1.2em; color: var(--muted); font-size: 14px; display: grid; gap: 4px; }
-
-/* やりたいことから探す */
-.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
-.tile { text-align: left; background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; cursor: pointer; color: var(--ink); font: inherit; display: grid; gap: 4px; transition: border-color .15s, transform .15s; }
-.tile:hover { border-color: var(--rule-strong); transform: translateY(-1px); }
-.tile b { font: 900 16px var(--f-display); }
-.tile span { color: var(--muted); font-size: 13px; }
-.tile small { font: 600 11px var(--f-mono); color: var(--link); letter-spacing: .06em; }
+.dg { padding: 20px; display: grid; gap: 20px; }
+.dg fieldset { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 10px; }
+.dg legend { padding: 0; font-size: 15px; font-weight: 700; display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+.stepn { font-family: var(--f-mono); font-size: 11px; font-weight: 500; color: var(--on-brand); background: var(--brand); border-radius: 999px; padding: 2px 9px; }
+.dg-act { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 14px; border-top: 1px solid var(--border); }
+.dg-out { display: grid; gap: 12px; }
+.rc { padding: 18px; display: grid; gap: 14px; border-top: 3px solid var(--av); }
+.rc-hd { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.rc-hd .nm { flex: 1; min-width: 160px; }
+.rc-hd .nm small { display: block; font-family: var(--f-mono); font-size: 11.5px; color: var(--text-3); }
+.rc-hd .nm b { font-size: 17px; font-weight: 700; }
+.rc-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 720px) { .rc-cols { grid-template-columns: minmax(0, 1fr); } }
+.rc-act { display: flex; flex-wrap: wrap; gap: 8px; }
+.why-d > summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--brand); padding: 6px 0; }
+.why-d ul { margin: 6px 0 0; padding-left: 1.1em; display: grid; gap: 4px; font-size: 13px; color: var(--text-2); line-height: 1.7; }
+.ul.bad li .ic { color: var(--s-both); }
+.ul.use li .ic { color: var(--s-mid); }
+.ul.sm { font-size: 13.5px; gap: 6px; }
 
 /* 活用事例 */
 .ex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
-.ex { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; scroll-margin-top: 110px; }
-.ex-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12.5px; color: var(--muted); }
-.ex-meta .svc-mini { display: inline-flex; gap: 6px; align-items: center; font-weight: 700; color: var(--ink); margin-right: 4px; }
-.ex h3 { font: 900 16px var(--f-display); }
-.ex .scene { margin: 0; color: var(--muted); font-size: 14px; }
-.prompt-box { background: var(--panel-2); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
-.pb-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 6px 6px 12px; border-bottom: 1px solid var(--rule); }
-.prompt-box pre { margin: 0; padding: 10px 12px; font: 400 13px/1.7 var(--f-mono); white-space: pre-wrap; overflow-wrap: anywhere; max-height: 220px; overflow-y: auto; color: var(--ink); }
-.copy { font: 700 13px var(--f-body); background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: 8px 16px; cursor: pointer; min-height: 36px; white-space: nowrap; }
-.copy.done { background: var(--good); }
-.pnote { margin: 0; padding: 8px 12px; border-top: 1px dashed var(--rule); font-size: 13px; color: var(--muted); }
-.ex-more summary { cursor: pointer; font: 700 14px var(--f-display); color: var(--link); padding: 4px 0; list-style: none; display: flex; gap: 6px; align-items: center; }
-.ex-more summary::-webkit-details-marker { display: none; }
-.ex-more summary::before { content: "+"; font-family: var(--f-mono); width: 1em; }
-.ex-more[open] summary::before { content: "−"; }
-.ex-more .inside { display: grid; gap: 10px; padding-top: 6px; font-size: 14px; }
-.ex-more ol, .ex-more ul { margin: 0; padding-left: 1.3em; display: grid; gap: 3px; }
-.ex-more p { margin: 0; }
-.ex-foot { margin-top: auto; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding-top: 4px; }
-.ex-foot .btn { font-size: 13px; padding: 8px 16px; }
-.ex-tools { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin-bottom: 16px; }
-.ex-tools select { font: 700 13px var(--f-body); color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 7px 14px; }
-.ex-count { color: var(--muted); font-size: 13px; margin-left: auto; }
-.filter-tag { display: inline-flex; gap: 6px; align-items: center; font: 700 13px var(--f-body); background: var(--note-soft); color: var(--note); border: 0; border-radius: 999px; padding: 6px 12px; cursor: pointer; }
-.more-row { display: flex; justify-content: center; margin-top: 16px; }
-.svc-ex summary { cursor: pointer; font: 700 15px var(--f-display); padding: 4px 0; display: flex; gap: 8px; align-items: center; }
-.svc-ex .ex-grid { margin-top: 12px; }
-.svc-ex .ex { background: var(--panel-2); }
-.svc-ex .ex .prompt-box { background: var(--panel); }
+@media (max-width: 400px) { .ex-grid { grid-template-columns: minmax(0, 1fr); } }
+.ex { padding: 16px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.ex-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.ex h3 { font-size: 15px; font-weight: 600; line-height: 1.5; }
+.ex .scene { font-size: 13px; color: var(--text-2); line-height: 1.7; }
+.ex-more > summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--brand); list-style: none; display: flex; gap: 6px; align-items: center; padding: 2px 0; }
+.ex-more > summary::-webkit-details-marker { display: none; }
+.ex-more > summary .ic { transition: transform .2s; }
+.ex-more[open] > summary .ic { transform: rotate(180deg); }
+.ex-more .in { display: grid; gap: 12px; padding-top: 10px; font-size: 13.5px; line-height: 1.7; color: var(--text-2); }
+.ex-more ol { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; }
+.ex-ft { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); }
 
-/* 比較のサブタブ・同じお題 */
-.subtabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
-.subtabs button { font: 700 14px var(--f-body); color: var(--muted); background: transparent; border: 1px solid var(--rule); border-radius: 999px; padding: 8px 16px; cursor: pointer; }
-.subtabs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.trial-head { padding: 16px 18px; display: grid; gap: 10px; margin-bottom: 14px; }
-.trial-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
-.trial { padding: 14px 16px; display: grid; gap: 8px; align-content: start; border-top: 4px solid var(--c); }
-.trial .svc-line b { font: 900 15px var(--f-display); }
-.trial dl { margin: 0; display: grid; gap: 6px; font-size: 13.5px; }
-.trial dt { font: 600 11px var(--f-mono); letter-spacing: .1em; color: var(--muted); }
-.trial dd { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
-.pending { color: var(--muted); font-size: 13.5px; margin: 0; }
+/* 仕様の比較：一覧表（スマホはカード） */
+.mx-cards { display: none; gap: 10px; }
+.mx-card { padding: 14px; display: grid; gap: 10px; }
+.mx-card .kv2 { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+@media (max-width: 720px) { .mx-table { display: none; } .mx-cards { display: grid; } }
+.pick { display: grid; gap: 10px; padding: 16px; }
+.pick-hd { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
+.pick-hd b { font-size: 14px; }
 
-.kit-step { display: flex; gap: 10px; align-items: center; font: 700 15px var(--f-display); }
+/* 同じお題で試す */
+.trial-wrap { display: grid; gap: 14px; }
+.kit { padding: 18px; display: grid; gap: 14px; }
+.kit-step { display: flex; gap: 10px; align-items: center; font-size: 14.5px; font-weight: 700; }
 .kit-open { display: flex; flex-wrap: wrap; gap: 8px; }
-.kit-open .btn { gap: 8px; padding: 6px 14px 6px 8px; font-size: 13px; }
-.kit-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-.kit-text { width: 100%; font: 400 13.5px/1.65 var(--f-body); color: var(--ink); background: var(--panel-2); border: 1px solid var(--rule); border-radius: 8px; padding: 8px 10px; resize: vertical; }
-.kit-text:focus { outline: 2px solid var(--focus); outline-offset: 1px; border-color: transparent; }
-.kit-len { font: 500 11px var(--f-mono); color: var(--muted); text-align: right; }
-.kit-score { margin-left: auto; font-family: var(--f-mono); }
-.kit-checks { border: 0; margin: 0; padding: 0; display: grid; gap: 6px; min-width: 0; }
-.kit-checks legend { padding: 0; margin-bottom: 4px; }
-.kit-checks label { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; cursor: pointer; }
-.kit-checks input { margin-top: 3px; width: 18px; height: 18px; flex: none; accent-color: var(--good); }
-.kit-foot { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; margin-top: 14px; }
-.kit-foot .pending { flex: 1 1 320px; }
+.kit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 12px; }
+@media (max-width: 400px) { .kit-grid { grid-template-columns: minmax(0, 1fr); } }
+.kc { padding: 14px; display: grid; gap: 10px; align-content: start; border-top: 3px solid var(--av); min-width: 0; }
+.kc-hd { display: flex; gap: 10px; align-items: center; }
+.kc-hd b { flex: 1; font-size: 14px; }
+.kc .score { font-family: var(--f-mono); font-size: 12px; color: var(--text-2); background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 1px 9px; }
+.kc .len { font-family: var(--f-mono); font-size: 11px; color: var(--text-3); text-align: right; margin-top: -6px; }
+.kc fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.kc legend { padding: 0; font-size: 12px; font-weight: 600; color: var(--text-3); margin-bottom: 4px; }
+.kit-adv { display: grid; gap: 10px; }
+.kit-adv > details { border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+.kit-adv > details > summary { cursor: pointer; list-style: none; display: flex; gap: 10px; align-items: center; padding: 12px 14px; font-size: 13.5px; font-weight: 600; }
+.kit-adv > details > summary::-webkit-details-marker { display: none; }
+.kit-adv > details > summary .chev { margin-left: auto; color: var(--text-3); transition: transform .2s; }
+.kit-adv > details[open] > summary .chev { transform: rotate(180deg); }
+.kit-adv .body { padding: 0 14px 14px; display: grid; gap: 10px; }
+.crit-list { display: grid; gap: 6px; }
+.crit-list li { display: flex; gap: 8px; align-items: center; font-size: 13.5px; }
+.crit-list li span { flex: 1; min-width: 0; }
+.crit-add { display: flex; gap: 8px; }
+.hist { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.hist li { display: flex; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 10px; background: var(--surface-2); font-size: 13px; flex-wrap: wrap; }
+.hist li .m { flex: 1; min-width: 160px; }
+.hist li .m small { display: block; color: var(--text-3); font-size: 12px; }
+.privacy { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; padding: 12px 14px; border-radius: 12px; font-size: 12.5px; line-height: 1.7; color: var(--text-2); background: var(--surface-2); border: 1px solid var(--border); }
+.privacy .ic { color: var(--s-both); margin-top: 3px; }
+.official-box { padding: 16px; display: grid; gap: 12px; border: 1px solid color-mix(in srgb, var(--s-new) 35%, var(--border)); }
+.official-box h3 { font-size: 14.5px; display: flex; gap: 8px; align-items: center; }
 
-/* ニュース一覧 */
-.news-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
-.news-tools select { font: 700 13px var(--f-body); color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 7px 14px; }
-.news-all li { grid-template-columns: 104px minmax(0, 1fr); }
-.news-all .tag { display: inline-flex; gap: 6px; align-items: center; font-size: 12px; color: var(--muted); margin-bottom: 2px; }
+/* はじめての方へ */
+.flow3 { display: grid; grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1.3fr) 28px minmax(0, 1fr); align-items: stretch; }
+.flow3 .nd { padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.flow3 .nd.core { background: var(--navy); color: #fff; border-color: transparent; }
+.flow3 .nd.core p, .flow3 .nd.core small { color: rgba(255,255,255,.8); }
+:root[data-theme="dark"] .flow3 .nd.core { color: var(--on-brand); }
+:root[data-theme="dark"] .flow3 .nd.core p, :root[data-theme="dark"] .flow3 .nd.core small { color: var(--on-brand); opacity: .85; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .flow3 .nd.core { color: var(--on-brand); } :root:not([data-theme="light"]) .flow3 .nd.core p, :root:not([data-theme="light"]) .flow3 .nd.core small { color: var(--on-brand); opacity: .85; } }
+.flow3 .nd small { font-family: var(--f-mono); font-size: 11px; color: var(--text-3); letter-spacing: .06em; }
+.flow3 .nd b { font-size: 15px; }
+.flow3 .nd p { font-size: 13px; color: var(--text-2); line-height: 1.7; }
+.flow3 .ar { display: grid; place-items: center; color: var(--text-3); }
+@media (max-width: 760px) { .flow3 { grid-template-columns: minmax(0, 1fr); } .flow3 .ar { height: 28px; transform: rotate(90deg); } }
+.vs2 { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+.vs2 > div { padding: 16px; display: grid; gap: 4px; }
+.vs2 > div + div { border-left: 1px solid var(--border); }
+.vs2 small { font-size: 11.5px; color: var(--text-3); font-weight: 600; }
+.vs2 b { font-size: 15px; }
+.vs2 p { font-size: 13px; color: var(--text-2); line-height: 1.7; }
+@media (max-width: 520px) { .vs2 { grid-template-columns: 1fr; } .vs2 > div + div { border-left: 0; border-top: 1px solid var(--border); } }
+.gloss { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin: 0; }
+.gloss div { padding: 14px; display: grid; gap: 4px; }
+.gloss dt { font-weight: 700; font-size: 14px; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.gloss dt small { font-family: var(--f-mono); font-size: 11px; color: var(--text-3); font-weight: 400; }
+.gloss dd { margin: 0; font-size: 13px; color: var(--text-2); line-height: 1.7; }
+.steps3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; counter-reset: s; list-style: none; margin: 0; padding: 0; }
+@media (max-width: 760px) { .steps3 { grid-template-columns: minmax(0, 1fr); } }
+.steps3 li { padding: 16px; counter-increment: s; display: grid; gap: 4px; }
+.steps3 li::before { content: "STEP " counter(s); font-family: var(--f-mono); font-size: 11px; color: var(--brand); font-weight: 500; }
+.steps3 b { font-size: 14.5px; }
+.steps3 span { font-size: 13px; color: var(--text-2); line-height: 1.7; }
+.faq .acc > summary { grid-template-columns: auto minmax(0, 1fr) auto; }
+.faq .q { font-family: var(--f-mono); color: var(--brand); font-weight: 600; }
 
-@media (max-width: 700px) {
-  .result-cols { grid-template-columns: 1fr; }
-  .ex-grid { grid-template-columns: 1fr; }
-  .ex-count { margin-left: 0; width: 100%; }
-  /* 比較表はスマホではカード型に切り替える */
-  table.matrix { min-width: 0; }
-  table.matrix thead { display: none; }
-  table.matrix, table.matrix tbody, table.matrix tr, table.matrix th, table.matrix td { display: block; width: 100%; }
-  table.matrix tr { border-top: 2px solid var(--rule-strong); padding: 6px 0; }
-  table.matrix tbody tr:first-child { border-top: 0; }
-  table.matrix tbody th { position: static; box-shadow: none; border-top: 0; padding-bottom: 4px; }
-  table.matrix td { border-top: 0; padding: 4px 16px; display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 10px; }
-  table.matrix td::before { content: attr(data-label); font: 600 11px var(--f-mono); color: var(--muted); letter-spacing: .04em; padding-top: 2px; }
-  .table-box:has(table.matrix) { overflow-x: visible; }
-}
+/* 料金・データ */
+.data2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 560px) { .data2 { grid-template-columns: minmax(0, 1fr); } }
+.data2 > div { padding: 12px 14px; border-radius: 10px; background: var(--surface-2); display: grid; gap: 6px; align-content: start; font-size: 13px; color: var(--text-2); line-height: 1.7; }
+.data2 .l { font-size: 11.5px; color: var(--text-3); font-weight: 600; }
 </style>
 </head>
 <body>
-<header class="board" id="top">
-  <div class="inner hero">
-    <div>
-      <div class="kicker">Generative AI Service Guide</div>
-      <h1>AIサービスナビ<span class="en" id="hero-names">ChatGPT · Gemini · Claude · Copilot · Perplexity · Grok · DeepSeek · Muse · Mistral · Midjourney</span></h1>
-      <p class="lead"><b>自分に合うAIを見つけて、今日から使い始める</b>ための案内板です。3つの質問に答える診断、そのまま使えるプロンプト集、料金とデータの扱い、運営会社、毎週更新のニュースをまとめています。</p>
-      <div class="hero-actions">
-        <a class="btn btn-signal" href="#diag">あなたに合うAIを探す</a>
-        <a class="btn btn-ghost" href="#examples">やりたいことから探す</a>
-        <a class="btn btn-ghost" href="#intro">はじめての方へ</a>
-      </div>
-    </div>
-    <div class="dept" aria-label="更新情報">
-      <div class="dept-h"><span>INFORMATION</span><span class="live">● 毎週月曜更新</span></div>
-      <div class="dept-row"><span>掲載サービス</span><span class="mono" id="svc-count">10件</span></div>
-      <div class="dept-row"><span>活用事例</span><span class="mono" id="ex-count-top">—</span></div>
-      <div class="dept-row"><span>ニュースの確認日</span><span class="mono" id="updated">—</span></div>
-      <div class="dept-row"><span>料金・運営元の確認日</span><span class="mono" id="plans-updated-top">—</span></div>
-      <div class="dept-row"><span>自動更新の最終実行</span><span class="mono" id="last-run">—</span></div>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="top">
+  <div class="top-in">
+    <button type="button" class="icon-btn menu-btn" data-menu aria-label="メニューを開く" aria-controls="msheet"><i data-ic="menu" data-s="17"></i></button>
+    <a class="brand" href="#home" data-view="home" aria-label="AIサービスナビ トップへ">
+      <svg class="logo" viewBox="0 0 28 28" aria-hidden="true"><rect class="lb" width="28" height="28" rx="8"></rect><path class="ld" d="M14 6.5l2 5.6 5.6 2-5.6 2-2 5.6-2-5.6-5.6-2 5.6-2 2-5.6Z"></path></svg>
+      <span class="brand-name">AIサービスナビ</span><span class="ver mono" id="ver">—</span>
+    </a>
+    <button type="button" class="search-trigger" data-cmdk aria-label="AIサービス・活用事例を検索"><i data-ic="search" data-s="15"></i><span class="st-txt">AIサービス・活用事例・ページを検索</span><span class="kbd" data-kbd>Ctrl K</span></button>
+    <div class="top-act">
+      <button type="button" class="icon-btn theme-btn hide-sm" data-theme-toggle aria-label="ライト・ダークを切り替える" title="ライト・ダークを切り替える"><i data-ic="sun" data-s="16" data-cls="ic-sun"></i><i data-ic="moon" data-s="16" data-cls="ic-moon"></i></button>
+      <button type="button" class="btn btn-primary sm" id="top-cmp" aria-label="選んだサービスを比較"><i data-ic="columns" data-s="15"></i><span class="hide-sm">比較</span><span class="n" id="top-cmp-n">0</span></button>
     </div>
   </div>
 </header>
+<nav class="mnav" aria-label="現在の場所"><div class="in"><div class="here" id="here"></div></div></nav>
 
-<nav class="routebar" aria-label="表示する内容の切り替え">
-  <div class="inner"><div class="route" id="tabs"></div></div>
-</nav>
+<div class="shell">
+  <aside class="side" id="side" aria-label="ページの切り替え"></aside>
+  <main class="main" id="main" tabindex="-1">
 
-<main class="inner">
-  <div class="stale" id="stale" hidden></div>
-  <div class="legend">
-    <span class="item"><span class="glyph g-good">◯</span>良い点</span>
-    <span class="item"><span class="glyph g-warn">△</span>注意点</span>
-    <span class="item"><span class="glyph g-use">→</span>使い道</span>
-    <span class="item"><span class="chip note">二次情報</span>公式発表で確認できていない報道</span>
-    <span class="item"><span class="chip warn">要確認</span>出典を確認できていない情報</span>
+    <!-- ホーム -->
+    <section class="sec" id="overview" aria-label="概要">
+      <div class="hero card">
+        <div>
+          <div class="pill"><b>毎週月曜更新</b><span>主要な生成AI 10サービスを公開情報で確認しています</span></div>
+          <h1>自分に合うAIを見つけて、<span class="g">今日から使いこなす</span></h1>
+          <p class="lead">3つの質問で合うAIを探す診断、そのまま使えるプロンプト集、仕様の比較と同じお題での試し比べ、料金・データの扱い・運営企業・毎週のニュースを、ひとつの場所で調べられるAI辞書です。</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="#diag" data-view="diag"><i data-ic="wand" data-s="15"></i>自分に合うAIを探す</a>
+            <a class="btn btn-ghost" href="#examples" data-view="examples"><i data-ic="bulb" data-s="15"></i>活用事例を見る</a>
+            <a class="btn btn-ghost" href="#compare" data-view="compare"><i data-ic="columns" data-s="15"></i>比較する</a>
+          </div>
+          <p class="hint"><span class="kbd" data-kbd>Ctrl K</span>または<span class="kbd">/</span>で、どこからでもサービスや活用事例を検索できます</p>
+        </div>
+        <div class="changes">
+          <div class="ch-hd"><span>最近の主なニュース</span><span class="live"><i></i><span id="ch-date">—</span></span></div>
+          <ul class="ch-list" id="ch-list"><li><div class="loading">読み込んでいます…</div></li></ul>
+        </div>
+      </div>
+      <div class="stale" id="stale" hidden></div>
+    </section>
+
+    <section class="sec" id="start" aria-label="目的から探す">
+      <div class="prim-grid">
+        <a class="prim card main-cta" href="#diag" data-view="diag"><span class="sc-ic"><i data-ic="wand" data-s="20"></i></span><span class="n">01</span><b>自分に合うAIを探す</b><span>目的・使う場所・予算の3つを選ぶだけ。おすすめの理由と注意点つきで、最大3つを提案します。</span><span class="go-l">診断する<i data-ic="arrowR" data-s="13"></i></span></a>
+        <a class="prim card" href="#examples" data-view="examples"><span class="sc-ic"><i data-ic="bulb" data-s="20"></i></span><span class="n">02</span><b>使い方・活用事例を見る</b><span id="prim-ex">仕事・暮らし・学習・制作の場面別に、そのままコピーして使えるプロンプトと手順をまとめました。</span><span class="go-l">事例を見る<i data-ic="arrowR" data-s="13"></i></span></a>
+        <a class="prim card" href="#compare" data-view="compare"><span class="sc-ic"><i data-ic="columns" data-s="20"></i></span><span class="n">03</span><b>AIサービスを比較する</b><span>料金・無料プラン・機能・データの扱いを横に並べて比べられます。同じお題で実際に試し比べることもできます。</span><span class="go-l">比べる<i data-ic="arrowR" data-s="13"></i></span></a>
+      </div>
+      <div class="purpose-row">
+        <h3>やりたいことから探す</h3>
+        <div class="fchips" id="purpose-chips"></div>
+      </div>
+      <div class="sub-links">
+        <a href="#catalog" data-view="catalog"><i data-ic="grid" data-s="16"></i><span>AIサービス一覧<small>10サービスを検索・絞り込み</small></span></a>
+        <a href="#plans" data-view="plans"><i data-ic="yen" data-s="16"></i><span>料金・データの扱い<small>プランと学習への利用</small></span></a>
+        <a href="#intro" data-view="intro"><i data-ic="graduation" data-s="16"></i><span>はじめての方へ<small>生成AIのしくみと用語</small></span></a>
+        <a href="#news" data-view="news"><i data-ic="news" data-s="16"></i><span>ニュース<small>毎週月曜に更新</small></span></a>
+        <a href="#companies" data-view="companies"><i data-ic="building" data-s="16"></i><span>運営企業<small>本社・代表者・日本拠点</small></span></a>
+      </div>
+      <div class="kpis card" id="kpis"></div>
+    </section>
+
+    <!-- 診断 -->
+    <section class="sec" id="diag">
+      <div class="sec-hd"><div class="t"><h2><span class="sec-ic"><i data-ic="wand" data-s="17"></i></span>自分に合うAIを探す</h2><p>3つの質問に答えると、条件に合うAIを最大3つ、理由と注意点つきで提案します。選んだ内容はこのページの中だけで使い、どこにも送信しません。</p></div></div>
+      <form class="dg card" id="diag-form" novalidate>
+        <fieldset><legend><span class="stepn">1</span>何に使いたいですか？</legend><div class="opt-grid" id="opt-purpose"></div></fieldset>
+        <fieldset><legend><span class="stepn">2</span>どこで使いますか？</legend><div class="opt-grid" id="opt-env"></div></fieldset>
+        <fieldset><legend><span class="stepn">3</span>予算はどのくらいですか？</legend><div class="opt-grid" id="opt-budget"></div></fieldset>
+        <div class="dg-act"><button type="submit" class="btn btn-primary"><i data-ic="wand" data-s="15"></i>診断する</button><button type="reset" class="btn btn-ghost">選び直す</button><span class="note"><i data-ic="info" data-s="14"></i>料金はドル建てを1ドル=150円で換算した目安です。</span></div>
+      </form>
+      <div class="dg-out" id="diag-result" aria-live="polite"></div>
+    </section>
+
+    <!-- サービス一覧 -->
+    <section class="sec" id="catalog">
+      <div class="sec-hd"><div class="t"><h2><span class="sec-ic"><i data-ic="grid" data-s="17"></i></span>AIサービスを探す</h2><p>サービスを押すと詳しい情報が右側に開きます。＋ボタンで比較に追加できます（最大4つ）。</p></div></div>
+      <div class="toolbar card">
+        <div class="tb-l"><div class="segc" id="cat-seg" role="group" aria-label="種類で絞り込む"></div></div>
+        <div class="tb-r">
+          <label class="tb-search"><i data-ic="search" data-s="15"></i><span class="sr-only">キーワードで探す</span><input id="cat-q" type="search" placeholder="名前・会社・できること" autocomplete="off"></label>
+          <div class="segc icons" id="view-seg" role="group" aria-label="表示の切り替え"><button type="button" data-v="grid" aria-pressed="true" aria-label="カード表示"><i data-ic="grid" data-s="15"></i></button><button type="button" data-v="table" aria-pressed="false" aria-label="表で表示"><i data-ic="list" data-s="15"></i></button></div>
+        </div>
+      </div>
+      <div class="fchips" id="cat-flt" role="group" aria-label="条件で絞り込む"></div>
+      <div class="res-hd"><span id="cat-res">—</span><div class="afilters" id="cat-active"></div></div>
+      <div id="cat-out"><div class="skel"></div></div>
+    </section>
+
+    <!-- 活用事例 -->
+    <section class="sec" id="examples">
+      <div class="sec-hd"><div class="t"><h2><span class="sec-ic"><i data-ic="bulb" data-s="17"></i></span>活用事例・プロンプト</h2><p>【　】を自分の内容に書き換えてから送ってください。「期待できるアウトプット」は返ってくる内容の種類の説明で、実際の出力ではありません。</p></div></div>
+      <div class="toolbar card">
+        <div class="tb-l"><div class="segc" id="ex-genre" role="group" aria-label="ジャンルで絞り込む"></div></div>
+        <div class="tb-r">
+          <label class="tb-search"><i data-ic="search" data-s="15"></i><span class="sr-only">キーワードで探す</span><input id="ex-q" type="search" placeholder="例：メール、要約、画像" autocomplete="off"></label>
+          <label class="sel"><span class="sr-only">サービスで絞り込む</span><select id="ex-svc"><option value="">すべてのサービス</option></select><i data-ic="chevD" data-s="14"></i></label>
+        </div>
+      </div>
+      <div class="fchips" id="ex-purpose" role="group" aria-label="目的で絞り込む"></div>
+      <div class="res-hd"><span id="ex-res">—</span><div class="afilters" id="ex-active"></div></div>
+      <div id="ex-out"><div class="skel"></div></div>
+    </section>
+
+    <!-- 仕様を比べる -->
+    <section class="sec" id="compare">
+      <div class="sec-hd"><div class="t"><h2><span class="sec-ic"><i data-ic="columns" data-s="17"></i></span>仕様を比べる</h2><p>料金・無料プラン・機能・データの扱いなど、各サービスの仕様を並べて比べます。実際の答えを比べたいときは「<a href="#trial" data-view="trial">同じお題で試す</a>」を使ってください。</p></div></div>
+      <div class="pick card">
+        <div class="pick-hd"><b>比べたいサービスを選ぶ（2〜4つ）</b><button type="button" class="btn btn-primary sm" data-cmpopen><i data-ic="columns" data-s="14"></i>選んだサービスを比較</button></div>
+        <div class="fchips" id="pick-chips"></div>
+      </div>
+      <div class="mx-table card tbl" id="mx-table"></div>
+      <div class="mx-cards" id="mx-cards"></div>
+      <p class="note"><i data-ic="info" data-s="14"></i>料金とデータの扱いは毎週の確認結果を反映しています。パソコンでは表を横にスクロールできます。</p>
+    </section>
+
+    <!-- 同じお題で試す -->
+    <section class="sec" id="trial">
+      <div class="sec-hd"><div class="t"><h2><span class="sec-ic"><i data-ic="flask" data-s="17"></i></span>同じお題で試す</h2><p>同じお題（プロンプト）を各AIに送り、返ってきた答えを並べて比べます。仕様ではなく、実際の答えの違いを確かめるための道具です。</p></div></div>
+      <div class="segc" id="trial-themes" role="group" aria-label="お題を選ぶ"></div>
+      <div class="trial-wrap" id="trial-out"><div class="skel"></div></div>
+    </section>
+
+    <!-- 料金・データ -->
+    <section class="sec" id="plans">
+      <div class="sec-hd"><div class="t"><h2><span class="sec-ic"><i data-ic="yen" data-s="17"></i></span>料金・データの扱い</h2><p>サービスを押すと、プランごとの月額と、入力した内容が学習に使われるかが開きます。閉じたままでも最安の料金とデータの扱いが分かります。</p></div>
+        <div class="sec-tools"><span class="updated" id="plans-upd"></span><button type="button" class="btn btn-ghost sm" data-toggle-all="plans-list">すべて開く</button></div></div>
+      <div class="acc-list" id="plans-list"><div class="skel"></div></div>
+      <p class="note"><i data-ic="info" data-s="14"></i>月額は税・地域で変わります。米ドル表記のサービスは日本での価格や税込額が異なることがあります。学習への利用を止めても、すでに学習に使われたデータは消えません。</p>
+    </section>
+
+    <!-- はじめての方へ -->
+    <section class="sec" id="intro">
+      <div class="sec-hd"><div class="t"><h2><span class="sec-ic"><i data-ic="graduation" data-s="17"></i></span>はじめての方へ</h2><p>生成AIは、インターネット上の大量の文章や画像からことばや形のパターンを学び、質問や指示に合わせて新しい文章・画像・音声・プログラムを作り出すAIです。チャットで話しかけるように使えるので、専門知識がなくても今日から試せます。</p></div></div>
+      <div class="vs2 card">
+        <div><small>これまでのAI</small><b>見分ける・予測する</b><p>迷惑メールの判定、商品のおすすめ、売上の予測など。決まった答えを選ぶのが得意。</p></div>
+        <div><small>生成AI</small><b>新しく作る</b><p>文章の下書き、要約、翻訳、画像づくり、プログラムなど。答えそのものを組み立てる。</p></div>
+      </div>
+      <div class="flow3" role="img" aria-label="生成AIのしくみ：あなたの指示をAIモデルが受け取り、学んだパターンから結果を組み立てて返す">
+        <div class="nd card"><small>INPUT</small><b>あなたの指示</b><p>「この文章を3行で要約して」などの質問や指示。プロンプトと呼ぶ。</p></div>
+        <div class="ar"><i data-ic="arrowR" data-s="18"></i></div>
+        <div class="nd card core"><small>MODEL</small><b>AIモデル（LLM）</b><p>学んだパターンをもとに「次に来そうなことば」を一つずつ予測して、答えを組み立てる。</p></div>
+        <div class="ar"><i data-ic="arrowR" data-s="18"></i></div>
+        <div class="nd card"><small>OUTPUT</small><b>結果</b><p>文章、要約、画像、表、プログラムなど。何度でも直しを頼める。</p></div>
+      </div>
+      <p class="note"><i data-ic="alert" data-s="14"></i>「予測して組み立てる」しくみのため、事実と違う内容をもっともらしく書くことがあります（ハルシネーション）。大事な情報は必ず確かめましょう。</p>
+      <div class="diff">
+        <div class="card"><h3>得意なこと</h3><ul class="ul"><li><i data-ic="check" data-s="14"></i><span>文章を書く・直す・短くまとめる・言い換える</span></li><li><i data-ic="check" data-s="14"></i><span>外国語との翻訳、やさしい言葉での説明</span></li><li><i data-ic="check" data-s="14"></i><span>アイデア出し、企画や文章の構成づくり</span></li><li><i data-ic="check" data-s="14"></i><span>表やプログラムの作成、写真や資料の読み取り</span></li></ul></div>
+        <div class="card"><h3>苦手なこと</h3><ul class="ul bad"><li><i data-ic="alert" data-s="14"></i><span>最新の出来事や細かい数字を正確に答えること（検索機能で補える場合もある）</span></li><li><i data-ic="alert" data-s="14"></i><span>出典をつけずに書いた内容の正しさを保証すること</span></li><li><i data-ic="alert" data-s="14"></i><span>法律・医療・お金など、責任をともなう最終判断</span></li><li><i data-ic="alert" data-s="14"></i><span>あなたの会社や家庭だけの事情を、言われずに知ること</span></li></ul></div>
+      </div>
+      <h3 class="sub-title">使い始める3ステップ</h3>
+      <ol class="steps3">
+        <li class="card"><b>無料プランで試す</b><span>多くのサービスは無料で始められます。メールアドレスなどでアカウントを作るだけです。</span></li>
+        <li class="card"><b>個人情報は入れない</b><span>名前や住所、会社の秘密は入力しないのが基本。学習に使わせない設定も確認しましょう。</span></li>
+        <li class="card"><b>答えを確かめて使う</b><span>出てきた答えは下書きとして扱い、事実や数字は公式の情報で確かめてから使います。</span></li>
+      </ol>
+      <h3 class="sub-title">生成AI全般の良い点・注意点・使い道</h3>
+      <div class="diff">
+        <div class="card"><h3>良い点</h3><ul class="ul"><li><i data-ic="check" data-s="14"></i><span>文章の下書き、要約、翻訳、言い換えを数秒で出せる</span></li><li><i data-ic="check" data-s="14"></i><span>プログラミングや表計算の式づくりを対話しながら進められる</span></li><li><i data-ic="check" data-s="14"></i><span>調べものの入口として、論点や用語を整理してくれる</span></li><li><i data-ic="check" data-s="14"></i><span>画像・音声・資料の読み取りなど、文字以外も扱える</span></li><li><i data-ic="check" data-s="14"></i><span>24時間いつでも、何度でも質問し直せる</span></li></ul></div>
+        <div class="card"><h3>注意点</h3><ul class="ul bad"><li><i data-ic="alert" data-s="14"></i><span>もっともらしい誤り（ハルシネーション）を出すことがある</span></li><li><i data-ic="alert" data-s="14"></i><span>入力した内容の扱いは契約プランで異なり、機密や個人情報には注意が要る</span></li><li><i data-ic="alert" data-s="14"></i><span>著作権や商標をめぐる訴訟が各国で続いており、生成物の使い方に配慮が必要</span></li><li><i data-ic="alert" data-s="14"></i><span>障害や仕様変更、無料枠の縮小が予告なく起こる</span></li><li><i data-ic="alert" data-s="14"></i><span>任せきりにすると、判断の根拠を説明できなくなる</span></li></ul></div>
+        <div class="card"><h3>使い道</h3><ul class="ul use"><li><i data-ic="arrowR" data-s="14"></i><span>会議メモから議事録と次のタスクを作る</span></li><li><i data-ic="arrowR" data-s="14"></i><span>メールや案内文の下書き、敬語の調整</span></li><li><i data-ic="arrowR" data-s="14"></i><span>長い規約・論文・報告書の要点抽出</span></li><li><i data-ic="arrowR" data-s="14"></i><span>アンケート自由記述の分類と傾向の整理</span></li><li><i data-ic="arrowR" data-s="14"></i><span>学習の相棒（解説、練習問題、添削）</span></li></ul></div>
+      </div>
+      <h3 class="sub-title">よく出てくる用語</h3>
+      <dl class="gloss">
+        <div class="card"><dt>プロンプト<small>prompt</small></dt><dd>AIへの指示や質問の文。具体的に書くほど、ほしい答えに近づく。</dd></div>
+        <div class="card"><dt>LLM<small>大規模言語モデル</small></dt><dd>大量の文章から学んだ、文章を扱うAIの本体。GPT、Gemini、Claude などがこれにあたる。</dd></div>
+        <div class="card"><dt>モデル<small>model</small></dt><dd>AIの「頭脳」にあたる部分。同じサービスでも、速いモデル・賢いモデルなど種類がある。</dd></div>
+        <div class="card"><dt>ハルシネーション<small>hallucination</small></dt><dd>AIが事実と違う内容を、もっともらしく答えてしまうこと。</dd></div>
+        <div class="card"><dt>マルチモーダル<small>multimodal</small></dt><dd>文章だけでなく、画像・音声・動画なども読み取ったり作ったりできること。</dd></div>
+        <div class="card"><dt>エージェント<small>agent</small></dt><dd>指示を受けて、調べもの・操作・作業を自分で順に進めるAI。</dd></div>
+        <div class="card"><dt>トークン<small>token</small></dt><dd>AIが文章を数える単位。料金や一度に読める量はトークン数で決まることが多い。</dd></div>
+        <div class="card"><dt>学習（トレーニング）<small>training</small></dt><dd>データからパターンを覚えさせること。入力した内容が学習に使われるかはサービスと設定で違う。</dd></div>
+        <div class="card"><dt>オプトアウト<small>opt-out</small></dt><dd>データを学習に使うことを、利用者が断ること。設定画面で選べる場合が多い。</dd></div>
+        <div class="card"><dt>API<small>application programming interface</small></dt><dd>自社のアプリやシステムからAIを呼び出すための窓口。使った量に応じて課金される。</dd></div>
+        <div class="card"><dt>公開モデル<small>open weights</small></dt><dd>中身（重み）が公開され、誰でも自分の環境で動かせるAIモデル。DeepSeek や Mistral が代表例。</dd></div>
+        <div class="card"><dt>AI検索<small>answer engine</small></dt><dd>Webを検索し、結果をまとめて出典つきで答える仕組み。Perplexity が代表例。</dd></div>
+      </dl>
+      <h3 class="sub-title">よくある質問</h3>
+      <div class="acc-list faq">
+        <details class="acc"><summary><span class="q">Q</span><span class="s-name"><b>無料でも使えますか？</b></span><i data-ic="chevD" data-s="18" data-cls="chev"></i></summary><div class="acc-body"><p>多くは無料プランがあります。ただし使える回数やモデルに制限があり、ChatGPT の無料プランには広告が表示されます。Midjourney には無料プランがありません。詳しくは「料金・データの扱い」をご覧ください。</p></div></details>
+        <details class="acc"><summary><span class="q">Q</span><span class="s-name"><b>日本語で使えますか？</b></span><i data-ic="chevD" data-s="18" data-cls="chev"></i></summary><div class="acc-body"><p>ほとんどが日本語で使えます。Meta の Muse は2026年10月時点で日本では提供されていません。新しい機能は英語版から先に提供されることがあります。</p></div></details>
+        <details class="acc"><summary><span class="q">Q</span><span class="s-name"><b>仕事で使っても大丈夫ですか？</b></span><i data-ic="chevD" data-s="18" data-cls="chev"></i></summary><div class="acc-body"><p>会社のルールを先に確認してください。顧客情報や社外秘を扱うなら、入力内容を学習に使わない法人向けプランが向いています。データが海外のどこに保存されるかも確認しましょう。</p></div></details>
+        <details class="acc"><summary><span class="q">Q</span><span class="s-name"><b>どれを選べばいいですか？</b></span><i data-ic="chevD" data-s="18" data-cls="chev"></i></summary><div class="acc-body"><p>Googleのサービスをよく使うなら Gemini、Word や Teams を仕事で使うなら Copilot、長い資料やプログラミングなら Claude、調べものなら Perplexity、画像づくりなら Midjourney、まず何でも試したいなら ChatGPT が入りやすいでしょう。「<a href="#diag" data-view="diag">自分に合うAIを探す</a>」も参考にしてください。</p></div></details>
+        <details class="acc"><summary><span class="q">Q</span><span class="s-name"><b>AIが作った文章や画像は自由に使えますか？</b></span><i data-ic="chevD" data-s="18" data-cls="chev"></i></summary><div class="acc-body"><p>多くのサービスは利用者が使うことを認めていますが、既存の作品に似ていると権利の問題になることがあります。公開や販売の前に確認しましょう。</p></div></details>
+        <details class="acc"><summary><span class="q">Q</span><span class="s-name"><b>中国のAIサービスを使っても大丈夫ですか？</b></span><i data-ic="chevD" data-s="18" data-cls="chev"></i></summary><div class="acc-body"><p>DeepSeek は入力したデータが中国のサーバーに保存され、中国の法令が適用されます。2025年2月に個人情報保護委員会が注意を呼びかけました。個人情報や仕事の情報は入力しないのが安全です。</p></div></details>
+      </div>
+      <h3 class="sub-title">使う前のチェックリスト</h3>
+      <div class="guide">
+        <div class="card"><b>入力してよい情報か</b><p>顧客名、社外秘、個人情報は、会社の規程と契約プランのデータの扱いを確認してから入力する。</p></div>
+        <div class="card"><b>事実の裏取り</b><p>数字・日付・法律・引用文献は、必ず一次資料で確かめる。米国では裁判所への提出書類に架空の判例が含まれた事例が続いている。</p></div>
+        <div class="card"><b>権利の確認</b><p>生成した文章や画像を公開・販売する前に、既存の作品や商標に似ていないか見る。</p></div>
+        <div class="card"><b>学習設定</b><p>入力内容をモデルの改善に使わせない設定があるか確認する。</p></div>
+        <div class="card"><b>代わりの手段</b><p>障害で止まっても困らないよう、重要な業務は別のサービスか手作業の手順も用意しておく。</p></div>
+      </div>
+    </section>
+
+    <!-- 運営企業 -->
+    <section class="sec" id="companies">
+      <div class="sec-hd"><div class="t"><h2><span class="sec-ic"><i data-ic="building" data-s="17"></i></span>運営企業</h2><p>どんな会社が作っているかは、データの扱いや今後の方針を考える手がかりになります。企業価値や利用者数は報道ベースの数字を含み、時期や数え方で変わります。</p></div>
+        <div class="sec-tools"><span class="updated" id="co-upd"></span><button type="button" class="btn btn-ghost sm" data-toggle-all="co-list">すべて開く</button></div></div>
+      <div class="acc-list" id="co-list"><div class="skel"></div></div>
+    </section>
+
+    <!-- ニュース -->
+    <section class="sec" id="news">
+      <div class="sec-hd"><div class="t"><h2><span class="sec-ic"><i data-ic="news" data-s="17"></i></span>ニュース</h2><p>各記事の左の日付は記事の公開日です。サイトの確認日は、毎週の自動更新でニュースを確認した日です。</p></div>
+        <div class="sec-tools"><span class="updated" id="news-upd"></span><label class="sel"><span class="sr-only">サービスで絞り込む</span><select id="news-svc"><option value="">すべてのサービス</option></select><i data-ic="chevD" data-s="14"></i></label></div></div>
+      <div class="news-wrap">
+        <div class="news-col card"><h3>サービスのニュース<span id="news-n1"></span></h3><ol class="nlist" id="news-svc-list"><li><div class="loading">読み込んでいます…</div></li></ol></div>
+        <div class="news-col card"><h3>規制・社会の動き<span id="news-n2"></span></h3><ol class="nlist" id="news-soc-list"><li><div class="loading">読み込んでいます…</div></li></ol></div>
+      </div>
+    </section>
+
+    <!-- リクエスト -->
+    <section class="sec" id="request">
+      <div class="sec-hd"><div class="t"><h2><span class="sec-ic"><i data-ic="send" data-s="17"></i></span>リクエスト・お問い合わせ</h2><p>載せてほしいAIサービスや情報、誤りの指摘、サイトへの要望を受け付けています。</p></div></div>
+      <div class="req">
+        <div class="req-main card">
+          <h3>リクエストはこちらから</h3>
+          <p>Google フォームが新しいタブで開きます。サインインは不要で、匿名でも送れます。所要時間は1〜2分です。</p>
+          <div class="req-kinds"><span>掲載してほしいAIサービス</span><span>載せてほしい情報</span><span>情報の誤り</span><span>サイトへの要望</span></div>
+          <a class="btn btn-primary" id="req-link" href="#" target="_blank" rel="noopener">リクエストフォームを開く<i data-ic="ext" data-s="14"></i></a>
+          <p class="note" id="req-note"><i data-ic="info" data-s="14"></i><span>個人情報や社外秘は書かないでください。</span></p>
+        </div>
+        <div class="req-side card">
+          <h3>こんな声をお待ちしています</h3>
+          <ul><li>まだ載っていないAIサービス（画像・動画・音声・国産AIなど）</li><li>比べてみたい項目（商用利用、対応言語、APIの料金など）</li><li>古くなった情報や誤りの指摘</li><li>使いにくいところ、見づらいところ</li></ul>
+          <h3>届いたリクエストの扱い</h3>
+          <ul><li>内容を確認し、載せられるものから順に反映します。</li><li>個別のお返事はしていません。</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 出典 -->
+    <section class="sec" id="sources">
+      <div class="sec-hd"><div class="t"><h2><span class="sec-ic"><i data-ic="book" data-s="17"></i></span>出典</h2><p>掲載内容の根拠にした資料をサービスごとにまとめています。<span class="sec-chip">二次情報</span>は公式発表や大手報道で確認できていない情報です。</p></div></div>
+      <div class="src-grid" id="src-grid"><div class="skel"></div></div>
+    </section>
+
+    <footer class="site-foot">
+      <p><b>AIサービスナビ</b>は、公開されている報道・公式発表をもとにまとめた案内サイトです。正確さを保証するものではありません。料金や機能は頻繁に変わるため、利用前に各社の公式ページで最新情報を確認してください。</p>
+      <p>「二次情報」は公式発表で確認できていない報道です。活用事例の「期待できるアウトプット」は内容の種類の説明で、実際の出力ではありません。用途ごとの得意度や診断はこのサイト独自の評価です。サービス名は各社の商標です。</p>
+      <p>姉妹サイト：<a href="https://wakwakman.github.io/job-site-navi/" target="_blank" rel="noopener">求人サイトナビ</a></p>
+    </footer>
+  </main>
+</div>
+
+<div class="cbar" id="cbar" hidden></div>
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+<dialog class="msheet" id="msheet" aria-label="メニュー">
+  <div class="ms">
+    <div class="ms-hd"><b>メニュー</b><div style="display:flex;gap:6px"><button type="button" class="icon-btn theme-btn" data-theme-toggle aria-label="ライト・ダークを切り替える"><i data-ic="sun" data-s="16" data-cls="ic-sun"></i><i data-ic="moon" data-s="16" data-cls="ic-moon"></i></button><button type="button" class="icon-btn" data-close="msheet" aria-label="メニューを閉じる"><i data-ic="x" data-s="15"></i></button></div></div>
+    <div class="ms-body" id="ms-body"></div>
+    <div class="ms-ft" id="ms-ft"></div>
   </div>
+</dialog>
 
-  <section class="block" data-group="diag" id="diag">
-    <div class="sec-h"><span class="badge" style="--c:#0ea5a4">?</span><h2>あなたに合うAIを探す</h2><span class="sub">3つ選ぶだけ・約1分</span></div>
-    <form class="card diag" id="diag-form" novalidate>
-      <fieldset><legend><span class="step-no">STEP 1</span>何に使いたいですか？</legend><div class="opts" id="opt-purpose"></div></fieldset>
-      <fieldset><legend><span class="step-no">STEP 2</span>どこで使いますか？</legend><div class="opts" id="opt-env"></div></fieldset>
-      <fieldset><legend><span class="step-no">STEP 3</span>予算はどのくらいですか？</legend><div class="opts" id="opt-budget"></div></fieldset>
-      <div class="diag-actions">
-        <button type="submit" class="btn btn-ink">診断する</button>
-        <button type="reset" class="btn btn-line">選び直す</button>
-        <p class="diag-hint">選んだ内容はこのページの中だけで使い、どこにも送信しません。</p>
-      </div>
-    </form>
-    <div id="diag-result" aria-live="polite"></div>
-  </section>
-
-  <section class="block" data-group="home" id="purposes">
-    <div class="sec-h"><span class="badge" style="--c:#c2410c">EX</span><h2>やりたいことから探す</h2><span class="sub">目的を選ぶと、使える活用事例とプロンプトが出ます</span></div>
-    <div class="tiles" id="tiles"></div>
-  </section>
-
-  <section class="block" data-group="compare" id="compare">
-    <div class="sec-h"><span class="badge" style="--c:#6c7a8f">VS</span><h2>サービスを比べる</h2><span class="sub" id="cmp-sub">一覧と、同じお題での試し比べ</span></div>
-    <div class="subtabs" id="cmp-tabs" aria-label="比較の種類">
-      <button type="button" id="st-matrix" aria-pressed="true" aria-controls="cmp-matrix">一覧で比較</button>
-      <button type="button" id="st-trial" aria-pressed="false" aria-controls="cmp-trial">同じお題で試して比べる</button>
-    </div>
-    <div id="cmp-matrix">
-      <div class="table-box">
-        <table class="cmp matrix">
-          <thead><tr><th scope="col">SERVICE</th><th scope="col">種類</th><th scope="col">得意なこと</th><th scope="col">無料プラン</th><th scope="col">個人の料金</th><th scope="col">日本での利用</th><th scope="col">画像の生成</th><th scope="col">個人データの学習</th><th scope="col">向いている人</th></tr></thead>
-          <tbody id="compare-body"><tr><td colspan="9">読み込んでいます…</td></tr></tbody>
-        </table>
-      </div>
-      <p class="table-meta">パソコンでは表を横にスクロールできます。サービス名を押すと詳しい説明に移ります。料金とデータの扱いは毎週の確認結果を反映しています。</p>
-    </div>
-    <div id="cmp-trial" hidden>
-      <div class="subtabs" id="trial-themes" aria-label="お題"></div>
-      <div id="trial-body"><p class="empty">読み込んでいます…</p></div>
-    </div>
-  </section>
-
-  <section class="block" data-group="services" id="services">
-    <div class="sec-h"><span class="badge" style="--c:#2f6fe4">SV</span><h2>サービス別まとめ</h2><span class="sub">特徴・良い点と注意点・活用事例・最新ニュース</span></div>
-    <div class="toolbar">
-      <div class="search"><label class="visually-hidden" for="svc-search">サービスを検索</label><input id="svc-search" type="search" placeholder="サービス名やキーワードで探す" autocomplete="off"></div>
-      <div class="filters" id="svc-filters" role="group" aria-label="種類で絞り込む"></div>
-    </div>
-    <a class="back-link" id="back-all" href="#services" hidden>← すべてのサービスを表示</a>
-    <nav class="svc-index" id="svc-index" aria-label="サービス一覧"></nav>
-    <div id="svc-cards"><p class="empty">サービス情報を読み込んでいます…</p></div>
-    <p class="empty" id="svc-empty" hidden>条件に合うサービスがありません。キーワードや種類を変えてみてください。</p>
-  </section>
-
-  <section class="block" data-group="examples" id="examples">
-    <div class="sec-h"><span class="badge" style="--c:#c2410c">EX</span><h2>活用事例・プロンプト集</h2><span class="sub">そのままコピーして使えます</span></div>
-    <p class="sec-lead" id="ex-note">【　】の部分を自分の内容に書き換えてから送ってください。「期待できるアウトプット」は返ってくる内容の種類の説明で、実際の出力ではありません。</p>
-    <div class="ex-tools">
-      <div class="filters" id="ex-genres" role="group" aria-label="ジャンルで絞り込む"></div>
-      <label class="visually-hidden" for="ex-service">サービスで絞り込む</label>
-      <select id="ex-service"><option value="">すべてのサービス</option></select>
-      <span id="ex-purpose-tag"></span>
-      <span class="ex-count" id="ex-count"></span>
-    </div>
-    <div class="ex-grid" id="ex-grid"><p class="empty">活用事例を読み込んでいます…</p></div>
-    <div class="more-row" id="ex-more" hidden></div>
-  </section>
-
-  <section class="block" data-group="intro" id="intro">
-    <div class="sec-h"><span class="badge" style="--c:#00a0c6">AI</span><h2>はじめての生成AI</h2><span class="sub">そもそも何？ から使い始めるまで</span></div>
-    <div class="intro-top">
-      <p class="intro-def">生成AIは、インターネット上の大量の文章や画像からことばや形のパターンを学び、<b>質問や指示に合わせて新しい文章・画像・音声・プログラムを作り出すAI</b>です。チャットで話しかけるように使えるので、専門知識がなくても今日から試せます。</p>
-      <div class="vs">
-        <div><div class="lbl">これまでのAI</div><b>見分ける・予測する</b><p>迷惑メールの判定、商品のおすすめ、売上の予測など。決まった答えを選ぶのが得意。</p></div>
-        <div><div class="lbl">生成AI</div><b>新しく作る</b><p>文章の下書き、要約、翻訳、画像づくり、プログラムなど。答えそのものを組み立てる。</p></div>
-      </div>
-    </div>
-
-    <div class="flow" role="img" aria-label="生成AIのしくみ：あなたの指示をAIモデルが受け取り、学んだパターンから結果を組み立てて返す">
-      <div class="node"><div class="lbl">INPUT</div><b>あなたの指示</b><p>「この文章を3行で要約して」などの質問や指示。プロンプトと呼ぶ。</p></div>
-      <div class="arrow" aria-hidden="true">→</div>
-      <div class="node core"><div class="lbl">MODEL</div><b>AIモデル（LLM）</b><p>学んだパターンをもとに「次に来そうなことば」を一つずつ予測して、答えを組み立てる。</p></div>
-      <div class="arrow" aria-hidden="true">→</div>
-      <div class="node"><div class="lbl">OUTPUT</div><b>結果</b><p>文章、要約、画像、表、プログラムなど。何度でも直しを頼める。</p></div>
-    </div>
-    <p class="flow-note">「予測して組み立てる」しくみのため、事実と違う内容をもっともらしく書くことがあります（ハルシネーション）。大事な情報は必ず確かめましょう。</p>
-
-    <div class="can">
-      <div>
-        <h3 class="sub-h"><span class="glyph g-good">◯</span>得意なこと</h3>
-        <ul class="marks m-good">
-          <li>文章を書く・直す・短くまとめる・言い換える</li>
-          <li>外国語との翻訳、やさしい言葉での説明</li>
-          <li>アイデア出し、企画や文章の構成づくり</li>
-          <li>表やプログラムの作成、写真や資料の読み取り</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="sub-h"><span class="glyph g-warn">△</span>苦手なこと</h3>
-        <ul class="marks m-warn">
-          <li>最新の出来事や細かい数字を正確に答えること（検索機能で補える場合もある）</li>
-          <li>出典をつけずに書いた内容の正しさを保証すること</li>
-          <li>法律・医療・お金など、責任をともなう最終判断</li>
-          <li>あなたの会社や家庭だけの事情を、言われずに知ること</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3 class="sub-h">使い始める3ステップ</h3>
-    <ol class="steps">
-      <li><b>無料プランで試す</b><span>多くのサービスは無料で始められます。メールアドレスなどでアカウントを作るだけです。</span></li>
-      <li><b>個人情報は入れない</b><span>名前や住所、会社の秘密は入力しないのが基本。学習に使わせない設定も確認しましょう。</span></li>
-      <li><b>答えを確かめて使う</b><span>出てきた答えは下書きとして扱い、事実や数字は公式の情報で確かめてから使います。</span></li>
-    </ol>
-
-    <h3 class="sub-h">生成AI全般の良い点と注意点</h3>
-    <div class="three">
-      <div>
-        <h4><span class="glyph g-good">◯</span>良い点</h4>
-        <ul class="marks m-good">
-          <li>文章の下書き、要約、翻訳、言い換えを数秒で出せる</li>
-          <li>プログラミングや表計算の式づくりを対話しながら進められる</li>
-          <li>調べものの入口として、論点や用語を整理してくれる</li>
-          <li>画像・音声・資料の読み取りなど、文字以外も扱える</li>
-          <li>24時間いつでも、何度でも質問し直せる</li>
-        </ul>
-      </div>
-      <div>
-        <h4><span class="glyph g-warn">△</span>注意点</h4>
-        <ul class="marks m-warn">
-          <li>もっともらしい誤り（ハルシネーション）を出すことがある</li>
-          <li>入力した内容の扱いは契約プランで異なり、機密や個人情報には注意が要る</li>
-          <li>著作権や商標をめぐる訴訟が各国で続いており、生成物の使い方に配慮が必要</li>
-          <li>障害や仕様変更、無料枠の縮小が予告なく起こる</li>
-          <li>任せきりにすると、判断の根拠を説明できなくなる</li>
-        </ul>
-      </div>
-      <div>
-        <h4><span class="glyph g-use">→</span>使い道</h4>
-        <ul class="marks m-use">
-          <li>会議メモから議事録と次のタスクを作る</li>
-          <li>メールや案内文の下書き、敬語の調整</li>
-          <li>長い規約・論文・報告書の要点抽出</li>
-          <li>アンケート自由記述の分類と傾向の整理</li>
-          <li>学習の相棒（解説、練習問題、添削）</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3 class="sub-h">よく出てくる用語</h3>
-    <dl class="glossary">
-      <div><dt>プロンプト<small>prompt</small></dt><dd>AIへの指示や質問の文。具体的に書くほど、ほしい答えに近づく。</dd></div>
-      <div><dt>LLM<small>大規模言語モデル</small></dt><dd>大量の文章から学んだ、文章を扱うAIの本体。GPT、Gemini、Claude などがこれにあたる。</dd></div>
-      <div><dt>モデル<small>model</small></dt><dd>AIの「頭脳」にあたる部分。同じサービスでも、速いモデル・賢いモデルなど種類がある。</dd></div>
-      <div><dt>ハルシネーション<small>hallucination</small></dt><dd>AIが事実と違う内容を、もっともらしく答えてしまうこと。</dd></div>
-      <div><dt>マルチモーダル<small>multimodal</small></dt><dd>文章だけでなく、画像・音声・動画なども読み取ったり作ったりできること。</dd></div>
-      <div><dt>エージェント<small>agent</small></dt><dd>指示を受けて、調べもの・操作・作業を自分で順に進めるAI。</dd></div>
-      <div><dt>トークン<small>token</small></dt><dd>AIが文章を数える単位。料金や一度に読める量はトークン数で決まることが多い。</dd></div>
-      <div><dt>学習（トレーニング）<small>training</small></dt><dd>データからパターンを覚えさせること。入力した内容が学習に使われるかはサービスと設定で違う。</dd></div>
-      <div><dt>オプトアウト<small>opt-out</small></dt><dd>データを学習に使うことを、利用者が断ること。設定画面で選べる場合が多い。</dd></div>
-      <div><dt>API<small>application programming interface</small></dt><dd>自社のアプリやシステムからAIを呼び出すための窓口。使った量に応じて課金される。</dd></div>
-      <div><dt>公開モデル<small>open weights</small></dt><dd>中身（重み）が公開され、誰でも自分の環境で動かせるAIモデル。DeepSeek や Mistral が代表例。</dd></div>
-      <div><dt>AI検索<small>answer engine</small></dt><dd>Webを検索し、結果をまとめて出典つきで答える仕組み。Perplexity が代表例。</dd></div>
-    </dl>
-
-    <h3 class="sub-h">よくある質問</h3>
-    <div class="faq">
-      <details><summary>無料でも使えますか？</summary><p>多くは無料プランがあります。ただし使える回数やモデルに制限があり、ChatGPT の無料プランには広告が表示されます。Midjourney には無料プランがありません。詳しくは「料金・データ」をご覧ください。</p></details>
-      <details><summary>日本語で使えますか？</summary><p>ほとんどが日本語で使えます。Meta の Muse は2026年10月時点で日本では提供されていません。新しい機能は英語版から先に提供されることがあります。</p></details>
-      <details><summary>仕事で使っても大丈夫ですか？</summary><p>会社のルールを先に確認してください。顧客情報や社外秘を扱うなら、入力内容を学習に使わない法人向けプランが向いています。データが海外のどこに保存されるかも確認しましょう。</p></details>
-      <details><summary>どれを選べばいいですか？</summary><p>Googleのサービスをよく使うなら Gemini、Word や Teams を仕事で使うなら Copilot、長い資料やプログラミングなら Claude、調べものなら Perplexity、画像づくりなら Midjourney、まず何でも試したいなら ChatGPT が入りやすいでしょう。「AI診断」や「比較」も参考にしてください。</p></details>
-      <details><summary>AIが作った文章や画像は自由に使えますか？</summary><p>多くのサービスは利用者が使うことを認めていますが、既存の作品に似ていると権利の問題になることがあります。公開や販売の前に確認しましょう。</p></details>
-      <details><summary>中国のAIサービスを使っても大丈夫ですか？</summary><p>DeepSeek は入力したデータが中国のサーバーに保存され、中国の法令が適用されます。2025年2月に個人情報保護委員会が注意を呼びかけました。個人情報や仕事の情報は入力しないのが安全です。</p></details>
-    </div>
-
-    <h3 class="sub-h">使う前のチェックリスト</h3>
-    <ul class="checklist">
-      <li><b>入力してよい情報か</b><span>顧客名、社外秘、個人情報は、会社の規程と契約プランのデータの扱いを確認してから入力する。</span></li>
-      <li><b>事実の裏取り</b><span>数字・日付・法律・引用文献は、必ず一次資料で確かめる。米国では裁判所への提出書類に架空の判例が含まれた事例が続いている。</span></li>
-      <li><b>権利の確認</b><span>生成した文章や画像を公開・販売する前に、既存の作品や商標に似ていないか見る。</span></li>
-      <li><b>学習設定</b><span>入力内容をモデルの改善に使わせない設定があるか確認する。</span></li>
-      <li><b>代わりの手段</b><span>障害で止まっても困らないよう、重要な業務は別のサービスか手作業の手順も用意しておく。</span></li>
-    </ul>
-  </section>
-
-  <section class="block" data-group="plans" id="plans">
-    <div class="sec-h"><span class="badge" style="--c:#ffb81c">¥</span><h2>料金とデータの扱い</h2><span class="sub">最終確認日 <span class="mono" id="plans-updated">—</span><span id="plans-age"></span></span>
-      <div class="tools"><button type="button" class="btn btn-line" data-toggle-all="plans-list">すべて開く</button></div></div>
-    <p class="sec-lead">サービスを押すとプランごとの月額と、入力した内容が学習に使われるかが開きます。閉じたままでも最安の料金とデータの扱いを確認できます。各サービスに公式の料金ページへのリンクがあります。</p>
-    <div class="acc-list" id="plans-list"><p class="empty">料金を読み込んでいます…</p></div>
-    <p class="table-meta">月額は税・地域で変わります。米ドル表記のサービスは、日本での価格や税込額が異なることがあります。学習への利用を止めても、すでに学習に使われたデータは消えません。</p>
-  </section>
-
-  <section class="block" data-group="news" id="news">
-    <div class="sec-h"><span class="badge" style="--c:#b91c1c">NW</span><h2>最新ニュース</h2><span class="sub">サイトの確認日 <span class="mono" id="news-updated">—</span><span id="news-age"></span></span></div>
-    <p class="sec-lead">左の日付は各記事の公開日です。サイトの確認日は、自動更新でニュースを確認した日です。</p>
-    <div class="news-tools">
-      <div class="filters" id="news-filters" role="group" aria-label="ニュースの種類"></div>
-      <label class="visually-hidden" for="news-service">サービスで絞り込む</label>
-      <select id="news-service"><option value="">すべてのサービス</option></select>
-    </div>
-    <div class="service" style="--c:#b91c1c"><div class="svc-body news news-all"><ol id="news-list"><li><div class="body"><p>ニュースを読み込んでいます…</p></div></li></ol></div></div>
-    <div class="more-row" id="news-more" hidden></div>
-  </section>
-
-  <section class="block" data-group="companies" id="companies">
-    <div class="sec-h"><span class="badge" style="--c:#556b2f">CO</span><h2>運営元の詳細</h2><span class="sub">最終確認日 <span class="mono" id="companies-updated">—</span><span id="companies-age"></span></span>
-      <div class="tools"><button type="button" class="btn btn-line" data-toggle-all="companies-list">すべて開く</button></div></div>
-    <p class="sec-lead">どんな会社が作っているかは、データの扱いや今後の方針を考える手がかりになります。会社を押すと、設立・代表者・資本・日本での拠点などが開きます。</p>
-    <div class="acc-list" id="companies-list"><p class="empty">運営元の情報を読み込んでいます…</p></div>
-    <p class="table-meta">企業価値や利用者数は報道ベースの数字を含み、時期や数え方で変わります。未上場企業の数字は資金調達時の評価額です。</p>
-  </section>
-
-  <section class="block" data-group="request" id="request">
-    <div class="sec-h"><span class="badge" style="--c:#2a9d5c">RQ</span><h2>リクエスト・お問い合わせ</h2><span class="sub">載せてほしいサービスや情報を教えてください</span></div>
-    <div class="req">
-      <div class="form-card cta">
-        <div class="lbl">REQUEST FORM</div>
-        <h3>リクエストはこちらから</h3>
-        <p>Google フォームが新しいタブで開きます。サインインは不要で、匿名でも送れます。所要時間は1〜2分です。</p>
-        <ul class="kinds-list">
-          <li>掲載してほしいAIサービス</li><li>載せてほしい情報</li><li>情報の誤り</li><li>サイトへの要望</li>
-        </ul>
-        <a class="btn btn-ink btn-lg" id="req-link" href="#" target="_blank" rel="noopener">リクエストフォームを開く</a>
-        <p class="cta-note" id="req-note">個人情報や社外秘は書かないでください。</p>
-      </div>
-      <div class="req-side">
-        <h3>こんな声をお待ちしています</h3>
-        <ul>
-          <li>まだ載っていないAIサービス（画像・動画・音声・国産AIなど）</li>
-          <li>比べてみたい項目（商用利用、対応言語、APIの料金など）</li>
-          <li>古くなった情報や誤りの指摘</li>
-          <li>使いにくいところ、見づらいところ</li>
-        </ul>
-        <h3>届いたリクエストの扱い</h3>
-        <ul>
-          <li>内容を確認し、載せられるものから順に反映します。</li>
-          <li>個別のお返事はしていません。</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="board">
-  <div class="inner">
-    <div class="sig">AIサービスナビ</div>
-    <p>ニュース、料金・データの扱い、運営元の情報は毎週月曜に自動で確認・更新しています（ニュースの確認日 <span class="mono" id="updated-foot">—</span>）。各記事の日付は記事の公開日です。料金や機能は頻繁に変わるため、利用前に各社の公式ページで最新情報を確認してください。</p>
-    <p>「二次情報」は公式発表で確認できていない報道、「要確認」は出典を確認できていない情報です。活用事例の「期待できるアウトプット」は内容の種類の説明で、実際の出力ではありません。誤りに気づいたら <a href="#request" style="color:inherit">リクエスト</a> からお知らせください。</p>
+<dialog class="drawer" id="drawer" aria-labelledby="dr-title">
+  <div class="dr">
+    <div class="dr-hd" id="dr-hd"></div>
+    <div class="tabs" role="tablist" id="dr-tabs" aria-label="詳細の項目"></div>
+    <div class="dr-body" id="dr-body" role="tabpanel"></div>
+    <div class="dr-ft" id="dr-ft"></div>
   </div>
-</footer>
-<button type="button" class="to-top" id="to-top" aria-label="ページの先頭へ戻る"></button>
+</dialog>
 
+<dialog class="cmdk" id="cmdk" aria-label="検索">
+  <div class="ck-in"><i data-ic="search" data-s="18"></i><input id="ck-q" type="text" placeholder="サービス名、活用事例、ページを検索" aria-label="検索" autocomplete="off" role="combobox" aria-controls="ck-list" aria-expanded="true"><span class="kbd">Esc</span></div>
+  <div class="ck-list" id="ck-list" role="listbox"></div>
+  <div class="ck-ft"><span><span class="kbd">↑</span><span class="kbd">↓</span>移動</span><span><span class="kbd">Enter</span>開く</span><span><span class="kbd">Esc</span>閉じる</span></div>
+</dialog>
+
+<dialog class="cmpd" id="cmpd" aria-labelledby="cmpd-title">
+  <div class="cmpd-hd"><h2 id="cmpd-title">比較</h2><button type="button" class="icon-btn" data-close="cmpd" aria-label="閉じる"><i data-ic="x" data-s="15"></i></button></div>
+  <div class="cmpd-body" id="cmpd-body"></div>
+</dialog>
+
+<script src="ui-core.js"></script>
 <script>
-const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const $ = id => document.getElementById(id);
-const getJSON = name => fetch(name, { cache: "no-cache" }).then(r => { if (!r.ok) throw new Error(name + " " + r.status); return r.json(); });
-// 出典がない情報は断定せず「要確認」と示す
-const srcLine = x => (x.src && x.src.length)
-  ? `<div class="src">${x.secondary ? '<span class="chip note">二次情報</span>' : ""}出典：${x.src.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}</div>`
-  : `<div class="src"><span class="chip warn">要確認</span>出典を確認できていません</div>`;
-const marks = (arr, kind) => `<ul class="marks m-${kind}">${arr.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
-const emptyRow = msg => `<li><div class="body"><p>${msg}</p></div></li>`;
-const LEVEL = { safe: "good", uses: "warn", choice: "note" };
+/* ==========================================================================
+   AIサービスナビ（v3：共通アプリシェル）
+   データ：services / news / plans / companies / examples / compare / status（.json）
+   共通の部品・ふるまいは ui-core.css / ui-core.js（求人サイトナビと同じファイル）
+   ========================================================================== */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const getJSON = name => fetch(name, {cache: "no-cache"}).then(r => { if (!r.ok) throw new Error(name + " " + r.status); return r.json(); });
+const secChip = '<span class="sec-chip" title="公式発表や大手報道で確認できていない情報">二次情報</span>';
+const srcLine = (src, secondary) => (src && src.length)
+  ? `<div class="src">${secondary ? secChip : ""}<span>出典：</span>${src.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}</div>`
+  : `<div class="src"><span class="sec-chip">要確認</span><span>出典を確認できていません</span></div>`;
+const domain = u => { try { return new URL(u).hostname.replace(/^www\d?\./, ""); } catch(_) { return ""; } };
+const srcList = src => `<div class="srcs">${(src || []).map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener"><span class="kb">${esc(domain(u).split(".")[0] || "link")}</span><span><b>${esc(l)}</b><small>${esc(domain(u))}</small></span>${ic("ext", 14)}</a>`).join("")}</div>`;
+const ul = (arr, kind = "") => `<ul class="ul sm ${kind}">${arr.map(x => `<li>${ic(kind === "bad" ? "alert" : kind === "use" ? "arrowR" : "check", 14)}<span>${esc(x)}</span></li>`).join("")}</ul>`;
 const yen = n => "約" + Number(n).toLocaleString("ja-JP") + "円";
 const daysSince = ymd => { const t = Date.parse(String(ymd).slice(0, 10)); return isNaN(t) ? null : Math.floor((Date.now() - t) / 86400000); };
-const ageChip = ymd => { const d = daysSince(ymd); return d !== null && d > 14 ? `<span class="chip warn age-chip">確認から${d}日経過・要確認</span>` : ""; };
-// ニュースの日付（"2026-10-07"、"2026-10月"、"2026-08"）を並べ替え用にそろえる
 const dateKey = s => { const m = String(s).match(/^(\d{4})-(\d{2})(?:-(\d{2}))?/); return m ? `${m[1]}-${m[2]}-${m[3] || "00"}` : "0000"; };
-
-const TABS = [
-  { id: "all", label: "ホーム", code: "ALL", color: "#8b97a8" },
-  { id: "diag", label: "AI診断", code: "?", color: "#0ea5a4" },
-  { id: "examples", label: "活用事例", code: "EX", color: "#c2410c" },
-  { id: "services", label: "サービス", code: "SV", color: "#2f6fe4" },
-  { id: "compare", label: "比較", code: "VS", color: "#6c7a8f" },
-  { id: "plans", label: "料金・データ", code: "¥", color: "#ffb81c" },
-  { id: "intro", label: "はじめての方", code: "AI", color: "#00a0c6" },
-  { id: "news", label: "ニュース", code: "NW", color: "#b91c1c" },
-  { id: "companies", label: "運営元", code: "CO", color: "#556b2f" },
-  { id: "request", label: "リクエスト", code: "RQ", color: "#2a9d5c" }
-];
-
-let SERVICES = [], CATS = {}, META = {}, PLANS = null, EXAMPLES = [], NEWS = null, STATUS = null;
-const view = { tab: "all", one: null, cat: "all", q: "" };
-const exFilter = { genre: "all", service: "", purpose: "" };
-const svcOf = id => SERVICES.find(s => s.id === id) || { id, name: id, code: "?", color: "#8b97a8", url: "#" };
-const shortName = s => s.short || s.name;
-const badge = (s, size = "sm") => `<span class="badge ${size}" style="--c:${s.color}" aria-hidden="true">${esc(s.code)}</span>`;
-
-/* ---- 読み込み失敗時の表示と再試行 ---- */
-const RETRY = {};
-const errBox = (key, what) => `<div class="err-box" role="alert"><span>${esc(what)}を読み込めませんでした。通信状態を確認してください。</span><button type="button" class="btn btn-line" data-retry="${key}">もう一度読み込む</button></div>`;
-document.addEventListener("click", e => { const b = e.target.closest("[data-retry]"); if (b && RETRY[b.dataset.retry]) { b.disabled = true; b.textContent = "読み込んでいます…"; RETRY[b.dataset.retry](); } });
-function loadInto(key, file, what, targets, render) {
-  RETRY[key] = () => getJSON(file).then(render).catch(() => { targets.forEach(id => { const el = $(id); if (el) el.innerHTML = el.tagName === "OL" ? `<li>${errBox(key, what)}</li>` : el.tagName === "TBODY" ? `<tr><td colspan="9">${errBox(key, what)}</td></tr>` : errBox(key, what); }); });
-  RETRY[key]();
-}
-
-/* ---- 路線図ナビと表示切り替え ---- */
-const tabsEl = $("tabs");
-tabsEl.innerHTML = TABS.map(t => `<button type="button" data-tab="${t.id}" style="--c:${t.color}"><span class="badge" aria-hidden="true">${esc(t.code)}</span><span class="st-name">${esc(t.label)}</span></button>`).join("");
-
-function applyView() {
-  const { tab, one } = view;
-  tabsEl.querySelectorAll("button").forEach(b => b.setAttribute("aria-current", String(b.dataset.tab === tab)));
-  document.querySelectorAll("main [data-group]").forEach(el => {
-    const g = el.dataset.group;
-    el.hidden = !(tab === "all" ? true : g === tab || (tab === "intro" && g === "intro"));
-  });
-  $("purposes").hidden = tab !== "all";
-  filterServices();
-  $("back-all").hidden = !one;
-  $("svc-index").hidden = !!one;
-  document.querySelector("#services .toolbar").hidden = !!one;
-  renderExamples();
-  renderNewsList();
-  if (typeof applyCmpVisibility === "function" && $("cmp-tabs")) applyCmpVisibility();
-}
-function route(hash) {
-  const id = (hash || "").replace(/^#/, "");
-  if (SERVICES.some(s => s.id === id)) { view.tab = "services"; view.one = id; }
-  else if (TABS.some(t => t.id === id)) { view.tab = id; view.one = null; }
-  else { view.tab = "all"; view.one = null; }
-  applyView();
-}
-function go(id, keepScroll) {
-  try { history.replaceState(null, "", id === "all" ? location.pathname : "#" + id); } catch (_) {}
-  route(id === "all" ? "" : id);
-  if (keepScroll) return;
-  const top = document.querySelector("main").getBoundingClientRect().top + window.scrollY - document.querySelector("nav.routebar").offsetHeight - 8;
-  window.scrollTo({ top: Math.max(0, top) });
-}
-tabsEl.addEventListener("click", e => { const b = e.target.closest("button[data-tab]"); if (b) go(b.dataset.tab); });
-document.addEventListener("click", e => {
-  const a = e.target.closest('a[href^="#"]');
-  if (!a) return;
-  const id = a.getAttribute("href").slice(1);
-  if (id === "top") return;
-  if (SERVICES.some(s => s.id === id) || TABS.some(t => t.id === id)) { e.preventDefault(); go(id); }
-});
-window.addEventListener("hashchange", () => route(location.hash));
-// 「料金とデータ」などのリンクから、該当サービスの項目を開いた状態で移動する
-document.addEventListener("click", e => {
-  const a = e.target.closest("[data-open]"); if (!a) return;
-  setTimeout(() => { const d = $(a.dataset.open); if (d) { d.open = true; d.scrollIntoView({ block: "start" }); } }, 0);
-});
-
-/* ---- コピー（失敗したら文字を選択して手動コピーを促す） ---- */
-async function copyText(text, btn, pre) {
-  const done = label => { btn.textContent = label; btn.classList.toggle("done", label === "コピーしました"); setTimeout(() => { btn.textContent = "コピー"; btn.classList.remove("done"); }, 2200); };
-  try { await navigator.clipboard.writeText(text); done("コピーしました"); return; } catch (_) {}
-  try {
-    const ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
-    document.body.append(ta); ta.select(); const ok = document.execCommand("copy"); ta.remove();
-    if (ok) { done("コピーしました"); return; }
-  } catch (_) {}
-  const r = document.createRange(); r.selectNodeContents(pre); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
-  done("選択しました。長押しでコピー");
-}
-document.addEventListener("click", e => {
-  const b = e.target.closest("button.copy"); if (!b) return;
-  const pre = b.closest(".prompt-box").querySelector("pre");
-  copyText(pre.textContent, b, pre);
-});
-
-/* ---- サービス一覧 ---- */
-function filterServices() {
-  const q = view.q.trim().toLowerCase();
-  let shown = 0;
-  SERVICES.forEach(s => {
-    const card = $("card-" + s.id), link = $("idx-" + s.id);
-    if (!card) return;
-    const hay = [s.name, s.maker, s.summary, CATS[s.category], ...s.good, ...s.warn, ...s.use].join(" ").toLowerCase();
-    const ok = view.one ? s.id === view.one : (view.cat === "all" || s.category === view.cat) && (!q || hay.includes(q));
-    card.hidden = !ok; if (link) link.hidden = !ok;
-    if (ok) shown++;
-  });
-  $("svc-empty").hidden = shown > 0 || !SERVICES.length;
-}
-function renderServices() {
-  const counts = SERVICES.reduce((m, s) => (m[s.category] = (m[s.category] || 0) + 1, m), {});
-  $("svc-filters").innerHTML = [["all", "すべて", SERVICES.length], ...Object.entries(CATS).filter(([k]) => counts[k]).map(([k, v]) => [k, v, counts[k]])]
-    .map(([k, v, n]) => `<button type="button" data-cat="${k}" aria-pressed="${k === view.cat}">${esc(v)}<span class="count">${n}</span></button>`).join("");
-  $("svc-index").innerHTML = SERVICES.map(s => `<a href="#${s.id}" id="idx-${s.id}" style="--c:${s.color}">${badge(s)}<span class="meta"><b>${esc(s.name)}</b><small>${esc(CATS[s.category] || "")} · ${esc(s.maker)}</small></span></a>`).join("");
-  $("svc-cards").innerHTML = SERVICES.map(s => `
-    <article class="service" id="card-${s.id}" style="--c:${s.color}">
-      <div class="svc-head">
-        ${badge(s, "lg")}
-        <div class="names"><div class="maker">${esc(s.maker)}</div><h3>${esc(s.name)}</h3></div>
-        <div class="chips"><span class="chip plain">${esc(CATS[s.category] || "")}</span><span class="chip plain" id="price-chip-${s.id}"></span></div>
-      </div>
-      <div class="svc-body">
-        <p class="svc-summary">${esc(s.summary)}</p>
-        <div class="three">
-          <div><h4><span class="glyph g-good">◯</span>良い点</h4>${marks(s.good, "good")}</div>
-          <div><h4><span class="glyph g-warn">△</span>注意点</h4>${marks(s.warn, "warn")}</div>
-          <div><h4><span class="glyph g-use">→</span>使い道</h4>${marks(s.use, "use")}</div>
-        </div>
-        <details class="svc-ex" id="svc-ex-${s.id}"><summary><span class="glyph g-use">→</span>このサービスの活用事例<span class="chip plain" id="svc-ex-count-${s.id}">—</span></summary><div class="ex-grid" id="svc-ex-grid-${s.id}"></div></details>
-        <div class="news"><h4>Latest<span class="news-period"></span></h4><ol id="news-${s.id}">${emptyRow("ニュースを読み込んでいます…")}</ol></div>
-        <div class="svc-foot"><span>運営元 <b>${esc(s.maker)}</b></span><span id="owner-${s.id}"></span>
-          <span class="links"><a href="${esc(s.url)}" target="_blank" rel="noopener">公式サイト ↗</a><a href="#companies" data-open="co-${s.id}">運営元の詳細</a><a href="#plans" data-open="plan-${s.id}">料金とデータ</a></span></div>
-      </div>
-    </article>`).join("");
-  $("svc-count").textContent = SERVICES.length + "件";
-  $("hero-names").textContent = SERVICES.map(shortName).join(" · ");
-  $("ex-service").innerHTML = `<option value="">すべてのサービス</option>` + SERVICES.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join("");
-  $("news-service").innerHTML = `<option value="">すべてのサービス</option>` + SERVICES.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join("");
-}
-$("svc-filters").addEventListener("click", e => {
-  const b = e.target.closest("button[data-cat]"); if (!b) return;
-  view.cat = b.dataset.cat;
-  $("svc-filters").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-  filterServices();
-});
-$("svc-search").addEventListener("input", e => { view.q = e.target.value; filterServices(); });
-
-/* ---- 活用事例 ---- */
-const exCard = ex => {
-  const s = svcOf(ex.service);
-  const label = ex.promptType === "operation" ? "操作例" : "プロンプト";
-  return `<article class="ex" id="ex-${esc(ex.id)}">
-    <div class="ex-meta"><span class="svc-mini">${badge(s)}${esc(shortName(s))}</span><span class="chip plain">${esc(META.genres[ex.genre] || "")}</span>${META.purposes[ex.purpose] && META.purposes[ex.purpose] !== META.genres[ex.genre] ? `<span class="chip plain">${esc(META.purposes[ex.purpose])}</span>` : ""}</div>
-    <h3>${esc(ex.title)}</h3>
-    <p class="scene">${esc(ex.scene)}</p>
-    <div class="prompt-box"><div class="pb-top"><span class="lbl">${label}</span><button type="button" class="copy" aria-label="${esc(ex.title)}の${label}をコピー">コピー</button></div><pre>${esc(ex.prompt)}</pre>${ex.promptNote ? `<p class="pnote">${esc(ex.promptNote)}</p>` : ""}</div>
-    <details class="ex-more"><summary>使い方・期待できる結果・注意点</summary><div class="inside">
-      <div><div class="lbl">使い方</div><ol>${ex.steps.map(x => `<li>${esc(x)}</li>`).join("")}</ol></div>
-      <div><div class="lbl">期待できるアウトプット</div><p>${esc(ex.output)}</p></div>
-      <div><div class="lbl">注意点</div>${marks(ex.cautions, "warn")}</div>
-    </div></details>
-    <div class="ex-foot"><a class="btn btn-ink" href="${esc(s.url)}" target="_blank" rel="noopener">このAIを使ってみる ↗</a><a href="#${s.id}">${esc(shortName(s))}の詳細</a></div>
-  </article>`;
+const LV = {safe: "safe", uses: "uses", choice: "choice"};
+const lvl = d => d ? `<span class="lvl ${LV[d.level] || "choice"}"><i></i>${esc(d.label)}</span>` : "";
+const store = {
+  get(k, d){ try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch(_) { return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch(_) { return false; } }
 };
-function matchedExamples() {
-  return EXAMPLES.filter(ex => (exFilter.genre === "all" || ex.genre === exFilter.genre) && (!exFilter.service || ex.service === exFilter.service) && (!exFilter.purpose || ex.purpose === exFilter.purpose));
+
+/* ---------- データ ---------- */
+let SERVICES = [], CATS = {}, META = {}, PLANS = null, COS = null, NEWS = null, EXAMPLES = [], TRIAL = null, STATUS = null;
+const svc = id => SERVICES.find(s => s.id === id);
+const short = s => s.short || s.name;
+const av = (s, size = 32) => `<span class="av code" style="--av:${s.color};--s:${size}px" aria-hidden="true">${esc(s.code)}</span>`;
+const planOf = id => PLANS && PLANS.plans.find(p => p.service === id);
+const dataOf = id => PLANS && PLANS.data.find(p => p.service === id);
+const coOf = id => COS && COS.companies.find(c => c.service === id);
+const exOf = id => EXAMPLES.filter(e => e.service === id);
+const priceTail = p => p ? p.summary.replace(/^[^·]*·\s*/, "") : "—";
+
+/* ---------- ページとナビ ---------- */
+const PAGES = [
+  {id: "home", l: "ホーム", i: "home", secs: ["overview", "start"]},
+  {id: "diag", l: "自分に合うAIを探す", i: "wand", secs: ["diag"]},
+  {id: "catalog", l: "AIサービス一覧", i: "grid", secs: ["catalog"]},
+  {id: "examples", l: "活用事例・プロンプト", i: "bulb", secs: ["examples"]},
+  {id: "compare", l: "仕様を比べる", i: "columns", secs: ["compare"]},
+  {id: "trial", l: "同じお題で試す", i: "flask", secs: ["trial"]},
+  {id: "plans", l: "料金・データの扱い", i: "yen", secs: ["plans"]},
+  {id: "intro", l: "はじめての方へ", i: "graduation", secs: ["intro"]},
+  {id: "companies", l: "運営企業", i: "building", secs: ["companies"]},
+  {id: "news", l: "ニュース", i: "news", secs: ["news"]},
+  {id: "request", l: "リクエスト", i: "send", secs: ["request"]},
+  {id: "sources", l: "出典", i: "book", secs: ["sources"]}
+];
+const NAV = [
+  {g: "", items: ["home"]},
+  {g: "探す", items: ["diag", "catalog", "examples"]},
+  {g: "比べる", items: ["compare", "trial"]},
+  {g: "知る", items: ["plans", "intro", "companies", "news"]},
+  {g: "その他", items: ["request", "sources"]}
+];
+const PAGE = Object.fromEntries(PAGES.map(p => [p.id, p]));
+// 旧サイトのURL（#services など）からの移動先
+const ALIAS = {all: "home", services: "catalog", society: "news", top: "home"};
+let view = "home";
+function renderNav(){
+  const counts = {catalog: SERVICES.length || "", examples: EXAMPLES.length || "", news: NEWS ? Object.values(NEWS.services).flat().length + NEWS.society.length : ""};
+  const upd = NEWS ? NEWS.updated : "—";
+  const card = `<div class="side-card"><b>${ic("check", 15)}毎週月曜に更新</b><span>ニュース・料金・運営元を公開情報で確認しています。最終確認 <span class="mono">${esc(upd)}</span></span></div>`;
+  $("side").innerHTML = navHTML(NAV, PAGE, counts) + card;
+  $("ms-body").innerHTML = navHTML(NAV, PAGE, counts);
+  $("ms-ft").innerHTML = `毎週月曜に更新 · 最終確認 <span class="mono">${esc(upd)}</span>`;
+  markHere(NAV, PAGE, view);
 }
-function renderExamples() {
-  if (!EXAMPLES.length || !META.genres) return;
-  const list = matchedExamples();
-  const preview = view.tab === "all";
-  const shown = preview ? list.slice(0, 6) : list;
-  $("ex-grid").innerHTML = shown.length ? shown.map(exCard).join("") : `<div class="empty">条件に合う活用事例がありません。<div class="more-row"><button type="button" class="btn btn-line" id="ex-clear-all">絞り込みをすべて解除する</button></div></div>`;
-  $("ex-count").textContent = preview && list.length > 6 ? `${list.length}件中 6件を表示` : `${list.length}件`;
-  const more = $("ex-more");
-  more.hidden = !(preview && list.length > 6);
-  more.innerHTML = more.hidden ? "" : `<button type="button" class="btn btn-line" id="ex-show-all">すべての活用事例を見る（${list.length}件）</button>`;
-  $("ex-purpose-tag").innerHTML = exFilter.purpose ? `<button type="button" class="filter-tag" id="ex-clear-purpose">目的：${esc(META.purposes[exFilter.purpose])} ✕</button>` : "";
-  // ジャンルの件数は、いま効いているサービス・目的の絞り込みをふまえて数える
-  const base = EXAMPLES.filter(ex => (!exFilter.service || ex.service === exFilter.service) && (!exFilter.purpose || ex.purpose === exFilter.purpose));
-  $("ex-genres").querySelectorAll("button").forEach(b => {
-    b.setAttribute("aria-pressed", String(b.dataset.genre === exFilter.genre));
-    const c = b.querySelector(".count");
-    if (c) c.textContent = b.dataset.genre === "all" ? base.length : base.filter(x => x.genre === b.dataset.genre).length;
-  });
-  $("ex-service").value = exFilter.service;
+function applyView(){
+  const secs = new Set(PAGE[view].secs);
+  document.querySelectorAll("main > section.sec").forEach(el => { el.hidden = !secs.has(el.id); });
+  markHere(NAV, PAGE, view);
+  document.title = view === "home" ? "AIサービスナビ" : `${PAGE[view].l} | AIサービスナビ`;
 }
-function setupExamples() {
-  $("ex-genres").innerHTML = [["all", "すべて"], ...Object.entries(META.genres)].map(([k, v]) => {
-    const n = k === "all" ? EXAMPLES.length : EXAMPLES.filter(x => x.genre === k).length;
-    return `<button type="button" data-genre="${k}" aria-pressed="${k === "all"}">${esc(v)}<span class="count">${n}</span></button>`;
-  }).join("");
-  SERVICES.forEach(s => {
-    const mine = EXAMPLES.filter(x => x.service === s.id);
-    const g = $("svc-ex-grid-" + s.id), c = $("svc-ex-count-" + s.id);
-    if (g) g.innerHTML = mine.map(exCard).join("") || `<p class="empty">準備中です。</p>`;
-    if (c) c.textContent = mine.length + "件";
-  });
-  $("tiles").innerHTML = Object.entries(META.purposes).filter(([k]) => k !== "other").map(([k, v]) => {
-    const n = EXAMPLES.filter(x => x.purpose === k).length;
-    return `<button type="button" class="tile" data-purpose="${k}"><b>${esc(v)}</b><span>${n ? `活用事例 ${n}件` : "診断でサービスを探す"}</span><small>${n ? "事例を見る →" : "診断する →"}</small></button>`;
-  }).join("");
-  $("ex-count-top").textContent = EXAMPLES.length + "件";
+// 表示の切り替え。履歴に残すので、ブラウザの戻る・進むで前の表示に戻れる
+function go(id, opts = {}){
+  id = ALIAS[id] || id;
+  if (!PAGE[id]) return;
+  if (opts.push !== false) pushHash(id);
+  view = id; applyView();
+  if (opts.keepScroll) return;
+  window.scrollTo({top: 0, behavior: "auto"});
+  if (opts.focus !== false) $("main").focus({preventScroll: true});
+}
+function route(){
+  const id = decodeURIComponent(location.hash.replace(/^#/, ""));
+  if (svc(id)) { if (view === "home" || !PAGE[view]) { view = "catalog"; applyView(); } openDrawer(id, {push: false}); return; }
+  if ($("drawer").open) closeDlg("drawer");
+  const p = ALIAS[id] || id;
+  if (PAGE[p]) { if (p !== view) { view = p; applyView(); window.scrollTo({top: 0}); } return; }
+  view = "home"; applyView();
+}
+window.addEventListener("popstate", route);
+window.addEventListener("hashchange", route);
+
+/* ---------- ホーム ---------- */
+function renderHome(){
+  const exN = EXAMPLES.length;
+  const newsAll = NEWS ? [...Object.entries(NEWS.services).flatMap(([id, a]) => a.map(n => ({...n, svc: id}))), ...NEWS.society.map(n => ({...n, svc: null}))].sort((a, b) => dateKey(b.date).localeCompare(dateKey(a.date))) : [];
+  $("kpis").innerHTML = [
+    ["掲載サービス", SERVICES.length || "—", `${Object.keys(CATS).length}種類（対話型・検索・業務・画像）`],
+    ["活用事例", exN || "—", "コピーして使えるプロンプト"],
+    ["掲載ニュース", newsAll.length || "—", NEWS ? esc(NEWS.period || "") : ""],
+    ["料金・運営元の確認", PLANS ? esc(PLANS.updated) : "—", "毎週月曜に確認"]
+  ].map(([l, b, s]) => `<div class="kpi"><span class="l">${l}</span><b>${b}</b><small>${s}</small></div>`).join("");
+  if (exN) $("prim-ex").textContent = `仕事・暮らし・学習・制作の場面別に、そのままコピーして使えるプロンプトと手順を${exN}件まとめました。`;
+  $("ch-date").textContent = NEWS ? `${NEWS.updated} 確認` : "—";
+  $("ch-list").innerHTML = newsAll.slice(0, 3).map(n => {
+    const s = n.svc ? svc(n.svc) : null;
+    const md = /^\d{4}-\d{2}-\d{2}/.test(n.date) ? n.date.slice(5, 10).replace("-", "/") : String(n.date).slice(0, 7);
+    return `<li><span class="d">${esc(md)}</span><div><b>${esc(n.title)}</b><p>${esc(n.text)}</p>${s ? `<button type="button" class="lk" data-open="${s.id}">${esc(short(s))}を開く${ic("arrowR", 12)}</button>` : `<button type="button" class="lk" data-go="news">規制・社会のニュース${ic("arrowR", 12)}</button>`}</div></li>`;
+  }).join("") || `<li><div class="loading">ニュースはまだありません</div></li>`;
+  if (META.purposes) $("purpose-chips").innerHTML = Object.entries(META.purposes).filter(([k]) => k !== "other").map(([k, v]) => `<button type="button" class="fchip" data-purpose-go="${k}">${esc(v)}<span class="c">${EXAMPLES.filter(e => e.purpose === k).length || ""}</span></button>`).join("");
+}
+
+/* ---------- サービス一覧 ---------- */
+const catState = Object.assign({cat: "all", q: "", view: "grid", flt: []}, store.get("ainavi-cat", {}), {q: ""});
+const FLT = {
+  free: {l: "無料プランあり", f: s => s.diag && s.diag.free},
+  japan: {l: "日本で使える", f: s => s.diag && s.diag.japan},
+  image: {l: "画像を作れる", f: s => /^◯/.test(s.cmp.image)},
+  biz: {l: "法人向けは学習に使わない", f: s => { const d = dataOf(s.id); return d && d.business.level === "safe"; }}
+};
+const sHay = s => [s.name, s.maker, s.summary, CATS[s.category], ...s.good, ...s.warn, ...s.use, s.cmp.strength, s.cmp.fit].join(" ").toLowerCase();
+function catList(){
+  const q = catState.q.trim().toLowerCase();
+  return SERVICES.filter(s => (catState.cat === "all" || s.category === catState.cat) && catState.flt.every(k => FLT[k] && FLT[k].f(s)) && (!q || sHay(s).includes(q)));
+}
+const cmpBtn = s => `<button type="button" class="icon-btn cmp-btn" data-cmp="${s.id}" aria-pressed="${cmp.includes(s.id)}" aria-label="${esc(s.name)}を比較に追加" title="比較に追加">${ic("plus", 15)}${ic("check", 15)}</button>`;
+function cardHTML(s){
+  const p = planOf(s.id), d = dataOf(s.id);
+  return `<article class="sc card${cmp.includes(s.id) ? " sel" : ""}" data-sid="${s.id}">
+    <div class="sc-hd">${av(s, 40)}<div class="sc-tt"><button type="button" class="sc-open" data-open="${s.id}"><h3>${esc(s.name)}</h3></button><p>${esc(s.maker)}</p></div>${cmpBtn(s)}</div>
+    <div class="sc-meta"><span class="tagc">${esc(CATS[s.category] || "")}</span>${s.diag && !s.diag.japan ? '<span class="tagc">日本未提供</span>' : ""}</div>
+    <div class="sc-fee"><p>${esc(s.cmp.strength)}。${esc(s.summary)}</p></div>
+    <div class="sc-ft"><span>${p ? `<span class="${/^無料あり/.test(p.summary) ? "free-y" : ""}">${esc(p.summary)}</span>` : "—"}</span>${d ? lvl(d.personal) : ""}<span class="sc-go">詳しく見る</span></div>
+  </article>`;
+}
+function rowHTML(s){
+  const p = planOf(s.id), d = dataOf(s.id);
+  return `<tr class="${cmp.includes(s.id) ? "sel" : ""}" data-open="${s.id}" data-sid="${s.id}" tabindex="0">
+    <td><div class="tcell">${av(s, 30)}<div><b>${esc(s.name)}</b><small>${esc(s.maker)}</small></div></div></td>
+    <td>${esc(CATS[s.category] || "")}</td><td class="t-fx">${esc(s.cmp.strength)}</td><td>${esc(s.cmp.free)}</td>
+    <td class="mono">${esc(priceTail(p))}</td><td>${d ? lvl(d.personal) : "—"}</td><td>${esc(s.cmp.japan)}</td><td>${cmpBtn(s)}</td></tr>`;
+}
+function renderCatalog(){
+  const list = catList();
+  $("cat-seg").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.c === catState.cat)));
+  $("view-seg").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === catState.view)));
+  $("cat-flt").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(catState.flt.includes(b.dataset.f))));
+  $("cat-res").innerHTML = `<b>${list.length}</b> / ${SERVICES.length}件`;
+  const act = [];
+  if (catState.cat !== "all") act.push(`<button type="button" class="fpill" data-clr="cat">種類：${esc(CATS[catState.cat])}${ic("x", 12)}</button>`);
+  catState.flt.forEach(k => act.push(`<button type="button" class="fpill" data-clr="f:${k}">${esc(FLT[k].l)}${ic("x", 12)}</button>`));
+  if (catState.q) act.push(`<button type="button" class="fpill" data-clr="q">「${esc(catState.q)}」${ic("x", 12)}</button>`);
+  $("cat-active").innerHTML = act.length ? `<span class="lbl">絞り込み中</span>${act.join("")}<button type="button" class="clear-all" data-clr="all">すべて解除</button>` : "";
+  if (!list.length) { $("cat-out").innerHTML = `<div class="empty card"><b>条件に合うサービスがありません</b><span>キーワードや条件を変えてみてください。</span><button type="button" class="btn btn-ghost sm" data-clr="all">絞り込みをすべて解除</button></div>`; return; }
+  $("cat-out").innerHTML = catState.view === "table"
+    ? `<div class="dt card"><table><thead><tr><th>サービス</th><th>種類</th><th>得意なこと</th><th>無料プラン</th><th>個人の料金</th><th>個人データの学習</th><th>日本での利用</th><th><span class="sr-only">比較</span></th></tr></thead><tbody>${list.map(rowHTML).join("")}</tbody></table></div>`
+    : `<div class="grid">${list.map(cardHTML).join("")}</div>`;
+}
+function setupCatalog(){
+  const cnt = k => SERVICES.filter(s => s.category === k).length;
+  $("cat-seg").innerHTML = [["all", "すべて", SERVICES.length], ...Object.entries(CATS).filter(([k]) => cnt(k)).map(([k, v]) => [k, v, cnt(k)])].map(([k, v, n]) => `<button type="button" data-c="${k}">${esc(v)}<span class="mono" style="font-size:11px;color:var(--text-3)">${n}</span></button>`).join("");
+  $("cat-flt").innerHTML = Object.entries(FLT).map(([k, f]) => `<button type="button" class="fchip" data-f="${k}" aria-pressed="false">${esc(f.l)}<span class="c">${SERVICES.filter(f.f).length}</span></button>`).join("");
+  $("cat-seg").addEventListener("click", e => { const b = e.target.closest("[data-c]"); if (b) { catState.cat = b.dataset.c; saveCat(); renderCatalog(); } });
+  $("view-seg").addEventListener("click", e => { const b = e.target.closest("[data-v]"); if (b) { catState.view = b.dataset.v; saveCat(); renderCatalog(); } });
+  $("cat-flt").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (!b) return; const k = b.dataset.f, i = catState.flt.indexOf(k); if (i >= 0) catState.flt.splice(i, 1); else catState.flt.push(k); saveCat(); renderCatalog(); });
+  $("cat-q").addEventListener("input", e => { catState.q = e.target.value; renderCatalog(); });
+  renderCatalog();
+}
+const saveCat = () => store.set("ainavi-cat", {cat: catState.cat, view: catState.view, flt: catState.flt});
+function clearCat(k){
+  if (k === "cat") catState.cat = "all";
+  else if (k === "q") { catState.q = ""; $("cat-q").value = ""; }
+  else if (k.startsWith("f:")) catState.flt = catState.flt.filter(x => x !== k.slice(2));
+  else { catState.cat = "all"; catState.flt = []; catState.q = ""; $("cat-q").value = ""; }
+  saveCat(); renderCatalog();
+}
+
+/* ---------- 詳細ドロワー ---------- */
+let dId = null, dTab = "overview";
+const DTABS = [["overview", "概要", "layers"], ["plans", "料金・無料", "yen"], ["examples", "活用事例", "bulb"], ["data", "データの扱い", "shield"], ["org", "運営企業", "building"], ["news", "ニュース", "news"], ["src", "出典", "book"]];
+function openDrawer(id, opts = {}){
+  if (!svc(id)) return;
+  dId = id;
+  if (opts.tab) dTab = opts.tab;
+  if (opts.push !== false) pushHash(id);
+  renderDrawer(); showDlg("drawer"); $("dr-body").scrollTop = 0;
+}
+function allSrc(s){
+  const seen = new Set(), out = [];
+  const add = (arr, kind) => (arr || []).forEach(([l, u]) => { if (!seen.has(u)) { seen.add(u); out.push([l, u, kind]); } });
+  const p = planOf(s.id), d = dataOf(s.id), c = coOf(s.id);
+  add(p && p.src, "料金"); add(d && d.src, "データ"); add(c && c.src, "運営企業");
+  (NEWS && NEWS.services[s.id] || []).forEach(n => add(n.src, "ニュース"));
+  return out;
+}
+function renderDrawer(){
+  const s = svc(dId), list = catList().length ? catList() : SERVICES;
+  const idx = list.findIndex(x => x.id === dId), prev = list[idx - 1], next = list[idx + 1];
+  const c = coOf(s.id);
+  $("dr-hd").innerHTML = `<div class="dr-top"><div class="l"><span class="tagc">${esc(CATS[s.category] || "")}</span><span>${esc(s.maker)}</span></div><div class="r">
+      <button type="button" class="icon-btn" ${prev ? `data-open="${prev.id}" title="前へ: ${esc(prev.name)}（←）"` : "disabled"} aria-label="前のサービス">${ic("chevL", 15)}</button>
+      <button type="button" class="icon-btn" ${next ? `data-open="${next.id}" title="次へ: ${esc(next.name)}（→）"` : "disabled"} aria-label="次のサービス">${ic("chevR", 15)}</button>
+      <button type="button" class="icon-btn" data-close="drawer" aria-label="閉じる" title="閉じる（Esc）">${ic("x", 15)}</button></div></div>
+    <div class="dr-id">${av(s, 52)}<div><h2 id="dr-title">${esc(s.name)}</h2><p>${esc(s.cmp.strength)}${c ? ` · ${esc(c.company)}` : ""}</p></div></div>`;
+  const cnt = {examples: exOf(s.id).length, news: (NEWS && NEWS.services[s.id] || []).length, src: allSrc(s).length};
+  $("dr-tabs").innerHTML = DTABS.map(([k, l, i]) => `<button type="button" role="tab" data-tab="${k}" aria-selected="${dTab === k}" tabindex="${dTab === k ? 0 : -1}">${ic(i, 14)}${l}${cnt[k] != null ? `<span class="mono" style="font-size:11px;color:var(--text-3)">${cnt[k]}</span>` : ""}</button>`).join("");
+  $("dr-body").innerHTML = tabHTML(s);
+  renderDrawerFoot();
+}
+function renderDrawerFoot(){
+  const s = svc(dId), on = cmp.includes(dId);
+  $("dr-ft").innerHTML = `<span class="vnote">${ic("check", 14)}確認日 ${esc(PLANS ? PLANS.updated : "—")} · <a href="${esc(s.url)}" target="_blank" rel="noopener">公式サイト${ic("ext", 12)}</a></span><button type="button" class="btn ${on ? "btn-ghost" : "btn-primary"} sm" data-cmp="${s.id}" aria-pressed="${on}">${ic(on ? "check" : "plus", 14)}${on ? "比較に追加済み" : "比較に追加"}</button>`;
+}
+function tabHTML(s){
+  const p = planOf(s.id), d = dataOf(s.id), c = coOf(s.id);
+  if (dTab === "plans") return p ? `
+    <div class="facts"><div><span class="l">要約</span><span class="v">${esc(p.summary)}</span></div><div><span class="l">表記</span><span class="v">${esc(p.currency)}</span></div></div>
+    <div class="tbl card"><table style="min-width:520px"><thead><tr><th>プラン</th><th>月額</th><th>対象</th><th>主な内容</th></tr></thead><tbody>${p.tiers.map(t => `<tr><th>${esc(t.name)}</th><td class="mono">${esc(t.price)}</td><td>${esc(t.who)}</td><td>${esc(t.note)}</td></tr>`).join("")}</tbody></table></div>
+    <a class="lk" href="${esc(p.official)}" target="_blank" rel="noopener">公式の料金ページ${ic("ext", 12)}</a>
+    ${srcLine(p.src, p.secondary)}
+    <p class="note">${ic("info", 14)}月額は税・地域で変わります。最終確認日 ${esc(PLANS.updated)}。</p>` : `<div class="muted-box">料金情報を読み込めていません。</div>`;
+  if (dTab === "examples") { const xs = exOf(s.id); return xs.length ? `<div class="ex-grid" style="grid-template-columns:minmax(0,1fr)">${xs.map(exCard).join("")}</div><button type="button" class="lk" data-exsvc="${s.id}">一覧で絞り込んで見る${ic("arrowR", 12)}</button>` : `<div class="muted-box">このサービスの活用事例はまだありません。</div>`; }
+  if (dTab === "data") return d ? `
+    <div class="data2"><div><span class="l">個人向けプラン</span>${lvl(d.personal)}<span>${esc(d.personal.text)}</span></div><div><span class="l">法人向けプラン</span>${lvl(d.business)}<span>${esc(d.business.text)}</span></div></div>
+    ${srcLine(d.src, d.secondary)}
+    <p class="note">${ic("info", 14)}学習への利用を止めても、すでに学習に使われたデータは消えません。会社で使う場合は法人向けプランと社内規程を確認してください。</p>` : `<div class="muted-box">データの扱いを読み込めていません。</div>`;
+  if (dTab === "org") return c ? `
+    <div class="org-card">${av(s, 48)}<div><b>${esc(c.company)}</b><small>${esc(c.legal)}</small></div></div>
+    <dl class="kv"><dt>設立</dt><dd>${esc(c.founded)}</dd><dt>本社</dt><dd>${esc(c.hq)}</dd><dt>代表者</dt><dd>${esc(c.leader)}</dd><dt>資本・体制</dt><dd>${esc(c.structure)}</dd><dt>規模</dt><dd>${esc(c.scale)}</dd><dt>収益の柱</dt><dd>${esc(c.business)}</dd><dt>日本での拠点</dt><dd>${esc(c.japan)}</dd><dt>戦略の特徴</dt><dd>${esc(c.stance)}</dd></dl>
+    ${srcLine(c.src, c.secondary)}
+    <p class="note">${ic("info", 14)}企業価値や利用者数は報道ベースの数字を含みます。最終確認日 ${esc(COS.updated)}。</p>` : `<div class="muted-box">運営企業の情報を読み込めていません。</div>`;
+  if (dTab === "news") { const ns = NEWS && NEWS.services[s.id] || []; return ns.length ? `<ol class="nlist">${ns.map(n => newsLi(n)).join("")}</ol><button type="button" class="lk" data-go="news">ほかのニュースを見る${ic("arrowR", 12)}</button>` : `<div class="muted-box">この期間の主なニュースはありません。ニュースは毎週月曜に更新しています。</div>`; }
+  if (dTab === "src") return `<p style="font-size:13.5px;color:var(--text-2);line-height:1.75">${esc(s.name)}の記載は、次の資料で確認しています。${secChip}は公式発表や大手報道で確認できていない情報です。</p>
+    <div class="srcs">${allSrc(s).map(([l, u, k]) => `<a href="${esc(u)}" target="_blank" rel="noopener"><span class="kb">${esc(k)}</span><span><b>${esc(l)}</b><small>${esc(domain(u))}</small></span>${ic("ext", 14)}</a>`).join("")}</div>
+    <a class="lk" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)} 公式サイト${ic("ext", 12)}</a>`;
+  return `
+    <p style="font-size:14px;line-height:1.85;color:var(--text-2)">${esc(s.summary)}</p>
+    <div class="facts">
+      <div><span class="l">種類</span><span class="v">${esc(CATS[s.category] || "")}</span></div>
+      <div><span class="l">無料プラン</span><span class="v">${esc(s.cmp.free)}</span></div>
+      <div><span class="l">個人の料金</span><span class="v mono">${esc(priceTail(p))}</span></div>
+      <div><span class="l">日本での利用</span><span class="v">${esc(s.cmp.japan)}</span></div>
+    </div>
+    <div class="sub-hd">得意なこと</div>${ul(s.good)}
+    <div class="sub-hd">注意点</div>${ul(s.warn, "bad")}
+    <div class="sub-hd">主な機能・製品</div>
+    <dl class="kv"><dt>得意な用途</dt><dd>${esc(s.use.join("／"))}</dd><dt>画像の生成</dt><dd>${esc(s.cmp.image)}</dd><dt>主な製品</dt><dd>${c ? esc(c.products.join("、")) : "—"}</dd><dt>向いている人</dt><dd>${esc(s.cmp.fit)}</dd></dl>
+    <div class="sub-hd">入力データの扱い</div>
+    <div class="fee-hero" style="--mc:var(--brand)"><div class="chips">${d ? lvl(d.personal) : ""}</div><p style="font-size:13.5px;font-weight:500">${d ? esc(d.personal.text) : "—"}</p><button type="button" class="lk" data-tab="data">データの扱いの詳細${ic("arrowR", 12)}</button></div>
+    ${exOf(s.id).length ? `<button type="button" class="btn btn-ghost sm" data-tab="examples">${ic("bulb", 14)}活用事例を見る（${exOf(s.id).length}件）</button>` : ""}
+    <p class="note">${ic("info", 14)}得意なこと・注意点はこのサイトの評価です。</p>`;
+}
+const newsLi = (n, s) => `<li><time>${esc(n.date)}</time><div class="nb">${s ? `<button type="button" class="svc-btn" data-open="${s.id}">${esc(short(s))}</button>` : ""}<b>${esc(n.title)}</b><p>${esc(n.text)}</p>${srcLine(n.src, n.secondary)}</div></li>`;
+$("dr-tabs").addEventListener("keydown", e => {
+  if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+  e.stopPropagation();
+  const i = DTABS.findIndex(t => t[0] === dTab);
+  dTab = DTABS[(i + (e.key === "ArrowRight" ? 1 : DTABS.length - 1)) % DTABS.length][0];
+  renderDrawer(); $("dr-tabs").querySelector(`[data-tab="${dTab}"]`).focus();
+});
+// ドロワーを閉じたら、URL をいまの一覧ページに戻す（履歴は増やさない）
+$("drawer").addEventListener("close", () => { if (svc(decodeURIComponent(location.hash.slice(1)))) { try { history.replaceState(null, "", "#" + view); } catch(_) {} } });
+
+/* ---------- 比較（仕様） ---------- */
+const cmp = store.get("ainavi-cmp", []).filter(Boolean);
+function toggleCmp(id){
+  const i = cmp.indexOf(id);
+  if (i >= 0) cmp.splice(i, 1);
+  else { if (cmp.length >= 4) { toast("比較できるのは4つまでです"); return; } cmp.push(id); }
+  store.set("ainavi-cmp", cmp); syncCmp();
+}
+function syncCmp(){
+  document.querySelectorAll("[data-cmp]").forEach(b => b.setAttribute("aria-pressed", String(cmp.includes(b.dataset.cmp))));
+  document.querySelectorAll("[data-sid]").forEach(el => el.classList.toggle("sel", cmp.includes(el.dataset.sid)));
+  document.querySelectorAll("[data-pick]").forEach(b => b.setAttribute("aria-pressed", String(cmp.includes(b.dataset.pick))));
+  $("top-cmp-n").textContent = cmp.length;
+  const bar = $("cbar");
+  bar.hidden = !cmp.length;
+  bar.innerHTML = cmp.length ? `<span class="stack">${cmp.map(id => av(svc(id), 26)).join("")}</span><span class="t">${cmp.map(id => esc(short(svc(id)))).slice(0, 2).join("、")}${cmp.length > 2 ? ` ほか${cmp.length - 2}件` : ""}<small>${cmp.length}/4</small></span><button type="button" class="btn btn-primary sm" data-cmpopen ${cmp.length < 2 ? 'disabled title="2つ以上選ぶと比較できます"' : ""}>${ic("columns", 14)}比較する</button><button type="button" class="x2" data-cmpclear>クリア</button>` : "";
+  if ($("drawer").open) renderDrawerFoot();
+  if ($("cmpd").open) { if (cmp.length) renderCmp(); else closeDlg("cmpd"); }
+}
+// 比較項目はカテゴリー分けする（基本／料金／機能／データ／運営）
+const CMPROWS = [
+  ["基本", [["種類", s => esc(CATS[s.category] || "")], ["得意なこと", s => esc(s.cmp.strength)], ["向いている人", s => esc(s.cmp.fit)], ["日本での利用", s => esc(s.cmp.japan)]]],
+  ["料金", [["無料プラン", s => esc(s.cmp.free)], ["個人の料金", s => `<span class="mono">${esc(priceTail(planOf(s.id)))}</span>`], ["プラン", s => { const p = planOf(s.id); return p ? `<ul>${p.tiers.map(t => `<li>${esc(t.name)}：${esc(t.price)}</li>`).join("")}</ul>` : "—"; }]]],
+  ["機能", [["得意な用途", s => `<ul>${s.use.map(u => `<li>${esc(u)}</li>`).join("")}</ul>`], ["画像の生成", s => esc(s.cmp.image)], ["主な製品", s => { const c = coOf(s.id); return c ? esc(c.products.join("、")) : "—"; }]]],
+  ["データの扱い", [["個人向け", s => { const d = dataOf(s.id); return d ? `${lvl(d.personal)}<div style="margin-top:4px">${esc(d.personal.text)}</div>` : "—"; }], ["法人向け", s => { const d = dataOf(s.id); return d ? `${lvl(d.business)}<div style="margin-top:4px">${esc(d.business.text)}</div>` : "—"; }]]],
+  ["運営", [["運営企業", s => { const c = coOf(s.id); return c ? `<b style="color:var(--text)">${esc(c.company)}</b>` : esc(s.maker); }], ["本社", s => { const c = coOf(s.id); return c ? esc(c.hq) : "—"; }], ["日本での拠点", s => { const c = coOf(s.id); return c ? esc(c.japan) : "—"; }]]]
+];
+function renderCmp(){
+  const list = cmp.map(svc).filter(Boolean);
+  $("cmpd-title").textContent = `${list.length}つのサービスを比較`;
+  const head = `<tr><th></th>${list.map(s => `<th><div class="hcell"><div>${av(s, 32)}<div><b>${esc(s.name)}</b><div class="note">${esc(s.maker)}</div></div></div><button type="button" class="icon-btn" data-cmp="${s.id}" aria-pressed="true" aria-label="${esc(s.name)}を比較から外す" title="外す">${ic("x", 14)}</button></div></th>`).join("")}</tr>`;
+  const body = CMPROWS.map(([cat, rows]) => `<tr class="cat"><th scope="rowgroup">${cat}</th>${list.map(() => "<td></td>").join("")}</tr>` + rows.map(([l, f]) => `<tr><th scope="row">${l}</th>${list.map(s => `<td>${f(s)}</td>`).join("")}</tr>`).join("")).join("");
+  const cards = list.map(s => `<div class="cmp-card"><div class="cmp-card-hd"><div>${av(s, 30)}<b>${esc(s.name)}</b></div><button type="button" class="icon-btn" data-cmp="${s.id}" aria-pressed="true" aria-label="${esc(s.name)}を比較から外す">${ic("x", 14)}</button></div>${CMPROWS.map(([cat, rows]) => `<div class="cmp-cat">${cat}</div><dl class="kv2">${rows.map(([l, f]) => `<dt>${l}</dt><dd>${f(s)}</dd>`).join("")}</dl>`).join("")}</div>`).join("");
+  $("cmpd-body").innerHTML = `<div class="cmp-table-wrap"><table class="cmpt"><thead>${head}</thead><tbody>${body}</tbody></table></div><div class="cmp-cards">${cards}</div>`;
+}
+function openCmp(){ if (cmp.length >= 2) { renderCmp(); showDlg("cmpd"); } else toast(cmp.length ? "もう1つ選ぶと比較できます" : "比べたいサービスを2つ以上選んでください"); }
+function renderMatrix(){
+  $("pick-chips").innerHTML = SERVICES.map(s => `<button type="button" class="fchip" data-pick="${s.id}" aria-pressed="${cmp.includes(s.id)}">${av(s, 20)}${esc(short(s))}</button>`).join("");
+  const cols = [["種類", s => esc(CATS[s.category] || "")], ["得意なこと", s => esc(s.cmp.strength)], ["無料プラン", s => esc(s.cmp.free)], ["個人の料金", s => `<span class="mono">${esc(priceTail(planOf(s.id)))}</span>`], ["日本での利用", s => esc(s.cmp.japan)], ["画像の生成", s => esc(s.cmp.image)], ["個人データの学習", s => { const d = dataOf(s.id); return d ? lvl(d.personal) : "—"; }], ["向いている人", s => esc(s.cmp.fit)]];
+  $("mx-table").innerHTML = `<table style="min-width:1080px"><thead><tr><th>サービス</th>${cols.map(c => `<th>${c[0]}</th>`).join("")}</tr></thead><tbody>${SERVICES.map(s => `<tr><th><button type="button" class="sc-open" data-open="${s.id}" style="display:flex;gap:10px;align-items:center">${av(s, 28)}<span>${esc(s.name)}<small style="display:block;font-weight:400;font-size:12px;color:var(--text-3)">${esc(s.maker)}</small></span></button></th>${cols.map(c => `<td>${c[1](s)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+  $("mx-cards").innerHTML = SERVICES.map(s => `<div class="mx-card card"><div class="sc-hd">${av(s, 34)}<div class="sc-tt"><button type="button" class="sc-open" data-open="${s.id}"><h3>${esc(s.name)}</h3></button><p>${esc(s.maker)}</p></div>${cmpBtn(s)}</div><dl class="kv2">${cols.map(c => `<dt>${c[0]}</dt><dd>${c[1](s)}</dd>`).join("")}</dl></div>`).join("");
+}
+
+/* ---------- 活用事例 ---------- */
+const exState = {genre: "all", svc: "", purpose: "", q: ""};
+const exHay = e => [e.title, e.scene, e.prompt, e.output, ...(e.steps || []), META.purposes[e.purpose], META.genres[e.genre], short(svc(e.service) || {})].join(" ").toLowerCase();
+function exList(ignore){
+  const q = exState.q.trim().toLowerCase();
+  return EXAMPLES.filter(e => (ignore === "genre" || exState.genre === "all" || e.genre === exState.genre) && (!exState.svc || e.service === exState.svc) && (ignore === "purpose" || !exState.purpose || e.purpose === exState.purpose) && (!q || exHay(e).includes(q)));
+}
+function exCard(e){
+  const s = svc(e.service), op = e.promptType === "operation" ? "操作例" : "プロンプト";
+  return `<article class="ex card" id="ex-${esc(e.id)}">
+    <div class="ex-meta"><button type="button" class="svc-btn tagc" data-open="${s.id}" style="cursor:pointer;gap:6px">${av(s, 18)}${esc(short(s))}</button><span class="tagc">${esc(META.genres[e.genre] || "")}</span>${META.purposes[e.purpose] !== META.genres[e.genre] ? `<span class="tagc">${esc(META.purposes[e.purpose] || "")}</span>` : ""}</div>
+    <h3>${esc(e.title)}</h3><p class="scene">${esc(e.scene)}</p>
+    <div class="pbox"><div class="pbox-hd"><span>${op}</span><button type="button" class="btn btn-ghost sm copy-btn" data-copy aria-label="${esc(e.title)}の${op}をコピー">${ic("copy", 14)}<span>コピー</span></button></div><pre>${esc(e.prompt)}</pre>${e.promptNote ? `<div class="pnote">${esc(e.promptNote)}</div>` : ""}</div>
+    <details class="ex-more"><summary>${ic("chevD", 14)}使い方・期待できる結果・注意点</summary><div class="in">
+      <div><div class="sub-hd" style="margin:0 0 4px">使い方</div><ol>${e.steps.map(x => `<li>${esc(x)}</li>`).join("")}</ol></div>
+      <div><div class="sub-hd" style="margin:0 0 4px">期待できるアウトプット（内容の種類）</div><p>${esc(e.output)}</p></div>
+      <div><div class="sub-hd" style="margin:0 0 4px">注意点</div>${ul(e.cautions, "bad")}</div>
+    </div></details>
+    <div class="ex-ft"><a class="btn btn-primary sm" href="${esc(s.url)}" target="_blank" rel="noopener">このAIを使ってみる${ic("ext", 13)}</a><button type="button" class="lk" style="margin:0" data-open="${s.id}">${esc(short(s))}の詳細${ic("arrowR", 12)}</button></div>
+  </article>`;
+}
+function renderExamples(){
+  const list = exList();
+  const baseG = exList("genre"), baseP = exList("purpose");
+  $("ex-genre").innerHTML = [["all", "すべて"], ...Object.entries(META.genres)].map(([k, v]) => `<button type="button" data-g="${k}" aria-pressed="${exState.genre === k}">${esc(v)}<span class="mono" style="font-size:11px;color:var(--text-3)">${k === "all" ? baseG.length : baseG.filter(e => e.genre === k).length}</span></button>`).join("");
+  $("ex-purpose").innerHTML = Object.entries(META.purposes).map(([k, v]) => { const n = baseP.filter(e => e.purpose === k).length; return `<button type="button" class="fchip" data-p="${k}" aria-pressed="${exState.purpose === k}"${n || exState.purpose === k ? "" : " disabled"}>${esc(v)}<span class="c">${n}</span></button>`; }).join("");
+  $("ex-svc").value = exState.svc;
+  $("ex-res").innerHTML = `<b>${list.length}</b> / ${EXAMPLES.length}件`;
+  const act = [];
+  if (exState.genre !== "all") act.push(`<button type="button" class="fpill" data-exclr="genre">ジャンル：${esc(META.genres[exState.genre])}${ic("x", 12)}</button>`);
+  if (exState.purpose) act.push(`<button type="button" class="fpill" data-exclr="purpose">目的：${esc(META.purposes[exState.purpose])}${ic("x", 12)}</button>`);
+  if (exState.svc) act.push(`<button type="button" class="fpill" data-exclr="svc">${esc(short(svc(exState.svc)))}${ic("x", 12)}</button>`);
+  if (exState.q) act.push(`<button type="button" class="fpill" data-exclr="q">「${esc(exState.q)}」${ic("x", 12)}</button>`);
+  $("ex-active").innerHTML = act.length ? `<span class="lbl">絞り込み中</span>${act.join("")}<button type="button" class="clear-all" data-exclr="all">すべて解除</button>` : "";
+  $("ex-out").innerHTML = list.length ? `<div class="ex-grid">${list.map(exCard).join("")}</div>` : `<div class="empty card"><b>条件に合う活用事例がありません</b><span>キーワードや絞り込みを変えてみてください。</span><button type="button" class="btn btn-ghost sm" data-exclr="all">絞り込みをすべて解除</button></div>`;
+}
+function setupExamples(){
+  $("ex-svc").innerHTML = `<option value="">すべてのサービス</option>` + SERVICES.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join("");
+  $("ex-genre").addEventListener("click", e => { const b = e.target.closest("[data-g]"); if (b) { exState.genre = b.dataset.g; renderExamples(); } });
+  $("ex-purpose").addEventListener("click", e => { const b = e.target.closest("[data-p]"); if (b) { exState.purpose = exState.purpose === b.dataset.p ? "" : b.dataset.p; renderExamples(); } });
+  $("ex-svc").addEventListener("change", e => { exState.svc = e.target.value; renderExamples(); });
+  $("ex-q").addEventListener("input", e => { exState.q = e.target.value; renderExamples(); });
   renderExamples();
 }
-$("ex-genres").addEventListener("click", e => { const b = e.target.closest("button[data-genre]"); if (!b) return; exFilter.genre = b.dataset.genre; renderExamples(); });
-$("ex-service").addEventListener("change", e => { exFilter.service = e.target.value; renderExamples(); });
-document.addEventListener("click", e => {
-  if (e.target.closest("#ex-clear-purpose")) { exFilter.purpose = ""; renderExamples(); }
-  if (e.target.closest("#ex-clear-all")) { exFilter.purpose = ""; exFilter.service = ""; exFilter.genre = "all"; renderExamples(); }
-  if (e.target.closest("#ex-show-all")) go("examples");
-  const t = e.target.closest(".tile[data-purpose]");
-  if (t) {
-    const p = t.dataset.purpose;
-    if (EXAMPLES.some(x => x.purpose === p)) { exFilter.purpose = p; exFilter.genre = "all"; exFilter.service = ""; go("examples"); }
-    else { const r = document.querySelector(`#opt-purpose input[value="${p}"]`); if (r) r.checked = true; go("diag"); }
-  }
-});
+function clearEx(k){
+  if (k === "all") { exState.genre = "all"; exState.svc = ""; exState.purpose = ""; exState.q = ""; $("ex-q").value = ""; }
+  else if (k === "genre") exState.genre = "all";
+  else if (k === "q") { exState.q = ""; $("ex-q").value = ""; }
+  else exState[k] = "";
+  renderExamples();
+}
+function showExamples(o){ Object.assign(exState, {genre: "all", svc: "", purpose: "", q: ""}, o); $("ex-q").value = exState.q; renderExamples(); go("examples"); }
 
-/* ---- AI診断（外部に送らず、services.json の属性だけで判定） ---- */
-function radios(id, name, entries) {
-  $(id).innerHTML = entries.map(([v, l]) => `<label><input type="radio" name="${name}" value="${v}" required>${esc(l)}</label>`).join("");
+/* ---------- AI診断（外部に送らず、services.json の属性だけで判定） ---------- */
+function setupDiag(){
+  const opts = (id, name, entries) => { $(id).innerHTML = entries.map(([v, l]) => `<label class="opt"><input type="radio" name="${name}" value="${v}"><span class="tick">${ic("check", 11)}</span>${esc(l)}</label>`).join(""); };
+  opts("opt-purpose", "purpose", Object.entries(META.purposes));
+  opts("opt-env", "env", Object.entries(META.envs));
+  opts("opt-budget", "budget", Object.entries(META.budgets));
 }
-function setupDiag() {
-  radios("opt-purpose", "purpose", Object.entries(META.purposes));
-  radios("opt-env", "env", Object.entries(META.envs));
-  radios("opt-budget", "budget", Object.entries(META.budgets));
-}
-function diagnose(purpose, env, budget) {
+function diagnose(purpose, env, budget){
   const P = META.purposes[purpose];
   const cap = budget === "1000" ? 1000 : budget === "3000" ? 3000 : null;
   const picked = [], excluded = [];
   SERVICES.forEach((s, order) => {
     const d = s.diag; if (!d) return;
     const score = d.scores[purpose] || 0;
-    const data = PLANS && PLANS.data.find(x => x.service === s.id);
-    // 選んだ用途が無料プランで実行できるか（無料プランがあるだけでは足りない）
+    const data = dataOf(s.id);
     const freeOK = d.free && (d.freePurposes || []).includes(purpose);
-    const paid = d.minPaidJPY;
-    const team = d.teamPlan || null;
+    const paid = d.minPaidJPY, team = d.teamPlan || null;
     let why = null;
     if (!d.japan) why = "日本では提供されていない";
     else if (score < 2) why = `「${P}」は得意分野ではない`;
@@ -1031,329 +890,308 @@ function diagnose(purpose, env, budget) {
       if (budget === "free" && !freeOK) why = d.free ? `「${P}」は無料プランでは使えない` : "無料プランがない";
       else if (cap && !freeOK && (paid === null || paid > cap)) why = paid === null ? `「${P}」に使える個人向けの有料プランがない` : `「${P}」には有料プランが必要で、予算を超える（${yen(paid)}〜）`;
     }
-    if (why) { excluded.push({ s, why }); return; }
-
+    if (why) { excluded.push({s, why}); return; }
     const reasons = [`「${P}」が${score === 3 ? "特に得意" : "得意"}：${s.cmp.strength}`];
     const cautions = [s.warn[0]];
-    let bonus = 0, planLabel;
+    let bonus = 0, plan;
     if (env === "team") {
-      const price = team.priceJPY !== null ? `1人あたり月額${yen(team.priceJPY)}〜（目安）` : "料金は要確認";
-      reasons.push(`チーム向けプラン：${team.name}（${price}）`);
+      reasons.push(`チーム向けプラン：${team.name}（${team.priceJPY !== null ? `1人あたり月額${yen(team.priceJPY)}〜（目安）` : "料金は要確認"}）`);
       cautions.push(`${team.note}${team.seats > 1 ? `。${team.seats}人から契約` : ""}`);
-      planLabel = { cls: "plain", text: "チーム向けは有料" };
-    } else {
-      if (freeOK) {
-        reasons.push(`無料プランで「${P}」に使える（回数などの制限あり）`);
-        if (cap && paid !== null && paid > cap) cautions.push(`有料プランは月額${yen(paid)}〜（目安）で予算外。予算内では無料プランの範囲で使う`);
-        planLabel = { cls: "good", text: `無料で${P}に使える` };
-      } else {
-        reasons.push(`「${P}」には有料プランが必要（月額${yen(paid)}〜・目安）`);
-        planLabel = { cls: "plain", text: "有料プランが必要" };
-      }
-    }
+      plan = "チーム向けは有料";
+    } else if (freeOK) {
+      reasons.push(`無料プランで「${P}」に使える（回数などの制限あり）`);
+      if (cap && paid !== null && paid > cap) cautions.push(`有料プランは月額${yen(paid)}〜（目安）で予算外。予算内では無料プランの範囲で使う`);
+      plan = `無料で${P}に使える`;
+    } else { reasons.push(`「${P}」には有料プランが必要（月額${yen(paid)}〜・目安）`); plan = "有料プランが必要"; }
     if (env === "personal") {
       if (data && data.personal.level === "uses") cautions.push(`個人向けでは「${data.personal.label}」。設定を確認して使う`);
       if (s.id === "deepseek") cautions.push("データは中国のサーバーに保存される。個人情報は入れない");
-    } else {
-      if (data) {
-        reasons.push(`法人向け：${data.business.label}`);
-        if (data.business.level === "safe") bonus = 1;
-        if (env === "work" && data.personal.level !== "safe") cautions.push("個人向けプランを仕事で使うなら、入力内容を学習に使わない設定にし、機密は入れない。会社の規程も確認する");
-      }
+    } else if (data) {
+      reasons.push(`法人向け：${data.business.label}`);
+      if (data.business.level === "safe") bonus = 1;
+      if (env === "work" && data.personal.level !== "safe") cautions.push("個人向けプランを仕事で使うなら、入力内容を学習に使わない設定にし、機密は入れない。会社の規程も確認する");
     }
-    picked.push({ s, score, bonus, order, reasons, cautions, planLabel });
+    picked.push({s, score, bonus, order, reasons, cautions, plan, freeOK});
   });
   picked.sort((a, b) => b.score - a.score || b.bonus - a.bonus || a.order - b.order);
-  return { top: picked.slice(0, 3), rest: picked.slice(3), excluded, P };
+  return {top: picked.slice(0, 3), rest: picked.slice(3), excluded, P};
 }
-function renderDiag(purpose, env, budget) {
-  const { top, rest, excluded, P } = diagnose(purpose, env, budget);
-  const box = $("diag-result");
+function renderDiag(purpose, env, budget){
+  const {top, rest, excluded, P} = diagnose(purpose, env, budget);
   const cond = `${P} ／ ${META.envs[env]} ／ ${META.budgets[budget]}`;
-  if (!top.length) {
-    box.innerHTML = `<div class="results"><div class="card none-box"><b>条件に合うサービスが見つかりませんでした。</b><p>選んだ条件：${esc(cond)}。予算や使う場所の条件を変えると見つかる場合があります。${excluded.length ? "除外した理由は下の「判定の根拠」で確認できます。" : ""}</p>${whyBlock(excluded, rest)}</div></div>`;
-    return;
-  }
-  box.innerHTML = `<div class="results">
-    <p class="diag-hint">選んだ条件：${esc(cond)}（おすすめ順に最大3つ）</p>
-    ${top.map((r, i) => {
-      const s = r.s, rel = EXAMPLES.filter(x => x.service === s.id && x.purpose === purpose);
-      return `<article class="card result" style="--c:${s.color}">
-        <div class="result-head">${badge(s, "lg")}<div><div class="rank">おすすめ ${i + 1}</div><h3>${esc(s.name)}</h3></div><span class="chip ${r.planLabel.cls}">${esc(r.planLabel.text)}</span></div>
-        <div class="result-cols">
-          <div><span class="lbl">おすすめする理由</span>${marks(r.reasons, "good")}</div>
-          <div><span class="lbl">注意点・制約</span>${marks(r.cautions, "warn")}</div>
-        </div>
-        <div><span class="lbl">得意な用途</span>${esc(s.use.join("／"))}</div>
-        <div class="result-actions"><a class="btn btn-ink" href="${esc(s.url)}" target="_blank" rel="noopener">このAIを使ってみる ↗</a><a class="btn btn-line" href="#${s.id}">詳細を見る</a>
-          <button type="button" class="btn btn-line" data-diag-ex="${s.id}" data-purpose="${rel.length ? purpose : ""}">関連する活用事例（${rel.length || EXAMPLES.filter(x => x.service === s.id).length}件）</button></div>
-      </article>`;
-    }).join("")}
-    ${whyBlock(excluded, rest)}
-    <p class="diag-hint">料金はドル建てを1ドル=${META.fx}円で換算した目安です。最新の料金は「料金・データ」と各公式ページで確認してください。</p>
-  </div>`;
-}
-function whyBlock(excluded, rest) {
-  return `<details class="why"><summary>判定の根拠を見る</summary><ul>
-    <li>各サービスの用途ごとの得意度（このサイト独自の評価）、選んだ用途が無料プランで使えるか、個人向け有料プランの最安月額、チーム向けプランの有無と1人あたりの料金、日本での提供状況をもとに、条件に合うものだけを選んでいます。</li><li>料金は各社の公表価格をもとにした目安で、ドル建ては1ドル=${META.fx}円で換算しています。税や為替、契約条件で変わります。</li>
+  const why = `<details class="why-d card" style="padding:12px 16px"><summary>判定の根拠と、対象外にしたサービス（${excluded.length}件）</summary><ul>
+    <li>用途ごとの得意度（このサイト独自の評価）、選んだ用途が無料プランで使えるか、個人向け有料プランの最安月額、チーム向けプランの有無と1人あたりの料金、日本での提供状況をもとに、条件に合うものだけを選んでいます。</li>
     <li>得意度が同じ場合は、仕事・チーム利用では入力内容を学習に使わない法人向けプランがあるものを優先しています。</li>
+    <li>料金は各社の公表価格をもとにした目安で、ドル建ては1ドル=${META.fx}円で換算しています。</li>
     ${rest.map(r => `<li>${esc(r.s.name)}：条件には合っていますが、上位3つに入りませんでした。</li>`).join("")}
-    ${excluded.map(x => `<li>${esc(x.s.name)}：対象外（${esc(x.why)}）</li>`).join("")}
-  </ul></details>`;
-}
-$("diag-form").addEventListener("submit", e => {
-  e.preventDefault();
-  const f = e.target, p = f.purpose.value, en = f.env.value, b = f.budget.value;
-  if (!p || !en || !b) { $("diag-result").innerHTML = `<p class="status err" style="margin-top:14px">3つの質問すべてに答えてください。</p>`; return; }
-  renderDiag(p, en, b);
-  $("diag-result").scrollIntoView({ block: "nearest" });
-});
-$("diag-form").addEventListener("reset", () => { $("diag-result").innerHTML = ""; });
-document.addEventListener("click", e => {
-  const b = e.target.closest("[data-diag-ex]"); if (!b) return;
-  exFilter.service = b.dataset.diagEx; exFilter.purpose = b.dataset.purpose || ""; exFilter.genre = "all";
-  go("examples");
-});
-
-/* ---- 比較：一覧 ---- */
-function renderCompare() {
-  const dataOf = id => PLANS && PLANS.data.find(d => d.service === id);
-  const planOf = id => PLANS && PLANS.plans.find(p => p.service === id);
-  $("compare-body").innerHTML = SERVICES.map(s => {
-    const d = dataOf(s.id), p = planOf(s.id), c = s.cmp || {};
-    const learn = d ? `<span class="chip ${LEVEL[d.personal.level] || "note"}">${esc(d.personal.label)}</span>` : "—";
-    return `<tr><th scope="row"><a class="svc-line" href="#${s.id}" style="text-decoration:none;color:inherit">${badge(s)}<span>${esc(s.name)}<small>${esc(s.maker)}</small></span></a></th>
-      <td data-label="種類">${esc(CATS[s.category] || "")}</td><td data-label="得意なこと">${esc(c.strength)}</td><td data-label="無料プラン">${esc(c.free)}</td>
-      <td data-label="個人の料金" class="price">${esc(p ? p.summary.replace(/^[^·]*·\s*/, "") : "—")}</td>
-      <td data-label="日本での利用">${esc(c.japan)}</td><td data-label="画像の生成">${esc(c.image)}</td><td data-label="個人データの学習">${learn}</td><td data-label="向いている人">${esc(c.fit)}</td></tr>`;
-  }).join("");
-}
-function showCmp(trial) {
-  $("st-matrix").setAttribute("aria-pressed", String(!trial)); $("st-trial").setAttribute("aria-pressed", String(trial));
-  $("cmp-matrix").hidden = trial; $("cmp-trial").hidden = !trial;
-}
-$("st-matrix").addEventListener("click", () => showCmp(false));
-$("st-trial").addEventListener("click", () => showCmp(true));
-// 比較の切り替え。「自分で試して比べる」は検証データがなくても使えるので、ホームでも常に出す
-function applyCmpVisibility() {
-  $("cmp-tabs").hidden = false;
+    ${excluded.map(x => `<li>${esc(x.s.name)}：対象外（${esc(x.why)}）</li>`).join("")}</ul></details>`;
+  if (!top.length) { $("diag-result").innerHTML = `<div class="empty card"><b>条件に合うサービスが見つかりませんでした</b><span>選んだ条件：${esc(cond)}。予算や使う場所を変えると見つかる場合があります。</span></div>${why}`; return; }
+  $("diag-result").innerHTML = `<div class="res-hd"><span>選んだ条件：<b style="font-family:var(--f-sans)">${esc(cond)}</b></span><span>おすすめ順に最大3つ</span></div>` + top.map((r, i) => {
+    const s = r.s, rel = EXAMPLES.filter(x => x.service === s.id && x.purpose === purpose);
+    return `<article class="rc card" style="--av:${s.color}">
+      <div class="rc-hd">${av(s, 44)}<div class="nm"><small>おすすめ ${i + 1}</small><b>${esc(s.name)}</b></div><span class="lvl ${r.freeOK ? "safe" : "choice"}"><i></i>${esc(r.plan)}</span></div>
+      <div class="rc-cols"><div class="box"><b>おすすめする理由</b>${ul(r.reasons)}</div><div class="box"><b>注意点・制約</b>${ul(r.cautions, "bad")}</div></div>
+      <p style="font-size:13px;color:var(--text-2)"><b style="color:var(--text)">得意な用途：</b>${esc(s.use.join("／"))}</p>
+      <div class="rc-act"><a class="btn btn-primary sm" href="${esc(s.url)}" target="_blank" rel="noopener">このAIを使ってみる${ic("ext", 13)}</a><button type="button" class="btn btn-ghost sm" data-open="${s.id}">${ic("layers", 14)}詳細を見る</button><button type="button" class="btn btn-ghost sm" data-exsvc="${s.id}" data-expurpose="${rel.length ? purpose : ""}">${ic("bulb", 14)}関連する活用事例（${rel.length || exOf(s.id).length}件）</button></div>
+    </article>`;
+  }).join("") + why;
 }
 
-/* ---- 比較：同じお題で試して比べる ----
-   お題をコピーして各サービスで実行し、返ってきた答えを貼り付けて並べて比べるキット。
-   貼り付けた内容とチェックはこのブラウザの localStorage にだけ保存し、どこにも送信しない。
-   サイト側で検証した結果（compare.json の status: "done"）があれば、その上に表示する。 */
-const KIT_KEY = "ainavi-trial-kit-v1";
-let KIT = (() => { try { return JSON.parse(localStorage.getItem(KIT_KEY) || "{}"); } catch (_) { return {}; } })();
-let kitCanSave = true;
-function kitSave() {
-  try { localStorage.setItem(KIT_KEY, JSON.stringify(KIT)); }
-  catch (_) {
-    if (kitCanSave) { kitCanSave = false; const n = $("kit-save-note"); if (n) n.hidden = false; }
-  }
-}
+/* ---------- 同じお題で試す（個人の比較はこのブラウザだけに保存。サイト側の検証結果とは分けて表示） ---------- */
+const KIT_KEY = "ainavi-trial-kit-v1", CRIT_KEY = "ainavi-trial-crit-v1", HIST_KEY = "ainavi-trial-hist-v1";
+let KIT = store.get(KIT_KEY, {}), CRIT = store.get(CRIT_KEY, {}), HIST = store.get(HIST_KEY, []);
+let trialTheme = null, kitCanSave = true;
+const critOf = th => Array.isArray(CRIT[th.id]) && CRIT[th.id].length ? CRIT[th.id] : th.criteria;
+function kitSave(){ if (!store.set(KIT_KEY, KIT) && kitCanSave) { kitCanSave = false; toast("このブラウザでは保存できません。ページを閉じると消えます"); } }
 const kitEntry = (t, s) => ((KIT[t] = KIT[t] || {})[s] = KIT[t][s] || {});
-
-let TRIAL = null, trialTheme = null;
-function verifiedCard(en) {
-  const s = svcOf(en.service);
-  const f = (k, label) => en[k] ? `<div><dt>${label}</dt><dd>${esc(en[k])}</dd></div>` : "";
-  return `<article class="card trial" style="--c:${s.color}"><div class="svc-line">${badge(s)}<b>${esc(s.name)}</b></div><dl>${f("model", "使用モデル")}${f("date", "実施日")}${f("conditions", "使用条件")}${f("output", "実際の出力")}${en.image ? `<div><dt>実際の出力</dt><dd><img src="${esc(en.image)}" alt="${esc(s.name)}の出力画像" loading="lazy"></dd></div>` : ""}${f("features", "出力の特徴")}${f("cautions", "注意点")}</dl></article>`;
+const scoreOf = (th, sid) => { const v = (KIT[th.id] || {})[sid] || {}; const c = critOf(th); return {n: (v.checks || []).slice(0, c.length).filter(Boolean).length, of: c.length, has: !!(v.text || (v.checks || []).some(Boolean))}; };
+function verifiedHTML(th){
+  const done = th.entries.filter(e => e.status === "done");
+  if (!done.length) return "";
+  const f = (en, k, l) => en[k] ? `<dt>${l}</dt><dd>${esc(en[k])}</dd>` : "";
+  return `<div class="official-box card"><h3>${ic("shield", 16)}サイト運営側の検証結果</h3><p class="note">${esc(TRIAL.policy)}</p><div class="kit-grid">${done.map(en => { const s = svc(en.service); return `<div class="kc card" style="--av:${s.color}"><div class="kc-hd">${av(s, 26)}<b>${esc(s.name)}</b></div><dl class="kv2">${f(en, "model", "使用モデル")}${f(en, "date", "実施日")}${f(en, "conditions", "使用条件")}${f(en, "output", "実際の出力")}${f(en, "features", "出力の特徴")}${f(en, "cautions", "注意点")}</dl></div>`; }).join("")}</div></div>`;
 }
-function kitCard(th, en, isImg) {
-  const s = svcOf(en.service), v = (KIT[th.id] || {})[s.id] || {}, checks = v.checks || [];
-  const id = `${th.id}-${s.id}`;
-  return `<article class="card trial" style="--c:${s.color}">
-    <div class="svc-line">${badge(s)}<b>${esc(s.name)}</b><span class="chip plain kit-score" id="kit-score-${id}" aria-label="当てはまる観点の数">${checks.filter(Boolean).length} / ${th.criteria.length}</span></div>
-    <label class="lbl" for="kit-${id}">${isImg ? "見比べた感想" : "返ってきた答え"}</label>
-    <textarea id="kit-${id}" class="kit-text" data-kit="${th.id}|${s.id}" rows="${isImg ? 3 : 7}" placeholder="${isImg ? "例：光の表現がきれい。手が少し崩れている" : "ここに答えを貼り付けます"}">${esc(v.text || "")}</textarea>
-    ${isImg ? "" : `<span class="kit-len" id="kit-len-${id}">${(v.text || "").length}文字</span>`}
-    <fieldset class="kit-checks"><legend class="lbl">当てはまる観点にチェック</legend>${th.criteria.map((c, i) => `<label><input type="checkbox" data-kit-check="${th.id}|${s.id}|${i}"${checks[i] ? " checked" : ""}>${esc(c)}</label>`).join("")}</fieldset>
-  </article>`;
-}
-function renderTrial() {
+function renderTrial(){
   if (!TRIAL || !SERVICES.length) return;
   const th = TRIAL.themes.find(t => t.id === trialTheme) || TRIAL.themes[0];
   trialTheme = th.id;
-  $("trial-themes").innerHTML = TRIAL.themes.map(t => `<button type="button" data-theme="${t.id}" aria-pressed="${t.id === th.id}">${esc(t.title)}</button>`).join("");
-  const done = th.entries.filter(e => e.status === "done");
-  const isImg = th.kind === "image";
-  $("trial-body").innerHTML = `
-    ${done.length ? `<h3 class="sub-h">サイトでの検証結果</h3><p class="pending">${esc(TRIAL.policy)}</p><div class="trial-grid">${done.map(verifiedCard).join("")}</div><h3 class="sub-h">自分でも試してみる</h3>` : ""}
-    <div class="card trial-head">
-      <div class="kit-step"><span class="step-no">STEP 1</span><b>お題をコピーする</b></div>
-      <div class="prompt-box"><div class="pb-top"><span class="lbl">お題（プロンプト）</span><button type="button" class="copy">コピー</button></div><pre>${esc(th.prompt)}</pre></div>
-      <div class="kit-step"><span class="step-no">STEP 2</span><b>それぞれのAIを開いて、新しい会話に貼り付けて送る</b></div>
-      <div class="kit-open">${th.entries.map(en => { const s = svcOf(en.service); return `<a class="btn btn-line" href="${esc(s.url)}" target="_blank" rel="noopener">${badge(s)}${esc(shortName(s))}で開く ↗</a>`; }).join("")}</div>
-      <div class="kit-step"><span class="step-no">STEP 3</span><b>${isImg ? "できた画像を見比べて、感想と観点をメモする" : "返ってきた答えを下に貼り付けて、観点ごとにチェックする"}</b></div>
+  const isImg = th.kind === "image", crit = critOf(th);
+  $("trial-themes").innerHTML = TRIAL.themes.map(t => `<button type="button" data-theme-id="${t.id}" aria-pressed="${t.id === th.id}">${esc(t.title)}</button>`).join("");
+  const card = en => {
+    const s = svc(en.service), v = (KIT[th.id] || {})[s.id] || {}, checks = v.checks || [], sc = scoreOf(th, s.id), id = `${th.id}-${s.id}`;
+    return `<article class="kc card" style="--av:${s.color}">
+      <div class="kc-hd">${av(s, 28)}<b>${esc(s.name)}</b><span class="score" id="kit-score-${id}" aria-label="当てはまる観点の数">${sc.n} / ${sc.of}</span></div>
+      <label class="fl" for="kit-${id}">${isImg ? "見比べた感想" : "返ってきた答え"}</label>
+      <textarea id="kit-${id}" class="ta" data-kit="${th.id}|${s.id}" rows="${isImg ? 3 : 6}" placeholder="${isImg ? "例：光の表現がきれい。手が少し崩れている" : "ここに答えを貼り付けます"}">${esc(v.text || "")}</textarea>
+      ${isImg ? "" : `<span class="len" id="kit-len-${id}">${(v.text || "").length}文字</span>`}
+      <fieldset><legend>当てはまる観点にチェック</legend>${crit.map((c, i) => `<label class="chk"><input type="checkbox" data-kit-check="${th.id}|${s.id}|${i}"${checks[i] ? " checked" : ""}>${esc(c)}</label>`).join("")}</fieldset>
+    </article>`;
+  };
+  const sumRows = th.entries.map(en => { const s = svc(en.service), sc = scoreOf(th, s.id); return `<tr><th>${esc(short(s))}</th><td class="mono">${sc.has ? `${sc.n} / ${sc.of}` : "—"}</td><td>${crit.map((c, i) => ((KIT[th.id] || {})[s.id] || {}).checks && KIT[th.id][s.id].checks[i] ? `<span class="tagc" style="margin:2px">${esc(c)}</span>` : "").join("") || '<span style="color:var(--text-3)">未入力</span>'}</td></tr>`; }).join("");
+  $("trial-out").innerHTML = `
+    ${verifiedHTML(th)}
+    <div class="kit card">
+      <div class="kit-step"><span class="stepn">1</span>お題をコピーする</div>
+      <div class="pbox"><div class="pbox-hd"><span>お題（プロンプト）</span><button type="button" class="btn btn-ghost sm copy-btn" data-copy>${ic("copy", 14)}<span>コピー</span></button></div><pre>${esc(th.prompt)}</pre></div>
+      <div class="kit-step"><span class="stepn">2</span>それぞれのAIを開いて、新しい会話に貼り付けて送る</div>
+      <div class="kit-open">${th.entries.map(en => { const s = svc(en.service); return `<a class="btn btn-ghost sm" href="${esc(s.url)}" target="_blank" rel="noopener">${av(s, 18)}${esc(short(s))}で開く${ic("ext", 12)}</a>`; }).join("")}</div>
+      <div class="kit-step"><span class="stepn">3</span>${isImg ? "できた画像を見比べて、感想と観点をメモする" : "返ってきた答えを貼り付けて、観点ごとにチェックする"}</div>
     </div>
-    <div class="trial-grid kit-grid">${th.entries.map(en => kitCard(th, en, isImg)).join("")}</div>
-    <div class="kit-foot">
-      <p class="pending">${esc(TRIAL.kitNote)} 1回の答えだけで優劣は決められません。何回か試すと、違いがよく分かります。</p>
-      <p class="status err" id="kit-save-note"${kitCanSave ? " hidden" : ""}>このブラウザでは入力を保存できません。ページを閉じると消えます。</p>
-      <button type="button" class="btn btn-line" data-kit-clear="${th.id}">このお題の入力を消す</button>
-    </div>`;
+    <div class="kit-grid">${th.entries.map(card).join("")}</div>
+    <div class="card" style="padding:16px;display:grid;gap:10px"><div class="ch-title"><h3>このお題のまとめ</h3><span>あなたのチェック結果（このブラウザだけに保存）</span></div><div class="tbl"><table style="min-width:520px"><thead><tr><th>サービス</th><th>当てはまった数</th><th>当てはまった観点</th></tr></thead><tbody>${sumRows}</tbody></table></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><button type="button" class="btn btn-primary sm" data-kit-save>${ic("history", 14)}この結果を記録する</button><button type="button" class="btn btn-ghost sm" data-kit-export="text">${ic("copy", 14)}テキストでコピー</button><button type="button" class="btn btn-ghost sm" data-kit-export="json">${ic("download", 14)}JSONで保存</button><button type="button" class="btn btn-ghost sm" data-kit-clear>${ic("trash", 14)}このお題の入力を消す</button></div></div>
+    <div class="kit-adv">
+      <details><summary>${ic("list", 15)}評価の観点を見る・変える（${crit.length}項目）<span class="chev">${ic("chevD", 16)}</span></summary><div class="body">
+        <ol class="crit-list" style="margin:0;padding-left:1.3em">${crit.map((c, i) => `<li><span>${esc(c)}</span><button type="button" class="icon-btn" data-crit-del="${i}" aria-label="「${esc(c)}」を外す">${ic("x", 13)}</button></li>`).join("")}</ol>
+        <div class="crit-add"><label class="sr-only" for="crit-new">追加する観点</label><input class="inp" id="crit-new" maxlength="60" placeholder="例：専門用語が少なく読みやすい"><button type="button" class="btn btn-ghost sm" data-crit-add>${ic("plus", 14)}追加</button></div>
+        <button type="button" class="lk" data-crit-reset>最初の観点に戻す</button>
+        <p class="note">${ic("info", 14)}観点を変えると、チェックはその順番で数え直されます。</p></div></details>
+      <details${HIST.length ? "" : ""}><summary>${ic("history", 15)}記録した比較（${HIST.length}件）<span class="chev">${ic("chevD", 16)}</span></summary><div class="body">
+        ${HIST.length ? `<ul class="hist">${HIST.map((h, i) => `<li><span class="m"><b>${esc(h.title)}</b><small>${esc(h.at.replace("T", " ").slice(0, 16))} · ${h.rows.map(r => `${esc(r.name)} ${r.score}`).join("、")}</small></span><button type="button" class="btn btn-ghost sm" data-hist-view="${i}">見る</button><button type="button" class="icon-btn" data-hist-del="${i}" aria-label="この記録を消す">${ic("trash", 13)}</button></li>`).join("")}</ul><div id="hist-view"></div>` : `<div class="muted-box">まだ記録はありません。「この結果を記録する」で、何回分でも残せます。</div>`}</div></details>
+    </div>
+    <div class="privacy">${ic("alert", 16)}<span>${esc(TRIAL.kitNote)} 共用のパソコンでは他の人に見られる可能性があるため、機密情報や個人情報は貼り付けないでください。1回の答えだけで優劣は決められません。</span></div>`;
 }
-$("trial-themes").addEventListener("click", e => { const b = e.target.closest("button[data-theme]"); if (b) { trialTheme = b.dataset.theme; renderTrial(); } });
-$("trial-body").addEventListener("input", e => {
-  const ta = e.target.closest("textarea[data-kit]"); if (!ta) return;
-  const [t, s] = ta.dataset.kit.split("|");
-  kitEntry(t, s).text = ta.value;
-  const len = $(`kit-len-${t}-${s}`); if (len) len.textContent = ta.value.length + "文字";
-  kitSave();
-});
-$("trial-body").addEventListener("change", e => {
-  const cb = e.target.closest("input[data-kit-check]"); if (!cb) return;
-  const [t, s, i] = cb.dataset.kitCheck.split("|");
-  const v = kitEntry(t, s); v.checks = v.checks || []; v.checks[Number(i)] = cb.checked;
-  const th = TRIAL.themes.find(x => x.id === t);
-  $(`kit-score-${t}-${s}`).textContent = `${v.checks.filter(Boolean).length} / ${th.criteria.length}`;
-  kitSave();
-});
-$("trial-body").addEventListener("click", e => {
-  const b = e.target.closest("[data-kit-clear]"); if (!b) return;
-  delete KIT[b.dataset.kitClear]; kitSave(); renderTrial();
-});
-
-/* ---- 料金とデータの扱い ---- */
-function renderPlans() {
-  $("plans-updated").textContent = PLANS.updated;
-  $("plans-updated-top").textContent = PLANS.updated;
-  $("plans-age").innerHTML = ageChip(PLANS.updated);
-  $("plans-list").innerHTML = SERVICES.map(s => {
-    const p = PLANS.plans.find(x => x.service === s.id), d = PLANS.data.find(x => x.service === s.id);
-    if (!p) return "";
-    const chip = d ? `<span class="chip ${LEVEL[d.personal.level] || "note"}">個人：${esc(d.personal.label)}</span>` : "";
-    const pc = $("price-chip-" + s.id); if (pc) pc.textContent = p.summary;
-    return `<details class="acc" id="plan-${s.id}" style="--c:${s.color}">
-      <summary>${badge(s)}<span class="s-name"><b>${esc(s.name)}</b><small>${esc(p.currency)}表記 · ${p.tiers.length}プラン</small></span>
-        <span class="s-side"><span class="price-from">${esc(p.summary)}</span>${chip}</span><span class="chev" aria-hidden="true"></span></summary>
-      <div class="acc-body">
-        <div class="table-box"><table class="cmp"><thead><tr><th scope="col">プラン</th><th scope="col">月額</th><th scope="col">対象</th><th scope="col">主な内容</th></tr></thead>
-          <tbody>${p.tiers.map(t => `<tr><td><b>${esc(t.name)}</b></td><td class="price">${esc(t.price)}</td><td><span class="who-tag">${esc(t.who)}</span></td><td>${esc(t.note)}</td></tr>`).join("")}</tbody></table></div>
-        ${d ? `<div><div class="lbl" style="margin-bottom:8px">入力した内容は学習に使われる？</div><div class="data-pair">
-          ${["personal", "business"].map(k => `<div><div class="lbl">${k === "personal" ? "個人向け" : "法人向け"}</div><span class="chip ${LEVEL[d[k].level] || "note"}">${esc(d[k].label)}</span><p>${esc(d[k].text)}</p></div>`).join("")}
-        </div>${srcLine(d)}</div>` : ""}
-        <div class="acc-foot"><a href="${esc(p.official)}" target="_blank" rel="noopener">公式の料金ページ ↗</a><span>最終確認日 ${esc(PLANS.updated)}</span>${srcLine(p)}</div>
-      </div></details>`;
-  }).join("");
+function trialSnapshot(th){
+  const crit = critOf(th);
+  return {title: th.title, theme: th.id, at: new Date().toISOString(), criteria: crit, prompt: th.prompt,
+    rows: th.entries.map(en => { const s = svc(en.service), v = (KIT[th.id] || {})[s.id] || {}, sc = scoreOf(th, s.id); return {service: s.id, name: short(s), score: `${sc.n}/${sc.of}`, checked: crit.filter((c, i) => (v.checks || [])[i]), text: v.text || ""}; })};
 }
-
-/* ---- 運営元 ---- */
-const FACTS = [["legal", "法人の形"], ["founded", "設立"], ["hq", "本社"], ["leader", "代表者"], ["structure", "資本・体制", true], ["scale", "規模", true], ["business", "収益の柱"], ["products", "主な製品"], ["japan", "日本での拠点", true], ["stance", "戦略の特徴", true]];
-function renderCompanies(data) {
-  $("companies-updated").textContent = data.updated;
-  $("companies-age").innerHTML = ageChip(data.updated);
-  $("companies-list").innerHTML = SERVICES.map(s => {
-    const c = data.companies.find(x => x.service === s.id);
-    if (!c) return "";
-    const own = $("owner-" + s.id); if (own) own.textContent = `${c.hq} · ${c.leader}`;
-    const val = v => Array.isArray(v) ? `<ul>${v.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : esc(v || "—");
-    return `<details class="acc" id="co-${s.id}" style="--c:${s.color}">
-      <summary>${badge(s)}<span class="s-name"><b>${esc(c.company)}</b><small>${esc(c.hq)} · ${esc(c.leader)}</small></span>
-        <span class="s-side"><span class="chip plain">${esc(shortName(s))}</span><span class="chip plain">設立 ${esc(String(c.founded).slice(0, 5))}</span></span><span class="chev" aria-hidden="true"></span></summary>
-      <div class="acc-body"><dl class="facts">${FACTS.map(([k, label, wide]) => `<div${wide ? ' class="wide"' : ""}><dt>${label}</dt><dd>${val(c[k])}</dd></div>`).join("")}</dl>${srcLine(c)}</div>
-    </details>`;
-  }).join("");
+const snapText = sn => `【${sn.title}】${sn.at.slice(0, 10)}\nお題：${sn.prompt}\n観点：${sn.criteria.join(" / ")}\n\n` + sn.rows.map(r => `■ ${r.name}（${r.score}）\n当てはまった観点：${r.checked.join("、") || "なし"}\n${r.text ? "答え：\n" + r.text + "\n" : ""}`).join("\n");
+function downloadJSON(obj, name){
+  try { const b = new Blob([JSON.stringify(obj, null, 2)], {type: "application/json"}); const a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000); toast("JSONファイルを保存しました"); }
+  catch(_) { toast("このブラウザでは保存できませんでした"); }
 }
-document.querySelectorAll("[data-toggle-all]").forEach(btn => btn.addEventListener("click", () => {
-  const list = $(btn.dataset.toggleAll), items = [...list.querySelectorAll("details")];
-  const open = !items.every(d => d.open);
-  items.forEach(d => { d.open = open; });
-  btn.textContent = open ? "すべて閉じる" : "すべて開く";
-}));
-
-/* ---- ニュース ---- */
-const newsItem = n => `<li><time>${esc(n.date)}</time><div class="body"><b>${esc(n.title)}</b><p>${esc(n.text)}</p>${srcLine(n)}</div></li>`;
-const newsFilter = { kind: "all", service: "", limit: 15 };
-function renderNewsList() {
-  if (!NEWS) return;
-  const all = [
-    ...Object.entries(NEWS.services || {}).flatMap(([id, items]) => items.map(n => ({ ...n, svc: id }))),
-    ...(NEWS.society || []).map(n => ({ ...n, svc: null }))
-  ].sort((a, b) => dateKey(b.date).localeCompare(dateKey(a.date)));
-  const list = all.filter(n => (newsFilter.kind === "all" || (newsFilter.kind === "society" ? !n.svc : !!n.svc)) && (!newsFilter.service || n.svc === newsFilter.service));
-  const shown = view.tab === "all" ? list.slice(0, 8) : list.slice(0, newsFilter.limit);
-  $("news-list").innerHTML = shown.map(n => {
-    const s = n.svc ? svcOf(n.svc) : null;
-    const tag = s ? `<span class="tag">${badge(s)}${esc(shortName(s))}</span>` : `<span class="tag"><span class="chip plain">規制・社会</span></span>`;
-    return `<li><time>${esc(n.date)}</time><div class="body">${tag}<b>${esc(n.title)}</b><p>${esc(n.text)}</p>${srcLine(n)}</div></li>`;
-  }).join("") || emptyRow("条件に合うニュースはありません。");
-  const more = $("news-more"), left = list.length - shown.length;
-  more.hidden = left <= 0;
-  more.innerHTML = left > 0 ? `<button type="button" class="btn btn-line" id="news-show-more">${view.tab === "all" ? `すべてのニュースを見る（${list.length}件）` : `さらに表示（残り${left}件）`}</button>` : "";
-  $("news-filters").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.kind === newsFilter.kind)));
-}
-$("news-filters").innerHTML = [["all", "すべて"], ["service", "サービス"], ["society", "規制・社会"]].map(([k, v]) => `<button type="button" data-kind="${k}" aria-pressed="${k === "all"}">${v}</button>`).join("");
-$("news-filters").addEventListener("click", e => { const b = e.target.closest("button[data-kind]"); if (!b) return; newsFilter.kind = b.dataset.kind; if (b.dataset.kind === "society") { newsFilter.service = ""; $("news-service").value = ""; } renderNewsList(); });
-$("news-service").addEventListener("change", e => { newsFilter.service = e.target.value; if (e.target.value) newsFilter.kind = "all"; renderNewsList(); });
-document.addEventListener("click", e => { if (e.target.closest("#news-show-more")) { if (view.tab === "all") go("news"); else { newsFilter.limit += 15; renderNewsList(); } } });
-function renderNews(data) {
-  NEWS = data;
-  $("updated").textContent = data.updated;
-  $("updated-foot").textContent = data.updated;
-  $("news-updated").textContent = data.updated;
-  $("news-age").innerHTML = ageChip(data.updated);
-  document.querySelectorAll(".news-period").forEach(el => { el.textContent = data.period || ""; });
-  SERVICES.forEach(s => {
-    const items = (data.services || {})[s.id] || [];
-    const ol = $("news-" + s.id);
-    if (ol) ol.innerHTML = items.length ? items.map(newsItem).join("") : emptyRow("この期間の主なニュースはありません。");
+function setupTrial(){
+  $("trial-themes").addEventListener("click", e => { const b = e.target.closest("[data-theme-id]"); if (b) { trialTheme = b.dataset.themeId; renderTrial(); } });
+  const out = $("trial-out");
+  out.addEventListener("input", e => {
+    const ta = e.target.closest("textarea[data-kit]"); if (!ta) return;
+    const [t, s] = ta.dataset.kit.split("|"); kitEntry(t, s).text = ta.value;
+    const len = $(`kit-len-${t}-${s}`); if (len) len.textContent = ta.value.length + "文字";
+    kitSave();
   });
-  renderNewsList();
-  checkStale();
+  out.addEventListener("change", e => {
+    const cb = e.target.closest("input[data-kit-check]"); if (!cb) return;
+    const [t, s, i] = cb.dataset.kitCheck.split("|"); const v = kitEntry(t, s); v.checks = v.checks || []; v.checks[+i] = cb.checked; kitSave();
+    const th = TRIAL.themes.find(x => x.id === t), sc = scoreOf(th, s); $(`kit-score-${t}-${s}`).textContent = `${sc.n} / ${sc.of}`;
+  });
+  out.addEventListener("click", async e => {
+    const th = TRIAL.themes.find(t => t.id === trialTheme); let b;
+    if ((b = e.target.closest("[data-kit-save]"))) { HIST.unshift(trialSnapshot(th)); HIST = HIST.slice(0, 50); store.set(HIST_KEY, HIST); toast("記録しました"); renderTrial(); return; }
+    if ((b = e.target.closest("[data-kit-export]"))) { const sn = trialSnapshot(th); if (b.dataset.kitExport === "json") downloadJSON(sn, `ai-trial-${th.id}-${sn.at.slice(0, 10)}.json`); else toast(await copyText(snapText(sn)) ? "テキストをコピーしました" : "コピーできませんでした"); return; }
+    if ((b = e.target.closest("[data-kit-clear]"))) { delete KIT[th.id]; kitSave(); toast("このお題の入力を消しました"); renderTrial(); return; }
+    if ((b = e.target.closest("[data-crit-del]"))) { const c = critOf(th).slice(); c.splice(+b.dataset.critDel, 1); if (!c.length) { toast("観点は1つ以上必要です"); return; } CRIT[th.id] = c; store.set(CRIT_KEY, CRIT); renderTrial(); return; }
+    if ((b = e.target.closest("[data-crit-add]"))) { const v = $("crit-new").value.trim(); if (!v) { $("crit-new").focus(); return; } CRIT[th.id] = [...critOf(th), v].slice(0, 12); store.set(CRIT_KEY, CRIT); renderTrial(); return; }
+    if ((b = e.target.closest("[data-crit-reset]"))) { delete CRIT[th.id]; store.set(CRIT_KEY, CRIT); renderTrial(); return; }
+    if ((b = e.target.closest("[data-hist-del]"))) { HIST.splice(+b.dataset.histDel, 1); store.set(HIST_KEY, HIST); renderTrial(); return; }
+    if ((b = e.target.closest("[data-hist-view]"))) { const h = HIST[+b.dataset.histView]; $("hist-view").innerHTML = `<div class="tbl card" style="margin-top:8px"><table style="min-width:480px"><thead><tr><th>${esc(h.title)}（${esc(h.at.slice(0, 10))}）</th><th>当てはまった数</th><th>当てはまった観点</th></tr></thead><tbody>${h.rows.map(r => `<tr><th>${esc(r.name)}</th><td class="mono">${esc(r.score)}</td><td>${esc(r.checked.join("、") || "なし")}</td></tr>`).join("")}</tbody></table></div>`; return; }
+  });
+  renderTrial();
 }
 
-/* ---- 更新状況：自動更新が止まっている・失敗したときは警告を出す ---- */
-function checkStale() {
-  const box = $("stale");
+/* ---------- 料金・運営企業（アコーディオン） ---------- */
+function renderPlans(){
+  $("plans-upd").innerHTML = `${ic("check", 13)}最終確認 <b>${esc(PLANS.updated)}</b>${ageNote(PLANS.updated)}`;
+  $("plans-list").innerHTML = SERVICES.map(s => {
+    const p = planOf(s.id), d = dataOf(s.id); if (!p) return "";
+    return `<details class="acc" id="plan-${s.id}"><summary>${av(s, 32)}<span class="s-name"><b>${esc(s.name)}</b><small>${esc(p.currency)}表記 · ${p.tiers.length}プラン</small></span><span class="s-side"><span class="tagc mono">${esc(p.summary)}</span>${d ? lvl(d.personal) : ""}</span>${ic("chevD", 18, "chev")}</summary>
+      <div class="acc-body"><div class="tbl card"><table style="min-width:520px"><thead><tr><th>プラン</th><th>月額</th><th>対象</th><th>主な内容</th></tr></thead><tbody>${p.tiers.map(t => `<tr><th>${esc(t.name)}</th><td class="mono">${esc(t.price)}</td><td>${esc(t.who)}</td><td>${esc(t.note)}</td></tr>`).join("")}</tbody></table></div>
+      ${d ? `<div class="sub-hd" style="margin:0">入力した内容は学習に使われる？</div><div class="data2"><div><span class="l">個人向け</span>${lvl(d.personal)}<span>${esc(d.personal.text)}</span></div><div><span class="l">法人向け</span>${lvl(d.business)}<span>${esc(d.business.text)}</span></div></div>${srcLine(d.src, d.secondary)}` : ""}
+      <div style="display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center"><a class="lk" style="margin:0" href="${esc(p.official)}" target="_blank" rel="noopener">公式の料金ページ${ic("ext", 12)}</a><button type="button" class="lk" style="margin:0" data-open="${s.id}">${esc(short(s))}の詳細${ic("arrowR", 12)}</button></div>${srcLine(p.src, p.secondary)}</div></details>`;
+  }).join("");
+}
+function renderCompanies(){
+  $("co-upd").innerHTML = `${ic("check", 13)}最終確認 <b>${esc(COS.updated)}</b>${ageNote(COS.updated)}`;
+  $("co-list").innerHTML = SERVICES.map(s => {
+    const c = coOf(s.id); if (!c) return "";
+    return `<details class="acc" id="co-${s.id}"><summary>${av(s, 32)}<span class="s-name"><b>${esc(c.company)}</b><small>${esc(c.hq)} · ${esc(c.leader)}</small></span><span class="s-side"><span class="tagc">${esc(short(s))}</span><span class="tagc">設立 ${esc(String(c.founded).slice(0, 5))}</span></span>${ic("chevD", 18, "chev")}</summary>
+      <div class="acc-body"><dl class="kv"><dt>法人の形</dt><dd>${esc(c.legal)}</dd><dt>設立</dt><dd>${esc(c.founded)}</dd><dt>本社</dt><dd>${esc(c.hq)}</dd><dt>代表者</dt><dd>${esc(c.leader)}</dd><dt>資本・体制</dt><dd>${esc(c.structure)}</dd><dt>規模</dt><dd>${esc(c.scale)}</dd><dt>収益の柱</dt><dd>${esc(c.business)}</dd><dt>主な製品</dt><dd>${esc(c.products.join("、"))}</dd><dt>日本での拠点</dt><dd>${esc(c.japan)}</dd><dt>戦略の特徴</dt><dd>${esc(c.stance)}</dd></dl>${srcLine(c.src, c.secondary)}<button type="button" class="lk" style="margin:0" data-open="${s.id}" data-opentab="org">${esc(short(s))}の詳細${ic("arrowR", 12)}</button></div></details>`;
+  }).join("");
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-toggle-all]"); if (!b) return;
+  const items = [...$(b.dataset.toggleAll).querySelectorAll("details")], open = !items.every(d => d.open);
+  items.forEach(d => { d.open = open; }); b.textContent = open ? "すべて閉じる" : "すべて開く";
+});
+const ageNote = ymd => { const d = daysSince(ymd); return d !== null && d > 14 ? `<span class="sec-chip" style="margin-left:6px">確認から${d}日・要確認</span>` : ""; };
+
+/* ---------- ニュース・出典 ---------- */
+function renderNews(){
+  const f = $("news-svc").value;
+  const svcNews = Object.entries(NEWS.services).flatMap(([id, a]) => a.map(n => ({...n, svc: id}))).filter(n => !f || n.svc === f).sort((a, b) => dateKey(b.date).localeCompare(dateKey(a.date)));
+  $("news-upd").innerHTML = `${ic("check", 13)}サイトの確認日 <b>${esc(NEWS.updated)}</b>${ageNote(NEWS.updated)}`;
+  $("news-n1").textContent = `${svcNews.length}件`; $("news-n2").textContent = `${NEWS.society.length}件`;
+  $("news-svc-list").innerHTML = svcNews.map(n => newsLi(n, svc(n.svc))).join("") || `<li><div class="loading">この条件のニュースはありません</div></li>`;
+  $("news-soc-list").innerHTML = [...NEWS.society].sort((a, b) => dateKey(b.date).localeCompare(dateKey(a.date))).map(n => newsLi(n)).join("");
+}
+function renderSources(){
+  $("src-grid").innerHTML = SERVICES.map(s => { const list = allSrc(s); return `<div class="src-grp card"><h3><span style="display:flex;gap:8px;align-items:center">${av(s, 22)}${esc(s.name)}</span><span>${list.length}件</span></h3><ul>${list.map(([l, u, k]) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${ic("ext", 13)}<span>${esc(l)}<small>${esc(k)} · ${esc(domain(u))}</small></span></a></li>`).join("")}</ul></div>`; }).join("");
+}
+
+/* ---------- 更新状況：自動更新が止まっている・失敗したときは注意を出す ---------- */
+function checkStale(){
   const msgs = [];
   if (STATUS) {
-    const ok = STATUS.lastSuccess ? String(STATUS.lastSuccess).slice(0, 10) : null;
-    const d = daysSince(STATUS.lastSuccess);
-    $("last-run").textContent = STATUS.result === "ok" ? String(STATUS.lastRun).slice(0, 10) : `${String(STATUS.lastRun).slice(0, 10)}（失敗）`;
+    const ok = STATUS.lastSuccess ? String(STATUS.lastSuccess).slice(0, 10) : null, d = daysSince(STATUS.lastSuccess);
+    $("ver").textContent = String(STATUS.lastRun).slice(0, 10);
     if (STATUS.result !== "ok") msgs.push(`直近の自動更新（${String(STATUS.lastRun).slice(0, 10)}）が失敗しました。最後に成功したのは${ok || "不明"}です。`);
     else if (d !== null && d > 10) msgs.push(`自動更新が${d}日間成功していません（最終成功：${ok}）。`);
   }
   const nd = NEWS && daysSince(NEWS.updated);
   if (nd !== null && nd > 10) msgs.push(`ニュースの確認から${nd}日経っています。`);
-  box.hidden = !msgs.length;
-  box.innerHTML = msgs.length ? `<div><b>${esc(msgs.join(" "))}</b>料金・ニュースなどが最新でない可能性があります。利用前に各サービスの公式ページで確認してください。</div>` : "";
+  $("stale").hidden = !msgs.length;
+  $("stale").innerHTML = msgs.length ? `${ic("alert", 16)}<span><b>${esc(msgs.join(" "))}</b> 料金・ニュースなどが最新でない可能性があります。利用前に各サービスの公式ページで確認してください。</span>` : "";
 }
 
-/* ---- 読み込み ---- */
-function boot() {
-  getJSON("services.json").then(sv => {
-    SERVICES = sv.services; CATS = sv.categories; META = sv.diagMeta;
-    renderServices(); setupDiag(); route(location.hash); renderCompare();
-    loadInto("plans", "plans.json", "料金情報", ["plans-list"], p => { PLANS = p; renderPlans(); renderCompare(); });
-    loadInto("companies", "companies.json", "運営元の情報", ["companies-list"], renderCompanies);
-    loadInto("news", "news.json", "ニュース", ["news-list"], renderNews);
-    loadInto("examples", "examples.json", "活用事例", ["ex-grid"], d => { EXAMPLES = d.examples; setupExamples(); });
-    loadInto("compare", "compare.json", "比較データ", ["trial-body"], d => { TRIAL = d; renderTrial(); });
-    getJSON("status.json").then(s => { STATUS = s; checkStale(); }).catch(() => { $("last-run").textContent = "不明"; });
-  }).catch(() => {
-    $("svc-cards").innerHTML = errBox("services", "サービス情報");
-    $("compare-body").innerHTML = `<tr><td colspan="9">${errBox("services", "サービス情報")}</td></tr>`;
-    route(location.hash);
-  });
+/* ---------- 検索（⌘K） ---------- */
+let ckItems = [], ckIdx = 0;
+function openCmd(){ $("ck-q").value = ""; renderCmd(); showDlg("cmdk"); setTimeout(() => $("ck-q").focus(), 0); }
+function renderCmd(){
+  const q = $("ck-q").value.trim().toLowerCase(), groups = [];
+  const ss = SERVICES.filter(s => !q || sHay(s).includes(q)).slice(0, q ? 10 : 5);
+  if (ss.length) groups.push([q ? "AIサービス" : "おすすめ", ss.map(s => ({run: () => { closeDlg("cmdk"); openDrawer(s.id); }, html: `${av(s, 28)}<span class="m"><b>${esc(s.name)}</b><small>${esc(s.maker)} · ${esc(s.cmp.strength)}</small></span><span class="s"><span class="tagc">${esc(CATS[s.category] || "")}</span></span>`}))]);
+  const xs = q ? EXAMPLES.filter(e => exHay(e).includes(q)).slice(0, 6) : [];
+  if (xs.length) groups.push(["活用事例", xs.map(e => ({run: () => { closeDlg("cmdk"); showExamples({q: $("ck-q").value.trim()}); setTimeout(() => { const el = $("ex-" + e.id); if (el) el.scrollIntoView({block: "center"}); }, 50); }, html: `<span class="ci-ic">${ic("bulb", 14)}</span><span class="m"><b>${esc(e.title)}</b><small>${esc(short(svc(e.service)))} · ${esc(META.genres[e.genre] || "")}</small></span>`}))]);
+  const ps = PAGES.filter(p => !q || p.l.toLowerCase().includes(q));
+  if (ps.length) groups.push(["ページへ移動", ps.map(p => ({run: () => { closeDlg("cmdk"); go(p.id); }, html: `<span class="ci-ic">${ic(p.i, 14)}</span><span class="m"><b>${esc(p.l)}</b></span>`}))]);
+  ckItems = groups.flatMap(g => g[1]); ckIdx = 0;
+  let n = 0;
+  $("ck-list").innerHTML = ckItems.length ? groups.map(([label, items]) => `<div class="cg">${label}</div>` + items.map(it => `<div class="ci" role="option" id="ci-${n}" data-i="${n++}">${it.html}</div>`).join("")).join("") : `<div class="ck-empty">「${esc($("ck-q").value.trim())}」に一致する結果はありません。言葉を短くするか、別の言い方で試してください。</div>`;
+  hlCmd(false);
 }
-RETRY.services = boot;
-boot();
-route(location.hash);
+function hlCmd(scroll = true){
+  $("ck-list").querySelectorAll(".ci").forEach(el => { const on = +el.dataset.i === ckIdx; el.classList.toggle("on", on); el.setAttribute("aria-selected", on); if (on) { $("ck-q").setAttribute("aria-activedescendant", el.id); if (scroll) el.scrollIntoView({block: "nearest"}); } });
+}
+$("ck-q").addEventListener("input", renderCmd);
+$("ck-q").addEventListener("keydown", e => {
+  if (e.key === "ArrowDown") { e.preventDefault(); if (ckItems.length) { ckIdx = (ckIdx + 1) % ckItems.length; hlCmd(); } }
+  else if (e.key === "ArrowUp") { e.preventDefault(); if (ckItems.length) { ckIdx = (ckIdx - 1 + ckItems.length) % ckItems.length; hlCmd(); } }
+  else if (e.key === "Enter") { e.preventDefault(); if (ckItems[ckIdx]) ckItems[ckIdx].run(); }
+});
+$("ck-list").addEventListener("click", e => { const el = e.target.closest(".ci"); if (el) ckItems[+el.dataset.i].run(); });
+$("ck-list").addEventListener("mousemove", e => { const el = e.target.closest(".ci"); if (el && +el.dataset.i !== ckIdx) { ckIdx = +el.dataset.i; hlCmd(false); } });
 
-/* ---- トップへ戻る ---- */
-const toTop = $("to-top");
-window.addEventListener("scroll", () => { toTop.classList.toggle("show", window.scrollY > 900); }, { passive: true });
-toTop.addEventListener("click", () => window.scrollTo({ top: 0 }));
+/* ---------- 全体のクリック・キー操作 ---------- */
+document.addEventListener("click", async e => {
+  const t = e.target; let el;
+  if ((el = t.closest("[data-retry]"))) { location.reload(); return; }
+  if ((el = t.closest("[data-cmdk]"))) { openCmd(); return; }
+  if ((el = t.closest("[data-copy]"))) {
+    const pre = el.closest(".pbox").querySelector("pre"), lab = el.querySelector("span");
+    const ok = await copyText(pre.textContent);
+    el.dataset.state = ok ? "done" : "fail"; if (lab) lab.textContent = ok ? "コピーしました" : "選択しました";
+    if (!ok) selectText(pre);
+    toast(ok ? "コピーしました。AIの入力欄に貼り付けてください" : "自動でコピーできませんでした。選択された文字を長押し（Ctrl+C）でコピーしてください");
+    setTimeout(() => { delete el.dataset.state; if (lab) lab.textContent = "コピー"; }, 2400);
+    return;
+  }
+  if ((el = t.closest("[data-cmp]"))) { e.stopPropagation(); toggleCmp(el.dataset.cmp); return; }
+  if ((el = t.closest("[data-pick]"))) { toggleCmp(el.dataset.pick); return; }
+  if ((el = t.closest("[data-cmpopen]"))) { openCmp(); return; }
+  if ((el = t.closest("[data-cmpclear]"))) { cmp.length = 0; store.set("ainavi-cmp", cmp); syncCmp(); return; }
+  if ((el = t.closest("[data-close]"))) { closeDlg(el.dataset.close); return; }
+  if ((el = t.closest("[data-tab]")) && $("drawer").contains(el)) { dTab = el.dataset.tab; renderDrawer(); $("dr-body").scrollTop = 0; return; }
+  if ((el = t.closest("[data-clr]"))) { clearCat(el.dataset.clr); return; }
+  if ((el = t.closest("[data-exclr]"))) { clearEx(el.dataset.exclr); return; }
+  if ((el = t.closest("[data-exsvc]"))) { closeDlg("drawer"); showExamples({svc: el.dataset.exsvc, purpose: el.dataset.expurpose || ""}); return; }
+  if ((el = t.closest("[data-purpose-go]"))) { showExamples({purpose: el.dataset.purposeGo}); return; }
+  if ((el = t.closest("[data-go]"))) { closeDlg("drawer"); go(el.dataset.go); return; }
+  if ((el = t.closest("[data-view]"))) { e.preventDefault(); closeDlg("drawer"); go(el.dataset.view); return; }
+  if ((el = t.closest("[data-open]"))) { if ($("cmpd").open) closeDlg("cmpd"); openDrawer(el.dataset.open, {tab: el.dataset.opentab}); return; }
+});
+$("top-cmp").addEventListener("click", () => { if (cmp.length >= 2) openCmp(); else { toast(cmp.length ? "もう1つ選ぶと比較できます" : "比べたいサービスを選んでください"); go("compare"); } });
+document.querySelectorAll("dialog").forEach(d => d.addEventListener("click", e => { if (e.target === d) closeDlg(d.id); }));
+document.addEventListener("keydown", e => {
+  const tag = (e.target.tagName || "").toLowerCase(), typing = tag === "input" || tag === "textarea" || tag === "select";
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); $("cmdk").open ? closeDlg("cmdk") : openCmd(); return; }
+  if (e.key === "/" && !typing && !document.querySelector("dialog[open]")) { e.preventDefault(); openCmd(); return; }
+  if ($("drawer").open && !$("cmdk").open && !typing && (e.key === "ArrowRight" || e.key === "ArrowLeft") && !e.target.closest("#dr-tabs")) {
+    const list = catList().length ? catList() : SERVICES, i = list.findIndex(x => x.id === dId), nx = list[i + (e.key === "ArrowRight" ? 1 : -1)];
+    if (i >= 0 && nx) { e.preventDefault(); openDrawer(nx.id); } return;
+  }
+  if (e.key === "Enter" && e.target.matches && e.target.matches("tr[data-open]")) openDrawer(e.target.dataset.open);
+});
+$("diag-form").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target, p = f.purpose.value, en = f.env.value, b = f.budget.value;
+  if (!p || !en || !b) { const miss = !p ? "1（何に使いたいか）" : !en ? "2（どこで使うか）" : "3（予算）"; $("diag-result").innerHTML = `<div class="stale">${ic("alert", 16)}<span>質問${miss}を選んでください。3つすべて選ぶと診断できます。</span></div>`; return; }
+  renderDiag(p, en, b);
+  $("diag-result").scrollIntoView({block: "start", behavior: reduce ? "auto" : "smooth"});
+});
+$("diag-form").addEventListener("reset", () => { $("diag-result").innerHTML = ""; });
+$("news-svc").addEventListener("change", () => { if (NEWS) renderNews(); });
 
-/* ---- リクエスト（Google フォームへのリンク） ---- */
+/* ---------- リクエスト（Google フォームへのリンク） ---------- */
 const REQUEST_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScBtACZ5eCD0gaaGF1el1o7VWDOD-TH1lkYQSErWZ_8iO3Q_g/viewform";
 (() => {
   const btn = $("req-link");
   if (/^https:\/\/(docs\.google\.com\/forms\/|forms\.gle\/)/.test(REQUEST_FORM_URL)) btn.href = REQUEST_FORM_URL;
-  else { btn.removeAttribute("href"); btn.setAttribute("aria-disabled", "true"); btn.textContent = "フォームを準備しています"; $("req-note").textContent = "リクエストの受付は近日開始します。"; }
+  else { btn.removeAttribute("href"); btn.setAttribute("aria-disabled", "true"); btn.textContent = "フォームを準備しています"; $("req-note").innerHTML = `${ic("info", 14)}<span>リクエストの受付は近日開始します。</span>`; }
 })();
+
+/* ---------- 読み込み：失敗したセクションには再読み込みの案内を出す ---------- */
+const errBox = msg => `<div class="err-box card"><b>${esc(msg)}</b><span>通信状況を確認して、もう一度お試しください。</span><button type="button" class="btn btn-ghost sm" data-retry>再読み込み</button></div>`;
+const optJSON = name => getJSON(name).catch(() => null);
+renderNav(); route();
+getJSON("services.json").then(async sv => {
+  SERVICES = sv.services; CATS = sv.categories; META = sv.diagMeta;
+  $("news-svc").innerHTML = `<option value="">すべてのサービス</option>` + SERVICES.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join("");
+  setupDiag();
+  const [plans, cos, news, ex, trial, status] = await Promise.all(["plans.json", "companies.json", "news.json", "examples.json", "compare.json", "status.json"].map(optJSON));
+  PLANS = plans; COS = cos; NEWS = news; EXAMPLES = ex ? ex.examples : []; TRIAL = trial; STATUS = status;
+  setupCatalog(); renderMatrix(); syncCmp();
+  if (ex) setupExamples(); else $("ex-out").innerHTML = errBox("活用事例を読み込めませんでした");
+  if (trial) setupTrial(); else $("trial-out").innerHTML = errBox("比較のお題を読み込めませんでした");
+  if (plans) renderPlans(); else $("plans-list").innerHTML = errBox("料金情報を読み込めませんでした");
+  if (cos) renderCompanies(); else $("co-list").innerHTML = errBox("運営企業の情報を読み込めませんでした");
+  if (news) renderNews(); else { $("news-svc-list").innerHTML = `<li>${errBox("ニュースを読み込めませんでした")}</li>`; $("news-soc-list").innerHTML = ""; }
+  renderSources(); renderHome(); renderNav(); checkStale();
+  if (!status) $("ver").textContent = "—";
+  route();
+}).catch(() => {
+  ["cat-out", "ex-out", "trial-out", "plans-list", "co-list", "src-grid"].forEach(id => { $(id).innerHTML = errBox("サービス情報を読み込めませんでした"); });
+  $("kpis").innerHTML = ""; $("ch-list").innerHTML = `<li><div class="loading">読み込めませんでした</div></li>`;
+});
 </script>
 </body>
 </html>
