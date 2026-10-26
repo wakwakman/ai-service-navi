@@ -208,9 +208,12 @@ button { font: inherit; color: inherit; }
 .sc-tt { min-width: 0; flex: 1; }
 .sc-tt h3 { font-size: 15.5px; font-weight: 600; letter-spacing: -.005em; }
 .sc-open { border: 0; background: none; padding: 0; cursor: pointer; text-align: left; font: inherit; color: inherit; }
-.sc-open::after { content: ""; position: absolute; inset: 0; border-radius: 14px; }
-.sc-open:focus-visible { outline: none; }
-.sc-open:focus-visible::after { outline: 2px solid var(--brand); outline-offset: 2px; }
+.sc .sc-open::after, .mx-card .sc-open::after { content: ""; position: absolute; inset: 0; border-radius: 14px; }
+.mx-card { position: relative; }
+.mx-card .cmp-btn { position: relative; z-index: 2; }
+.sc .sc-open:focus-visible, .mx-card .sc-open:focus-visible { outline: none; }
+.sc .sc-open:focus-visible::after, .mx-card .sc-open:focus-visible::after { outline: 2px solid var(--brand); outline-offset: 2px; }
+.sc-open:hover h3, .sc-open:hover > span { color: var(--brand); }
 .sc-tt p { font-size: 12.5px; color: var(--text-3); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .cmp-btn { position: relative; z-index: 2; }
 .cmp-btn .ic + .ic { display: none; }
@@ -321,7 +324,7 @@ footer { padding-top: 24px; border-top: 1px solid var(--border); display: flex; 
 /* ---------- dialogs ---------- */
 dialog { color: var(--text); }
 dialog::backdrop { background: rgba(8, 14, 13, .45); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
-.drawer { border: 0; border-left: 1px solid var(--border); padding: 0; margin: 0 0 0 auto; width: min(600px, 100vw); max-width: 100vw; height: 100%; max-height: 100%; background: var(--surface); box-shadow: var(--sh-lg); }
+.drawer { border: 0; border-left: 1px solid var(--border); padding: 0; margin: 0 0 0 auto; width: min(880px, 100vw); max-width: 100vw; height: 100%; max-height: 100%; background: var(--surface); box-shadow: var(--sh-lg); }
 @media (prefers-reduced-motion: no-preference) { .drawer[open] { animation: dr-in .24s cubic-bezier(.2,.8,.2,1); } @keyframes dr-in { from { transform: translateX(28px); opacity: .3; } to { transform: none; opacity: 1; } } }
 .dr { display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; height: 100%; }
 .dr-hd { padding: calc(14px + env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) 18px 22px; display: grid; gap: 16px; }
@@ -646,3 +649,21 @@ dialog::backdrop { background: rgba(8, 14, 13, .45); backdrop-filter: blur(3px);
 .sister .ic:last-child { color: var(--text-3); margin-left: auto; }
 .sister small { display: block; font-weight: 400; font-size: 11.5px; color: var(--text-3); }
 .ms-ft .sister { margin-top: 10px; }
+
+/* 詳細パネルを広くしたぶん、読みやすい文字の大きさと余白にする */
+@media (min-width: 900px) {
+  .dr-hd { padding-left: 32px; padding-right: max(28px, env(safe-area-inset-right, 0px)); }
+  .dr-id h2 { font-size: 26px; }
+  .dr-id p { font-size: 14px; }
+  .tabs { padding: 0 32px; }
+  .tabs button { font-size: 14px; height: 44px; }
+  .dr-body { padding: 26px 32px 36px; font-size: 14.5px; gap: 24px; }
+  .dr-ft { padding-left: 32px; padding-right: 32px; }
+  .dr-body .facts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .dr-body .facts > div:nth-child(odd) { border-right: 0; }
+  .dr-body .facts > div + div { border-left: 1px solid var(--border); }
+  .dr-body .facts > div:nth-child(n+3) { border-top: 0; }
+  .dr-body .facts > div:nth-child(n+5) { border-top: 1px solid var(--border); }
+  .dr-body .facts > div:nth-child(4n+1) { border-left: 0; }
+  .dr-body .kv { font-size: 14px; }
+}
